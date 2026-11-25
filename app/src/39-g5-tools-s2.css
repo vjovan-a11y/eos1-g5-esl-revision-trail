@@ -1,0 +1,105 @@
+/* 39-g5-tools-s2.css - Grade 5, Stop 2: the decimal rounding line (drl) and the column tool for adding and
+   subtracting decimals (dcl). They sit on the light art plate (.wb, 38-tools.css), which is light in both themes,
+   so their colours are written here once. The place colours (.p-o, .p-te ...) come from 38-tools.css and
+   39-g5-tools-dec.css. Tap targets 44 px or more; motion is transform and opacity only. */
+
+/* ---------- the rounding line ---------- */
+.wb--dround { --y: 4.25rem; width: 100%; max-width: 34rem; margin-inline: auto; }
+.drl__track { position: relative; height: 8.75rem; }
+.drl__line { position: absolute; top: var(--y); height: .25rem; margin-top: -.125rem; border-radius: .125rem; background: #10305E; }
+.drl__tick { position: absolute; top: var(--y); width: .125rem; height: .875rem; margin: -.4375rem 0 0 -.0625rem; border-radius: .0625rem; background: #3D5A85; }
+.drl__tick.is-end { width: .1875rem; height: 1.5rem; margin: -.75rem 0 0 -.09375rem; background: #10305E; }
+.drl__tick.is-mid { height: 1.25rem; margin-top: -.625rem; }
+.wb--dround.is-mid .drl__tick.is-mid { width: .1875rem; margin-left: -.09375rem; background: #B02E62; }
+.drl__run { position: absolute; top: var(--y); height: .625rem; margin-top: -.3125rem; border-radius: .3125rem; background: #17A2B0; opacity: .8; }
+.drl__run.is-new { animation: drl-run var(--dur-slow) var(--ease-out) both; }
+@keyframes drl-run { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+/* the number: a card above the line with a stem down to its place */
+.drl__pin { position: absolute; top: .125rem; height: calc(var(--y) - .125rem); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 1; }
+.drl__pin b { padding: .25rem .5rem; border-radius: var(--r-sm); background: #F7B53C; box-shadow: inset 0 0 0 2px #B8770E; color: #2A2F3A; font: 600 1.375rem/1.2 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.drl__pin::after { content: ''; flex: 1 1 auto; width: .1875rem; background: #B8770E; }
+/* the two ends: big buttons under the end marks */
+.drl__end {
+  position: absolute; top: calc(var(--y) + 1.125rem); width: 4.5rem; height: 3rem; margin-left: -2.25rem; padding: 0;
+  display: grid; place-items: center; border-radius: var(--r-md); background: #FFFFFF; color: #2A2F3A;
+  box-shadow: inset 0 0 0 2px #2F7FD4, 0 .1875rem 0 #1D62AE;
+  font: 600 1.5rem/1 var(--font-display); font-variant-numeric: tabular-nums;
+}
+button.drl__end { cursor: pointer; }
+button.drl__end:active:not(:disabled) { transform: translateY(.1875rem); box-shadow: inset 0 0 0 2px #2F7FD4; }
+button.drl__end:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button.drl__end:disabled:not(.is-on) { box-shadow: inset 0 0 0 2px #9FB3CC; color: #4A5568; }
+span.drl__end { box-shadow: inset 0 0 0 2px #9FB3CC; }
+.drl__end.is-on { background: #DDF4E7; box-shadow: inset 0 0 0 3px #1E8E5F; color: #0F5A3A; }
+.drl__end.is-shake { animation: tool-shake .35s ease-in-out; }
+.drl__half { position: absolute; top: calc(var(--y) + 1rem); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; color: #B02E62; text-align: center; }
+.drl__half[hidden], .drl__run[hidden] { display: none; }
+.drl__half b { font: 700 1.25rem/1.15 var(--font-display); font-variant-numeric: tabular-nums; }
+.drl__half i { font: 700 .9375rem/1.15 var(--font-body); font-style: normal; }
+.drl__half.is-new { animation: drl-half var(--dur-base) var(--ease-out) both; }
+@keyframes drl-half { from { opacity: 0; } to { opacity: 1; } }
+.drl__midbtn { min-height: 3rem; }
+.wb--dround.wb--mini { --y: 3.25rem; max-width: 22rem; }
+.wb--mini .drl__track { height: 6.5rem; }
+.wb--mini .drl__pin b { font-size: 1.0625rem; padding: .125rem .375rem; }
+.wb--mini .drl__end { top: calc(var(--y) + .875rem); width: 3.5rem; height: 2.125rem; margin-left: -1.75rem; font-size: 1.125rem; border-radius: var(--r-sm); }
+.wb--mini .drl__half { top: calc(var(--y) + .75rem); }
+.wb--mini .drl__half b { font-size: 1.0625rem; }
+.pics > .wb--dround { flex: 1 1 15rem; }
+
+/* ---------- the column tool ---------- */
+.wb--dcol { --cw: 2.75rem; --sw: 2rem; display: flex; flex-direction: column; align-items: center; gap: .375rem; }
+.dcl__sheet { position: relative; width: calc(var(--sw) + var(--n) * var(--cw)); max-width: 100%; }
+.dcl__row { display: grid; grid-template-columns: var(--sw) 1fr; align-items: center; }
+.dcl__sign { text-align: center; font: 600 1.625rem/1 var(--font-display); color: #2A2F3A; }
+.dcl__num { display: grid; grid-template-columns: repeat(var(--n), var(--cw)); transform: translateX(calc(var(--shift, 0) * var(--cw))); transition: transform var(--dur-slow) var(--ease-out); }
+.dcl__c { position: relative; display: grid; place-items: center; height: var(--cw); border-radius: var(--r-sm); color: #2A2F3A; font: 600 1.75rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+/* the decimal point sits on the line between the ones and the tenths */
+.dcl__c.has-pt::after { content: '.'; position: absolute; right: -.16em; bottom: .12em; z-index: 2; font: 700 1.75rem/1 var(--font-display); color: #2A2F3A; pointer-events: none; }
+.dcl__h { height: 1.75rem; margin: 0 .125rem .125rem; background: var(--pcd); color: #FFFFFF; font: 700 .9375rem/1 var(--font-display); }
+.dcl__m { height: 1.5rem; font: 700 1rem/1 var(--font-display); }
+.dcl__m.is-ex { color: #B02E62; }
+.dcl__m.is-carry { color: #1D62AE; }
+/* a top digit that was exchanged: crossed out, its new value is written above it */
+.dcl__c.is-x { color: #6B7688; background: linear-gradient(to top right, transparent calc(50% - 1.5px), #C62C1C calc(50% - 1.5px), #C62C1C calc(50% + 1.5px), transparent calc(50% + 1.5px)) center / 60% 70% no-repeat; }
+.dcl__c.is-zero { color: #7B4E00; background: #FFF1CF; box-shadow: inset 0 0 0 2px #F5A623; }
+.dcl__c.is-zero.is-x { background: linear-gradient(to top right, transparent calc(50% - 1.5px), #C62C1C calc(50% - 1.5px), #C62C1C calc(50% + 1.5px), transparent calc(50% + 1.5px)) center / 60% 70% no-repeat, #FFF1CF; }
+.dcl__c.is-hole { outline: 2px dashed #E0705F; outline-offset: -.3125rem; }
+.wb--dcol.is-wrong .dcl__c.is-hole { outline: none; }
+.dcl__rule { height: .1875rem; margin: .1875rem 0 .3125rem var(--sw); border-radius: .125rem; background: #2A2F3A; }
+.dcl__r.is-new { animation: dcl-in var(--dur-base) var(--ease-pop, ease-out) both; }
+@keyframes dcl-in { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: none; } }
+.wb--dcol.is-wrong .dcl__r { color: #8E1B10; }
+/* a soft band down the decimal points, once they are in a line */
+.dcl__ptline { position: absolute; top: 2rem; bottom: 0; left: calc(var(--sw) + var(--at) * var(--cw) - .3125rem); width: .625rem; border-radius: .3125rem; background: #F5A623; opacity: 0; transition: opacity var(--dur-slow) var(--ease-out); pointer-events: none; }
+.wb--dcol.is-lined .dcl__ptline { opacity: .28; }
+/* the answer boxes: one per column, the whole cell is the tap target */
+.dcl__c--box .blank--cell { width: 100%; height: var(--cw); margin: 0; padding: 0; border-radius: .25rem; font-size: 1.625rem; }
+.dcl--cells:not(.is-set) .dcl__row--ans { opacity: .35; }
+.dcl__now { min-height: 1.25em; margin: 0; text-align: center; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--plate-ink-2); }
+.dcl__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .625rem; max-width: 100%; }
+.dcl__side { flex: 0 0 auto; display: flex; justify-content: center; }
+.dcl__go { min-height: 3rem; width: 6.75rem; padding: .375rem .5rem; white-space: normal; text-align: center; line-height: 1.15; }
+.dcl__go.is-off { visibility: hidden; }
+.dcl--cells .dcl__row--marks, .no-marks .dcl__row--marks { display: none; }
+.wb--dcol.wb--mini { --cw: 2rem; --sw: 1.5rem; gap: .125rem; }
+.wb--mini .dcl__c { font-size: 1.3125rem; }
+.wb--mini .dcl__c.has-pt::after { font-size: 1.3125rem; }
+.wb--mini .dcl__sign { font-size: 1.25rem; }
+.wb--mini .dcl__h { height: 1.5rem; }
+.wb--mini .dcl__m { height: 1.25rem; font-size: .9375rem; }
+.wb--mini .dcl__ptline { top: 1.75rem; }
+.pics > .wb--dcol { flex: 1 1 10rem; }
+
+/* See it: the tool sits in the middle of the scene's height */
+.see-hands__desk > .wb--dround, .see-hands__desk > .wb--dcol { flex: 0 1 34rem; margin-top: auto; margin-bottom: auto; align-self: center; }
+@media (prefers-reduced-motion: reduce) { .dcl__num { transition: none; } .drl__run.is-new, .drl__half.is-new, .dcl__r.is-new { animation: none; } }
+
+/* Notes (65-notes.css zooms a tool picture): the column working is tall, so a smaller zoom keeps it whole */
+.nt-pic--tool > .wb--dcol { zoom: .85; }
+.nt-pic--tool > .wb--dround { width: 100%; }
+@media (min-width: 700px) { .nt-pic--tool > .wb--dcol { zoom: 1.3; } }
+@media (min-width: 1200px) and (min-height: 760px) { .nt-pic--tool > .wb--dcol { zoom: 1.7; } }
+@media (max-height: 700px) and (max-width: 699px) { .nt-pic--tool > .wb--dround { zoom: .8; } .nt-pic--tool > .wb--dcol { zoom: .58; } }
+
+

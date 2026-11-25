@@ -1,0 +1,186 @@
+/* 39-g5-tools-s6.css - Grade 5, Stop 6 (fractions, decimals and percentages): the hundred square to shade and the
+   small shapes (s6-pg), the 0 to 1 number line (s6-fl), the cards to put in order (s6-ft), the percentage bar (s6-pb)
+   and the answer boxes of this stop. They sit on the light art plate (.wb, 38-tools.css), which is light in both
+   themes, so the colours are written here once: gold shading, ink lines. Tap targets 48 px. Motion: transform and
+   opacity only, none when motion is off. */
+
+/* ---------- shared: the − and + buttons of a tool ---------- */
+.s6-pg__ctl { display: flex; flex-wrap: wrap; justify-content: center; gap: .375rem; margin-top: .5rem; }
+.s6-btn {
+  min-width: 4rem; min-height: 3rem; padding: 0 .625rem; border-radius: var(--r-md);
+  background: #FFFFFF; color: var(--plate-ink); box-shadow: inset 0 0 0 2px #9DB2CC, 0 3px 0 #9DB2CC;
+  font: 700 1.125rem/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.s6-btn .btn__label { text-decoration: none; }
+.s6-btn--plus { background: #FFF1CF; box-shadow: inset 0 0 0 2px #C17B08, 0 3px 0 #C17B08; color: #3A2600; }
+.s6-btn:active:not(:disabled) { transform: translateY(2px); background-color: #FFF8E6; }
+.s6-btn:disabled { background: #EEF2F7; color: #8A99AD; box-shadow: inset 0 0 0 2px #D4DFEB; }
+
+/* ---------- the hundred square to shade ---------- */
+.s6-pg { width: 100%; }
+.s6-pg__main { display: flex; align-items: center; justify-content: center; gap: .75rem; }
+.s6-pg__pic { flex: 0 1 13rem; min-width: 0; }
+.s6-pg--shape .s6-pg__pic { flex: 0 1 auto; display: flex; justify-content: center; }
+.s6-pg__svg { display: block; width: 100%; height: auto; }
+.s6-pg__c { fill: #FFFFFF; stroke: #B8C8DB; stroke-width: .5; }
+.s6-pg__c.is-on { fill: #F7B53C; stroke: #B8770E; }
+.s6-pg:not(.is-fixed):not(.is-off) .s6-pg__c { cursor: pointer; }
+.s6-pg__col { stroke: #3D5A85; stroke-width: 1; pointer-events: none; }
+.s6-pg__half { stroke: #3D5A85; stroke-width: .5; stroke-dasharray: 2 2; pointer-events: none; }
+.s6-pg__frame { fill: none; stroke: #10305E; stroke-width: 1.5; pointer-events: none; }
+.s6-pg__out { display: flex; flex-direction: column; gap: .375rem; flex: 0 1 8.5rem; min-width: 5.5rem; }
+.s6-pg__chip {
+  display: flex; flex-direction: column; align-items: center; gap: .0625rem; padding: .25rem .375rem; border-radius: var(--r-sm);
+  background: #FFFFFF; box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink); text-align: center;
+}
+.s6-pg__chip i { font: 700 .9375rem/1.1 var(--font-body); font-style: normal; color: var(--plate-ink-2); }
+.s6-pg__chip b { font: 600 1.25rem/1.25 var(--font-display); font-variant-numeric: tabular-nums; }
+.s6-pg__chip .fr { font-size: .9375rem; margin: 0 .1em; }
+.s6-pg--mini { width: auto; display: inline-flex; flex-direction: column; align-items: center; }
+.s6-pg--mini .s6-pg__pic { flex: none; width: 7.5rem; }
+.s6-pg--mini.s6-pg--shape .s6-pg__pic { width: auto; }
+@media (min-width: 900px) and (min-height: 700px) { .s6-pg:not(.s6-pg--mini) .s6-pg__pic { flex-basis: 17rem; } }
+
+/* a small shape: r rows of c equal parts; a part is a button to tap (or a plain box in a picture) */
+.s6-pg__shape {
+  display: grid; grid-template-columns: repeat(var(--c), minmax(0, 1fr)); width: calc(var(--c) * 3.25rem); max-width: 100%;
+  background: #10305E; border: 2px solid #10305E; gap: 2px; border-radius: .25rem;
+}
+.s6-pg__cell { display: block; aspect-ratio: 1; min-width: 0; padding: 0; border: 0; border-radius: 0; background: #FFFFFF; }
+button.s6-pg__cell { cursor: pointer; }
+button.s6-pg__cell:disabled { cursor: default; }
+.s6-pg__cell.is-on { background: #F7B53C; }
+.s6-pg__cell:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.s6-pg--mini .s6-pg__shape { width: calc(var(--c) * 1.75rem); }
+.mk__card > .s6-pg--mini, .tp-cell > .s6-pg--mini { align-self: center; }
+.mk__card > .s6-pg--mini .s6-pg__shape, .tp-cell > .s6-pg--mini .s6-pg__shape { width: calc(var(--c) * 2.25rem); }
+.mk__card > .s6-pg--mini.s6-pg--100 .s6-pg__pic, .tp-cell > .s6-pg--mini.s6-pg--100 .s6-pg__pic { width: min(11rem, 100%); }
+
+/* ---------- the number line from 0 to 1 ---------- */
+.s6-fl { --step: 2.75rem; width: 100%; color: var(--plate-ink); }
+.s6-fl__track { position: relative; margin: 0 1.875rem; padding-top: calc((var(--lv) - 1) * var(--step) + 3.5rem); }
+.s6-fl__flag {
+  position: absolute; left: calc(var(--at) * 1%); bottom: 2.625rem; z-index: calc(3 - var(--l));
+  display: flex; flex-direction: column; align-items: center; transform: translateX(-50%);
+}
+.s6-fl__flag[hidden] { display: none; }
+.s6-fl__flag.is-new { animation: s6-drop var(--dur-slow) var(--ease-out) both; }
+@keyframes s6-drop { from { opacity: 0; transform: translate(-50%, -.75rem); } to { opacity: 1; transform: translate(-50%, 0); } }
+.s6-fl__tag {
+  display: grid; place-items: center; min-width: 2.75rem; min-height: 2.5rem; padding: .0625rem .375rem; border-radius: var(--r-sm);
+  background: #FFF1CF; box-shadow: inset 0 0 0 2px #C17B08; color: #3A2600;
+  font: 700 1.0625rem/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.s6-fl__tag .fr, .s6-fl__cardtxt .fr, .s6-ft__txt .fr { margin: 0; font-size: .9375rem; line-height: 1.05; }
+.s6-fl__stem { display: block; width: 2px; height: calc(.625rem + var(--l) * var(--step)); background: #C17B08; }
+.s6-fl__stem::after { content: ''; position: absolute; left: 50%; bottom: -.1875rem; width: .5rem; height: .5rem; margin-left: -.25rem; border-radius: 50%; background: #C17B08; }
+.s6-fl--move .s6-fl__tag { background: #E4F0FC; box-shadow: inset 0 0 0 2px #2F7FD4; color: var(--plate-ink); }
+.s6-fl--move .s6-fl__stem, .s6-fl--move .s6-fl__stem::after { background: #2F7FD4; }
+.s6-fl__axis { position: relative; height: 2.625rem; border-top: 3px solid #10305E; }
+.s6-fl__tick { position: absolute; top: 0; left: calc(var(--at) * 1%); width: 2px; height: .375rem; margin-left: -1px; background: #3D5A85; }
+.s6-fl__tick.is-ten { height: .625rem; }
+.s6-fl__tick.is-half { height: .875rem; width: 3px; margin-left: -1.5px; background: #10305E; }
+.s6-fl__lab { position: absolute; top: 1rem; left: calc(var(--at) * 1%); transform: translateX(-50%); font: 700 .9375rem/1 var(--font-body); font-variant-numeric: tabular-nums; color: var(--plate-ink-2); white-space: nowrap; }
+.s6-fl__lab.is-half { color: var(--plate-ink); }
+@media (max-width: 599px) { .s6-fl__lab.is-odd { display: none; } }
+.s6-fl--mini .s6-fl__lab.is-odd { display: none; }
+.s6-fl--mini { --step: 2.5rem; min-width: min(100%, 17rem); }
+.s6-fl__now { margin: .25rem 0 0; text-align: center; font: 700 var(--fs-body)/1.25 var(--font-body); color: var(--plate-ink); font-variant-numeric: tabular-nums; }
+.s6-fl__pool { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: .25rem; }
+.s6-fl__card, .s6-ft__tile {
+  display: grid; place-items: center; min-width: 3.5rem; min-height: 3.25rem; padding: .125rem .5rem; border: 0; border-radius: var(--r-md);
+  background: #FFFFFF; color: var(--plate-ink); cursor: pointer; box-shadow: inset 0 0 0 2.5px var(--plate-ink), 0 3px 0 #9DB2CC;
+  font: 700 1.25rem/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap;
+  transition: opacity var(--dur-quick) var(--ease-out), transform var(--dur-quick) var(--ease-out);
+}
+.s6-fl__card:active:not(:disabled), .s6-ft__tile:active:not(:disabled) { transform: translateY(2px); }
+.s6-fl__card:disabled, .s6-ft__tile:disabled { cursor: default; }
+.s6-fl__card:disabled:not(.is-gone) { opacity: .55; }
+.s6-fl__card.is-gone, .s6-ft__tile.is-gone { opacity: .22; box-shadow: inset 0 0 0 2px #9DB2CC; }
+.s6-fl__card:focus-visible, .s6-ft__tile:focus-visible, .s6-ft__slot:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.s6-fl__eq { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem .5rem; min-height: 2.25rem; margin: .5rem 0 0; padding: 0; list-style: none; }
+.s6-fl__eqi { display: inline-flex; align-items: center; padding: .125rem .5rem; border-radius: var(--r-pill); background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--plate-line); font: 700 var(--fs-small)/1.2 var(--font-body); font-variant-numeric: tabular-nums; }
+.s6-fl__eqi .fr { font-size: .9375rem; }
+/* on a phone, in a Practise question, the line is a little shorter, so the answer line under it (for example
+   3/4 [ ] 0.8 with a stacked fraction) stays above the < > = pad. When Zip's message is long (after a miss) the
+   answer line sticks to the bottom of the question, just above the pad; the line scrolls under it. */
+@media (max-width: 599px) {
+  .mk--split .mk__col:last-child:has(.blank--s6sym) { position: sticky; bottom: 0; z-index: 4; padding: .25rem 0; background: var(--bg); }
+  .mk .s6-fl:not(.s6-fl--mini) { --step: 2.5rem; padding-top: .375rem; padding-bottom: .375rem; }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__track { padding-top: calc((var(--lv) - 1) * var(--step) + 3.125rem); }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__axis { height: 2.125rem; }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__flag { bottom: 2.125rem; }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__tag { min-height: 2.25rem; }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__pool { margin-top: .25rem; }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__card { min-height: 2.75rem; }
+  .mk .s6-fl:not(.s6-fl--mini) .s6-fl__eq { margin-top: .25rem; }
+}
+
+/* ---------- cards to put in order ---------- */
+.s6-ft {
+  display: grid; justify-items: center; gap: .625rem; width: 100%; padding: .75rem .5rem; border-radius: var(--r-lg);
+  background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink);
+}
+.s6-ft__row, .s6-ft__pool { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.s6-ft__slot {
+  display: grid; place-items: center; min-width: 3.5rem; min-height: 3.25rem; padding: 0; border: 0; border-radius: var(--r-md);
+  background: repeating-linear-gradient(90deg, #9DB2CC 0 .375rem, transparent .375rem .625rem) bottom / 100% 2px no-repeat, #FFFFFF;
+  color: var(--plate-ink); cursor: default;
+}
+.s6-ft__slot.is-full { background: transparent; cursor: pointer; }
+.s6-ft__slot:disabled, span.s6-ft__slot { cursor: default; }
+.s6-ft__tile.is-in { background: #FFF1CF; box-shadow: inset 0 0 0 2.5px #C17B08, 0 3px 0 #C17B08; color: #3A2600; cursor: inherit; }
+.s6-ft__tile.is-new { animation: s6-pop var(--dur-base) var(--ease-pop) both; }
+@keyframes s6-pop { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: none; } }
+.s6-ft__slot.is-bad .s6-ft__tile { background: #FDECE9; box-shadow: inset 0 0 0 2.5px #C62C1C, 0 3px 0 #C62C1C; color: #8E1B10; }
+.s6-ft__ends { display: flex; align-items: center; gap: .5rem; margin: 0; font: 700 var(--fs-small)/1.2 var(--font-body); color: var(--plate-ink-2); }
+.s6-ft__arrow { position: relative; display: block; width: 4rem; height: 3px; border-radius: 2px; background: var(--plate-ink-2); }
+.s6-ft__arrow::after { content: ''; position: absolute; right: -2px; top: -5px; width: 10px; height: 10px; border-top: 3px solid var(--plate-ink-2); border-right: 3px solid var(--plate-ink-2); transform: rotate(45deg); }
+.s6-ft--mini { padding: .5rem .375rem; gap: .375rem; }
+.s6-ft--mini .s6-ft__tile, .s6-ft--mini .s6-ft__slot { min-width: 3rem; min-height: 3rem; font-size: 1.0625rem; }
+@media (max-width: 479px) {
+  .s6-ft { padding: .625rem .25rem; }
+  .s6-ft__row, .s6-ft__pool { gap: .375rem; }
+  .s6-ft__tile, .s6-ft__slot { min-width: 3.25rem; }
+  .s6-ft__tile { padding: .125rem .25rem; font-size: 1.125rem; }
+}
+
+/* ---------- a bar for a percentage of an amount (a picture) ---------- */
+.s6-pb { display: flex; flex-direction: column; gap: .25rem; width: 100%; min-width: min(100%, 16rem); max-width: 30rem; color: var(--plate-ink); }
+.s6-pb__top { display: flex; align-items: center; gap: .375rem; margin: 0; font: 700 var(--fs-small)/1.2 var(--font-body); white-space: nowrap; }
+.s6-pb__top i { flex: 1 1 auto; height: .5rem; border-top: 2px solid #3D5A85; }
+.s6-pb__top i:first-child { border-left: 2px solid #3D5A85; }
+.s6-pb__top i:last-child { border-right: 2px solid #3D5A85; }
+.s6-pb__bar { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 2px; padding: 2px; border-radius: .25rem; background: #10305E; }
+.s6-pb__c { display: grid; place-items: center; min-width: 0; height: 2.25rem; background: #FFFFFF; font: 700 .9375rem/1 var(--font-body); font-variant-numeric: tabular-nums; overflow: hidden; }
+.s6-pb__c.is-on { background: #F7B53C; color: #3A2600; }
+.s6-pb__c.is-cut { background: repeating-linear-gradient(135deg, #F9C9C0 0 .3125rem, #FDECE9 .3125rem .625rem); color: #8E1B10; }
+.s6-pb__under { display: flex; flex-direction: column; gap: .125rem; margin: 0; font: 700 var(--fs-small)/1.2 var(--font-body); white-space: nowrap; }
+.s6-pb__brace { display: block; width: calc(var(--w) * 1%); min-width: .625rem; height: .375rem; border: 2px solid #B8770E; border-top: 0; border-radius: 0 0 .25rem .25rem; }
+.s6-pb__note { margin: 0; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--plate-ink-2); }
+
+/* ---------- a list of numbers in an answer (which list is in order?) ---------- */
+.s6-list { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .125rem 0; font-variant-numeric: tabular-nums; }
+.s6-li { display: inline-flex; align-items: center; white-space: nowrap; }
+.s6-li .fr { margin: 0 .05em; }
+.s6-sep { margin-right: .25rem; }
+
+/* ---------- answer boxes: the two boxes of a fraction and the box for a sign ---------- */
+.blank--s6fr { min-width: 3.5rem; height: 2.75rem; }
+.blank--s6sym { min-width: 3rem; }
+.s6-frb { min-width: 3.5rem; }
+.tp-sheet .blank.blank--s6fr { min-width: 3.5rem; height: max(2.75rem, 44px); margin: 0; border: 2px solid #222222; border-radius: .25rem; align-items: center; padding-bottom: 0; }
+.tp-sheet .blank.blank--s6sym { min-width: 3rem; border: 2px solid #222222; border-radius: .25rem; align-items: center; padding-bottom: 0; vertical-align: middle; }
+.tp-sheet .s6-frb { vertical-align: middle; }
+.tp-sheet .s6-frb > .s6-frl { background: #222222; }
+.tp.is-typing .tp-sheet .blank.blank--s6fr.is-on, .tp.is-typing .tp-sheet .blank.blank--s6sym.is-on { border-color: #2F7FD4; }
+.tp-sheet .tp-line:has(.fr, .s6-frb) { line-height: 3.25rem; }
+
+/* ---------- on the Mini test paper, in the notes, in See it ---------- */
+.tp-sheet .s6-ft { background: none; box-shadow: none; }
+.nt-pic--tool > .s6-fl, .nt-pic--tool > .s6-pb, .nt-pic--tool > .s6-ft { zoom: 1; width: 100%; max-width: 34rem; }
+@media (min-width: 1000px) { .nt-pic--tool > .s6-fl, .nt-pic--tool > .s6-pb, .nt-pic--tool > .s6-ft { zoom: 1.3; max-width: 30rem; } }
+.see-hands__desk:has(> .s6-pg, > .s6-fl, > .s6-ft) { max-width: 40rem; margin-top: auto; margin-bottom: auto; align-self: center; }
+@media (prefers-reduced-motion: reduce) { .s6-fl__flag.is-new, .s6-ft__tile.is-new { animation: none; } }
+
+

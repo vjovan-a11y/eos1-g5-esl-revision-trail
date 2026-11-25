@@ -1,0 +1,265 @@
+/* 10-shell.css - the app shell: #app, the screen, the stage with its top bar and the bottom action bar.
+
+   Heights: html and the page body are 100% tall (never a viewport unit). #app is a flex column
+   and each screen fills it. Screens scroll INSIDE (the home map); the page never scrolls.
+   Safe areas: the viewer pads :root top and bottom. #app reaches over that padding and pads
+   itself by the same amount, so the colour of the world runs to the edges of the screen while
+   the content stays between the insets. A band that touches the top or bottom edge (top bar,
+   action bar) reaches into that padding with a negative margin and adds the inset to its own
+   padding. Side gutters are written out in full on every band:
+   max(16px, env(safe-area-inset-left, 0px)) and the same on the right. */
+
+#app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: calc(100% + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  min-width: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* every change of screen: a short fade, and the middle of the screen rises a little */
+.screen.is-entering > * { animation: screen-in var(--t-screen) var(--ease-out) both; }
+.screen.is-entering .rise { animation: rise-in 320ms var(--ease-out) both; }
+@keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(.75rem); } to { opacity: 1; transform: none; } }
+
+/* children that arrive one after another: set --i on each (T.ui.stagger does it) */
+.stagger > * { animation: rise-in 300ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 50ms); }
+
+/* the particle canvas of T.fx (the same values as its inline styles, so it never takes room) */
+.fx-canvas { position: fixed; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9990; }
+
+/* the router's own message when a screen cannot be drawn */
+.screen-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex: 1;
+  font: 600 var(--fs-lead)/1.3 var(--font-display);
+  color: var(--ink);
+}
+
+/* ---------- the bottom action bar: the ONE main button lives here, on every screen ---------- */
+
+.actionbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+  padding-top: .75rem;
+  padding-bottom: calc(.625rem + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: var(--bar);
+  box-shadow: var(--shadow-bar);
+}
+.actionbar__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+.actionbar .actionbar__primary { flex: 1 1 auto; min-width: min(12.5rem, 58%); }   /* a quiet button beside it never squeezes it onto three lines (360 px) */
+.actionbar .actionbar__secondary { flex: 0 1 auto; min-width: 0; }
+.actionbar.is-entering .actionbar__inner { animation: rise-in 260ms var(--ease-out) both; }
+
+/* ---------- the activity stage: top bar, instruction strip, body, action bar ---------- */
+
+.stage {
+  --stage-max: 74rem;           /* how wide the strip and the body may grow (set it on ctx.root to change it) */
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  background: var(--bg);
+  /* the world shows only as a quiet glow under the top bar */
+  background-image: radial-gradient(120% 16rem at 50% 0%, var(--accent-soft), var(--bg) 72%);
+}
+
+.topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: .0625rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: var(--band);
+  background-image: linear-gradient(100deg, var(--band) 30%, var(--band-2));
+  color: var(--band-ink);
+}
+.topbar__back { margin-left: -.375rem; }
+.topbar__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font: 600 1.25rem/1.2 var(--font-display);
+  color: var(--band-ink);
+}
+@media (max-width: 23rem) { .topbar__title { font-size: 1.125rem; } }   /* 360 px phones: an 18-letter title fits (R3A-05) */
+.topbar__progress {
+  flex: none;
+  display: flex;
+  align-items: center;
+  min-height: 1.5rem;
+  color: var(--band-ink);
+}
+.topbar__sound { margin-right: -.375rem; }
+/* where the child is inside the step: "3 of 5" next to the dots, and a thin bar along the foot of the top bar */
+.topbar__count { margin-left: .5rem; font: 700 1.0625rem/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.topbar__progress > .topbar__count:first-child { margin-left: 0; }
+.stage__meter { position: absolute; left: 0; right: 0; bottom: 0; height: .3125rem; background: var(--band-dot); overflow: hidden; }
+.stage__meter-fill { display: block; width: 100%; height: 100%; background: var(--gold); transform-origin: left center; transform: scaleX(var(--f, 0)); transition: transform 320ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .stage__meter-fill { transition: none; } }
+@media (min-width: 1600px) and (min-height: 900px) { .topbar__count { font-size: 1.25rem; } .stage__meter { height: .4375rem; } }
+
+/* the middle: strip on top, then the body that the step engine fills */
+.stage__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+.stage__strip {
+  flex: none;
+  width: 100%;
+  max-width: var(--stage-max);
+  margin: 0 auto;
+  padding-top: .625rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+/* See it on a phone: Zip's line keeps the height of three lines (and its padding), so the flower below
+   does not jump under the child's finger when the next line is longer or shorter (R3A-08) */
+@media (max-width: 40rem) {
+  #app[data-route="stop-:n-see"] .stage__strip .instruct__text {
+    min-height: calc(3 * 1.25 * var(--fs-lead) + .375rem);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+}
+.stage__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: var(--stage-max);
+  margin: 0 auto;
+  padding-top: .75rem;
+  padding-bottom: .875rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+  overflow-y: auto;             /* a fallback only: an activity should fit one screen */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ---------- layout recipes for step engines (see brief/api-ui.md) ---------- */
+
+/* picture on top, the thing to do underneath */
+.stage-stack { display: flex; flex-direction: column; gap: .75rem; flex: 1 1 auto; min-height: 0; min-width: 0; }
+/* the picture area: takes the height that is left */
+.stage-pic { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-height: 7.5rem; min-width: 0; }
+.stage-pic > .art-plate { flex: 1 1 0; min-height: 0; }
+/* the things to tap: never squeezed, close to the thumb */
+.stage-do { display: flex; flex-direction: column; gap: .625rem; flex: none; min-width: 0; }
+
+/* answer buttons: one column on a phone; --2 puts them two by two */
+.choices { display: grid; grid-template-columns: minmax(0, 1fr); gap: .625rem; }
+.choices--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.choices--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* tablet upright: the phone layout, centred, not stretched */
+@media (min-width: 600px) {
+  .stage { --stage-max: 42rem; }
+}
+
+/* wide screens (a phone or a tablet on its side, a laptop, the board): picture left, things to tap right */
+@media (min-width: 640px) and (min-aspect-ratio: 5/4) {
+  .stage { --stage-max: 74rem; }
+  .stage-stack--split { flex-direction: row; align-items: stretch; gap: 2rem; }
+  .stage-stack--split > .stage-pic { flex: 58 1 0; }
+  .stage-stack--split > .stage-do { flex: 42 1 0; justify-content: center; }
+  .stage__body { padding-top: 1rem; padding-bottom: 1.25rem; }
+}
+
+/* ---------- the result view of a step (ctx.finish, ctx.result) ---------- */
+
+.stage__result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;          /* centred by the two spacers below: a tall card scrolls from its top (Phase 6) */
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-y: auto;
+}
+
+/* a card taller than the screen must never lose its top (justify-content: center would push it out of reach) */
+.stage__result::before, .stage__result::after { content: ""; flex: 1 0 0; }
+
+/* ---------- "This step is coming soon" (16-stage.js showBeingBuilt; the game card too) ---------- */
+
+.stage-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .625rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  text-align: center;
+}
+.stage-soon__pic {
+  position: relative;
+  width: min(11rem, 42%);
+  margin-bottom: .75rem;
+}
+.stage-soon__pic .art-plate { box-shadow: 0 0 0 .375rem var(--surface), 0 0 0 .5rem var(--accent-soft), var(--shadow-1); }
+.stage-soon__zip { position: absolute; right: -1.75rem; bottom: -1rem; width: 4rem; }
+.stage-soon__title { font-size: var(--fs-h2); }
+.stage-soon__text { max-width: 22rem; color: var(--ink-2); font-size: var(--fs-body); }
+
+/* short phones: tighter bars */
+@media (max-height: 700px) {
+  .actionbar { padding-top: .5rem; padding-bottom: calc(.375rem + env(safe-area-inset-bottom, 0px)); }
+  .stage__strip { padding-top: .5rem; }
+  .stage__body { padding-top: .5rem; padding-bottom: .625rem; }
+}
+
+

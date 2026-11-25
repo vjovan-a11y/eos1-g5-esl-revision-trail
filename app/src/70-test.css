@@ -1,0 +1,13 @@
+/* 70-test.css - the cards the Lightning round (75-lightning.js) shares with the Mini test: the wrap and the
+   medals (bolts). The Mini Practice test paper itself is styled in 71-test-paper.css. Prefix: mt- */
+
+.mt-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1 1 auto; min-height: 0; padding: .5rem 0; }
+
+/* the medals (and the bolts of the Lightning round) */
+.mt-medals { display: flex; justify-content: center; gap: 1rem; margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+.mt-medal { display: flex; flex-direction: column; align-items: center; gap: .25rem; font: 700 var(--fs-small)/1.2 var(--font-body); color: var(--ink-2); }
+.mt-medal .art { width: 3.5rem; height: 3.5rem; border-radius: 50%; }
+.mt-best { margin: 0; font: 700 var(--fs-body)/1.3 var(--font-body); color: var(--ink-2); }
+.mt-best b { color: var(--ink); }
+
+

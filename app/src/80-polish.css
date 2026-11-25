@@ -1,0 +1,533 @@
+/* 80-polish.css - the look and the motion, added on top of the finished kit.
+
+   Nothing here changes a word, a score or a layout decision: it adds depth, atmosphere and
+   choreography, and it hands the school its masthead. Every effect obeys three rules.
+     1. transform and opacity only, so a frame costs the compositor and not the CPU.
+     2. nothing animates over text while the text is being read.
+     3. everything is behind a tier (html[data-fx]) that 80-polish.js lowers by itself on a
+        device that cannot keep up: 3 rich, 2 light, 1 still. Reduced motion is already stripped
+        of animation by 00-tokens.css, and gets no moving parts from here either. */
+
+/* ================= the living background ================= */
+
+/* It sits behind every screen as the first child of #app, reaches past the top and bottom edges
+   (so the slow drift never shows a seam) and takes no taps. Its colours are the world's own
+   tokens, so it follows the theme and the world with nothing hard-coded. */
+.atmos {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -8vh;
+  bottom: -8vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.atmos__wash {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background-image:
+    linear-gradient(180deg, var(--accent-soft), transparent 46%),
+    radial-gradient(140% 52% at 50% 104%, var(--accent-soft), transparent 72%);
+  opacity: .8;
+}
+
+/* two very slow clouds of the world's colour: the only reason the page never looks flat */
+.atmos__aura {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  opacity: .13;
+  background-image: radial-gradient(closest-side, var(--accent), transparent 72%);
+  will-change: transform;
+}
+.atmos__aura--a { left: -15vmax; top: -6vmax; animation: aura-a 38s ease-in-out infinite alternate; }
+.atmos__aura--b {
+  right: -17vmax;
+  bottom: -8vmax;
+  opacity: .1;
+  background-image: radial-gradient(closest-side, var(--gold), transparent 72%);
+  animation: aura-b 47s ease-in-out infinite alternate;
+}
+@keyframes aura-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(7vw, 5vh, 0) scale(1.2); } }
+@keyframes aura-b { from { transform: translate3d(0, 0, 0) scale(1.1); } to { transform: translate3d(-6vw, -4vh, 0) scale(.92); } }
+
+.atmos__motes { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+
+/* ---------- one drifting thing. The script gives each its place, size, speed and phase ---------- */
+
+.mote {
+  position: absolute;
+  left: var(--x, 50%);
+  top: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* the shapes: a petal, a grain of pollen, a seed, a ring of sound, a particle, a bubble, a
+   grain of sugar, a streak of wind, a drop of rain, a speck of dust */
+.mote--petal   { width: calc(.95rem * var(--sz)); height: calc(.62rem * var(--sz)); border-radius: 100% 0 100% 0; background: var(--accent); }
+.mote--pollen  { width: calc(.46rem * var(--sz)); height: calc(.46rem * var(--sz)); border-radius: 50%; background: var(--gold); }
+.mote--seed    { width: calc(.40rem * var(--sz)); height: calc(.64rem * var(--sz)); border-radius: 56% 56% 50% 50%; background: var(--accent); }
+.mote--particle{ width: calc(.42rem * var(--sz)); height: calc(.42rem * var(--sz)); border-radius: 50%; background: var(--accent); top: var(--y, 50%); }
+.mote--bubble  { width: calc(.8rem * var(--sz));  height: calc(.8rem * var(--sz));  border-radius: 50%; box-shadow: inset 0 0 0 .1rem var(--accent); }
+.mote--grain   { width: calc(.34rem * var(--sz)); height: calc(.34rem * var(--sz)); border-radius: 50%; background: var(--accent); }
+.mote--drop    { width: calc(.34rem * var(--sz)); height: calc(.62rem * var(--sz)); border-radius: 50% 50% 62% 62%; background: var(--accent); }
+.mote--dust    { width: calc(.38rem * var(--sz)); height: calc(.38rem * var(--sz)); border-radius: 50%; background: var(--accent); }
+.mote--streak  {
+  left: 0;
+  top: var(--y, 50%);
+  width: calc(7rem * var(--sz));
+  height: calc(.22rem * var(--sz));
+  border-radius: 999px;
+  background-image: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.mote--sound {
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: calc(5.5rem * var(--sz));
+  height: calc(5.5rem * var(--sz));
+  margin: calc(-2.75rem * var(--sz)) 0 0 calc(-2.75rem * var(--sz));
+  border: .16rem solid var(--accent);
+  border-radius: 50%;
+}
+
+/* the four ways to move */
+.mote--petal, .mote--seed, .mote--drop { animation: mote-fall var(--dur) linear var(--delay) infinite both; }
+.mote--dust, .mote--pollen, .mote--bubble, .mote--grain { animation: mote-rise var(--dur) linear var(--delay) infinite both; }
+.mote--particle, .mote--streak { animation: mote-drift var(--dur) linear var(--delay) infinite both; }
+.mote--sound { animation: mote-ring var(--dur) ease-out var(--delay) infinite both; }
+
+@keyframes mote-fall {
+  0%   { opacity: 0; transform: translate3d(0, -18vh, 0) rotate(0deg); }
+  9%   { opacity: var(--op); }
+  50%  { transform: translate3d(var(--sway), 52vh, 0) rotate(calc(var(--spin) * .5)); }
+  90%  { opacity: var(--op); }
+  100% { opacity: 0; transform: translate3d(0, 122vh, 0) rotate(var(--spin)); }
+}
+@keyframes mote-rise {
+  0%   { opacity: 0; transform: translate3d(0, 122vh, 0); }
+  10%  { opacity: var(--op); }
+  50%  { transform: translate3d(var(--sway), 60vh, 0); }
+  90%  { opacity: var(--op); }
+  100% { opacity: 0; transform: translate3d(0, -18vh, 0); }
+}
+@keyframes mote-drift {
+  0%   { opacity: 0; transform: translate3d(-32vw, 0, 0); }
+  10%  { opacity: var(--op); }
+  50%  { transform: translate3d(42vw, calc(var(--sway) * .35), 0); }
+  90%  { opacity: var(--op); }
+  100% { opacity: 0; transform: translate3d(132vw, 0, 0); }
+}
+@keyframes mote-ring {
+  0%   { opacity: 0; transform: scale(.25); }
+  20%  { opacity: var(--op); }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+
+/* the tiers: a modest device loses the second cloud, a slow one loses every moving part */
+html[data-fx="2"] .atmos__aura--b { display: none; }
+html[data-fx="1"] .atmos__aura { animation: none; }
+html[data-fx="1"] .atmos__motes { display: none; }
+@media (prefers-reduced-motion: reduce) { .atmos__motes { display: none; } .atmos__aura { animation: none; } }
+/* a step screen (route depth 2, set by 80-polish.js): the child reads and thinks there, so nothing drifts behind
+   the text. The motes go and the two clouds hold still where they are (Phase 5). */
+#app[data-depth="2"] .atmos__motes { display: none; }
+#app[data-depth="2"] .atmos__aura { animation-play-state: paused; }
+
+/* ---------- let the world show through the screens ---------- */
+
+.home, .hub, .stage { background-color: transparent; }
+.stage { background-image: radial-gradient(130% 17rem at 50% 0%, var(--accent-soft), transparent 74%); }
+.hub__sheet { background-image: linear-gradient(180deg, var(--surface-2), var(--bg) 6rem); }
+
+/* ================= Home: the masthead ================= */
+
+.home > .school {
+  position: relative;
+  z-index: 4;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-width: 0;
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding: calc(.5rem + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) .5rem max(16px, env(safe-area-inset-left, 0px));
+  background: var(--surface);
+}
+/* the school's own colours as a hairline under the band */
+.home > .school::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: .1875rem;
+  background-image: linear-gradient(90deg, var(--red), var(--gold) 62%, var(--gold));
+}
+/* the band now carries the top inset, so the row under it does not */
+.home > .school + .home__head {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 3.25rem;
+  background: transparent;
+}
+.school__logo { flex: none; display: block; width: auto; height: 2.375rem; }
+.school__logo--dark { display: none; }
+.school__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font: 800 var(--fs-small)/1.25 var(--font-body);
+  color: var(--ink-2);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .school__logo--light { display: none; }
+  :root:not([data-theme="light"]) .school__logo--dark { display: block; }
+}
+:root[data-theme="dark"] .school__logo--light { display: none; }
+:root[data-theme="dark"] .school__logo--dark { display: block; }
+@media (min-width: 600px) {
+  .home > .school { gap: 1rem; padding-bottom: .625rem; }
+  .school__logo { height: 3rem; }
+  .school__name { font-size: 1.0625rem; }
+}
+
+/* ================= Home: depth on the trail map ================= */
+
+.map__ground { will-change: transform; }
+
+/* the stops arrive one after another, from the first to the ninth */
+.screen.is-entering .map-node { animation: node-in 460ms var(--ease-pop) both; animation-delay: calc(var(--i, 0) * 45ms); }
+@keyframes node-in { from { opacity: 0; transform: scale(.72); } to { opacity: 1; transform: none; } }
+
+/* footsteps that walk along the trail, and gold that breathes where stars have been won */
+html[data-fx="3"] .trail--dash { animation: trail-march 3.2s linear infinite; }
+@keyframes trail-march { to { stroke-dashoffset: -.9375rem; } }
+html[data-fx="3"] .trail--gold { animation: trail-gold 4.2s ease-in-out infinite; }
+@keyframes trail-gold { 0%, 100% { opacity: 1; } 50% { opacity: .76; } }
+
+/* the stop Zip stands on gets a second, later ring: a heartbeat rather than a blink */
+html[data-fx="3"] .map-node.is-current .map-node__btn::after {
+  content: "";
+  position: absolute;
+  left: -.875rem; right: -.875rem; top: -.875rem; bottom: -.875rem;
+  border: .2rem solid var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: node-ring 2.8s ease-out .95s infinite;
+  pointer-events: none;
+}
+/* a finished stop catches the light every few seconds */
+html[data-fx="3"] .map-node.is-done .map-node__disc::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background-image: linear-gradient(115deg, transparent 38%, var(--zip-halo) 50%, transparent 62%);
+  opacity: .45;
+  animation: disc-sheen 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes disc-sheen { 0%, 72%, 100% { transform: translateX(-130%); } 88% { transform: translateX(130%); } }
+
+.map-node__btn { transition: transform var(--t-press) var(--ease-out); }
+.map-node__btn:active { transform: translateY(.3125rem) scale(.97); }
+
+/* ================= pressing things ================= */
+
+/* the press gains a little squash, which is what makes a button feel like an object */
+.btn:active, .icon-btn:active, .choice:active, .step-card:active, .pressable:active, .is-pressed {
+  transform: translateY(calc(var(--btn-drop) - 1px)) scale(.985);
+}
+.btn--big:active { transform: translateY(calc(var(--btn-drop) - 1px)) scale(.99); }
+
+/* when nothing has happened for a while, the one big button quietly asks for a tap */
+html[data-fx="3"] .actionbar__primary.is-idle::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: button-ask 2.6s ease-out 2;          /* twice, then still: never a loop while a child thinks */
+}
+@keyframes button-ask {
+  0%   { box-shadow: 0 0 0 0 var(--go-line); opacity: .5; }
+  70%  { box-shadow: 0 0 0 .85rem var(--go-line); opacity: 0; }
+  100% { box-shadow: 0 0 0 .85rem var(--go-line); opacity: 0; }
+}
+
+/* ================= answering ================= */
+
+.choice { isolation: isolate; overflow: hidden; }
+.choice__label { position: relative; z-index: 1; }
+.choice__art, .choice__mark { z-index: 1; }
+
+/* a right answer: green runs across the button, the tick draws itself, the whole thing springs */
+.choice::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-image: linear-gradient(90deg, var(--go-line), transparent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.choice.is-right::before { animation: choice-sweep 560ms var(--ease-out) both; }
+@keyframes choice-sweep {
+  0%   { opacity: .95; transform: scaleX(0); }
+  70%  { opacity: .45; }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+.choice.is-right { animation: choice-yes-2 540ms var(--ease-pop) both; }
+@keyframes choice-yes-2 {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.045); }
+  58%  { transform: scale(.994); }
+  100% { transform: scale(1); }
+}
+.choice.is-right .choice__mark { transition: transform 300ms var(--ease-pop); }
+.choice.is-right .choice__mark .icon--check path {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+  animation: stroke-draw 300ms var(--ease-out) 110ms forwards;
+}
+@keyframes stroke-draw { to { stroke-dashoffset: 0; } }
+
+/* a wrong answer stays kind: a short shake, no colour shock, and the cross draws rather than lands */
+.choice.is-wrong { animation: choice-no-2 440ms cubic-bezier(.36, .07, .19, .97) both; }
+@keyframes choice-no-2 {
+  0%, 100% { transform: translateX(0); }
+  15%  { transform: translateX(-.38rem); }
+  36%  { transform: translateX(.3rem); }
+  58%  { transform: translateX(-.18rem); }
+  80%  { transform: translateX(.08rem); }
+}
+.choice.is-wrong .choice__mark .icon--cross path {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: stroke-draw 240ms var(--ease-out) both;
+}
+.choice.is-dim { transition: opacity 320ms ease, filter 320ms ease; }
+
+/* ================= the instruction strip ================= */
+
+/* a new line: Zip gives a small nod and the strip glows once, so a child who is mid-thought
+   still sees that something was said. Both end exactly where they began, so nothing is left lit,
+   and both move an HTML box rather than a shape inside the drawing (older iPad Safari puts a
+   scaled SVG shape in the wrong place unless transform-box is supported). */
+.instruct.is-say { animation: strip-say 760ms var(--ease-out); }
+@keyframes strip-say {
+  0%   { box-shadow: var(--shadow-1), 0 0 0 0 var(--accent-soft); }
+  28%  { box-shadow: var(--shadow-1), 0 0 0 .1875rem var(--accent-soft); }
+  100% { box-shadow: var(--shadow-1), 0 0 0 0 var(--accent-soft); }
+}
+.instruct.is-say .instruct__zip { animation: zip-say 620ms var(--ease-pop); transform-origin: 50% 85%; }
+@keyframes zip-say {
+  0%   { transform: scale(1) rotate(0deg); }
+  35%  { transform: scale(1.09) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ================= stars, the result card, the badge ================= */
+
+.star.is-pop { animation: star-pop-2 640ms var(--ease-pop) both; }
+@keyframes star-pop-2 {
+  0%   { transform: scale(.2) rotate(-50deg); opacity: 0; }
+  45%  { transform: scale(1.34) rotate(9deg); opacity: 1; }
+  72%  { transform: scale(.96) rotate(-4deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.star-total.is-bump { animation: total-bump-2 420ms var(--ease-pop); }
+@keyframes total-bump-2 {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.18) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.result { isolation: isolate; animation: card-in-2 500ms var(--ease-pop) both; }
+@keyframes card-in-2 {
+  0%   { opacity: 0; transform: translateY(1.4rem) scale(.94); }
+  62%  { opacity: 1; transform: translateY(-.15rem) scale(1.012); }
+  100% { opacity: 1; transform: none; }
+}
+/* a quiet sunburst behind the three big stars */
+html[data-fx="3"] .result .stars--lg { position: relative; }
+html[data-fx="3"] .result .stars--lg::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  z-index: -1;
+  width: 15rem; height: 15rem;
+  margin: -7.5rem 0 0 -7.5rem;
+  background-image: repeating-conic-gradient(from 0deg, var(--marker) 0deg 7deg, transparent 7deg 18deg);
+  -webkit-mask-image: radial-gradient(closest-side, #000 12%, transparent 72%);
+  mask-image: radial-gradient(closest-side, #000 12%, transparent 72%);
+  opacity: .45;
+  animation: burst-in var(--dur-max) var(--ease-out) 300ms both;   /* it opens once and stays still while the card is read */
+  pointer-events: none;
+}
+@keyframes burst-in { from { opacity: 0; transform: rotate(-40deg) scale(.6); } to { opacity: .45; transform: none; } }
+.result__title { animation: rise-in 380ms var(--ease-out) 120ms both; }
+.result__lines { animation: rise-in 380ms var(--ease-out) 200ms both; }
+.result__primary { animation: rise-in 380ms var(--ease-out) 300ms both; }
+
+/* the badge moment: the rays turn, a warm light breathes behind the badge, the words arrive in order */
+.celebrate__stage { isolation: isolate; }
+.celebrate__rays { animation: slow-spin 28s linear 1; }          /* one slow turn, then still */
+html[data-fx="3"] .celebrate__stage::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  z-index: -1;
+  width: 170%; height: 170%;
+  border-radius: 50%;
+  background-image: radial-gradient(closest-side, var(--gold), transparent 70%);
+  animation: badge-glow 3.8s ease-in-out 2;
+  pointer-events: none;
+}
+@keyframes badge-glow {
+  0%, 100% { opacity: .12; transform: translate(-50%, -50%) scale(.9); }
+  50%      { opacity: .26; transform: translate(-50%, -50%) scale(1.06); }
+}
+.celebrate__over { animation: rise-in 420ms var(--ease-out) 180ms both; }
+.celebrate__title { animation: rise-in 440ms var(--ease-pop) 280ms both; }
+.celebrate__sub { animation: rise-in 420ms var(--ease-out) 400ms both; }
+.celebrate > .btn { animation: rise-in 420ms var(--ease-out) 520ms both; }
+
+/* ================= moving between screens ================= */
+
+/* going deeper comes in from the right, coming back from the left: the trail keeps its direction */
+#app[data-nav="fwd"] .screen.is-entering > * { animation: screen-fwd var(--t-screen) var(--ease-out) both; }
+#app[data-nav="back"] .screen.is-entering > * { animation: screen-back var(--t-screen) var(--ease-out) both; }
+/* Phase 5: the new screen starts a third visible, so no frame is ever empty (the old screen is gone at once) */
+@keyframes screen-fwd { from { opacity: .35; transform: translate3d(1.5rem, 0, 0); } to { opacity: 1; transform: none; } }
+@keyframes screen-back { from { opacity: .35; transform: translate3d(-1.5rem, 0, 0); } to { opacity: 1; transform: none; } }
+
+/* ================= the board at the front of the room, and high contrast ================= */
+
+@media (min-width: 1500px) {
+  .atmos__wash { opacity: .62; }
+  .atmos__aura { opacity: .1; }
+  .home__scroll { background-size: 2rem 2rem; }        /* the dots do not shimmer on a projector */
+  .instruct__en { font-weight: 600; }
+}
+@media (prefers-contrast: more) {
+  .atmos { opacity: .3; }
+  .atmos__motes { display: none; }
+}
+
+/* ================= Phase 5: lively but focused (Stop 1, 28 Nov 2026) =================
+   Jovan's choice: smooth screen changes, blocks that slide and snap, Zip reacting to answers, a small celebration
+   for a right answer, stars flying to the score. Nothing moves while a child reads or thinks. The rules (docs/02):
+   the tokens of 00-tokens.css only (--dur-quick 150, --dur-base 250, --dur-slow 400, --dur-max 700 ms, --stagger,
+   --ease-out, --ease-in, --ease-in-out, --ease-pop, --ease-snap); transform and opacity only (a pen stroke may
+   animate stroke-dashoffset: a few px of paint, no layout); a movement plays once and ends where it began or at
+   its final state, never a loop on a step screen; tier 1 and reduced motion get the final state at once. */
+
+/* tier 1 (a slow device, measured by 80-polish.js) is still, exactly like reduced motion (00-tokens.css) */
+html[data-fx="1"] *, html[data-fx="1"] *::before, html[data-fx="1"] *::after {
+  animation-duration: .001ms !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
+  transition-delay: 0s !important;
+}
+
+/* ---------- Zip in a step: reacts, then rests ---------- */
+
+/* the eyes blink twice after each new line (Zip is "thinking" with the child), then stay open: no loop while a
+   child reads. The strip gets is-say on a new line (80-polish.js onLine), which starts the two blinks again. */
+.stage .zip-eyes ellipse { animation: none; }
+.stage .instruct.is-say .zip-eyes ellipse, .stage .result__zip .zip-eyes ellipse { animation: zip-blink 5.2s 2; }
+/* right: a small hop with the arms up; wrong: a small shake of the head. Both end where they began. */
+.zip { transform-origin: 50% 90%; }
+.zip.is-hop { animation: zip-hop-5 560ms var(--ease-out); }
+.zip.is-wobble { animation: zip-shake-5 420ms var(--ease-in-out); }
+@keyframes zip-hop-5 {
+  0%, 100% { transform: none; }
+  32% { transform: translateY(-13%) rotate(-5deg); }
+  62% { transform: none; }
+  80% { transform: translateY(-4%); }
+}
+@keyframes zip-shake-5 {
+  0%, 100% { transform: none; }
+  20% { transform: translateX(-5%) rotate(-5deg); }
+  45% { transform: translateX(4%) rotate(4deg); }
+  70% { transform: translateX(-2%) rotate(-2deg); }
+}
+
+/* ---------- content that arrives inside a step ---------- */
+
+/* a new card, the next note, the self-check list: rises in (the same keyframes as a new screen, so a card that
+   is drawn while its screen slides in does not move twice: the animation does not restart) */
+.stage__body .rise { animation: rise-in var(--dur-base) var(--ease-out) both; }
+/* the next question slides in from the right, like moving forward along the trail */
+.mk { animation: q-in var(--dur-base) var(--ease-out) both; }
+@keyframes q-in { from { opacity: 0; transform: translate3d(1.25rem, 0, 0); } to { opacity: 1; transform: none; } }
+/* a hint, a worked answer, "How to do it" on the paper: they slide down from where the child is looking */
+.mk__hint, .mk__worked, .mk__in, .tp-fix { animation: fb-in var(--dur-base) var(--ease-out) both; }
+@keyframes fb-in { from { opacity: 0; transform: translate3d(0, -.5rem, 0); } to { opacity: 1; transform: none; } }
+
+/* ---------- a right answer in a box: green, and a check that draws itself ---------- */
+
+.blank { position: relative; }
+.blank__ok {
+  position: absolute;
+  right: -.5rem;
+  top: -.5rem;
+  display: grid;
+  place-items: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  background: var(--go);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 2px var(--surface);
+  pointer-events: none;
+  animation: ok-in var(--dur-base) var(--ease-pop) both;
+}
+.blank__ok .icon { width: .875rem; height: .875rem; stroke-width: 3.4; }
+.blank__ok .icon path { stroke-dasharray: 22; stroke-dashoffset: 22; animation: stroke-draw var(--dur-slow) var(--ease-out) 120ms forwards; }
+@keyframes ok-in { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+.mk .blank.is-good { animation: ok-glow var(--dur-slow) var(--ease-out); }   /* the paper has the teacher's pen instead */
+@keyframes ok-glow { 0% { transform: scale(1); } 40% { transform: scale(1.06); } 100% { transform: scale(1); } }
+/* the typing line in an empty box blinks three times, then stays: no blinking on and on while a child thinks */
+.blank.is-on:not(.is-filled)::after { animation-iteration-count: 3; }
+
+/* a number that has just changed (T.ui.countUp, the blocks' counts, a score): one small pop */
+.is-tick { animation: tick-pop var(--dur-base) var(--ease-pop); }
+/* (an inline number needs a box to scale: .mat__total b, .lt-score b and .pv__cnt get one in their own files) */
+@keyframes tick-pop { 0% { transform: scale(1); } 45% { transform: scale(1.22); } 100% { transform: scale(1); } }
+
+/* ---------- the test paper: the teacher's pen marks each question in turn ---------- */
+
+.tp-mk__got { animation: rise-in var(--dur-quick) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 110ms); }
+.tp-pen path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pen-draw var(--dur-slow) var(--ease-in-out) both; animation-delay: calc(var(--i, 0) * 110ms + 60ms); }
+.tp-pencil.is-fix path { stroke-dasharray: 1 1; animation: tp-draw var(--dur-slow) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 110ms + 200ms); }
+@keyframes pen-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.tp-fix { animation-delay: calc(var(--i, 0) * 110ms + 250ms); }
+
+/* ---------- progress fills smoothly: the hub's five parts and the map's gold rings ---------- */
+
+.hub__seg { position: relative; overflow: hidden; }
+.hub__seg.is-done { background: var(--line-strong); }
+.hub__seg.is-done::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  border-radius: inherit;
+  background: var(--go);
+  transform-origin: 0 50%;
+  animation: seg-fill var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc(200ms + var(--i, 0) * var(--stagger));
+}
+@keyframes seg-fill { from { transform: scaleX(0); } to { transform: none; } }
+.map-node__arc { animation: arc-fill var(--dur-max) var(--ease-out) 260ms both; }
+@keyframes arc-fill { from { stroke-dasharray: 0 100; } }
+
+@media (forced-colors: active) { .hub__seg.is-done::after { background: CanvasText; } }
+
+

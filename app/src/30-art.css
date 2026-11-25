@@ -1,0 +1,82 @@
+/* 30-art.css - drawings and the art plate.
+
+   Drawings arrive as inline SVG from T.ui.art(id). They carry their own palette and their own
+   animation (the classes is-playing, is-live and is-on belong to the drawing: never restyle them).
+   The app only sizes a drawing and gives it a plate. The plate is light in BOTH themes, so the
+   colours of a drawing never change. */
+
+svg.art { display: block; width: 100%; height: auto; max-width: 100%; }
+
+/* greyscale, as the mini test prints its figures */
+svg.art.art--grey { filter: grayscale(1); }
+
+/* ---------- the plate ---------- */
+
+.art-plate {
+  --plate-pad: 5%;
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: var(--r-lg);
+  background: var(--plate);
+  box-shadow: inset 0 0 0 1px var(--plate-line), var(--shadow-1);
+  color: var(--plate-ink);
+  overflow: hidden;
+}
+/* the box of the plate: 4 by 3 unless a shape says otherwise */
+.art-plate::before { content: ""; display: block; padding-top: 75%; }
+.art-plate > svg.art {
+  position: absolute;
+  left: var(--plate-pad);
+  top: var(--plate-pad);
+  width: calc(100% - 2 * var(--plate-pad));
+  height: calc(100% - 2 * var(--plate-pad));
+}
+
+/* shapes */
+.art-plate--square::before { padding-top: 100%; }
+.art-plate--wide::before { padding-top: 56.25%; }
+.art-plate--tall::before { padding-top: 133.33%; }
+.art-plate--round { border-radius: 50%; }
+.art-plate--round::before { padding-top: 100%; }
+/* fill: the plate takes the room its flex parent gives it (the picture area of a stage) */
+.art-plate--fill { flex: 1 1 0; min-height: 0; }
+.art-plate--fill::before { display: none; }
+/* bleed: the drawing covers the plate edge to edge (badges, scenes) */
+.art-plate--bleed { --plate-pad: 0%; }
+
+/* sizes: the width of the plate (the drawing must still read at 7.5rem) */
+.art-plate--xs { width: 3rem; --plate-pad: 8%; border-radius: var(--r-sm); box-shadow: inset 0 0 0 1px var(--plate-line); }
+.art-plate--sm { width: 7.5rem; border-radius: var(--r-md); }
+.art-plate--md { width: 15rem; }
+.art-plate--lg { width: 22.5rem; }
+.art-plate--xs.art-plate--round, .art-plate--sm.art-plate--round { border-radius: 50%; }
+
+/* a plate you can tap to see the drawing move again */
+.art-plate.is-replayable { cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.art-plate__replay {
+  position: absolute;
+  right: .5rem;
+  bottom: .5rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--plate);
+  box-shadow: 0 0 0 1px var(--plate-line), 0 var(--edge-sm) 0 var(--plate-line);
+  color: var(--plate-ink-2);
+  font-size: .8125rem;
+  pointer-events: none;
+  transition: transform var(--t-press) ease-out, box-shadow var(--t-press) ease-out;
+}
+.art-plate.is-replayable:active .art-plate__replay { transform: translateY(.125rem); box-shadow: 0 0 0 1px var(--plate-line), 0 1px 0 var(--plate-line); }
+.art-plate--xs .art-plate__replay, .art-plate--sm .art-plate__replay { display: none; }
+
+/* ---------- a drawing that has not arrived yet: a neat neutral placeholder with its id ---------- */
+
+.art-missing__box { fill: var(--plate); stroke: var(--plate-line); stroke-width: 3; stroke-dasharray: 10 9; }
+.art-missing__glyph { fill: none; stroke: var(--plate-ink-2); stroke-opacity: .38; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.art-missing__id { fill: var(--plate-ink-2); font-family: var(--font-body); font-weight: 800; text-anchor: middle; }
+
+

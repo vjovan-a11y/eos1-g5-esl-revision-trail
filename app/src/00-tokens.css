@@ -1,0 +1,387 @@
+/* 00-tokens.css - design tokens, base rules and type.
+
+   Layout concept: three kinds of screen (trail map, stop hub, activity stage). Each one is a fixed
+   top band, a flexible middle and ONE primary action in a sticky bottom bar. Only things you can
+   press get the chunky bottom edge; content sits on flat, quiet plates; drawings sit on a plate
+   that stays light in both themes.
+
+   Theme contract: every colour is a token, defined first on bare :root (light), redefined under
+   the guarded dark media query and again under :root[data-theme="dark"]. Components never use a
+   literal colour. World tokens are switched by data-world on #app (end of this file). */
+
+:root {
+  /* ---- brand ---- */
+  --navy: #10305E;
+  --red: #D22630;              /* hearts and the brand mark, never errors */
+  --red-edge: #A31A22;
+  --gold: #F5A623;             /* stars, rewards, the highlight marker */
+  --gold-edge: #C17B08;
+  --gold-soft: #FFF1CF;
+  --gold-text: #7B4E00;
+  --marker: rgba(245, 166, 35, .5);
+
+  /* ---- page, surfaces, text ---- */
+  --bg: #E9F0F7;               /* light blue-grey page */
+  --bg-deep: #DBE6F1;
+  --surface: #FFFFFF;
+  --surface-2: #F1F6FB;
+  --line: #D4DFEB;
+  --line-strong: #B8C8DB;
+  --ink: #10305E;
+  --ink-2: #3D5A85;
+  --ink-3: #6A83A6;
+  --bar: #FFFFFF;              /* the bottom action bar */
+  --map-dot: rgba(16, 48, 94, .09);
+
+  /* ---- go: THE primary action and right answers ---- */
+  --go: #1E9E6A;
+  --go-edge: #13744C;
+  --go-ink: #FFFFFF;
+  --go-soft: #DDF4E8;
+  --go-line: #7CCFA8;
+  --go-text: #0D6943;
+
+  /* ---- soft coral: wrong answers (never a red screen) ---- */
+  --no: #EE7D6C;
+  --ring-wrong: #D93A3A;       /* a wrong ring or tick in the test review (clearer than the soft coral) */
+  --no-edge: #C8594A;
+  --no-soft: #FFE8E2;
+  --no-line: #F3A99D;
+  --no-text: #A03A2B;
+
+  /* ---- controls: secondary buttons, choices, icon buttons ---- */
+  --ctl: #FFFFFF;
+  --ctl-ink: #10305E;
+  --ctl-line: #C9D6E5;
+  --ctl-edge: #B3C4D8;
+  --disabled: #DCE5EF;
+  --disabled-ink: #7B90AB;
+  --disabled-edge: #C6D2E0;
+  --pick: #2F7FD4;             /* a chosen answer, before it is checked */
+  --pick-soft: #E4F0FC;
+  --focus: #2F7FD4;
+
+  /* ---- meters ---- */
+  --star-off: #DDE6F0;
+  --star-off-line: #AEBFD3;
+
+  /* ---- the art plate: light in BOTH themes, so the drawings never change colour ---- */
+  --plate: #F7FBFF;
+  --plate-line: #DCE8F3;
+  --plate-ink: #10305E;
+  --plate-ink-2: #3D5A85;
+
+  /* ---- Zip the robot ---- */
+  --zip-head: #1D4F9C;
+  --zip-line: #0E2B58;
+  --zip-face: #EAF6FF;
+  --zip-body: #5AB4EE;
+  --zip-body-line: #1E5D9F;
+  --zip-glow: #F7B53C;
+  --zip-glow-line: #B8770E;
+  --zip-cheek: #FF9AA2;
+  --zip-halo: #FFFFFF;         /* the sticker rim that keeps Zip readable on any background */
+
+  /* ---- fixed tints: they sit on colours that do not change with the theme (the green button,
+     the dark band, a picture), so they are the same by day and by night ---- */
+  --shine: rgba(255, 255, 255, .17);          /* the light on top of the primary button */
+  --shine-end: rgba(255, 255, 255, 0);
+  --band-dot: rgba(255, 255, 255, .3);        /* a progress dot that is still to come, on the band */
+  --float-edge: rgba(8, 24, 48, .38);         /* the edge of a control that floats on a picture */
+  --float-ring: rgba(255, 255, 255, .35);
+
+  /* ---- overlays ---- */
+  --scrim: rgba(12, 30, 58, .56);
+  --toast: #10305E;
+  --toast-ink: #FFFFFF;
+  --shadow-1: 0 1px 2px rgba(16, 48, 94, .06), 0 6px 16px rgba(16, 48, 94, .08);
+  --shadow-2: 0 14px 40px rgba(16, 48, 94, .2);
+  --shadow-bar: 0 -1px 0 rgba(16, 48, 94, .08), 0 -8px 24px rgba(16, 48, 94, .07);
+
+  /* ---- band and accent: the defaults outside a world (home, dev-kit) ---- */
+  --band: #10305E;             /* the top bar of the stage */
+  --band-2: #1A4380;
+  --band-ink: #FFFFFF;
+  --band-ink-2: #BFD0E8;
+  --band-ctl: rgba(255, 255, 255, .14);
+  --band-ctl-edge: rgba(4, 16, 38, .45);
+  --accent: #2F7FD4;
+  --accent-text: #1E5FA8;
+  --accent-ink: #FFFFFF;        /* text on an accent fill */
+  --accent-soft: #E4F0FC;
+  --glow: rgba(47, 127, 212, .3);
+
+  /* ---- the nine world hues (trail map nodes, locked hubs; worlds 2 to 9 are set again, the same,
+     in 46-worlds.css, which wins) ---- */
+  --world-1: #E0548A;  --world-1-deep: #AE3465;   /* Decimal Lab */
+  --world-5: #E0902F;  --world-5-deep: #AC661A;   /* Fraction Bakery */
+  --world-4: #43A852;  --world-4-deep: #2D7C3A;   /* Factor Forest */
+  --world-6: #7C5FD8;  --world-6-deep: #5940A8;   /* Percent Market */
+  --world-2: #17A2B0;  --world-2-deep: #0E7682;   /* Rounding Reef */
+  --world-3: #2F7FD4;  --world-3-deep: #1F5CA0;   /* Sequence Station */
+  --world-7: #8DB32E;  --world-7-deep: #66861A;   /* Shape Studio */
+  --world-9: #5B8CA8;  --world-9-deep: #3C6880;   /* Data Stadium */
+  --world-8: #C050A8;  --world-8-deep: #92367E;   /* Circle Circus */
+  --world-10: #3B4FA8; --world-10-deep: #24316E;  /* the Summit */
+  --hue-tint: .2;              /* how strong a world's ground colour is on the map */
+
+  /* ---- world 1, the Number Factory: petal pink on deep berry, soft pink paper ---- */
+  --w1-bg: #F4E7EC;
+  --w1-bg-deep: #E9D3DB;
+  --w1-surface: #FFFFFF;
+  --w1-surface-2: #F7EDF1;
+  --w1-line: #E2CAD3;
+  --w1-line-strong: #CCA8B6;
+  --w1-bar: #FFFFFF;
+  --w1-ctl: #FFFFFF;
+  --w1-ctl-line: #DCC1CC;
+  --w1-ctl-edge: #CBA9B6;
+  --w1-band: #4A1227;
+  --w1-band-2: #6B1939;
+  --w1-band-ink: #FBF4F6;
+  --w1-band-ink-2: #D9ABBD;
+  --w1-accent: #E0548A;
+  --w1-accent-text: #6D1335;
+  --w1-accent-ink: #230611;
+  --w1-accent-soft: #F2D9E3;
+  --w1-glow: rgba(224, 84, 138, 0.34);
+  --w1-map-dot: rgba(74, 18, 39, 0.1);
+
+  /* ---- shape ---- */
+  --r-sm: .625rem;
+  --r-md: .875rem;
+  --r-lg: 1.25rem;
+  --r-xl: 1.5rem;
+  --r-pill: 999px;
+  --edge-sm: .1875rem;         /* the chunky bottom edge of pressable things */
+  --edge: .25rem;
+  --edge-lg: .3125rem;
+  --tap: 3rem;                 /* the smallest touch target (48px on a phone) */
+  --topbar-h: 3.25rem;
+
+  /* ---- type ---- */
+  --font-display: 'Fredoka', 'Baloo 2', 'Nunito', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Nunito', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --fs-small: .9375rem;        /* 15px on a phone: nothing a child must read is smaller */
+  --fs-body: 1.0625rem;        /* 17px */
+  --fs-lead: 1.25rem;          /* 20px: the instruction line, buttons */
+  --fs-h3: 1.375rem;
+  --fs-h2: 1.625rem;
+  --fs-h1: 1.9375rem;
+  --fs-word: 2.5rem;           /* the big word on a card */
+
+  /* ---- motion (Phase 5, "lively but focused": every new motion uses these; rules in docs/02) ---- */
+  --dur-quick: 150ms;          /* a press, a count that ticks, a small fade */
+  --dur-base: 250ms;           /* a screen or a card that arrives, a hint that slides down */
+  --dur-slow: 400ms;           /* blocks that slide and snap, a bar or a ring that fills */
+  --dur-max: 700ms;            /* the longest single movement (a celebration); never blocks a tap longer */
+  --stagger: 60ms;             /* one thing after another (stars, marks, segments) */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);       /* arrive and settle */
+  --ease-in: cubic-bezier(.4, 0, 1, 1);          /* leave */
+  --ease-in-out: cubic-bezier(.45, 0, .25, 1);   /* move from one place to another */
+  --ease-pop: cubic-bezier(.3, 1.5, .5, 1);      /* a celebration: a little past, then back */
+  --ease-snap: cubic-bezier(.3, 1.12, .4, 1);    /* a block that lands: a tiny settle */
+  --t-press: 90ms;
+  --t-screen: var(--dur-base);
+
+  --is-dark: 0;                /* read by T.ui.isDark() */
+}
+
+/* ---- the dark theme: the same tokens, night values (written twice, as the viewer requires) ----
+   At night a darker edge would vanish into the page, so the edge of a control is as light as its
+   outline: the button still reads as something that stands up and can be pressed. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --red: #E5404A;  --red-edge: #8E1620;
+    --gold: #F7B23B;  --gold-edge: #A66A06;  --gold-soft: #3B2E12;  --gold-text: #FFD68A;
+    --marker: rgba(245, 166, 35, .42);
+    --bg: #0C1A2E;  --bg-deep: #081425;  --surface: #15283F;  --surface-2: #1C3350;
+    --line: #274061;  --line-strong: #3A5880;
+    --ink: #EAF2FB;  --ink-2: #B1C4DC;  --ink-3: #8198B6;
+    --bar: #11233A;  --map-dot: rgba(190, 215, 245, .1);
+    --go: #21A870;  --go-edge: #0F5F3D;  --go-ink: #FFFFFF;  --go-soft: #12392B;  --go-line: #2C8A62;  --go-text: #86E3B8;
+    --no: #E8806F;  --no-edge: #8E3B30;  --no-soft: #3E211E;  --no-line: #9B4E43;  --no-text: #FFB9AC;
+    --ring-wrong: #FF7B7B;
+    --ctl: #213B5C;  --ctl-ink: #EEF5FD;  --ctl-line: #35547C;  --ctl-edge: #35547C;
+    --disabled: #1A2F4A;  --disabled-ink: #6F87A6;  --disabled-edge: #0C1A2D;
+    --pick: #6FB1FF;  --pick-soft: #16365A;  --focus: #7DB9FF;
+    --star-off: #223A59;  --star-off-line: #456389;
+    --zip-halo: #DCEBFA;
+    --scrim: rgba(2, 8, 18, .7);  --toast: #EAF2FB;  --toast-ink: #10305E;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .28);
+    --shadow-2: 0 16px 48px rgba(0, 0, 0, .55);
+    --shadow-bar: 0 -1px 0 rgba(160, 200, 255, .09), 0 -8px 24px rgba(0, 0, 0, .3);
+    --band: #071325;  --band-2: #12284A;  --band-ink: #FFFFFF;  --band-ink-2: #A9BEDB;
+    --band-ctl: rgba(255, 255, 255, .1);  --band-ctl-edge: rgba(255, 255, 255, .17);
+    --accent: #6FB1FF;  --accent-text: #9CCBFF;  --accent-ink: #06203A;  --accent-soft: #16365A;  --glow: rgba(111, 177, 255, .35);
+    --world-1: #F386B0;  --world-1-deep: #671E3A;
+    --world-5: #E3AA64;  --world-5-deep: #67461E;
+    --world-4: #3AD050;  --world-4-deep: #265E2F;
+    --world-6: #A187F2;  --world-6-deep: #322263;
+    --world-2: #2CC8D8;  --world-2-deep: #1E6067;
+    --world-3: #6EADF1;  --world-3-deep: #1F4165;
+    --world-7: #9ECA31;  --world-7-deep: #506223;
+    --world-9: #87BAD8;  --world-9-deep: #264A5E;
+    --world-8: #E785D2;  --world-8-deep: #5E2652;
+    --world-10: #8FA2F0; --world-10-deep: #2B3878;
+    --hue-tint: .26;
+    /* the Flower Lab at night: deep berry, glowing petals */
+    --w1-bg: #290A16;  --w1-bg-deep: #1D070F;  --w1-surface: #3A1222;  --w1-surface-2: #4D192D;
+    --w1-line: #582237;  --w1-line-strong: #7D3651;  --w1-bar: #330D1C;  --w1-ctl: #541C32;
+    --w1-ctl-line: #73304A;  --w1-ctl-edge: #73304A;  --w1-band: #19060D;  --w1-band-2: #390E1F;
+    --w1-band-ink: #FBF4F6;  --w1-band-ink-2: #CB95AA;  --w1-accent: #F386B0;  --w1-accent-text: #F698BC;
+    --w1-accent-ink: #270713;  --w1-accent-soft: #451226;  --w1-glow: rgba(243, 134, 176, 0.42);  --w1-map-dot: rgba(243, 134, 176, 0.1);
+    --is-dark: 1;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --red: #E5404A;  --red-edge: #8E1620;
+  --gold: #F7B23B;  --gold-edge: #A66A06;  --gold-soft: #3B2E12;  --gold-text: #FFD68A;
+  --marker: rgba(245, 166, 35, .42);
+  --bg: #0C1A2E;  --bg-deep: #081425;  --surface: #15283F;  --surface-2: #1C3350;
+  --line: #274061;  --line-strong: #3A5880;
+  --ink: #EAF2FB;  --ink-2: #B1C4DC;  --ink-3: #8198B6;
+  --bar: #11233A;  --map-dot: rgba(190, 215, 245, .1);
+  --go: #21A870;  --go-edge: #0F5F3D;  --go-ink: #FFFFFF;  --go-soft: #12392B;  --go-line: #2C8A62;  --go-text: #86E3B8;
+  --no: #E8806F;  --no-edge: #8E3B30;  --no-soft: #3E211E;  --no-line: #9B4E43;  --no-text: #FFB9AC;
+  --ring-wrong: #FF7B7B;
+  --ctl: #213B5C;  --ctl-ink: #EEF5FD;  --ctl-line: #35547C;  --ctl-edge: #35547C;
+  --disabled: #1A2F4A;  --disabled-ink: #6F87A6;  --disabled-edge: #0C1A2D;
+  --pick: #6FB1FF;  --pick-soft: #16365A;  --focus: #7DB9FF;
+  --star-off: #223A59;  --star-off-line: #456389;
+  --zip-halo: #DCEBFA;
+  --scrim: rgba(2, 8, 18, .7);  --toast: #EAF2FB;  --toast-ink: #10305E;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .28);
+  --shadow-2: 0 16px 48px rgba(0, 0, 0, .55);
+  --shadow-bar: 0 -1px 0 rgba(160, 200, 255, .09), 0 -8px 24px rgba(0, 0, 0, .3);
+  --band: #071325;  --band-2: #12284A;  --band-ink: #FFFFFF;  --band-ink-2: #A9BEDB;
+  --band-ctl: rgba(255, 255, 255, .1);  --band-ctl-edge: rgba(255, 255, 255, .17);
+  --accent: #6FB1FF;  --accent-text: #9CCBFF;  --accent-ink: #06203A;  --accent-soft: #16365A;  --glow: rgba(111, 177, 255, .35);
+  --world-1: #F386B0;  --world-1-deep: #671E3A;
+  --world-5: #E3AA64;  --world-5-deep: #67461E;
+  --world-4: #3AD050;  --world-4-deep: #265E2F;
+  --world-6: #A187F2;  --world-6-deep: #322263;
+  --world-2: #2CC8D8;  --world-2-deep: #1E6067;
+  --world-3: #6EADF1;  --world-3-deep: #1F4165;
+  --world-7: #9ECA31;  --world-7-deep: #506223;
+  --world-9: #87BAD8;  --world-9-deep: #264A5E;
+  --world-8: #E785D2;  --world-8-deep: #5E2652;
+  --world-10: #8FA2F0; --world-10-deep: #2B3878;
+  --hue-tint: .26;
+  --w1-bg: #290A16;  --w1-bg-deep: #1D070F;  --w1-surface: #3A1222;  --w1-surface-2: #4D192D;
+  --w1-line: #582237;  --w1-line-strong: #7D3651;  --w1-bar: #330D1C;  --w1-ctl: #541C32;
+  --w1-ctl-line: #73304A;  --w1-ctl-edge: #73304A;  --w1-band: #19060D;  --w1-band-2: #390E1F;
+  --w1-band-ink: #FBF4F6;  --w1-band-ink-2: #CB95AA;  --w1-accent: #F386B0;  --w1-accent-text: #F698BC;
+  --w1-accent-ink: #270713;  --w1-accent-soft: #451226;  --w1-glow: rgba(243, 134, 176, 0.42);  --w1-map-dot: rgba(243, 134, 176, 0.1);
+  --is-dark: 1;
+}
+
+/* ---- worlds: data-world on #app swaps a small set of tokens (no literal colours here) ---- */
+#app[data-world="1"] {
+  --bg: var(--w1-bg);
+  --bg-deep: var(--w1-bg-deep);
+  --surface: var(--w1-surface);
+  --surface-2: var(--w1-surface-2);
+  --line: var(--w1-line);
+  --line-strong: var(--w1-line-strong);
+  --bar: var(--w1-bar);
+  --ctl: var(--w1-ctl);
+  --ctl-line: var(--w1-ctl-line);
+  --ctl-edge: var(--w1-ctl-edge);
+  --band: var(--w1-band);
+  --band-2: var(--w1-band-2);
+  --band-ink: var(--w1-band-ink);
+  --band-ink-2: var(--w1-band-ink-2);
+  --accent: var(--w1-accent);
+  --accent-text: var(--w1-accent-text);
+  --accent-ink: var(--w1-accent-ink);
+  --accent-soft: var(--w1-accent-soft);
+  --glow: var(--w1-glow);
+  --map-dot: var(--w1-map-dot);
+}
+
+/* a world's own hue for one element: data-hue="3" (map nodes, locked hubs) */
+[data-hue="1"] { --hue: var(--world-1); --hue-deep: var(--world-1-deep); }
+[data-hue="2"] { --hue: var(--world-2); --hue-deep: var(--world-2-deep); }
+[data-hue="3"] { --hue: var(--world-3); --hue-deep: var(--world-3-deep); }
+[data-hue="4"] { --hue: var(--world-4); --hue-deep: var(--world-4-deep); }
+[data-hue="5"] { --hue: var(--world-5); --hue-deep: var(--world-5-deep); }
+[data-hue="6"] { --hue: var(--world-6); --hue-deep: var(--world-6-deep); }
+[data-hue="7"] { --hue: var(--world-7); --hue-deep: var(--world-7-deep); }
+[data-hue="8"] { --hue: var(--world-8); --hue-deep: var(--world-8-deep); }
+[data-hue="9"] { --hue: var(--world-9); --hue-deep: var(--world-9-deep); }
+[data-hue="10"] { --hue: var(--world-10); --hue-deep: var(--world-10-deep); }
+
+/* ---- base ---- */
+html {
+  box-sizing: border-box;       /* the viewer pads :root with the safe-area insets: keep them inside */
+  height: 100%;
+  overflow: hidden;             /* the page itself never scrolls: screens scroll inside */
+  /* fluid root size: 16px on a phone, about 22px on a 1920px board; everything else is in rem */
+  font-size: clamp(100%, min(calc(90% + .4vw), 2.4vh), 137.5%);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 600 var(--fs-body)/1.45 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* the viewer's page has this rule too; it is repeated so that `hidden` always wins over a display value */
+[hidden] { display: none !important; }
+
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { margin: 0; }
+svg { flex: none; }
+
+/* Vietnamese always reads in Nunito: Fredoka has no Vietnamese letters */
+[lang="vi"] { font-family: var(--font-body); }
+
+/* a visible focus ring for keyboards; no ring after a tap or a click */
+:focus { outline: .1875rem solid var(--focus); outline-offset: .1875rem; }
+:focus:not(:focus-visible) { outline: none; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- reduced motion: no loops, instant state changes ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+

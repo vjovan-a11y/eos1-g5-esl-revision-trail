@@ -1,0 +1,147 @@
+/* 39-mat.css - the base-ten blocks on the mat (39-mat.js), and the small block pictures 'legend' and 'swap'.
+   Sizes are in block units: --u is the size of one unit in px (set by the script from the mat's width).
+   The blocks are flat drawings (Jovan, 24 Nov 2026): clean outline, soft fill, one colour per place
+   (thousands violet, hundreds green, tens blue, ones amber, as in 38-tools.css). The mat is the light art plate
+   (light in both themes, like the place value chart), each place lightly tinted in its colour. */
+
+/* ---------- one drawn block ---------- */
+.blk { display: block; flex: none; width: calc(var(--w) * var(--u)); height: calc(var(--h) * var(--u)); }
+.blk svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.blk .b-f { fill: var(--bf); }
+.blk .b-t { fill: var(--bt); }
+.blk .b-s { fill: var(--bs); }
+.blk .b-g { fill: none; stroke: var(--bo); stroke-opacity: .4; stroke-width: .75px; }
+.blk .b-o { fill: none; stroke: var(--bo); stroke-width: 1.5px; stroke-linejoin: round; }
+.pc-th { --bf: #D3C5FC; --bt: #E8E0FF; --bs: #AF9AF0; --bo: #5B3FB8; }
+.pc-h  { --bf: #B4E8CD; --bo: #147A51; }
+.pc-t  { --bf: #B5D5F7; --bo: #1D62AE; }
+.pc-o  { --bf: #FFD47E; --bo: #A76A00; }
+
+/* ---------- the mat ---------- */
+.mat { --u: 5px; width: 100%; min-width: 0; contain: inline-size; display: grid; justify-items: center; gap: .5rem; }
+.mat__felt {
+  position: relative; width: calc(var(--mw, 74) * var(--u)); padding-bottom: calc(.6 * var(--u)); border-radius: var(--r-md);
+  background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line);
+}
+.mat__bg, .mat__heads, .mat__feet {
+  display: grid; grid-template-columns: var(--cols); padding: 0 calc(.5 * var(--u));
+}
+.mat__bg { position: absolute; inset: 2px 0; }
+.mat__bg > i { background: color-mix(in srgb, var(--pc) 7%, transparent); }
+.mat__bg > i + i { border-left: 1.5px dashed var(--plate-line); }
+.mat__heads { position: relative; padding-top: calc(.8 * var(--u)); }
+.mat__h {
+  display: block; overflow: hidden; margin: 0 .125rem; padding: .25rem .125rem; border-radius: var(--r-pill); white-space: nowrap; text-align: center;
+  background: var(--pcd); color: #FFFFFF; font: 600 .875rem/1.1 var(--font-display);
+}
+.mat__h b { font-weight: 600; }
+.mat__h i { display: none; font-style: normal; }
+.mat.is-narrow .mat__h b, .mat--mini .mat__h b { display: none; }
+.mat.is-narrow .mat__h i, .mat--mini .mat__h i { display: inline; }
+
+/* Phase 5: the layer's height changes at once (a height transition lays out the whole mat every frame); the blocks
+   themselves move with transform only: a new block drops in and snaps, the ten of a break fan out into the next
+   place, the ten of a join gather and become one block with a small snap. --mat-move = MOVE in 39-mat.js. */
+.mat { --mat-move: 460ms; }
+.mat__layer { position: relative; height: calc(var(--hh, 8) * var(--u)); }
+.mat__pc {
+  position: absolute; left: 0; top: 0;
+  transform: translate(calc(var(--x) * var(--u)), calc(var(--y) * var(--u)));
+  transition: transform var(--mat-move) var(--ease-snap), opacity var(--dur-base) var(--ease-out); pointer-events: none;
+}
+.mat__pc.is-drop svg { animation: mat-drop var(--dur-slow) var(--ease-pop) both; }
+.mat__pc.is-born { animation: mat-born var(--dur-base) var(--ease-out) both; }
+.mat__pc.is-snap svg { animation: mat-snap var(--dur-slow) var(--ease-pop) both; }
+.mat__pc.is-gone { opacity: 0; transition-duration: var(--dur-quick); }
+.mat__pc.is-tap { pointer-events: auto; cursor: pointer; }
+.mat__pc.is-tap::after { content: ''; position: absolute; inset: -5px; }   /* a phone draws a hundred about 36 px wide: the tap area is 46 px */
+/* a block that can be broken: a steady gold glow (drawn once, not animated), and two soft pulses of a ring when it
+   first becomes tappable. Then it rests: nothing loops while the child decides. */
+.mat__pc.is-tap svg { filter: drop-shadow(0 0 3px #F5A800); }
+.mat__pc.is-tap::before {
+  content: ''; position: absolute; inset: -4px; border-radius: calc(.8 * var(--u)); pointer-events: none;
+  box-shadow: 0 0 0 3px #F5A800; opacity: 0; animation: mat-ask 1.2s var(--ease-out) 300ms 2;
+}
+@keyframes mat-ask { 0% { opacity: 0; transform: scale(.96); } 35% { opacity: .85; } 100% { opacity: 0; transform: scale(1.08); } }
+.mat__pc.is-tap:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.mat__ten {
+  position: absolute; left: 0; top: 0; width: calc(var(--w) * var(--u)); height: calc(var(--h) * var(--u)); pointer-events: none;
+  transform: translate(calc(var(--x) * var(--u)), calc(var(--y) * var(--u)));
+  border: 2px dashed var(--pcd); border-radius: calc(.6 * var(--u)); animation: mat-born .4s both;
+}
+.mat__ten b {
+  position: absolute; left: 50%; top: -.95rem; transform: translateX(-50%); z-index: 2000; padding: .2rem .45rem; border-radius: var(--r-pill);
+  background: var(--pcd); color: #FFFFFF; font: 600 .8125rem/1 var(--font-display); box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+}
+
+.mat__feet { position: relative; }
+.mat__f { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .3rem; min-width: 0; min-height: .375rem; }
+.mat.is-narrow .mat__f, .mat--ctl .mat__f { flex-direction: column; }
+.mat__n { display: grid; justify-items: center; gap: .125rem; min-width: 0; }
+.mat__cnt {
+  display: inline-grid; place-items: center; min-width: 2.375rem; height: 2.375rem; padding: 0 .5rem; border-radius: var(--r-pill);
+  background: #FFFFFF; color: var(--pcd); font: 600 1.375rem/1 var(--font-display); box-shadow: inset 0 0 0 2px var(--pc);
+}
+.mat__cw { color: var(--pcd); font: 700 .8125rem/1.1 var(--font-body); white-space: nowrap; }
+.mat__stp {
+  display: grid; place-items: center; flex: none; width: 3rem; height: 3rem; border: 0; border-radius: 50%;
+  background: #FFFFFF; color: #10305E; box-shadow: inset 0 0 0 2px #C4CBD8, 0 3px 0 #C4CBD8; cursor: pointer;
+}
+.mat__stp--plus { background: var(--gold); color: #3A2A00; box-shadow: 0 3px 0 var(--gold-edge); }
+.mat__stp:active:not(:disabled) { transform: translateY(2px); }
+.mat__stp:disabled { opacity: .4; cursor: default; }
+.mat__stp:focus-visible, .mat__join:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.mat__stp .icon { width: 1.375rem; height: 1.375rem; stroke-width: 3; }
+.mat__join {
+  min-height: 3rem; padding: .5rem .625rem; border: 0; border-radius: var(--r-pill); cursor: pointer;
+  background: var(--gold); color: #3A2A00; font: 600 1rem/1.1 var(--font-display);
+  box-shadow: 0 3px 0 var(--gold-edge); animation: mat-call 1s var(--ease-in-out) 4 alternate;   /* two calls, then still */
+}
+.mat__join:disabled { opacity: .5; animation: none; }
+.mat.is-narrow .mat__f.p-o .mat__join { padding: .375rem .25rem; font-size: .875rem; line-height: 1.1; }
+.mat__total, .mat__cap {
+  padding: .375rem 1rem; border-radius: var(--r-pill); background: var(--surface); color: var(--ink);
+  font: 600 1.25rem/1.2 var(--font-display); box-shadow: var(--shadow-1);
+}
+.mat__total b { display: inline-block; font-size: 1.625rem; color: var(--accent-text); }
+.mat__cap { font-size: 1rem; }
+.mat--mini .mat__h { margin: 0 1px; padding: .125rem 0; font-size: .75rem; }   /* Th H T O: 12 px or more */
+.mat--mini .mat__cnt { min-width: 1.625rem; height: 1.625rem; padding: 0 .3rem; font-size: .9375rem; }
+.mat--mini .mat__cw { font-size: .6875rem; }
+.mat--mini .blk .b-o { stroke-width: 1.2px; }
+.mat--mini .blk .b-g { stroke-opacity: .3; }
+.mat.is-locked .mat__pc { pointer-events: none; }
+.mat--mini .mat__pc, .mat--mini .mat__layer { transition: none; }
+
+@keyframes mat-drop { from { opacity: 0; transform: translateY(calc(-2.2 * var(--u))); } }
+@keyframes mat-born { from { opacity: 0; } }
+@keyframes mat-snap { 0% { transform: scale(.82); } 60% { transform: scale(1.05); } 100% { transform: none; } }
+@keyframes mat-call { to { transform: scale(1.07); } }
+.mat__cnt.is-tick { animation: tick-pop var(--dur-base) var(--ease-pop); }
+@media (prefers-reduced-motion: reduce) {
+  .mat__pc, .mat__layer { transition: none; }
+  .mat__pc.is-drop svg, .mat__pc.is-born, .mat__pc.is-snap svg, .mat__ten, .mat__join, .mat__pc.is-tap::before, .mat__cnt.is-tick { animation: none; }
+}
+
+/* ---------- small pictures with drawn blocks ---------- */
+.bpic {
+  --u: 4.6px; display: flex; align-items: flex-end; justify-content: center; flex-wrap: wrap; gap: .75rem;
+  padding: 1rem .75rem .75rem; border-radius: var(--r-lg); container-type: inline-size;
+  background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink);
+}
+.bpic--swap { --u: 4.2px; align-items: center; }
+@supports (width: 1cqw) {
+  .bpic--legend > * { --u: clamp(3.4px, 1.6cqw, 6.4px); }
+  .bpic--swap > * { --u: clamp(3px, 1.3cqw, 5.4px); }
+}
+.bpic__fig { display: grid; justify-items: center; gap: .375rem; margin: 0; }
+.bpic--legend .bpic__fig { animation: mat-drop var(--dur-slow) var(--ease-pop) both; animation-delay: calc(var(--i) * 120ms); }   /* all four in 0.76 s */
+.bpic__pic { display: grid; place-items: end center; min-height: calc(11.3 * var(--u)); }
+.bpic__set { display: grid; grid-template-columns: repeat(var(--per), auto); gap: calc(var(--gap) * var(--u)); }
+.bpic__cap { display: grid; justify-items: center; padding: .25rem .625rem; border-radius: .75rem; background: #FFFFFF; color: #3D5A85; box-shadow: inset 0 0 0 2px var(--pc); font: 700 .8125rem/1.2 var(--font-body); }
+.bpic__cap b { font: 600 1.25rem/1.1 var(--font-display); color: var(--pcd); }
+.bpic__tag { padding: .125rem .625rem; border-radius: var(--r-pill); background: #FFFFFF; color: var(--pcd); box-shadow: inset 0 0 0 2px var(--pc); font: 600 .875rem/1.3 var(--font-display); }
+.bpic__eq { color: var(--plate-ink); font: 600 1.875rem/1 var(--font-display); }
+@media (prefers-reduced-motion: reduce) { .bpic--legend .bpic__fig { animation: none; } }
+
+

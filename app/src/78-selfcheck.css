@@ -1,0 +1,43 @@
+/* 78-selfcheck.css - My self-check (78-selfcheck.js). Prefix: sc- */
+
+.sc-wrap { display: flex; flex-direction: column; gap: .75rem; width: 100%; max-width: 44rem; margin: 0 auto; }
+.sc-list { display: flex; flex-direction: column; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.sc-goal { display: flex; flex-direction: column; gap: .625rem; padding: .875rem 1rem; }
+.sc-goal__t { margin: 0; font: 600 var(--fs-lead)/1.4 var(--font-body); color: var(--ink); }
+.sc-feel { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+@media (min-width: 640px) { .sc-feel { grid-template-columns: repeat(3, 1fr); } }
+
+.sc-opt {
+  display: flex; align-items: center; gap: .625rem; min-height: var(--tap); padding: .5rem .75rem;
+  border-radius: var(--r-md); border: 2px solid var(--line); background: var(--surface); color: var(--ink);
+  font: 700 var(--fs-body)/1.25 var(--font-body); text-align: left; cursor: pointer;
+}
+.sc-opt__dot {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  width: 2rem; height: 2rem; border-radius: 50%; background: var(--surface-2); color: var(--sc);
+  border: 2px solid var(--sc);
+}
+.sc-opt__dot .icon { width: 1.125rem; height: 1.125rem; }
+.sc-opt--can { --sc: var(--go); --sc-soft: var(--go-soft); --sc-text: var(--go-text); }
+.sc-opt--better { --sc: var(--gold); --sc-soft: var(--gold-soft); --sc-text: var(--gold-text); }
+.sc-opt--help { --sc: var(--no); --sc-soft: var(--no-soft); --sc-text: var(--no-text); }
+.sc-opt.is-on { border-color: var(--sc); background: var(--sc-soft); color: var(--sc-text); }
+.sc-opt.is-on .sc-opt__dot { background: var(--sc); color: var(--surface); }
+.sc-opt:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sc-note { margin: 0; text-align: center; font: 600 var(--fs-body)/1.4 var(--font-body); color: var(--ink-2); }
+
+/* thank you */
+.sc-done { display: flex; flex-direction: column; gap: .75rem; padding: 1.25rem 1rem; }
+.sc-done__title { margin: 0; text-align: center; font: 600 var(--fs-h2)/1.1 var(--font-display); color: var(--ink); }
+.sc-sum { display: flex; flex-direction: column; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.sc-sum__row {
+  display: flex; align-items: center; gap: .625rem; padding: .5rem .75rem; border-radius: var(--r-md);
+  background: var(--sc-soft); color: var(--ink); font: 600 var(--fs-body)/1.35 var(--font-body);
+}
+.sc-sum__row .sc-opt__dot { background: var(--sc); color: var(--surface); }
+.sc-again { display: flex; flex-direction: column; gap: .5rem; padding-top: .5rem; border-top: 1px solid var(--line); }
+.sc-again__title { margin: 0; font: 800 var(--fs-small)/1.2 var(--font-display); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.sc-again__btn { justify-content: space-between; text-align: left; white-space: normal; }
+.sc-next { margin: .75rem 0 0; font: 700 var(--fs-body)/1.4 var(--font-body); color: var(--ink-2); }
+
+

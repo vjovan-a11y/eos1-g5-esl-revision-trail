@@ -1,0 +1,166 @@
+/* 38-tools.css - the maths tools (place value chart, slider, number pad; the blocks are in 39-mat.css) and the small pictures.
+   One colour per place, as in Maths v2: thousands violet, hundreds green, tens blue, ones amber. */
+
+.p-tth { --pc: #C2456E; --pcd: #A23058; }
+.p-th  { --pc: #7A5BD6; --pcd: #5B3FB8; }
+.p-h   { --pc: #1E9E6A; --pcd: #147A51; }
+.p-t   { --pc: #2F7FD4; --pcd: #1D62AE; }
+.p-o   { --pc: #E89B12; --pcd: #8A5800; }   /* --pcd: the darker shade, for white text on it and for its text on white (4.5:1 or more) */
+
+/* ---------- the whiteboard and the place value chart ---------- */
+.wb {
+  padding: .625rem;
+  border-radius: var(--r-lg);
+  background: var(--plate);
+  box-shadow: inset 0 0 0 2px var(--plate-line);
+  color: var(--plate-ink);
+}
+.wb--mini { padding: .375rem; border-radius: var(--r-md); }
+.pv { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: .25rem; }
+.pv__h {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .0625rem;
+  min-height: 2.5rem; padding: .25rem .125rem; border-radius: var(--r-sm);
+  background: var(--pcd); color: #FFFFFF; text-align: center;
+}
+.pv__h b { font: 700 .8125rem/1.1 var(--font-body); }
+.pv__h i { font: 600 .8125rem/1 var(--font-display); font-style: normal; }
+.wb--mini .pv__h b { display: none; }
+/* a phone with five places: the short names (TTh, Th, H, T, O) only */
+@media (max-width: 479px) { .pv[style*="--cols:5"] .pv__h b { display: none; } .pv[style*="--cols:5"] .pv__h i { font-size: .9375rem; } }
+.wb--mini .pv__h { min-height: 1.75rem; }
+.pv__h.is-hl { box-shadow: 0 0 0 .1875rem var(--gold); }
+.pv__d, .pv__c, .pv__v, .pv__s {
+  display: flex; align-items: center; justify-content: center; min-height: 3rem; border-radius: var(--r-sm);
+  background: var(--surface); box-shadow: inset 0 0 0 1px var(--plate-line);
+}
+.wb--mini .pv__d, .wb--mini .pv__c, .wb--mini .pv__v { min-height: 2.25rem; }
+.pv__d.is-hl, .pv__c.is-hl, .pv__v.is-hl { background: var(--gold-soft); box-shadow: inset 0 0 0 2px var(--gold); }
+.pv__dg { font: 600 2rem/1 var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.wb--mini .pv__dg { font-size: 1.375rem; }
+.pv__dg.is-ask { color: var(--gold-text); }
+.pv__v { color: var(--pcd); font: 700 var(--fs-small)/1.1 var(--font-body); min-height: 2rem; }
+.pv__c { flex-wrap: wrap; align-content: center; padding: .25rem; min-height: 4.25rem; }
+.wb--mini .pv__c { min-height: 2.5rem; }
+.pv__dots { display: flex; flex-wrap: wrap; justify-content: center; gap: .1875rem; max-width: 4.5rem; }
+.pv__dot { width: .875rem; height: .875rem; border-radius: 50%; background: var(--pc); box-shadow: inset 0 -2px 0 var(--pcd); }
+.pv__dot.is-new { animation: dot-in var(--dur-base) var(--ease-pop) both; }     /* a counter that has just been drawn */
+@keyframes dot-in { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: none; } }
+.pv__cnt.is-tick { display: inline-block; animation: tick-pop var(--dur-base) var(--ease-pop); }
+.wb--mini .pv__dot { width: .5625rem; height: .5625rem; }
+.pv__s { gap: .125rem; padding: .25rem .125rem; background: none; box-shadow: none; }
+.pv__cnt { min-width: 1.25rem; text-align: center; font: 600 1.25rem/1 var(--font-display); }
+.pv__step {
+  display: grid; place-items: center; width: 2.25rem; height: 2.75rem; flex: none;
+  border-radius: var(--r-sm); background: var(--ctl); color: var(--ctl-ink);
+  box-shadow: inset 0 0 0 2px var(--ctl-line), 0 var(--edge-sm) 0 var(--ctl-edge);
+}
+.pv__step:disabled { background: var(--disabled); color: var(--disabled-ink); box-shadow: none; }
+.pv__step .icon { width: 1.25rem; height: 1.25rem; stroke-width: 3; }
+.wb__cap { margin-top: .375rem; text-align: center; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--ink-2); }
+
+/* ---------- answer boxes (inline in a line, or one per place in the chart) ---------- */
+.blank {
+  display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;
+  min-width: 5.5rem; height: 3rem; margin: .125rem .25rem; padding: 0 .5rem;
+  border-radius: var(--r-sm); background: var(--surface); color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--line-strong);
+  font: 600 1.5rem/1 var(--font-display); font-variant-numeric: tabular-nums;
+}
+.blank--cell { width: 100%; min-width: 0; margin: 0; height: 3rem; }
+.blank--cbox { min-width: 4.5rem; }
+.blank.is-on { box-shadow: inset 0 0 0 3px var(--pick); background: var(--pick-soft); }
+.blank.is-on:not(.is-filled)::after { content: ''; width: 2px; height: 1.5rem; background: var(--pick); animation: blank-caret 1s steps(1) infinite; }
+.blank.is-bad { box-shadow: inset 0 0 0 3px var(--no); background: var(--no-soft); }
+.blank.is-good { box-shadow: inset 0 0 0 3px var(--go); background: var(--go-soft); }
+.blank.is-shown { box-shadow: inset 0 0 0 3px var(--gold); background: var(--gold-soft); }
+.blank.is-shake, .is-shake { animation: tool-shake .35s ease-in-out; }
+@keyframes blank-caret { 50% { opacity: 0; } }
+@keyframes tool-shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+/* ---------- the number pad ---------- */
+.npad { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .375rem; padding-top: .5rem; }
+.npad__key {
+  height: 3rem; border-radius: var(--r-md); background: var(--ctl); color: var(--ctl-ink);
+  box-shadow: inset 0 0 0 2px var(--ctl-line), 0 var(--edge-sm) 0 var(--ctl-edge);
+  font: 600 1.375rem/1 var(--font-display);
+}
+.npad__key:active { transform: translateY(var(--edge-sm)); box-shadow: inset 0 0 0 2px var(--ctl-line); }
+.npad__key .icon { width: 1.375rem; height: 1.375rem; margin: auto; }
+.npad__key--back { grid-column: span 2; }
+.npad[data-mode="num"] .npad__key--neg, .npad:not([data-mode="sym"]) .npad__key--sym { display: none; }
+.npad[data-mode="sym"] .npad__key--num, .npad[data-mode="sym"] .npad__key--neg { display: none; }
+.npad.is-off { opacity: .45; pointer-events: none; }
+@media (min-width: 600px) { .npad { grid-template-columns: repeat(12, minmax(0, 1fr)); } .npad__key--back { grid-column: span 2; } }
+/* with the minus key (negative numbers, Stop 2) there are 13 columns: still one row */
+@media (min-width: 600px) { .npad[data-mode="neg"] { grid-template-columns: repeat(13, minmax(0, 1fr)); } }
+/* Grade 5: the decimal point key. On a phone the pad stays two rows: with the point, rub out is one key wide;
+   with the point and the minus sign there are seven keys in a row (each still 44 px on a 360 px phone). */
+.npad:not([data-dec="1"]) .npad__key--dec, .npad[data-mode="sym"] .npad__key--dec { display: none; }
+.npad[data-dec="1"] .npad__key--back { grid-column: span 1; }
+.npad[data-dec="1"][data-mode="neg"] { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.npad[data-dec="1"][data-mode="neg"] .npad__key--back { grid-column: span 2; }
+@media (min-width: 600px) {
+  .npad[data-dec="1"] { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .npad[data-dec="1"][data-mode="neg"] { grid-template-columns: repeat(14, minmax(0, 1fr)); }
+}
+/* a fraction on the page (MX.F) and a fraction to fill in (MX.FB): one number over the other, a bar between */
+.fr { position: relative; display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 .2em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.fr > i { font-style: normal; padding: 0 .2em; }
+.fr > i:first-child { border-bottom: .12em solid currentColor; }
+.fr > .frs { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.frb { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; margin: .125rem .25rem; gap: .1875rem; }
+.frb > .frl { height: .1875rem; border-radius: 2px; background: var(--ink); }
+.frb > .blank { margin: 0; }
+.blank--fr { min-width: 3.5rem; height: 2.75rem; }
+.blank--mid { min-width: 4rem; }
+.blank--sym { min-width: 3rem; }
+
+/* ---------- the place value slider ---------- */
+.sl__track { position: relative; height: 3.25rem; margin-top: .25rem; }
+.sl__slot {
+  position: absolute; top: 0; height: 3rem;
+  left: calc(var(--c) * (100% / var(--cols))); width: calc(100% / var(--cols) - .25rem); margin-left: .125rem;
+  display: grid; place-items: center; border-radius: var(--r-sm);
+}
+/* Phase 5: a tile is one column wide and moves with transform only (no layout while it slides); a clear border
+   keeps the gap between tiles. It slides, then settles with a tiny snap. */
+.sl__tile {
+  position: absolute; top: 0; left: 0; height: 3rem; width: calc(100% / var(--cols));
+  border: .125rem solid transparent; background-clip: padding-box;
+  transform: translateX(calc(var(--c) * 100%));
+  display: grid; place-items: center; border-radius: calc(var(--r-sm) + .125rem);
+}
+.sl__slot { box-shadow: inset 0 0 0 1px var(--plate-line); background: var(--surface); font: 600 2rem/1 var(--font-display); color: var(--ink-2); }
+.sl__slot.is-zero { color: var(--gold-text); background: var(--gold-soft); }
+.sl__slot.is-hole { box-shadow: inset 0 0 0 2px var(--no-line); }
+.sl__tile {
+  background: var(--accent-soft); box-shadow: inset 0 0 0 2px var(--accent); color: var(--ink);
+  font: 600 2rem/1 var(--font-display); transition: transform var(--dur-slow) var(--ease-snap), opacity var(--dur-slow) var(--ease-out);
+}
+.sl__tile.is-off { opacity: .2; }
+.wb--mini .sl__slot, .wb--mini .sl__tile { height: 2.25rem; font-size: 1.375rem; }
+.wb--mini .sl__track { height: 2.5rem; }
+.sl__ctl { display: flex; justify-content: center; gap: .5rem; margin-top: .5rem; }
+.sl__b { min-height: 3rem; }
+@media (prefers-reduced-motion: reduce) { .sl__tile { transition: none; } .pv__dot.is-new, .pv__cnt.is-tick { animation: none; } }
+
+/* ---------- small pictures ---------- */
+.pics { display: flex; flex-wrap: wrap; gap: .5rem; }
+.pics > * { flex: 1 1 12rem; }
+.rule { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; font: 700 var(--fs-body)/1.2 var(--font-body); }
+.rule__op { padding: .25rem .625rem; border-radius: var(--r-pill); background: var(--accent); color: var(--accent-ink); font-family: var(--font-display); }
+.rule__arrows { display: inline-flex; color: var(--accent-text); }
+.rule__arrows .icon { width: 1.5rem; height: 1.5rem; stroke-width: 3; }
+.stack { display: grid; grid-template-columns: repeat(var(--cols), 2.5rem); gap: .125rem; justify-content: start; font: 600 1.25rem/1.4 var(--font-display); text-align: center; }
+.stack b { color: var(--pcd); font-size: .875rem; }
+.namepic { font: 700 var(--fs-body)/1.5 var(--font-body); }
+.namepic__part { color: var(--pcd); text-decoration: underline; text-decoration-color: var(--pc); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+
+/* dark theme: the place colours as text on a dark card (the notes' stack picture, a number name) are lightened,
+   so they read at 4.5:1 or more; on the light plates (charts, the mat) they stay as they are */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .stack b, :root:not([data-theme="light"]) .namepic__part { color: color-mix(in srgb, var(--pc) 45%, #FFFFFF); }
+}
+:root[data-theme="dark"] .stack b, :root[data-theme="dark"] .namepic__part { color: color-mix(in srgb, var(--pc) 45%, #FFFFFF); }
+
+

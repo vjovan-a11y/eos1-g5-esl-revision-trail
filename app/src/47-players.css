@@ -1,0 +1,167 @@
+/* 47-players.css - the start screen (25-players.js): the class buttons, the name field, the Home
+   Screen tip, and the name button on the map. Tokens only, as everywhere else. */
+
+.players {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  background: var(--bg);
+}
+
+.players__scroll {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  background-image: radial-gradient(circle, var(--map-dot) 1.25px, transparent 1.75px);
+  background-size: 1.5rem 1.5rem;
+  background-attachment: local;
+}
+
+.players__inner { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 34rem; margin: 0 auto; }
+.players__body { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.players__body.rise { animation: rise-in 300ms var(--ease-out) both; }
+.players__extra { display: flex; flex-direction: column; gap: .75rem; }
+.players__extra:empty { display: none; }
+
+/* ---------- avatars: a letter in a ring of the child's own colour ---------- */
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 .1875rem var(--hue, var(--accent));
+  font: 600 1.3125rem/1 var(--font-display);
+}
+.avatar--sm { width: 2.25rem; height: 2.25rem; font-size: 1.0625rem; box-shadow: inset 0 0 0 .15rem var(--hue, var(--accent)); }
+.avatar--lg { width: 4rem; height: 4rem; font-size: 1.875rem; box-shadow: inset 0 0 0 .25rem var(--hue, var(--accent)); }
+
+/* ---------- the class buttons: every class at once, one tap ---------- */
+
+.class-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+.class-grid .choice {
+  justify-content: center;
+  min-height: 3.5rem;
+  padding: .375rem .25rem;
+  font: 600 1.375rem/1.1 var(--font-display);
+  text-align: center;
+}
+@media (min-width: 600px) {
+  .class-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---------- the name field ---------- */
+
+.name-field { display: flex; flex-direction: column; gap: .5rem; }
+.name-field__label { font: 600 var(--fs-lead)/1.2 var(--font-display); color: var(--ink); }
+.name-field__label [lang="vi"] { color: var(--ink-2); font-size: 1.0625rem; font-weight: 800; }
+.name-field__input {
+  display: block;
+  width: 100%;
+  min-height: 3.75rem;
+  margin: 0;
+  padding: .5rem 1rem;
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--ctl);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ctl-line);
+  font: 800 1.375rem/1.2 var(--font-body);      /* bigger than 16px: iPhones do not zoom in on it */
+  -webkit-appearance: none;
+  appearance: none;
+}
+.name-field__input:focus { outline: none; box-shadow: inset 0 0 0 3px var(--focus); }
+.name-field__input.is-wrong { background: var(--no-soft); box-shadow: inset 0 0 0 3px var(--no); }
+.name-field__hint { color: var(--ink-2); font: 700 var(--fs-small)/1.4 var(--font-body); }
+.name-field__hint b { color: var(--ink); font-weight: 800; }
+.name-field__error { display: flex; flex-direction: column; gap: .125rem; color: var(--no-text); font: 800 var(--fs-body)/1.35 var(--font-body); }
+.name-field__error:empty { display: none; }
+.name-field__error-vi { font-size: 1rem; font-weight: 700; }
+
+/* ---------- the tip cards (Home Screen on iPad, a browser that cannot save) ---------- */
+
+.home-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: .875rem .875rem .5rem;
+  border-radius: var(--r-lg);
+  background: var(--gold-soft);
+  color: var(--ink);
+}
+.home-tip--warn { background: var(--no-soft); padding-bottom: .875rem; }
+.home-tip__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--accent-text);
+  font-size: 1rem;
+}
+.home-tip--warn .home-tip__icon { color: var(--no-text); }
+.home-tip__text { display: flex; flex-direction: column; flex: 1 1 auto; gap: .25rem; min-width: 0; }
+.home-tip__title { font: 600 1.1875rem/1.25 var(--font-display); color: var(--ink); }
+.home-tip__en { font: 700 var(--fs-body)/1.4 var(--font-body); color: var(--ink); }
+.home-tip__vi { font: 700 1rem/1.4 var(--font-body); color: var(--ink-2); }
+.home-tip__en b, .home-tip__vi b { font-weight: 900; }
+.home-tip__ok { align-self: flex-start; margin-left: -.625rem; }
+
+/* ---------- the name button on the map ---------- */
+
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 18rem;
+  min-height: var(--tap);
+  padding: .25rem .75rem .25rem .3125rem;
+  border-radius: var(--r-pill);
+  font: inherit;
+  text-align: left;
+  --btn-drop: var(--edge-sm);
+}
+.who__face { display: flex; flex: none; }
+.who__face .avatar { width: 2.375rem; height: 2.375rem; font-size: 1.125rem; box-shadow: inset 0 0 0 .15rem var(--hue, var(--accent)); }
+.who__text { display: flex; flex-direction: column; min-width: 0; }
+.who__name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 800 1rem/1.2 var(--font-body); color: var(--ink); }
+.who__meta { font: 800 .875rem/1.15 var(--font-body); color: var(--ink-2); }
+
+/* phones: the child's name matters more than the app's name in the header */
+@media (max-width: 599px) {
+  .home__head .brand { flex: 0 0 auto; }
+  .home__head .who { flex: 1 1 auto; }
+  .home__head .who__name { font-size: .9375rem; }
+  .home__head .brand__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .players__head .brand__name { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+}
+
+/* ---------- the player menu (a sheet from the map) ---------- */
+
+.who-menu__card { display: flex; align-items: center; gap: 1rem; padding: .75rem; border-radius: var(--r-lg); background: var(--surface-2); }
+.who-menu__text { display: flex; flex-direction: column; gap: .125rem; min-width: 0; }
+.who-menu__meta { font: 800 1.0625rem/1.3 var(--font-body); color: var(--ink); }
+.who-menu__score { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .375rem; }
+.who-menu__badges { font: 800 var(--fs-small)/1.2 var(--font-body); color: var(--ink-2); }
+.who-menu__note { font: 700 var(--fs-small)/1.4 var(--font-body); color: var(--ink-2); }
+.who-menu .dialog__actions .btn { flex-basis: 100%; }       /* one above the other: no label breaks into three lines */
+
+

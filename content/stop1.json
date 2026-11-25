@@ -1,0 +1,2293 @@
+{
+ "n": 1,
+ "title": "Topic words and word building",
+ "blurb": {
+  "en": "Learn topic words, group words, phrasal verbs and phrases like on time and by bus.",
+  "vi": "Học từ vựng theo chủ đề, danh từ tập hợp, cụm động từ và cụm như on time, by bus."
+ },
+ "words": {
+  "sets": [
+   {
+    "id": "A",
+    "title": {
+     "en": "Topic words",
+     "vi": "Từ vựng theo chủ đề"
+    },
+    "keys": [
+     "determined",
+     "teamwork",
+     "habitat",
+     "predator",
+     "invention"
+    ]
+   },
+   {
+    "id": "B",
+    "title": {
+     "en": "Group words",
+     "vi": "Danh từ tập hợp"
+    },
+    "keys": [
+     "herd",
+     "flock",
+     "swarm",
+     "crowd"
+    ]
+   },
+   {
+    "id": "C",
+    "title": {
+     "en": "Little words, big meaning",
+     "vi": "Cụm động từ và cụm giới từ"
+    },
+    "keys": [
+     "look after",
+     "find out",
+     "give up",
+     "in danger",
+     "on purpose"
+    ]
+   }
+  ],
+  "items": {
+   "determined": {
+    "emoji": "💪",
+    "vi": "quyết tâm",
+    "def": "Not giving up, even when something is very hard.",
+    "ex": "My little sister was *determined* to ride her bike without help."
+   },
+   "teamwork": {
+    "emoji": "🤝",
+    "vi": "tinh thần đồng đội",
+    "def": "When people work well together to do something.",
+    "ex": "We won the relay race because of great *teamwork*."
+   },
+   "habitat": {
+    "emoji": "🏞️",
+    "vi": "môi trường sống",
+    "def": "The natural home of an animal or plant.",
+    "ex": "A rainforest is the *habitat* of many monkeys and parrots."
+   },
+   "predator": {
+    "emoji": "🦈",
+    "vi": "động vật săn mồi",
+    "def": "An animal that hunts and eats other animals.",
+    "ex": "The owl is a *predator* that hunts mice at night."
+   },
+   "invention": {
+    "emoji": "💡",
+    "vi": "phát minh",
+    "def": "A new thing that someone makes for the first time.",
+    "ex": "The washing machine was a very useful *invention* for families."
+   },
+   "herd": {
+    "emoji": "🐘",
+    "vi": "đàn (bò, trâu, voi)",
+    "def": "A big group of animals like cows, buffaloes or elephants.",
+    "ex": "A *herd* of buffaloes walked slowly along the river."
+   },
+   "flock": {
+    "emoji": "🐦",
+    "vi": "đàn (chim, cừu)",
+    "def": "A group of birds or sheep.",
+    "ex": "A *flock* of birds flew over the school field."
+   },
+   "swarm": {
+    "emoji": "🐝",
+    "vi": "đàn, bầy (ong, côn trùng)",
+    "def": "A large group of flying insects, like bees.",
+    "ex": "A *swarm* of bees was buzzing around the mango tree."
+   },
+   "crowd": {
+    "emoji": "👥",
+    "vi": "đám đông",
+    "def": "A large group of people in one place.",
+    "ex": "A *crowd* of fans cheered when our team scored."
+   },
+   "look after": {
+    "emoji": "🐶",
+    "vi": "chăm sóc, trông nom",
+    "def": "To take care of someone or something.",
+    "ex": "Can you *look after* my rabbit this weekend?"
+   },
+   "find out": {
+    "emoji": "🔍",
+    "vi": "tìm hiểu, phát hiện ra",
+    "def": "To learn a fact or some information.",
+    "ex": "We read a library book to *find out* how bats see in the dark."
+   },
+   "give up": {
+    "emoji": "🏳️",
+    "vi": "bỏ cuộc, từ bỏ",
+    "def": "To stop trying, or to stop doing something.",
+    "ex": "Don't *give up*! You will learn to dive soon."
+   },
+   "in danger": {
+    "emoji": "⚠️",
+    "vi": "gặp nguy hiểm",
+    "def": "When something bad could happen to you.",
+    "ex": "Sea turtles are *in danger* because of plastic in the ocean."
+   },
+   "on purpose": {
+    "emoji": "🎯",
+    "vi": "cố ý, cố tình",
+    "def": "Because you wanted to do it, not by mistake.",
+    "ex": "Sorry! I didn't step on your foot *on purpose*."
+   }
+  }
+ },
+ "see": {
+  "scenes": [
+   {
+    "id": "s1",
+    "title": {
+     "en": "Groups of animals and people",
+     "vi": "Nhóm động vật và con người"
+    },
+    "kind": "text",
+    "head": "A page from Lan's travel diary",
+    "html": "Last weekend my family took a boat trip on the Mekong River. First, we saw a *herd* of buffaloes in a muddy field. Then a *flock* of white storks flew over our boat. Near the bank, a *school* of tiny silver fish swam next to us. At lunch, a *swarm* of bees was buzzing near our fruit, so we moved away quickly! At the floating market there was a huge *crowd* of people buying pineapples and mangoes.",
+    "audio": null,
+    "steps": [
+     {
+      "en": "Look at the words in gold. They are *collective nouns*: one word for a whole group.",
+      "vi": "Hãy nhìn các từ màu vàng. Đó là *danh từ tập hợp*: một từ chỉ cả một nhóm."
+     },
+     {
+      "en": "Animals have their own group words: a *herd* of buffaloes, a *flock* of birds, a *swarm* of bees.",
+      "vi": "Mỗi loài vật có từ chỉ nhóm riêng: a *herd* of buffaloes, a *flock* of birds, a *swarm* of bees."
+     },
+     {
+      "en": "For fish we say a *school* of fish. For lots of people we say a *crowd*.",
+      "vi": "Với cá, ta nói a *school* of fish. Với rất nhiều người, ta nói a *crowd*."
+     },
+     {
+      "en": "Learn them as pairs: group word + *of* + animals or people.",
+      "vi": "Hãy học theo cặp: từ chỉ nhóm + *of* + con vật hoặc người."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "title": {
+     "en": "Verbs with little words",
+     "vi": "Động từ đi kèm từ nhỏ (cụm động từ)"
+    },
+    "kind": "text",
+    "head": "A message from Coach Max to the basketball team",
+    "html": "Hi team! On Saturday we are *taking part in* the city basketball competition. We will *set off* from school at 7:30, so please don't be late. Remember to *pick up* your new shirts from the office on Friday. If you *run out of* water, there is a tap next to the court. Most importantly, *look after* each other and never *give up*, even if we are losing!",
+    "audio": null,
+    "steps": [
+     {
+      "en": "The words in gold are *phrasal verbs*: a verb + a little word (or two).",
+      "vi": "Các từ màu vàng là *cụm động từ*: một động từ + một (hoặc hai) từ nhỏ."
+     },
+     {
+      "en": "The little word changes the meaning: *look after* = take care of, but *look for* = try to find.",
+      "vi": "Từ nhỏ làm thay đổi nghĩa: *look after* = chăm sóc, còn *look for* = tìm kiếm."
+     },
+     {
+      "en": "Some have three parts: *take part in*, *run out of*. Learn all the parts together.",
+      "vi": "Có cụm gồm ba phần: *take part in*, *run out of*. Hãy học cả cụm cùng nhau."
+     },
+     {
+      "en": "*Set off* means start a journey. *Give up* means stop trying.",
+      "vi": "*Set off* nghĩa là khởi hành. *Give up* nghĩa là bỏ cuộc."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "title": {
+     "en": "Little phrases and new words",
+     "vi": "Cụm giới từ và đoán nghĩa từ mới"
+    },
+    "kind": "text",
+    "head": "From a school magazine: How we travel",
+    "html": "Two hundred years ago, most people travelled *on foot*. Journeys took a long time, and it was hard to arrive *on time*. Then trains and cars were invented. *In fact*, today most children in my class come to school *by bus* or *by car*. My little brother once got on the wrong bus *by mistake*! Our new school bus is very <b>reliable</b>. It has never broken down and it is never late.",
+    "audio": null,
+    "steps": [
+     {
+      "en": "The gold phrases are *preposition + noun*. Learn each one as a block: *on foot*, *by bus*, *on time*.",
+      "vi": "Các cụm màu vàng là *giới từ + danh từ*. Hãy học mỗi cụm như một khối: *on foot*, *by bus*, *on time*."
+     },
+     {
+      "en": "We say *by bus* and *by car*, but walking is *on foot*.",
+      "vi": "Ta nói *by bus* và *by car*, nhưng đi bộ là *on foot*."
+     },
+     {
+      "en": "*By mistake* means you did not want to do it. *In fact* adds a true and surprising detail.",
+      "vi": "*By mistake* nghĩa là bạn không cố ý làm vậy. *In fact* thêm một chi tiết có thật và bất ngờ."
+     },
+     {
+      "en": "Don't know <b>reliable</b>? Read the next sentence: it never breaks down and is never late. So you can trust it!",
+      "vi": "Chưa biết từ <b>reliable</b>? Hãy đọc câu tiếp theo: xe không bao giờ hỏng và không bao giờ trễ. Vậy là ta có thể tin cậy nó!"
+     }
+    ]
+   }
+  ],
+  "challenge": {
+   "end": {
+    "en": "Great work! You found the special words in all three texts.",
+    "vi": "Làm tốt lắm! Em đã tìm được các từ đặc biệt trong cả ba đoạn văn."
+   },
+   "result": "You spotted group words, phrasal verbs, preposition phrases and a new word from context.",
+   "rounds": [
+    {
+     "lo": [
+      "6Uv.06"
+     ],
+     "v": [
+      {
+       "type": "mcq",
+       "q": "A .......... of buffaloes was standing in the muddy field.",
+       "opts": [
+        "herd",
+        "flock",
+        "swarm"
+       ],
+       "at": 1,
+       "whys": [
+        null,
+        "A flock is for birds or sheep. Buffaloes are big animals on the ground.",
+        "A swarm is for flying insects like bees."
+       ],
+       "hint": "Think about big animals that walk together in a field.",
+       "worked": "Big animals like cows and buffaloes move in a *herd*: 'a herd of buffaloes'.",
+       "stim": null
+      },
+      {
+       "type": "mcq",
+       "q": "A .......... of white storks flew over our boat.",
+       "opts": [
+        "flock",
+        "school",
+        "herd"
+       ],
+       "at": 2,
+       "whys": [
+        null,
+        "A school is a group of fish, not birds.",
+        "A herd is for big animals on the ground, like cows."
+       ],
+       "hint": "Storks are birds. Which group word do we use for birds?",
+       "worked": "Birds fly together in a *flock*: 'a flock of white storks'.",
+       "stim": null
+      }
+     ]
+    },
+    {
+     "lo": [
+      "6Ug.10"
+     ],
+     "v": [
+      {
+       "type": "mcq",
+       "q": "We will .......... from school at 7:30, so please don't be late.",
+       "opts": [
+        "set off",
+        "give up",
+        "pick up"
+       ],
+       "at": 0,
+       "whys": [
+        null,
+        "Give up means stop trying. That does not fit a journey.",
+        "Pick up needs a thing after it, like 'pick up your shirts'."
+       ],
+       "hint": "The team is starting a journey. Which verb means 'start a journey'?",
+       "worked": "*Set off* means start a journey: 'We will set off from school at 7:30'.",
+       "stim": null
+      },
+      {
+       "type": "mcq",
+       "q": "If you .......... water, there is a tap next to the court.",
+       "opts": [
+        "run out of",
+        "look after",
+        "take part in"
+       ],
+       "at": 2,
+       "whys": [
+        null,
+        "Look after means take care of. Check why you would need a tap.",
+        "Take part in means join an event, like a competition."
+       ],
+       "hint": "Why would you need a tap? Think about having no water left.",
+       "worked": "*Run out of* means have none left. If your water is finished, use the tap.",
+       "stim": null
+      }
+     ]
+    },
+    {
+     "lo": [
+      "6Uv.02"
+     ],
+     "v": [
+      {
+       "type": "mcq",
+       "q": "Most children in my class come to school .......... bus.",
+       "opts": [
+        "by",
+        "on",
+        "in"
+       ],
+       "at": 0,
+       "whys": [
+        null,
+        "We say 'on the bus' with 'the', but here there is no 'the'.",
+        "We say 'in the car', but not 'in bus'."
+       ],
+       "hint": "How do we talk about ways of travelling with no 'the'?",
+       "worked": "For ways of travelling we say *by bus*, *by car*, *by train*.",
+       "stim": null
+      },
+      {
+       "type": "mcq",
+       "q": "Two hundred years ago, most people travelled .......... foot.",
+       "opts": [
+        "on",
+        "in",
+        "at"
+       ],
+       "at": 1,
+       "whys": [
+        null,
+        "'In foot' is not English. Check the phrase for walking.",
+        "'At foot' is not English. Check the phrase for walking."
+       ],
+       "hint": "Which little word do we use when we walk somewhere?",
+       "worked": "When we walk, we travel *on foot*.",
+       "stim": null
+      }
+     ]
+    },
+    {
+     "lo": [
+      "6Rd.04"
+     ],
+     "v": [
+      {
+       "type": "mcq",
+       "q": "What does <b>reliable</b> mean?",
+       "opts": [
+        "You can trust it every day.",
+        "It is very new and clean.",
+        "It can carry many people."
+       ],
+       "at": 0,
+       "whys": [
+        null,
+        "The bus is new, but the next sentence is about never breaking down and never being late.",
+        "The text does not talk about how many people the bus carries."
+       ],
+       "hint": "Read the sentence AFTER the bold word. What does it tell you about the bus?",
+       "worked": "'It has never broken down and it is never late' shows you can trust it. So *reliable* means you can count on it.",
+       "stim": {
+        "id": "s1-ch-reliable",
+        "kind": "text",
+        "head": "From a school magazine",
+        "html": "Our new school bus is very <b>reliable</b>. It has never broken down and it is never late.",
+        "bank": null
+       }
+      },
+      {
+       "type": "mcq",
+       "q": "What does <b>patient</b> mean?",
+       "opts": [
+        "calm and not angry",
+        "good at board games",
+        "old and very clever"
+       ],
+       "at": 1,
+       "whys": [
+        null,
+        "He plays games with the writer, but the text is about how he feels when there is a mistake.",
+        "The text does not say he is clever. Look at what he does when the writer makes a mistake."
+       ],
+       "hint": "Look at what the uncle does when the writer makes a mistake.",
+       "worked": "'He never gets angry. He just explains the rules again, slowly.' So *patient* means calm and not angry.",
+       "stim": {
+        "id": "s1-ch-patient",
+        "kind": "text",
+        "head": "From Hana's diary",
+        "html": "My uncle is very <b>patient</b>. When I make a mistake in a game, he never gets angry. He just explains the rules again, slowly.",
+        "bank": null
+       }
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "practise": [
+  {
+   "id": "s1r",
+   "title": "Learn it",
+   "blurb": {
+    "en": "One step at a time: group words, phrasal verbs and preposition phrases.",
+    "vi": "Từng bước một: danh từ tập hợp, cụm động từ và cụm giới từ."
+   },
+   "levels": [
+    {
+     "title": {
+      "en": "Group words and topic words",
+      "vi": "Danh từ tập hợp và từ vựng chủ đề"
+     },
+     "rounds": [
+      {
+       "lo": [
+        "6Uv.06"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "Which group word goes with bees? A .......... of bees",
+         "opts": [
+          "swarm",
+          "herd",
+          "crowd"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "A herd is for big animals like cows and elephants.",
+          "A crowd is a big group of people."
+         ],
+         "hint": "Bees are flying insects. Which word is for flying insects?",
+         "worked": "Flying insects move together in a *swarm*: 'a swarm of bees'.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "Which group word goes with fish? A .......... of fish",
+         "opts": [
+          "school",
+          "pack",
+          "flock"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "A pack is for wolves or dogs.",
+          "A flock is for birds or sheep."
+         ],
+         "hint": "A pack and a flock are for other animals. Which word is for fish?",
+         "worked": "Fish swim together in a *school*: 'a school of fish'.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Uv.06"
+       ],
+       "v": [
+        {
+         "type": "tfill",
+         "q": "Type the special group word. It starts with p.",
+         "lines": [
+          "A {0} of wolves was howling in the forest."
+         ],
+         "ans": [
+          [
+           "pack"
+          ]
+         ],
+         "hint": "Wolves and wild dogs hunt together. The word has 4 letters.",
+         "worked": "Wolves live and hunt in a *pack*: 'a pack of wolves'.",
+         "stim": null
+        },
+        {
+         "type": "tfill",
+         "q": "Type the special group word. It starts with f.",
+         "lines": [
+          "The {0} of sheep followed the farmer down the hill."
+         ],
+         "ans": [
+          [
+           "flock"
+          ]
+         ],
+         "hint": "It is the same word we use for a group of birds.",
+         "worked": "Sheep, like birds, move in a *flock*: 'a flock of sheep'.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Rd.04"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "An owl is a ..........: it hunts mice and eats them.",
+         "opts": [
+          "predator",
+          "habitat",
+          "invention"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "A habitat is a home for animals, not an animal.",
+          "An invention is a new thing that people make."
+         ],
+         "hint": "Read after the colon (:). What does the owl do?",
+         "worked": "'It hunts mice and eats them' tells us the owl is a *predator*.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "A pond is the .......... of frogs, fish and water plants.",
+         "opts": [
+          "habitat",
+          "predator",
+          "teamwork"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "A predator is an animal that hunts. A pond is a place.",
+          "Teamwork is about people working together."
+         ],
+         "hint": "A pond is a place. Which word means the home of animals and plants?",
+         "worked": "A pond is the natural home of frogs and fish, so it is their *habitat*.",
+         "stim": null
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": {
+      "en": "Phrasal verbs",
+      "vi": "Cụm động từ"
+     },
+     "rounds": [
+      {
+       "lo": [
+        "6Ug.10"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "Look after means ...",
+         "opts": [
+          "take care of",
+          "try to find",
+          "look quickly at"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "Try to find is 'look for'.",
+          "Look quickly at is 'glance at'. Look after is about caring."
+         ],
+         "hint": "Think: 'Can you look after my rabbit?' What does the person want?",
+         "worked": "*Look after* means take care of: 'I look after my baby brother.'",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "Find out means ...",
+         "opts": [
+          "learn a fact",
+          "lose a thing",
+          "go outside"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "Lose a thing is the opposite of finding.",
+          "Out here is not about going outside."
+         ],
+         "hint": "Think: 'I want to find out how bats see.' What does the person want?",
+         "worked": "*Find out* means learn a fact or some information.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Ug.10"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "I can't find my trainers. Can you help me look .......... them?",
+         "opts": [
+          "for",
+          "after",
+          "up"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "Look after means take care of. The trainers are lost!",
+          "Look up is for finding a word in a dictionary."
+         ],
+         "hint": "The trainers are lost. Which phrasal verb means 'try to find'?",
+         "worked": "'I can't find my trainers', so we need *look for* = try to find.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "Ravi felt tired in the race, but he didn't give ........... He finished!",
+         "opts": [
+          "up",
+          "on",
+          "off"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "'Give on' is not a phrasal verb.",
+          "Give off is about a smell or heat coming out of something."
+         ],
+         "hint": "He finished the race. Which phrasal verb means 'stop trying'?",
+         "worked": "'He didn't *give up*' means he didn't stop trying, so he finished.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Ug.10"
+       ],
+       "v": [
+        {
+         "type": "tfill",
+         "q": "Type the missing word.",
+         "lines": [
+          "Our class is going to take {0} in the school sports day."
+         ],
+         "ans": [
+          [
+           "part"
+          ]
+         ],
+         "hint": "This phrasal verb has three parts: take ... in.",
+         "worked": "*Take part in* means join an event: 'take part in the sports day'.",
+         "stim": null
+        },
+        {
+         "type": "tfill",
+         "q": "Type the missing word.",
+         "lines": [
+          "Oh no! We have run out {0} milk. Can you buy some?"
+         ],
+         "ans": [
+          [
+           "of"
+          ]
+         ],
+         "hint": "This phrasal verb has three parts: run out ...",
+         "worked": "*Run out of* means have none left: 'We have run out of milk.'",
+         "stim": null
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": {
+      "en": "Preposition phrases",
+      "vi": "Cụm giới từ + danh từ"
+     },
+     "rounds": [
+      {
+       "lo": [
+        "6Uv.02"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "Hurry up! The film starts at 6, and I want to be .......... time.",
+         "opts": [
+          "on",
+          "at",
+          "by"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "'At time' is not English. Check the phrase that means 'not late'.",
+          "'By time' is not English. Check the phrase that means 'not late'."
+         ],
+         "hint": "Which phrase means 'not late'?",
+         "worked": "*On time* means not late, at the right time.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "Sorry, I broke your pencil .......... mistake. I didn't want to!",
+         "opts": [
+          "by",
+          "on",
+          "in"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "'On mistake' is not English. We say 'on purpose' for something you want to do.",
+          "'In mistake' is not English."
+         ],
+         "hint": "'I didn't want to' tells you it was an accident.",
+         "worked": "*By mistake* means without wanting to: 'I didn't want to!'",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Uv.02"
+       ],
+       "v": [
+        {
+         "type": "tfill",
+         "q": "Type the missing word.",
+         "lines": [
+          "The baby elephant was {0} danger, so the herd came to help it."
+         ],
+         "ans": [
+          [
+           "in"
+          ]
+         ],
+         "hint": "Something bad could happen to the baby elephant. Which phrase says this?",
+         "worked": "*In danger* means something bad could happen: 'was in danger'.",
+         "stim": null
+        },
+        {
+         "type": "tfill",
+         "q": "Type the missing word.",
+         "lines": [
+          "Students must not leave the classroom {0} permission from the teacher."
+         ],
+         "ans": [
+          [
+           "without"
+          ]
+         ],
+         "hint": "They must ask first. Which word means 'not having'?",
+         "worked": "You must not leave *without permission*, which means without the teacher saying yes.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Uv.02"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "We don't drive to the park. It's very close, so we go ...........",
+         "opts": [
+          "on foot",
+          "in foot",
+          "at foot"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "'In foot' is not English.",
+          "'At foot' is not English."
+         ],
+         "hint": "They don't drive, so they walk. Which phrase is for walking?",
+         "worked": "When we walk somewhere, we go *on foot*.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "It was an accident! He didn't kick the ball at the window .......... purpose.",
+         "opts": [
+          "on",
+          "by",
+          "at"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "'By purpose' is not English. We say 'by mistake' but 'on purpose'.",
+          "'At purpose' is not English."
+         ],
+         "hint": "Which little word goes with 'purpose'?",
+         "worked": "We say *on purpose* (wanted to do it). 'It was an accident', so he didn't do it on purpose.",
+         "stim": null
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s1a",
+   "title": "Exam style",
+   "blurb": {
+    "en": "Like the real Reading paper: choose the word, write one word, and guess meanings.",
+    "vi": "Giống bài thi Đọc thật: chọn từ, điền một từ và đoán nghĩa từ mới."
+   },
+   "levels": [
+    {
+     "title": {
+      "en": "Reading Part 1: choose the word",
+      "vi": "Đọc Phần 1: chọn từ đúng"
+     },
+     "rounds": [
+      {
+       "lo": [
+        "6Uv.06"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "On our class trip to the farm, we watched a .......... of cows walking slowly to the river.",
+         "opts": [
+          "herd",
+          "swarm",
+          "bunch"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "A swarm is for flying insects like bees.",
+          "A bunch is for flowers, bananas or keys."
+         ],
+         "hint": "Cows are big farm animals. Which group word fits them?",
+         "worked": "Cows move together in a *herd*: 'a herd of cows'.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "When the singer came on stage, a huge .......... of people started to clap and cheer.",
+         "opts": [
+          "crowd",
+          "flock",
+          "pack"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "A flock is for birds or sheep, not people.",
+          "A pack is for wolves or dogs, not people."
+         ],
+         "hint": "Look at the word after 'of'. Which group word is for lots of people?",
+         "worked": "Lots of people in one place are a *crowd*: 'a huge crowd of people'.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Ug.10"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "Before the match, Coach Rosa asked us to .......... our sports shoes from the changing room.",
+         "opts": [
+          "pick up",
+          "give up",
+          "set off"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "Give up means stop trying. You can't 'give up' shoes from a room.",
+          "Set off means start a journey. It doesn't take a thing after it."
+         ],
+         "hint": "They have to go and get their shoes. Which verb means 'collect'?",
+         "worked": "*Pick up* means collect: 'pick up our sports shoes from the changing room'.",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "My grandparents are on holiday, so my sister and I are .......... their two cats this week.",
+         "opts": [
+          "looking after",
+          "looking for",
+          "looking up"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "Looking for means trying to find. The cats are not lost.",
+          "Looking up is for a word in a dictionary or on the internet."
+         ],
+         "hint": "The grandparents are away. What do the cats need?",
+         "worked": "The grandparents are on holiday, so someone must *look after* (take care of) the cats.",
+         "stim": null
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Uv.02"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "The first mobile phones were very big and heavy. .......... fact, some were as big as a brick!",
+         "opts": [
+          "In",
+          "On",
+          "At"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "'On fact' is not English. Check the phrase that adds a true detail.",
+          "'At fact' is not English. Check the phrase that adds a true detail."
+         ],
+         "hint": "Which phrase adds a surprising true detail?",
+         "worked": "*In fact* adds a true detail: 'In fact, some were as big as a brick!'",
+         "stim": null
+        },
+        {
+         "type": "mcq",
+         "q": "Grandad doesn't drive any more. He goes to the market .......... bus every Tuesday.",
+         "opts": [
+          "by",
+          "on",
+          "with"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "We say 'on the bus' with 'the'. Here there is no 'the'.",
+          "'With bus' is not English for a way of travelling."
+         ],
+         "hint": "How do we talk about a way of travelling with no 'the'?",
+         "worked": "For ways of travelling we say *by bus*: 'He goes to the market by bus.'",
+         "stim": null
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": {
+      "en": "Reading Part 4: one word in an email",
+      "vi": "Đọc Phần 4: điền một từ vào email"
+     },
+     "rounds": [
+      {
+       "lo": [
+        "6Ug.10"
+       ],
+       "v": [
+        {
+         "type": "tfill",
+         "q": "Read Minh's email. Write ONE word for gap (1).",
+         "lines": [
+          "Last Sunday our school took {0} in a charity fun run in the park."
+         ],
+         "ans": [
+          [
+           "part"
+          ]
+         ],
+         "hint": "Look at 'took' and 'in'. Which phrasal verb means 'joined an event'?",
+         "worked": "*Take part in* means join an event: 'our school took part in a charity fun run'.",
+         "stim": {
+          "id": "s1-email-1",
+          "kind": "text",
+          "head": "Email from Minh to his cousin Khoa",
+          "html": "Hi Khoa,<br>Guess what? Last Sunday our school took (1) .......... in a charity fun run in the park. We all went there (2) .......... bus, and there was a huge crowd of people at the start line! I was nervous, but my best friend told me not to give (3) .......... . I ran the whole three kilometres and finished in 22 minutes. Next month I'm going to try the five-kilometre race. Do you want to come and run with me?<br>Write back soon,<br>Minh",
+          "bank": null
+         }
+        },
+        {
+         "type": "tfill",
+         "q": "Read Freya's email. Write ONE word for gap (1).",
+         "lines": [
+          "In the afternoon my brother looks {0} her."
+         ],
+         "ans": [
+          [
+           "after"
+          ]
+         ],
+         "hint": "The puppy 'needs a lot of care'. Which phrasal verb means 'take care of'?",
+         "worked": "Pepper needs care, so her brother *looks after* her in the afternoon.",
+         "stim": {
+          "id": "s1-email-2",
+          "kind": "text",
+          "head": "Email from Freya to her friend Isla",
+          "html": "Dear Isla,<br>I have some exciting news. We have a new puppy called Pepper! She is very cute, but she needs a lot of care. Every morning I give her breakfast before school, and in the afternoon my brother looks (1) .......... her. Yesterday she ate one of my socks. Mum thinks she did it (2) .......... purpose, because she loves playing with socks! Tomorrow we are going to the library to find (3) .......... how to train a puppy. Can you come and meet her this weekend?<br>Love,<br>Freya",
+          "bank": null
+         }
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Uv.02"
+       ],
+       "v": [
+        {
+         "type": "tfill",
+         "q": "Read Minh's email. Write ONE word for gap (2).",
+         "lines": [
+          "We all went there {0} bus."
+         ],
+         "ans": [
+          [
+           "by"
+          ]
+         ],
+         "hint": "This is a way of travelling, with no 'the' before 'bus'.",
+         "worked": "For ways of travelling we say *by bus*: 'We all went there by bus.'",
+         "stim": {
+          "id": "s1-email-1",
+          "kind": "text",
+          "head": "Email from Minh to his cousin Khoa",
+          "html": "Hi Khoa,<br>Guess what? Last Sunday our school took (1) .......... in a charity fun run in the park. We all went there (2) .......... bus, and there was a huge crowd of people at the start line! I was nervous, but my best friend told me not to give (3) .......... . I ran the whole three kilometres and finished in 22 minutes. Next month I'm going to try the five-kilometre race. Do you want to come and run with me?<br>Write back soon,<br>Minh",
+          "bank": null
+         }
+        },
+        {
+         "type": "tfill",
+         "q": "Read Freya's email. Write ONE word for gap (2).",
+         "lines": [
+          "Mum thinks she did it {0} purpose, because she loves playing with socks!"
+         ],
+         "ans": [
+          [
+           "on"
+          ]
+         ],
+         "hint": "Which little word always goes before 'purpose'?",
+         "worked": "Pepper loves socks, so Mum thinks she ate it *on purpose* (because she wanted to).",
+         "stim": {
+          "id": "s1-email-2",
+          "kind": "text",
+          "head": "Email from Freya to her friend Isla",
+          "html": "Dear Isla,<br>I have some exciting news. We have a new puppy called Pepper! She is very cute, but she needs a lot of care. Every morning I give her breakfast before school, and in the afternoon my brother looks (1) .......... her. Yesterday she ate one of my socks. Mum thinks she did it (2) .......... purpose, because she loves playing with socks! Tomorrow we are going to the library to find (3) .......... how to train a puppy. Can you come and meet her this weekend?<br>Love,<br>Freya",
+          "bank": null
+         }
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Ug.10"
+       ],
+       "v": [
+        {
+         "type": "tfill",
+         "q": "Read Minh's email. Write ONE word for gap (3).",
+         "lines": [
+          "I was nervous, but my best friend told me not to give {0}."
+         ],
+         "ans": [
+          [
+           "up"
+          ]
+         ],
+         "hint": "Minh kept running. Which phrasal verb means 'stop trying'?",
+         "worked": "His friend said 'don't *give up*' (don't stop trying), and Minh ran the whole race.",
+         "stim": {
+          "id": "s1-email-1",
+          "kind": "text",
+          "head": "Email from Minh to his cousin Khoa",
+          "html": "Hi Khoa,<br>Guess what? Last Sunday our school took (1) .......... in a charity fun run in the park. We all went there (2) .......... bus, and there was a huge crowd of people at the start line! I was nervous, but my best friend told me not to give (3) .......... . I ran the whole three kilometres and finished in 22 minutes. Next month I'm going to try the five-kilometre race. Do you want to come and run with me?<br>Write back soon,<br>Minh",
+          "bank": null
+         }
+        },
+        {
+         "type": "tfill",
+         "q": "Read Freya's email. Write ONE word for gap (3).",
+         "lines": [
+          "Tomorrow we are going to the library to find {0} how to train a puppy."
+         ],
+         "ans": [
+          [
+           "out"
+          ]
+         ],
+         "hint": "They want to learn some information at the library.",
+         "worked": "*Find out* means learn information: 'find out how to train a puppy'.",
+         "stim": {
+          "id": "s1-email-2",
+          "kind": "text",
+          "head": "Email from Freya to her friend Isla",
+          "html": "Dear Isla,<br>I have some exciting news. We have a new puppy called Pepper! She is very cute, but she needs a lot of care. Every morning I give her breakfast before school, and in the afternoon my brother looks (1) .......... her. Yesterday she ate one of my socks. Mum thinks she did it (2) .......... purpose, because she loves playing with socks! Tomorrow we are going to the library to find (3) .......... how to train a puppy. Can you come and meet her this weekend?<br>Love,<br>Freya",
+          "bank": null
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": {
+      "en": "What does the word in bold mean?",
+      "vi": "Từ in đậm có nghĩa là gì?"
+     },
+     "rounds": [
+      {
+       "lo": [
+        "6Rd.04"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "What does <b>nocturnal</b> mean?",
+         "opts": [
+          "active at night",
+          "living in caves",
+          "able to fly fast"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "The bats do sleep in a cave, but the word is about WHEN they are awake.",
+          "They can fly, but the notice is about the time they wake up."
+         ],
+         "hint": "Read what the bats do in the day and when they wake up.",
+         "worked": "'They sleep all day ... and wake up when the sun goes down.' So *nocturnal* means active at night.",
+         "stim": {
+          "id": "s1-ex-nocturnal",
+          "kind": "text",
+          "head": "A notice at the zoo",
+          "html": "Our bats are <b>nocturnal</b>. They sleep all day in their dark cave and wake up when the sun goes down. Come back after 6 p.m. to see them fly!",
+          "bank": null
+         }
+        },
+        {
+         "type": "mcq",
+         "q": "What does <b>exhausted</b> mean?",
+         "opts": [
+          "very, very tired",
+          "hungry and thirsty",
+          "proud and happy"
+         ],
+         "at": 1,
+         "whys": [
+          null,
+          "The text doesn't say he wanted food or drink. Look at his heavy legs.",
+          "He may feel proud, but the text talks about heavy legs and falling asleep."
+         ],
+         "hint": "Look at the next sentence: how did his legs feel? What did he do on the sofa?",
+         "worked": "'My legs felt heavy and I fell asleep on the sofa' shows he was *exhausted*: very, very tired.",
+         "stim": {
+          "id": "s1-ex-exhausted",
+          "kind": "text",
+          "head": "From Huy's blog",
+          "html": "After the long cross-country race, I was completely <b>exhausted</b>. My legs felt heavy and I fell asleep on the sofa before dinner!",
+          "bank": null
+         }
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Rd.04"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "What does <b>portable</b> mean?",
+         "opts": [
+          "easy to carry",
+          "loud and clear",
+          "cheap to buy"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "The notice does not say how loud the speaker is.",
+          "The notice does not talk about the price."
+         ],
+         "hint": "The next sentence says it is small and light. What can you do with it?",
+         "worked": "'It is small and light, so you can carry it in your bag.' So *portable* means easy to carry.",
+         "stim": {
+          "id": "s1-ex-portable",
+          "kind": "text",
+          "head": "A notice in a shop",
+          "html": "This new speaker is <b>portable</b>. It is small and light, so you can carry it in your school bag to the park or the beach.",
+          "bank": null
+         }
+        },
+        {
+         "type": "mcq",
+         "q": "What does <b>generous</b> mean?",
+         "opts": [
+          "happy to give to others",
+          "good at remembering",
+          "always on time for work"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "The text is not about remembering. Look at what she gives.",
+          "The text does not talk about time. Look at what she shares."
+         ],
+         "hint": "Look at the examples: what does Mrs Tran do with her fruit and her umbrella?",
+         "worked": "'She often shares her fruit' and 'gave her own umbrella' show she is *generous*.",
+         "stim": {
+          "id": "s1-ex-generous",
+          "kind": "text",
+          "head": "From a class newsletter",
+          "html": "Our class helper, Mrs Tran, is very <b>generous</b>. She often shares her fruit with us, and once she gave her own umbrella to a student who forgot one.",
+          "bank": null
+         }
+        }
+       ]
+      },
+      {
+       "lo": [
+        "6Rd.04"
+       ],
+       "v": [
+        {
+         "type": "mcq",
+         "q": "What does <b>camouflage</b> mean?",
+         "opts": [
+          "colours that help an animal hide",
+          "thick fur that keeps it warm",
+          "a way of hunting in big groups"
+         ],
+         "at": 2,
+         "whys": [
+          null,
+          "The text talks about fur, but it says the fur is white so the fox is hard to see.",
+          "The fox hunts, but the text says nothing about groups."
+         ],
+         "hint": "Why is the white fur useful in the snow? Read both sentences.",
+         "worked": "White fur makes the fox 'hard to see in the snow' and 'helps it hide'. That is *camouflage*.",
+         "stim": {
+          "id": "s1-ex-camouflage",
+          "kind": "text",
+          "head": "From a science book",
+          "html": "The Arctic fox has white fur in winter, so it is hard to see in the snow. This <b>camouflage</b> helps it hide from bigger animals and catch food without being seen.",
+          "bank": null
+         }
+        },
+        {
+         "type": "mcq",
+         "q": "What does <b>dehydrated</b> mean?",
+         "opts": [
+          "without enough water",
+          "without enough sleep",
+          "too hot from the sun"
+         ],
+         "at": 0,
+         "whys": [
+          null,
+          "The poster is about drinking, not sleeping.",
+          "The poster does not talk about the sun. It is about drinking water."
+         ],
+         "hint": "What does the poster tell you to do before, during and after exercise?",
+         "worked": "The poster says 'Drink water', so being *dehydrated* means your body does not have enough water.",
+         "stim": {
+          "id": "s1-ex-dehydrated",
+          "kind": "text",
+          "head": "A poster in the sports hall",
+          "html": "Drink water before, during and after exercise. When your body is <b>dehydrated</b>, you may feel dizzy and get a headache.",
+          "bank": null
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "notes": {
+  "items": [
+   {
+    "en": "Use a *collective noun* + *of* for a group of animals: a *herd* of cows, a *flock* of birds.",
+    "vi": "Dùng *danh từ tập hợp* + *of* để chỉ một nhóm động vật: a *herd* of cows, a *flock* of birds.",
+    "example": [
+     "A *swarm* of bees flew out of the hive.",
+     "A *school* of fish swam past our boat."
+    ]
+   },
+   {
+    "en": "Some group words are for people: a *crowd* (lots of people), a *team* (players), an *audience* (people watching a show).",
+    "vi": "Một số từ chỉ nhóm dành cho người: a *crowd* (đám đông), a *team* (đội), an *audience* (khán giả).",
+    "example": [
+     "The *audience* clapped at the end of the play.",
+     "Our *team* has eleven players."
+    ]
+   },
+   {
+    "en": "A *phrasal verb* is a verb + a little word. The little word changes the meaning.",
+    "vi": "*Cụm động từ* là động từ + một từ nhỏ. Từ nhỏ làm thay đổi nghĩa.",
+    "example": [
+     "Can you *look after* my fish? (take care of)",
+     "I'm *looking for* my keys. (trying to find)"
+    ]
+   },
+   {
+    "en": "Some phrasal verbs have three parts. Don't forget the last word!",
+    "vi": "Một số cụm động từ có ba phần. Đừng quên từ cuối cùng!",
+    "example": [
+     "We *took part in* the sports day.",
+     "We've *run out of* bread."
+    ]
+   },
+   {
+    "en": "Learn *preposition + noun* phrases as one block: *on time*, *by bus*, *on foot*, *in danger*.",
+    "vi": "Hãy học các cụm *giới từ + danh từ* như một khối: *on time*, *by bus*, *on foot*, *in danger*.",
+    "example": [
+     "I go to school *by bus*, but my friend comes *on foot*.",
+     "I didn't do it *on purpose*. It was *by mistake*."
+    ]
+   },
+   {
+    "en": "Don't know a word? Read the sentences *before* and *after* it. Look for an example or an explanation.",
+    "vi": "Không biết một từ? Hãy đọc câu *trước* và *sau* nó. Tìm ví dụ hoặc lời giải thích.",
+    "example": [
+     "My bag is <b>waterproof</b>. *The rain can't get in*, so my books stay dry.",
+     "Dogs are <b>loyal</b>: *they stay with their owners and protect them*."
+    ]
+   }
+  ],
+  "check": [
+   {
+    "sentence": "A {flock|herd|swarm} of birds sat on the roof.",
+    "answer": "flock"
+   },
+   {
+    "sentence": "The {team|flock|herd} won the cup because every player worked hard.",
+    "answer": "team"
+   },
+   {
+    "sentence": "Please {look after|look for|look up} my plants while I'm on holiday.",
+    "answer": "look after"
+   },
+   {
+    "sentence": "We have run out {of|from|in} paper. Let's buy some more.",
+    "answer": "of"
+   },
+   {
+    "sentence": "The park is near, so we can go {on|in|at} foot.",
+    "answer": "on"
+   },
+   {
+    "sentence": "This bottle is unbreakable: you can drop it and it won't crack. Unbreakable means {it can't be broken|it is very cheap|it is very small}.",
+    "answer": "it can't be broken"
+   }
+  ]
+ },
+ "test": {
+  "items": [
+   {
+    "dok": 1,
+    "lo": [
+     "6Uv.06"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "A .......... of bees made a nest in the old tree next to our classroom.",
+      "opts": [
+       "swarm",
+       "herd",
+       "pack"
+      ],
+      "at": 1,
+      "whys": [
+       null,
+       "A herd is for big animals like cows or elephants.",
+       "A pack is for wolves or dogs."
+      ],
+      "hint": "Bees are flying insects. Which group word is for them?",
+      "worked": "Flying insects move in a *swarm*: 'a swarm of bees'.",
+      "stim": null
+     },
+     {
+      "type": "mcq",
+      "q": "A .......... of elephants walked slowly to the lake to drink.",
+      "opts": [
+       "herd",
+       "flock",
+       "swarm"
+      ],
+      "at": 0,
+      "whys": [
+       null,
+       "A flock is for birds or sheep.",
+       "A swarm is for flying insects like bees."
+      ],
+      "hint": "Elephants are big animals that walk together. Which word fits?",
+      "worked": "Big animals like elephants move in a *herd*.",
+      "stim": null
+     }
+    ]
+   },
+   {
+    "dok": 1,
+    "lo": [
+     "6Uv.06"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "At the end of the school concert, the .......... stood up and clapped for ten minutes.",
+      "opts": [
+       "audience",
+       "flock",
+       "pack"
+      ],
+      "at": 1,
+      "whys": [
+       null,
+       "A flock is for birds or sheep, not people.",
+       "A pack is for wolves or dogs, not people."
+      ],
+      "hint": "Who watches a concert and claps at the end?",
+      "worked": "The people watching a show are the *audience*.",
+      "stim": null
+     },
+     {
+      "type": "mcq",
+      "q": "Our football .......... has twelve players and two coaches.",
+      "opts": [
+       "team",
+       "crowd",
+       "swarm"
+      ],
+      "at": 2,
+      "whys": [
+       null,
+       "A crowd is lots of people watching, not players in a group.",
+       "A swarm is for flying insects."
+      ],
+      "hint": "Which group word is for players who play together?",
+      "worked": "Players who play together are a *team*: 'Our football team has twelve players.'",
+      "stim": null
+     }
+    ]
+   },
+   {
+    "dok": 1,
+    "lo": [
+     "6Ug.10"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "Bao wanted to stop playing chess, but his dad said, 'Don't ..........! You're getting better.'",
+      "opts": [
+       "give up",
+       "find out",
+       "set off"
+      ],
+      "at": 1,
+      "whys": [
+       null,
+       "Find out means learn information. Bao wants to stop.",
+       "Set off means start a journey. Bao is playing chess."
+      ],
+      "hint": "Bao wants to stop. Which phrasal verb means 'stop trying'?",
+      "worked": "Bao 'wanted to stop', and his dad said 'Don't *give up*' (don't stop trying).",
+      "stim": null
+     },
+     {
+      "type": "mcq",
+      "q": "We need to .......... early tomorrow because the bus to the beach leaves at 6 a.m.",
+      "opts": [
+       "set off",
+       "give up",
+       "look after"
+      ],
+      "at": 2,
+      "whys": [
+       null,
+       "Give up means stop trying. That doesn't fit a trip.",
+       "Look after means take care of. It needs someone after it."
+      ],
+      "hint": "They are starting a journey early. Which verb means that?",
+      "worked": "*Set off* means start a journey: 'set off early ... the bus leaves at 6 a.m.'",
+      "stim": null
+     }
+    ]
+   },
+   {
+    "dok": 1,
+    "lo": [
+     "6Uv.02"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "Please be .......... time tomorrow. The museum trip starts at 8 o'clock.",
+      "opts": [
+       "on",
+       "at",
+       "by"
+      ],
+      "at": 0,
+      "whys": [
+       null,
+       "'At time' is not English. Check the phrase that means 'not late'.",
+       "'By time' is not English. Check the phrase that means 'not late'."
+      ],
+      "hint": "Which phrase means 'not late'?",
+      "worked": "*On time* means not late: 'Please be on time.'",
+      "stim": null
+     },
+     {
+      "type": "mcq",
+      "q": "No one may use the science room .......... permission from a teacher.",
+      "opts": [
+       "without",
+       "on",
+       "at"
+      ],
+      "at": 2,
+      "whys": [
+       null,
+       "'On permission' is not English.",
+       "'At permission' is not English."
+      ],
+      "hint": "The teacher must say yes first. Which word means 'not having'?",
+      "worked": "*Without permission* means the teacher has not said yes.",
+      "stim": null
+     }
+    ]
+   },
+   {
+    "dok": 1,
+    "lo": [
+     "6Rd.04"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "A lion is a ..........: it hunts zebras and other animals for food.",
+      "opts": [
+       "predator",
+       "habitat",
+       "herd"
+      ],
+      "at": 0,
+      "whys": [
+       null,
+       "A habitat is the home of an animal, not the animal.",
+       "A herd is a group of animals. One lion is not a herd."
+      ],
+      "hint": "Read after the colon (:). What does the lion do?",
+      "worked": "'It hunts zebras and other animals for food', so a lion is a *predator*.",
+      "stim": null
+     },
+     {
+      "type": "mcq",
+      "q": "The telephone was an amazing .......... that changed the way people talk to each other.",
+      "opts": [
+       "invention",
+       "habitat",
+       "predator"
+      ],
+      "at": 1,
+      "whys": [
+       null,
+       "A habitat is the home of an animal or plant.",
+       "A predator is an animal that hunts."
+      ],
+      "hint": "The telephone is a thing that someone made. Which word fits?",
+      "worked": "Someone made the telephone for the first time, so it was an *invention*.",
+      "stim": null
+     }
+    ]
+   },
+   {
+    "dok": 2,
+    "lo": [
+     "6Ug.10"
+    ],
+    "v": [
+     {
+      "type": "tfill",
+      "q": "Read Mai's email. Write ONE word for gap (1).",
+      "lines": [
+       "The coach says we can count {0} each other."
+      ],
+      "ans": [
+       [
+        "on",
+        "upon"
+       ]
+      ],
+      "hint": "The team has trained together. Which phrasal verb means 'trust someone to help'?",
+      "worked": "*Count on* means trust someone to help you: 'we can count on each other'.",
+      "stim": {
+       "id": "s1-test-email-1",
+       "kind": "text",
+       "head": "Email from Mai to her friend Tariq",
+       "html": "Hi Tariq,<br>Thanks for your message! I'm really looking forward to the swimming gala this weekend. Our team has trained hard for weeks, and the coach says we can count (1) .......... each other. On Saturday we're going to the pool (2) .......... car, because Dad is driving us. Would you like to come and watch?<br>See you soon,<br>Mai",
+       "bank": null
+      }
+     },
+     {
+      "type": "tfill",
+      "q": "Read Kenji's email. Write ONE word for gap (1).",
+      "lines": [
+       "Yesterday I went to the library to find {0} who built the first plane."
+      ],
+      "ans": [
+       [
+        "out"
+       ]
+      ],
+      "hint": "Kenji wants to learn a fact at the library.",
+      "worked": "*Find out* means learn information: 'find out who built the first plane'.",
+      "stim": {
+       "id": "s1-test-email-2",
+       "kind": "text",
+       "head": "Email from Kenji to his friend Elena",
+       "html": "Hi Elena,<br>Our class is doing a project on inventions that changed travel. Yesterday I went to the library to find (1) .......... who built the first plane. Did you know the first flight was only 12 seconds long? (2) .......... fact, it was shorter than our walk from the classroom to the canteen! Next week we're going to visit the transport museum. I can't wait!<br>Bye for now,<br>Kenji",
+       "bank": null
+      }
+     }
+    ]
+   },
+   {
+    "dok": 2,
+    "lo": [
+     "6Uv.02"
+    ],
+    "v": [
+     {
+      "type": "tfill",
+      "q": "Read Mai's email. Write ONE word for gap (2).",
+      "lines": [
+       "On Saturday we're going to the pool {0} car, because Dad is driving us."
+      ],
+      "ans": [
+       [
+        "by"
+       ]
+      ],
+      "hint": "This is a way of travelling, and there is no 'the' before 'car'.",
+      "worked": "Dad is driving, so they are going *by car*.",
+      "stim": {
+       "id": "s1-test-email-1",
+       "kind": "text",
+       "head": "Email from Mai to her friend Tariq",
+       "html": "Hi Tariq,<br>Thanks for your message! I'm really looking forward to the swimming gala this weekend. Our team has trained hard for weeks, and the coach says we can count (1) .......... each other. On Saturday we're going to the pool (2) .......... car, because Dad is driving us. Would you like to come and watch?<br>See you soon,<br>Mai",
+       "bank": null
+      }
+     },
+     {
+      "type": "tfill",
+      "q": "Read Kenji's email. Write ONE word for gap (2).",
+      "lines": [
+       "{0} fact, it was shorter than our walk from the classroom to the canteen!"
+      ],
+      "ans": [
+       [
+        "in"
+       ]
+      ],
+      "hint": "Which phrase adds a surprising true detail?",
+      "worked": "*In fact* adds a true detail: 'In fact, it was shorter than our walk to the canteen!'",
+      "stim": {
+       "id": "s1-test-email-2",
+       "kind": "text",
+       "head": "Email from Kenji to his friend Elena",
+       "html": "Hi Elena,<br>Our class is doing a project on inventions that changed travel. Yesterday I went to the library to find (1) .......... who built the first plane. Did you know the first flight was only 12 seconds long? (2) .......... fact, it was shorter than our walk from the classroom to the canteen! Next week we're going to visit the transport museum. I can't wait!<br>Bye for now,<br>Kenji",
+       "bank": null
+      }
+     }
+    ]
+   },
+   {
+    "dok": 2,
+    "lo": [
+     "6Rd.04"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "What does <b>hibernate</b> mean?",
+      "opts": [
+       "sleep through the cold months",
+       "look for food in the snow",
+       "build a warm home in a cave"
+      ],
+      "at": 0,
+      "whys": [
+       null,
+       "The text does not talk about food. It says the bears go to sleep.",
+       "The bears find a cave; they don't build one. What do they do there?"
+      ],
+      "hint": "Read what the bears do in the cave and when they wake up.",
+      "worked": "Bears 'go to sleep and do not wake up until spring', so *hibernate* means sleep through winter.",
+      "stim": {
+       "id": "s1-t-hibernate",
+       "kind": "text",
+       "head": "From a nature book",
+       "html": "Some bears <b>hibernate</b> in winter. They find a warm cave, go to sleep and do not wake up until spring.",
+       "bank": null
+      }
+     },
+     {
+      "type": "mcq",
+      "q": "What does <b>confident</b> mean?",
+      "opts": [
+       "sure of herself",
+       "good at singing",
+       "kind to everyone"
+      ],
+      "at": 1,
+      "whys": [
+       null,
+       "She sang, but the text says she 'wasn't nervous at all'. That is the key.",
+       "The text does not talk about being kind."
+      ],
+      "hint": "Look at the end of the text: how did her cousin feel when she sang?",
+      "worked": "She sang alone in front of the whole school and 'wasn't nervous at all', so she is *confident*.",
+      "stim": {
+       "id": "s1-t-confident",
+       "kind": "text",
+       "head": "From Priya's diary",
+       "html": "My cousin is very <b>confident</b>. Last week she sang alone in front of the whole school, and she wasn't nervous at all.",
+       "bank": null
+      }
+     }
+    ]
+   },
+   {
+    "dok": 2,
+    "lo": [
+     "6Rd.04"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "What does <b>suitable</b> mean?",
+      "opts": [
+       "right for the activity",
+       "new and very clean",
+       "all the same colour"
+      ],
+      "at": 2,
+      "whys": [
+       null,
+       "The notice does not say the clothes must be new.",
+       "The notice does not talk about colours."
+      ],
+      "hint": "Look at the examples: which clothes are fine and which are not?",
+      "worked": "Trainers and shorts are fine for the gym, but jeans and sandals are not. *Suitable* means right for the activity.",
+      "stim": {
+       "id": "s1-t-suitable",
+       "kind": "text",
+       "head": "A notice at the sports centre",
+       "html": "Please wear <b>suitable</b> clothes in the gym. Trainers and shorts are fine, but no jeans or sandals, please!",
+       "bank": null
+      }
+     },
+     {
+      "type": "mcq",
+      "q": "What does <b>gadget</b> mean?",
+      "opts": [
+       "a small, useful machine",
+       "a big clock on the wall",
+       "a way to send messages"
+      ],
+      "at": 1,
+      "whys": [
+       null,
+       "The smartwatch is small and on your wrist, not big and on a wall.",
+       "It can show messages, but that is only one thing it does."
+      ],
+      "hint": "Read the next sentence. What is the smartwatch, and what can it do?",
+      "worked": "'This small machine on your wrist can tell the time, count your steps and show messages.' So a *gadget* is a small, useful machine.",
+      "stim": {
+       "id": "s1-t-gadget",
+       "kind": "text",
+       "head": "From a technology magazine for children",
+       "html": "A smartwatch is a clever <b>gadget</b>. This small machine on your wrist can tell the time, count your steps and show messages.",
+       "bank": null
+      }
+     }
+    ]
+   },
+   {
+    "dok": 2,
+    "lo": [
+     "6Rd.04"
+    ],
+    "v": [
+     {
+      "type": "mcq",
+      "q": "What does <b>endangered</b> mean?",
+      "opts": [
+       "at risk of dying out",
+       "very dangerous to people",
+       "living in the wild"
+      ],
+      "at": 2,
+      "whys": [
+       null,
+       "The word looks like 'danger', but the text is about the animals, not people.",
+       "They live in the wild, but the text says very few are left."
+      ],
+      "hint": "Read the second sentence: how many are left, and what may happen to them?",
+      "worked": "'Very few of them left ... they may disappear forever', so *endangered* means at risk of dying out.",
+      "stim": {
+       "id": "s1-t-endangered",
+       "kind": "text",
+       "head": "From a class science report",
+       "html": "Some animals are <b>endangered</b>. There are very few of them left in the wild, and if we do not protect them, they may disappear forever.",
+       "bank": null
+      }
+     },
+     {
+      "type": "mcq",
+      "q": "What does <b>stamina</b> mean?",
+      "opts": [
+       "energy to keep going",
+       "speed in a short race",
+       "a prize for winners"
+      ],
+      "at": 0,
+      "whys": [
+       null,
+       "The text is about running for over an hour, not a short race.",
+       "The text does not talk about prizes."
+      ],
+      "hint": "Read the second sentence: how long must the runners keep going?",
+      "worked": "Runners 'must keep running for over an hour without stopping', so *stamina* is the energy to keep going.",
+      "stim": {
+       "id": "s1-t-stamina",
+       "kind": "text",
+       "head": "From the school sports newsletter",
+       "html": "Long-distance runners need a lot of <b>stamina</b>. They must keep running for over an hour without stopping or slowing down.",
+       "bank": null
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "lightning": {
+  "secs": 60,
+  "items": [
+   [
+    "A ___ of bees",
+    [
+     "swarm",
+     "herd",
+     "flock"
+    ]
+   ],
+   [
+    "A ___ of cows",
+    [
+     "herd",
+     "swarm",
+     "school"
+    ]
+   ],
+   [
+    "A ___ of birds",
+    [
+     "flock",
+     "pack",
+     "herd"
+    ]
+   ],
+   [
+    "A ___ of fish",
+    [
+     "school",
+     "flock",
+     "crowd"
+    ]
+   ],
+   [
+    "A ___ of wolves",
+    [
+     "pack",
+     "swarm",
+     "school"
+    ]
+   ],
+   [
+    "A ___ of people at a match",
+    [
+     "crowd",
+     "herd",
+     "flock"
+    ]
+   ],
+   [
+    "A ___ of flowers",
+    [
+     "bunch",
+     "herd",
+     "swarm"
+    ]
+   ],
+   [
+    "A football ___ of eleven players",
+    [
+     "team",
+     "flock",
+     "herd"
+    ]
+   ],
+   [
+    "A ___ of sheep",
+    [
+     "flock",
+     "swarm",
+     "school"
+    ]
+   ],
+   [
+    "A ___ of elephants",
+    [
+     "herd",
+     "bunch",
+     "swarm"
+    ]
+   ],
+   [
+    "A ___ of lions",
+    [
+     "pride",
+     "school",
+     "bunch"
+    ]
+   ],
+   [
+    "People watching a play are the ___.",
+    [
+     "audience",
+     "herd",
+     "flock"
+    ]
+   ],
+   [
+    "Take care of = look ___",
+    [
+     "after",
+     "for",
+     "up"
+    ]
+   ],
+   [
+    "Try to find = look ___",
+    [
+     "for",
+     "after",
+     "out"
+    ]
+   ],
+   [
+    "Stop trying = give ___",
+    [
+     "up",
+     "out",
+     "off"
+    ]
+   ],
+   [
+    "Learn some information = find ___",
+    [
+     "out",
+     "up",
+     "off"
+    ]
+   ],
+   [
+    "Start a journey = set ___",
+    [
+     "off",
+     "up",
+     "in"
+    ]
+   ],
+   [
+    "Have none left = run out ___",
+    [
+     "of",
+     "from",
+     "off"
+    ]
+   ],
+   [
+    "Join an event = take ___ in",
+    [
+     "part",
+     "place",
+     "time"
+    ]
+   ],
+   [
+    "Collect from a place = pick ___",
+    [
+     "up",
+     "out",
+     "off"
+    ]
+   ],
+   [
+    "Trust someone to help = count ___",
+    [
+     "on",
+     "in",
+     "at"
+    ]
+   ],
+   [
+    "Solve a problem = deal ___ it",
+    [
+     "with",
+     "for",
+     "at"
+    ]
+   ],
+   [
+    "Continue = carry ___",
+    [
+     "on",
+     "off",
+     "up"
+    ]
+   ],
+   [
+    "Get ready for sport = warm ___",
+    [
+     "up",
+     "on",
+     "off"
+    ]
+   ],
+   [
+    "Wear it now: put ___ your helmet.",
+    [
+     "on",
+     "off",
+     "out"
+    ]
+   ],
+   [
+    "I go to school ___ bus.",
+    [
+     "by",
+     "on",
+     "in"
+    ]
+   ],
+   [
+    "Walking = going ___ foot",
+    [
+     "on",
+     "in",
+     "at"
+    ]
+   ],
+   [
+    "Not late = ___ time",
+    [
+     "on",
+     "at",
+     "by"
+    ]
+   ],
+   [
+    "Not on purpose = by ___",
+    [
+     "mistake",
+     "purpose",
+     "time"
+    ]
+   ],
+   [
+    "I wanted to. I did it ___ purpose.",
+    [
+     "on",
+     "by",
+     "in"
+    ]
+   ],
+   [
+    "The baby bird is ___ danger.",
+    [
+     "in",
+     "on",
+     "at"
+    ]
+   ],
+   [
+    "Didn't ask first = ___ permission",
+    [
+     "without",
+     "with",
+     "by"
+    ]
+   ],
+   [
+    "We go to the beach ___ the weekend.",
+    [
+     "at",
+     "in",
+     "by"
+    ]
+   ],
+   [
+    "___ fact, it was true.",
+    [
+     "In",
+     "On",
+     "At"
+    ]
+   ],
+   [
+    "Made ___ hand, not with a machine",
+    [
+     "by",
+     "on",
+     "in"
+    ]
+   ],
+   [
+    "The natural home of an animal",
+    [
+     "habitat",
+     "predator",
+     "herd"
+    ]
+   ],
+   [
+    "An animal that hunts others",
+    [
+     "predator",
+     "habitat",
+     "flock"
+    ]
+   ],
+   [
+    "Something new, made for the first time",
+    [
+     "invention",
+     "habitat",
+     "crowd"
+    ]
+   ],
+   [
+    "Someone who never gives up is ___.",
+    [
+     "determined",
+     "lazy",
+     "nervous"
+    ]
+   ],
+   [
+    "Working well together",
+    [
+     "teamwork",
+     "homework",
+     "housework"
+    ]
+   ],
+   [
+    "Very, very tired",
+    [
+     "exhausted",
+     "excited",
+     "healthy"
+    ]
+   ],
+   [
+    "Awake and active at night",
+    [
+     "nocturnal",
+     "endangered",
+     "portable"
+    ]
+   ],
+   [
+    "Easy to carry",
+    [
+     "portable",
+     "nocturnal",
+     "generous"
+    ]
+   ],
+   [
+    "Happy to share and give",
+    [
+     "generous",
+     "nervous",
+     "lazy"
+    ]
+   ],
+   [
+    "Colours that help animals hide",
+    [
+     "camouflage",
+     "habitat",
+     "invention"
+    ]
+   ],
+   [
+    "Very few left; may disappear",
+    [
+     "endangered",
+     "nocturnal",
+     "exhausted"
+    ]
+   ],
+   [
+    "Good for your body",
+    [
+     "healthy",
+     "harmful",
+     "tiring"
+    ]
+   ],
+   [
+    "An animal that eats only plants",
+    [
+     "herbivore",
+     "carnivore",
+     "predator"
+    ]
+   ],
+   [
+    "An animal that eats only meat",
+    [
+     "carnivore",
+     "herbivore",
+     "habitat"
+    ]
+   ],
+   [
+    "A small, clever machine",
+    [
+     "gadget",
+     "herd",
+     "habitat"
+    ]
+   ]
+  ]
+ },
+ "selfcheck": {
+  "goals": [
+   "say the group word for animals and people (a herd of cows, a crowd of people)",
+   "use phrasal verbs like look after, give up and find out",
+   "use phrases like on time, by bus, on foot and in danger",
+   "guess a new word from the sentences around it"
+  ],
+  "again": [
+   "c",
+   "r",
+   "a",
+   "a"
+  ]
+ }
+}

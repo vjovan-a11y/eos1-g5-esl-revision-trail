@@ -1,0 +1,83 @@
+/* 39-g5-tools-dec.css - Grade 5, Stop 1: the decimal place value chart (dpv), the decimal slider (dsl), the hundred
+   square (hg) and the square that is cut into ten (dz). They sit on the light art plate (.wb, 38-tools.css), which
+   is light in both themes, so the colours of the places are written here once, like the other place colours.
+   One colour per place: hundreds green, tens blue, ones amber (38-tools.css); tenths pink, hundredths teal,
+   thousandths violet. --pcd is the darker shade (white text on it, and its text on white, 4.5:1 or more). */
+
+.p-te  { --pc: #E0548A; --pcd: #B02E62; }
+.p-hu  { --pc: #17A2B0; --pcd: #0B6F7A; }
+.p-ths { --pc: #7A5BD6; --pcd: #5B3FB8; }
+
+/* ---------- the chart ---------- */
+.dpv { --pt-w: .75rem; display: grid; gap: .25rem; align-items: stretch; }
+.dpv__pt { display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
+.dpv__pt.is-dot { font: 700 2.25rem/1 var(--font-display); color: var(--plate-ink); padding-bottom: .375rem; }
+.wb--mini .dpv { --pt-w: .5rem; gap: .1875rem; }
+.wb--mini .dpv__pt.is-dot { font-size: 1.5rem; padding-bottom: .25rem; }
+/* six places on a phone: the short names only (H T O . t h th) */
+@media (max-width: 479px) { .dpv .pv__h b { display: none; } .dpv .pv__h i { font-size: .9375rem; } }
+.dpv .pv__h b { font-size: .75rem; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.dpv .blank--cell { padding: 0; }
+.dpv .pv__v { font-size: .875rem; }
+.wb--mini .dpv .pv__v { font-size: .8125rem; min-height: 1.75rem; }
+
+/* ---------- the slider ---------- */
+.dsl__slot {
+  display: grid; place-items: center; height: 3rem; margin-top: .25rem; border-radius: var(--r-sm);
+  box-shadow: inset 0 0 0 1px var(--plate-line); background: #FFFFFF;
+  font: 600 2rem/1 var(--font-display); color: var(--plate-ink-2);
+}
+.dsl__slot.is-zero { color: #7B4E00; background: #FFF1CF; box-shadow: inset 0 0 0 2px #F5A623; }
+.dsl__slot.is-hole { box-shadow: inset 0 0 0 2px #F3A99D; }
+.dsl__pt { display: flex; align-items: flex-end; justify-content: center; margin-top: .25rem; padding-bottom: .375rem; font: 700 2.25rem/1 var(--font-display); color: var(--plate-ink); }
+.dsl__tile {
+  z-index: 1; display: grid; place-items: center; height: 3rem; margin-top: .25rem; border-radius: var(--r-sm);
+  background: #E4F0FC; box-shadow: inset 0 0 0 2px #2F7FD4; color: var(--plate-ink);
+  font: 600 2rem/1 var(--font-display); will-change: transform;
+}
+.dsl__now { margin-top: .5rem; text-align: center; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--plate-ink-2); }
+.wb--mini .dsl__slot, .wb--mini .dsl__tile { height: 2.25rem; font-size: 1.375rem; margin-top: .1875rem; }
+.wb--mini .dsl__pt { font-size: 1.5rem; padding-bottom: .25rem; }
+.dpv--slider.is-shake { animation: tool-shake .35s ease-in-out; }
+@media (max-width: 479px) { .dsl__slot, .dsl__tile { font-size: 1.625rem; } }
+
+/* ---------- the hundred square (a picture) ---------- */
+.hg { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .25rem; padding: .375rem; border-radius: var(--r-md); background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); }
+.hg__svg { display: block; width: 7.5rem; height: 7.5rem; }
+.hg--big .hg__svg { width: min(13rem, 100%); height: auto; }
+.hg__c { fill: #FFFFFF; stroke: #B8C8DB; stroke-width: .5; }
+.hg__c.is-on { fill: #F7B53C; stroke: #B8770E; }
+.hg__c.is-mark { fill: #E0548A; stroke: #8E1F4B; }
+.hg__col { stroke: #3D5A85; stroke-width: 1; }
+.hg__frame { fill: none; stroke: #10305E; stroke-width: 1.5; }
+
+/* ---------- the square that is cut into ten ---------- */
+.wb--dzoom { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+.dz__pic { width: min(100%, 17rem); }
+.dz__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dz__svg.is-new { animation: dz-in var(--dur-slow) var(--ease-out) both; }
+@keyframes dz-in { from { opacity: .35; transform: scale(.97); } to { opacity: 1; transform: none; } }
+.dz__whole { fill: #FFFFFF; }
+.dz__whole.is-on { fill: #F7B53C; }
+.dz__part { fill: #FFF1CF; }
+.dz__part.is-on { fill: #F7B53C; stroke: #B8770E; stroke-width: .8; }
+.dz__ln { stroke: #3D5A85; stroke-width: .8; }
+.dz__ln--thin { stroke: #9FB3CC; stroke-width: .4; }
+.dz__frame { fill: none; stroke: #10305E; stroke-width: 1.6; }
+.dz__zoom { fill: #FFFFFF; stroke: #10305E; stroke-width: 1.2; }
+.dz__zoomln { fill: none; stroke: #6A83A6; stroke-width: .6; stroke-dasharray: 2 2; }
+.dz__label { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .375rem; font: 600 1.375rem/1.2 var(--font-display); color: var(--plate-ink); text-align: center; }
+.dz__sw { width: 1.125rem; height: 1.125rem; border-radius: .25rem; background: #F7B53C; box-shadow: inset 0 0 0 2px #B8770E; }
+.dz__eq { color: var(--plate-ink-2); font-variant-numeric: tabular-nums; }
+.dz__cut { min-height: 3rem; }
+@media (prefers-reduced-motion: reduce) { .dz__svg.is-new { animation: none; } }
+
+/* ---------- See it: the tool sits in the middle of the desk ---------- */
+.see-hands__desk:has(> .wb--dzoom, > .wb--dslider) { max-width: 38rem; margin-top: auto; margin-bottom: auto; align-self: center; }
+.see-hands__desk > .wb--dzoom, .see-hands__desk > .wb--dslider { flex: 1 1 auto; min-width: 0; }
+@media (max-height: 700px) { .dz__pic { width: min(100%, 12.5rem); } }
+/* the slider has seven places: the short names only (Th H T O . t h th), a little bigger */
+.dpv--slider .pv__h b { display: none; }
+.dpv--slider .pv__h i { font-size: .9375rem; }
+
+

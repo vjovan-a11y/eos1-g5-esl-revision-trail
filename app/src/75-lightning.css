@@ -1,0 +1,39 @@
+/* 75-lightning.css - the Lightning round (75-lightning.js). Prefix: lt- (the intro card uses mt- from 70-test.css) */
+
+.lt-intro__time { margin: 0; font: 700 var(--fs-lead)/1.2 var(--font-body); color: var(--ink-2); }
+.lt-intro__time b { font: 600 var(--fs-h1)/1 var(--font-display); color: var(--ink); margin-right: .25rem; }
+
+/* 3, 2, 1 */
+.lt-count { display: flex; align-items: center; justify-content: center; flex: 1 1 auto; min-height: 12rem; }
+.lt-count b { font: 600 clamp(5rem, 22vw, 10rem)/1 var(--font-display); color: var(--accent-text); }
+.lt-count b.is-pop { animation: lt-pop .5s var(--ease-pop) both; }
+
+/* the round */
+.lt { display: flex; flex-direction: column; gap: .75rem; width: 100%; max-width: 40rem; margin: 0 auto; }
+.lt-top { display: flex; align-items: center; gap: .75rem; }
+.lt-time { display: flex; align-items: center; gap: .5rem; flex: 1 1 auto; min-width: 0; font: 600 var(--fs-h3)/1 var(--font-display); color: var(--ink); }
+.lt-time__track { position: relative; flex: 1 1 auto; height: .75rem; border-radius: var(--r-pill); background: var(--surface-2); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.lt-time__bar { position: absolute; inset: 0; background: var(--go); transform-origin: left center; will-change: transform; }
+.lt-top.is-low .lt-time__bar { background: var(--no); }
+.lt-top.is-low .lt-time > b { color: var(--no-text); }
+.lt-score { display: flex; align-items: center; gap: .375rem; font: 600 var(--fs-h3)/1 var(--font-display); color: var(--ink); }
+.lt-score .art { width: 2.25rem; height: 2.25rem; border-radius: 50%; }
+.lt-score b { display: inline-block; min-width: 1.5ch; }
+/* the next question: its answers arrive quickly (a race, so only 150 ms) */
+.lt-card.is-next .lt-opts > * { animation: rise-in var(--dur-quick) var(--ease-out) both; }
+
+.lt-card { display: flex; flex-direction: column; gap: 1rem; padding: 1.25rem 1rem; }
+.lt-q { margin: 0; text-align: center; font: 600 var(--fs-h2)/1.25 var(--font-display); color: var(--ink); overflow-wrap: anywhere; }
+.lt-opts { display: grid; grid-template-columns: 1fr; gap: .625rem; }
+@media (min-width: 640px) { .lt-opts { grid-template-columns: repeat(3, 1fr); } }
+.lt-o { position: relative; min-height: 3.75rem; justify-content: center; font-size: var(--fs-lead); }
+.lt-o__key {
+  position: absolute; left: .625rem; top: 50%; transform: translateY(-50%);
+  font: 700 var(--fs-small)/1 var(--font-body); color: var(--ink-2); background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: var(--r-sm); padding: .2rem .4rem;
+}
+
+@keyframes lt-pop { 0% { transform: scale(.6); opacity: 0; } 70% { transform: scale(1.08); opacity: 1; } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .lt-count b.is-pop, .lt-card.is-next .lt-opts > * { animation: none; } .lt-time__bar { transition: none; } }
+
+

@@ -1,0 +1,140 @@
+/* 39-tools-order.css - the Stop 3 tools (39-tools-order.js): number tiles to put in order, a ring around every number
+   that fits, two numbers compared place by place. Flat on the light art plate (light in both themes, ink --plate-ink),
+   tap targets 48 px. On the Mini test paper (.tp-sheet) they look like a printed paper: numbers in a row, places on a
+   dotted line, grey pencil rings. Motion: transform, opacity and a pencil stroke only; still = at once. */
+
+/* ---------- order: tiles and places ---------- */
+.ord {
+  --ord-w: calc(var(--ch, 3) * .75rem + 1.75rem);
+  display: grid; justify-items: center; gap: .625rem; width: 100%; padding: .75rem .5rem; border-radius: var(--r-lg);
+  background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink);
+}
+.ord__row, .ord__pool { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.ord__slot {
+  display: grid; place-items: center; min-width: max(var(--ord-w), 3rem); min-height: 3rem; padding: 0; border: 0;
+  border-radius: var(--r-md); background: #FFFFFF; box-shadow: inset 0 0 0 2px #9DB2CC; color: var(--plate-ink);
+  outline-offset: 2px; cursor: default;
+}
+.ord__slot:not(.is-full) { background: repeating-linear-gradient(90deg, #9DB2CC 0 .375rem, transparent .375rem .625rem) bottom / 100% 2px no-repeat, #FFFFFF; box-shadow: none; }
+.ord__slot.is-full { cursor: pointer; box-shadow: none; background: transparent; }
+.ord__slot:disabled { cursor: default; }
+.ord__slot.is-bad .ord__tile { background: #FDECE9; box-shadow: inset 0 0 0 2.5px #C62C1C, 0 3px 0 #C62C1C; color: #8E1B10; }
+.ord__tile {
+  display: grid; place-items: center; min-width: max(var(--ord-w), 3rem); min-height: 3rem; padding: 0 .5rem; border: 0;
+  border-radius: var(--r-md); background: #FFFFFF; color: var(--plate-ink); cursor: pointer;
+  box-shadow: inset 0 0 0 2.5px var(--plate-ink), 0 3px 0 #9DB2CC; font: 700 1.3125rem/1 var(--font-display);
+  font-variant-numeric: tabular-nums; white-space: nowrap; transition: opacity var(--dur-quick) var(--ease-out), transform var(--dur-quick) var(--ease-out);
+}
+.ord__tile:hover:not(:disabled) { background: #FFF8E6; }
+.ord__tile:active:not(:disabled) { transform: translateY(2px); }
+.ord__tile.is-in { background: var(--gold-soft-tile, #FFF1CF); box-shadow: inset 0 0 0 2.5px var(--gold-edge), 0 3px 0 var(--gold-edge); color: #3A2600; }
+.ord__tile.is-new { animation: tl-pop var(--dur-base) var(--ease-pop) both; }
+.ord__tile.is-gone { opacity: .22; box-shadow: inset 0 0 0 2px #9DB2CC; }
+.ord__tile:disabled { cursor: default; }
+.ord__tile.is-shake { animation: tl-shake var(--dur-base) var(--ease-in-out); }
+.ord__tile:focus-visible, .ord__slot:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.ord__ends { display: flex; align-items: center; gap: .5rem; margin: 0; font: 700 var(--fs-small)/1.2 var(--font-body); color: var(--plate-ink-2); }
+.ord__arrow { position: relative; display: block; width: 4rem; height: 3px; border-radius: 2px; background: var(--plate-ink-2); }
+.ord__arrow::after { content: ''; position: absolute; right: -2px; top: -5px; width: 10px; height: 10px; border-top: 3px solid var(--plate-ink-2); border-right: 3px solid var(--plate-ink-2); transform: rotate(45deg); }
+
+/* ---------- pickall: a pencil ring around each number that fits ---------- */
+.pkall { display: flex; flex-wrap: wrap; justify-content: center; gap: .625rem 1rem; width: 100%; padding: .875rem .5rem;
+  border-radius: var(--r-lg); background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); }
+.pk {
+  position: relative; display: grid; place-items: center; min-width: 5.25rem; min-height: 3.25rem; padding: 0 .75rem; border: 0;
+  border-radius: var(--r-pill); background: transparent; color: var(--plate-ink); cursor: pointer;
+  font: 700 1.375rem/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.pk:hover:not(:disabled) { background: rgba(47, 127, 212, .08); }
+.pk:disabled { cursor: default; }
+.pk:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pk__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; fill: none; stroke: #2F7FD4; stroke-width: 3; stroke-linecap: round; }
+.pk__ring.is-new path { stroke-dasharray: 1; animation: pk-draw var(--dur-slow) var(--ease-out) both; }
+@keyframes pk-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.pk.is-bad .pk__ring { stroke: #C62C1C; }
+.pk.is-bad { color: #8E1B10; }
+.pk.is-shown .pk__ring { stroke: #1E8E5F; }
+
+/* ---------- pvcmp: two numbers on a place value chart ---------- */
+.pc { display: grid; justify-items: center; gap: .75rem; width: 100%; }
+.pc__chart { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: stretch; column-gap: .5rem; width: min(100%, 30rem);
+  padding: .625rem; border-radius: var(--r-lg); background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink); }
+.pc__names { display: grid; grid-template-rows: 2.5rem 3.25rem 2rem 3.25rem; align-items: center; }
+.pc__names b { grid-row: 2; font: 700 1.125rem/1 var(--font-display); white-space: nowrap; }
+.pc__names b + b { grid-row: 4; }
+.pc__grid { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); grid-template-rows: 2.5rem 3.25rem 2rem 3.25rem; gap: .25rem; }
+.pc__h { min-height: 0; }
+.pc__h.is-hl { box-shadow: 0 0 0 .1875rem var(--gold); }
+.pc__d { display: grid; place-items: center; border-radius: var(--r-sm); background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--plate-line);
+  color: var(--pcd); font: 700 1.875rem/1 var(--font-display); transition: background-color var(--dur-base) var(--ease-out); }
+.pc__d.is-hl { background: #FFF1CF; box-shadow: inset 0 0 0 2.5px var(--gold-edge); }
+.pc__d.is-done { opacity: .55; }
+.pc__mid { display: grid; place-items: center; }
+.pc__say { padding: .0625rem .5rem; border-radius: var(--r-pill); font: 700 .875rem/1.4 var(--font-body); white-space: nowrap; }
+.pc__say.is-same { background: #E3F4EA; color: #146B43; }
+.pc__say.is-diff { background: var(--gold); color: #3A2600; font: 700 1rem/1.3 var(--font-display); }
+.pc__say.is-new { animation: tl-pop var(--dur-base) var(--ease-pop) both; }
+.pc__ctl { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; }
+.pc__signs { display: flex; gap: .5rem; }
+.pc__sign {
+  display: grid; place-items: center; width: 3.25rem; height: 3.25rem; padding: 0; border: 0; border-radius: var(--r-md);
+  background: var(--ctl); color: var(--ctl-ink); box-shadow: inset 0 0 0 2px var(--ctl-line), 0 3px 0 var(--ctl-edge);
+  font: 700 1.75rem/1 var(--font-display); cursor: pointer;
+}
+.pc__sign:disabled { background: var(--disabled); color: var(--disabled-ink); box-shadow: none; cursor: default; }
+.pc__sign.is-on { background: var(--gold); color: #3A2600; box-shadow: inset 0 0 0 2px var(--gold-edge), 0 3px 0 var(--gold-edge); }
+.pc__sign.is-shake { animation: tl-shake var(--dur-base) var(--ease-in-out); }
+.pc__sign:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pc__line { display: flex; align-items: center; gap: .625rem; margin: 0; font: 700 1.5rem/1 var(--font-display); color: var(--ink); }
+.pc__box { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: var(--r-sm); background: var(--surface);
+  box-shadow: inset 0 0 0 2px var(--line-strong); color: var(--ink); font: 700 1.75rem/1 var(--font-display); }
+.pc__box.is-full { box-shadow: inset 0 0 0 2.5px var(--gold-edge); background: var(--gold-soft); }
+.pc__box.is-tick { animation: tick-pop var(--dur-base) var(--ease-pop); }
+@media (max-width: 479px) {
+  .pc__d { font-size: 1.5rem; }
+  .pc__names b { font-size: 1rem; }
+  .pc__line { font-size: 1.25rem; }
+}
+
+/* ---------- on the Mini test paper: printed numbers, a dotted line for each place, grey pencil ---------- */
+.tp-sheet .ord, .tp-sheet .pkall { padding: .5rem 0; background: none; box-shadow: none; color: #111111; }
+.tp-sheet .ord__slot:not(.is-full) { background: radial-gradient(circle, #222222 1px, transparent 1.4px) bottom / 6px 2px repeat-x, transparent; }
+.tp-sheet .ord__tile { font-family: var(--tp-font); background: #FFFFFF; color: #111111; box-shadow: inset 0 0 0 1.5px #6A6F76; }
+.tp-sheet .ord__tile.is-in { background: transparent; box-shadow: none; color: var(--tp-pencil); font-family: var(--font-body); font-weight: 600; }
+.tp-sheet .ord__slot.is-full { background: radial-gradient(circle, #222222 1px, transparent 1.4px) bottom / 6px 2px repeat-x, transparent; }
+.tp-sheet .ord__slot.is-bad .ord__tile { background: #FDECE9; box-shadow: none; color: var(--tp-bad); }
+.tp-sheet .ord__ends { color: #444444; }
+.tp-sheet .ord__arrow, .tp-sheet .ord__arrow::after { background: #444444; border-color: #444444; }
+.tp-sheet .ord__arrow::after { background: none; }
+.tp-sheet .pkall { gap: .5rem 1.5rem; }
+.tp-sheet .pk { color: #111111; font-family: var(--tp-font); }
+.tp-sheet .pk__ring { stroke: var(--tp-pencil); stroke-width: 2.4; }
+.tp-sheet .pk.is-bad .pk__ring { stroke: var(--tp-bad); }
+.tp-sheet .pk.is-shown .pk__ring { stroke: var(--tp-good); }
+/* the marked paper: solid closed rings, green (right) or red (wrong), a dashed green ring for a number that should have one */
+.tp-sheet .pk__ring path { stroke-dasharray: none; animation: none !important; }
+.tp-sheet .pk.is-right .pk__ring { stroke: var(--go); }
+.tp-sheet .pk.is-wrong .pk__ring { stroke: var(--ring-wrong); }
+.tp-sheet .pk.is-wrong { color: var(--ring-wrong); }
+.tp-sheet .pk.is-answer .pk__ring--answer { stroke: var(--go); }
+.tp-sheet .pk__ring--answer path { stroke-dasharray: .03 .022; }
+
+/* ---------- in See it ---------- */
+.see-hands__desk:has(> .pc, > .ord) { margin-top: auto; margin-bottom: auto; align-self: center; }
+.see-hands__desk > .ord { max-width: 34rem; }
+.see-scene--compare .see-hands__pic .pics { flex-wrap: nowrap; justify-content: center; }
+.see-scene--compare .see-hands__pic .pics > * { flex: 1 1 0; min-width: 0; }
+@media (min-width: 900px) and (min-height: 700px) { .pc__d { font-size: 2.25rem; } .pc__grid, .pc__names { grid-template-rows: 2.75rem 3.75rem 2.25rem 3.75rem; } }
+@media (max-width: 419px) { .pc__h b { display: none; } .pc__h i { font-size: .9375rem; } }
+/* two numbers in blocks to compare (the See it challenge, Stop 3): side by side, so the number pad never hides one */
+.toolpics:has(> .mat--mini + .mat--mini:last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+/* a phone: five places and five tiles each fit on one row */
+@media (max-width: 479px) {
+  .ord { --ord-w: calc(var(--ch, 3) * .625rem + .75rem); padding: .625rem .25rem; }
+  .ord__row, .ord__pool { gap: .375rem; }
+  .ord__slot, .ord__tile { min-width: max(var(--ord-w), 3rem); }
+  .ord__tile { padding: 0 .25rem; font-size: 1.125rem; }
+  .pk { min-width: 4.5rem; font-size: 1.25rem; }
+}
+
+

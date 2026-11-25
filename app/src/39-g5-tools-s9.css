@@ -1,0 +1,109 @@
+/* 39-g5-tools-s9.css - Grade 5, Stop 9 (mode, median, mean and range): the data cards (dc), the towers that are
+   made level (dt), the frequency table (dfq) and what a child wrote (s9-say). The tools sit on the light art plate
+   (.wb, 38-tools.css), which is light in both themes, so their colours are written here once: the stadium blue
+   #5B8CA8 / #3C6880 and the gold highlight. Everything off the plate uses the tokens. Tap targets 44 px or more;
+   no text under 15 px; motion is transform and opacity only. */
+
+/* ---------- the data cards ---------- */
+.wb--dcards { display: flex; flex-direction: column; gap: .5rem; width: 100%; }
+.dc__zone { display: flex; flex-direction: column; gap: .25rem; }
+.dc__zone[hidden] { display: none; }
+.dc__lab { font: 700 var(--fs-small)/1.2 var(--font-body); color: var(--plate-ink-2); }
+.dc__tray, .dc__row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: .3125rem; min-height: 3.25rem; padding: .3125rem; border-radius: var(--r-md); }
+.dc__tray { background: #E6EEF4; }
+.dc__row { background: #FFFFFF; box-shadow: inset 0 0 0 2px #C9D8E3; }
+.dc__card, .dc__slot { flex: 0 0 auto; display: grid; place-items: center; min-width: 2.75rem; height: 3rem; padding: 0 .25rem; border-radius: var(--r-sm); }
+.dc__card {
+  background: #FFFFFF; color: var(--plate-ink); box-shadow: inset 0 0 0 2px #3C6880, 0 2px 0 #3C6880;
+  font: 600 1.375rem/1 var(--font-display); font-variant-numeric: tabular-nums;
+}
+button.dc__card { cursor: pointer; }
+button.dc__card:disabled { cursor: default; }
+.dc__card.is-gone { visibility: hidden; }
+.dc__slot { box-shadow: inset 0 0 0 2px #C9D8E3; background: #F4F8FB; }
+.dc__card.is-new { animation: dc-in var(--dur-base) var(--ease-pop, ease-out) both; }
+@keyframes dc-in { from { opacity: 0; transform: translateY(-.5rem) scale(.85); } to { opacity: 1; transform: none; } }
+.dc__card.is-hl { background: #FFF1CF; box-shadow: inset 0 0 0 3px #F5A623, 0 2px 0 #C17B08; color: #5A3900; }
+.dc__card.is-dim { opacity: .55; }
+/* crossed off: pale, with a line through it */
+.dc__card.is-x { position: relative; background: #EEF2F5; color: #6B7F92; box-shadow: inset 0 0 0 2px #B5C4D1; }
+.dc__card.is-x::after { content: ''; position: absolute; left: 12%; right: 12%; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px; background: #C4452F; transform: rotate(-32deg); }
+.dc__card.is-shake { animation: tool-shake .35s ease-in-out; }
+/* equal cards make a pile */
+.dc__row--piles { align-items: flex-end; gap: .5rem; }
+.dc__pile { display: flex; flex-direction: column-reverse; align-items: center; }
+.dc__pile .dc__card { height: 2.25rem; margin-top: .125rem; box-shadow: inset 0 0 0 2px #3C6880; }
+.dc__pile .dc__card.is-hl { box-shadow: inset 0 0 0 3px #F5A623; }
+.dc__f { order: -1; margin-top: .125rem; font: 700 var(--fs-small)/1.2 var(--font-body); color: var(--plate-ink-2); }
+.dc__pile.is-top .dc__f { color: #7B4E00; }
+.dc__note, .dt__note { min-height: 2.5em; text-align: center; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--plate-ink-2); }
+.dc__ctl { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.dc__ctl:empty { display: none; }
+.dc__ctl .btn { min-height: 3rem; }
+.dc__view.is-on { --btn-face: #3C6880; --btn-ink: #FFFFFF; --btn-line: #3C6880; --btn-edge: #284A5C; }
+/* the small picture */
+.wb--dcards.wb--mini { gap: .25rem; }
+.wb--mini .dc__tray, .wb--mini .dc__row { min-height: 0; gap: .25rem; padding: .25rem; }
+.wb--mini .dc__card { min-width: 2.125rem; height: 2.375rem; font-size: 1.125rem; }
+.wb--mini .dc__pile .dc__card { height: 1.875rem; }
+.wb--dcards.is-fixed .dc__tray { background: none; }
+@media (max-width: 479px) {
+  .dc__card, .dc__slot { min-width: 2.75rem; }
+  .dc__row .dc__card, .dc__row .dc__slot { min-width: 2.25rem; }
+}
+
+/* ---------- the towers ---------- */
+.wb--dtowers { --dt-u: 1.5rem; --dt-foot: 2rem; display: flex; flex-direction: column; align-items: center; gap: .375rem; width: 100%; }
+.wb--dtowers.wb--mini { --dt-u: .875rem; --dt-foot: 1.5rem; }
+.dt__field { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: .375rem; width: 100%; padding-top: .75rem; }
+.dt__tower {
+  flex: 0 1 3.5rem; min-width: 2.75rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  min-height: calc(var(--dt-u) * var(--dt-top) + var(--dt-foot) + var(--dt-name, 0rem) + 1rem); padding: .25rem .125rem 0; border-radius: var(--r-sm);
+  background: none; color: var(--plate-ink);
+}
+.wb--mini .dt__tower { flex-basis: 2.25rem; min-width: 1.5rem; padding-top: .375rem; }
+button.dt__tower { cursor: pointer; box-shadow: inset 0 0 0 2px #DCE8F3; background: #F4F8FB; }
+button.dt__tower:disabled { cursor: default; }
+button.dt__tower.is-hand { box-shadow: inset 0 0 0 3px #F5A623; background: #FFF8E6; }
+.dt__tower.is-shake { animation: tool-shake .35s ease-in-out; }
+.dt__stack { display: flex; flex-direction: column-reverse; align-items: center; width: 100%; }
+.dt__blk { width: min(100%, calc(var(--dt-u) * 1.5)); height: var(--dt-u); border-radius: .1875rem; background: #5B8CA8; box-shadow: inset 0 0 0 1.5px #2C5167, inset 0 -3px 0 rgba(16, 48, 94, .18); }
+.dt__blk.is-level { background: #43A852; box-shadow: inset 0 0 0 1.5px #25692F, inset 0 -3px 0 rgba(16, 48, 94, .18); }
+.dt__blk.is-lift { background: #F7B53C; box-shadow: inset 0 0 0 1.5px #8A5800; transform: translateY(-.5rem); }
+.dt__blk.is-new { animation: dt-in var(--dur-base) var(--ease-pop, ease-out) both; }
+@keyframes dt-in { from { opacity: 0; transform: translateY(-1rem); } to { opacity: 1; transform: none; } }
+.dt__n { height: var(--dt-foot); display: grid; place-items: center; font: 600 1.25rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.wb--mini .dt__n { font-size: 1rem; }
+.dt__name { height: 1.25rem; font: 700 var(--fs-small)/1.25rem var(--font-body); color: var(--plate-ink-2); }
+.dt__line { position: absolute; left: 0; right: 0; height: 0; border-top: 3px dashed #C4452F; pointer-events: none; }
+.dt__line[hidden] { display: none; }
+.dt__field:has(.dt__name) .dt__line { margin-bottom: 1.25rem; }
+.dt__field:has(.dt__name) { --dt-name: 1.25rem; }
+.dt__sum { text-align: center; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--plate-ink); }
+.wb--dtowers.is-level .dt__note { color: #1F6B2D; }
+@media (max-width: 479px) { .wb--dtowers:not(.wb--mini) { --dt-u: 1.25rem; } }
+
+/* ---------- the frequency table ---------- */
+.dfq { display: flex; flex-direction: column; align-items: center; }
+.dfq__t { border-collapse: collapse; font: 600 1.125rem/1.2 var(--font-display); color: var(--plate-ink); font-variant-numeric: tabular-nums; }
+.dfq__t th, .dfq__t td { padding: .3125rem .875rem; border: 2px solid #9FB3CC; text-align: center; }
+.dfq__t th { background: #3C6880; color: #FFFFFF; font: 700 var(--fs-small)/1.2 var(--font-body); }
+.dfq__t td { background: #FFFFFF; }
+.dfq__t--rows td { text-align: left; letter-spacing: .01em; }
+.dfq__t--rows th, .dfq__t--rows td { padding: .375rem .625rem; }
+.dfq__t tr.is-hl td { background: #FFF1CF; box-shadow: inset 0 0 0 2px #F5A623; }
+
+/* ---------- what a child wrote (spot the mistake) ---------- */
+.s9-say { padding: .5rem .75rem; border-radius: var(--r-md); background: var(--plate); color: var(--plate-ink); box-shadow: inset 0 0 0 2px var(--plate-line); border-left: .375rem solid #5B8CA8; }
+.s9-say__who { font: 700 var(--fs-small)/1.3 var(--font-body); color: var(--plate-ink-2); }
+.s9-say__text { font: 600 1.125rem/1.4 var(--font-display); }
+.s9-q { display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; border-radius: var(--r-sm); background: var(--gold-soft); color: var(--gold-text); box-shadow: inset 0 0 0 2px var(--gold); }
+
+/* ---------- where the tools sit ---------- */
+/* See it: the tool takes the width of the desk and sits in the middle of its height */
+.see-hands__desk > .wb--dcards, .see-hands__desk > .wb--dtowers { flex: 1 1 auto; max-width: 34rem; margin-top: auto; margin-bottom: auto; }
+/* the test paper is white in both themes: a picture keeps its plate */
+.tp-sheet .s9-say { background: #F7FBFF; }
+@media (prefers-reduced-motion: reduce) { .dc__card.is-new, .dt__blk.is-new, .dc__card.is-shake, .dt__tower.is-shake { animation: none; } }
+
+

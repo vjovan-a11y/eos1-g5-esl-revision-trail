@@ -1,0 +1,10 @@
+/* 81-g5-polish.css - Grade 5: small fixes on top of the finished kit.
+   The Stage 6 objectives are long sentences. On a phone the skill under a Practise question keeps to two lines
+   (the whole sentence is on the test paper and on wide screens), so the question and its tool stay in view. */
+@media (max-width: 40rem) {
+  .mk__lo-item:not(.mk__lo-item--twm) .mk__lo-skill {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+  }
+  .mk__lo { gap: .1875rem; }
+}
+

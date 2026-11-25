@@ -1,0 +1,22 @@
+/* 26-nav.css - the Map and Stops buttons (26-nav.js) and the Stops menu */
+.nav-bar { display: flex; gap: .375rem; flex: none; }
+.nav-btn { width: auto; min-width: var(--tap); padding: 0 .75rem 0 .5rem; gap: .375rem; display: inline-flex; align-items: center; border-radius: 999px; }
+.nav-btn .icon { width: 1.375rem; height: 1.375rem; flex: none; }
+.nav-btn__label { font: 800 1rem/1 var(--font-body); letter-spacing: .01em; }
+.hub__bar .nav-bar { margin-left: auto; }
+@media (max-width: 40rem) { .topbar .nav-btn, .hub__bar .nav-btn { padding: 0; width: var(--tap); justify-content: center; } .topbar .nav-btn__label, .hub__bar .nav-btn__label { display: none; } }
+.nav-dialog .dialog__body { max-height: min(70vh, 38rem); overflow: auto; }
+.nav-stop { margin: 0 0 .75rem; padding: .75rem; border-radius: .875rem; background: var(--gold-soft); }
+.nav-stop__h { margin: 0 0 .5rem; font-weight: 800; color: var(--gold-text); }
+.nav-steps { display: flex; flex-wrap: wrap; gap: .375rem; }
+.nav-step.is-here { outline: 2px solid var(--gold); }
+.nav-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .375rem; }
+.nav-row { width: 100%; display: flex; align-items: center; gap: .75rem; padding: .5rem .75rem; border-radius: .875rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; font: inherit; }
+.nav-row.is-here { border-color: var(--gold); background: var(--gold-soft); }
+.nav-row__art { flex: none; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; }
+.nav-row__art svg, .nav-row__art .icon { width: 100%; height: 100%; }
+.nav-row__art .icon { width: 1.75rem; height: 1.75rem; }
+.nav-row__text { flex: 1; min-width: 0; display: grid; gap: .125rem; }
+.nav-row__text b { font: 800 1.0625rem/1.2 var(--font-body); }
+.nav-row__text span { font-size: .9rem; color: var(--ink-2); }
+.nav-row__here { flex: none; font-size: .8rem; font-weight: 800; color: var(--gold-text); }

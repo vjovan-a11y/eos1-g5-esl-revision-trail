@@ -1,0 +1,186 @@
+/* 71-test-paper.css - the Mini Practice test paper (70-test.js, 71-test-paper.js). Prefix: tp-
+   The sheet is white paper with black type in BOTH themes (like the art plate), so the app tokens are set back
+   to their daylight values inside it: the answer boxes, the pictures and the word links stay light too.
+   Pencil (the child): grey rings and ticks. Pen (the teacher, after marking): green ticks, red crosses. */
+
+.tp {
+  display: flex; flex-direction: column; gap: .5rem;
+  flex: 1 1 auto; min-height: 0; width: 100%; max-width: 52rem; margin: 0 auto;
+}
+
+.tp-sheet {
+  --surface: #FFFFFF; --surface-2: #F4F6F9; --line: #D4DFEB; --line-strong: #9AA6B4;
+  --ink: #111111; --ink-2: #444444; --ink-3: #6A6F76;
+  --pick: #2F7FD4; --pick-soft: #E4F0FC; --focus: #2F7FD4;
+  --go: #1E8E5F; --go-soft: #DDF4E8; --no: #C62C1C; --no-soft: #FDE7E3; --gold-soft: #FFF1CF;
+  --ctl: #FFFFFF; --ctl-ink: #10305E; --ctl-line: #C9D6E5; --ctl-edge: #B3C4D8;
+  --tp-font: Arial, 'Helvetica Neue', Helvetica, 'Liberation Sans', var(--font-body);
+  --tp-pencil: #3A3F47; --tp-good: #1E8E5F; --tp-bad: #C62C1C; --tp-half: #B86E00; --tp-grey: #5F656D;
+  --ring-wrong: #D93A3A;                              /* white paper in both themes: the day colour of the token */
+  color-scheme: light;
+  position: relative;
+  flex: 1 1 auto; min-height: 0;
+  overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  background: #FFFFFF; color: #111111;
+  border: 1px solid #DADDE2; border-radius: .375rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 .5rem 1.5rem -.5rem rgba(16, 48, 94, .28);
+  padding: 1rem 1rem 2rem;
+  font: 400 1.0625rem/1.5 var(--tp-font);
+}
+.tp-sheet:focus { outline: none; }
+.tp-sheet p { margin: 0; }
+.tp-sheet b, .tp-sheet strong { font-weight: 700; }
+
+/* the header: small caps line, the title, the Marks box, then a strong rule */
+.tp-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: .75rem; padding-bottom: .5rem; border-bottom: 3px solid #111111; }
+.tp-kicker { font: 700 .8125rem/1.3 var(--tp-font); letter-spacing: .1em; text-transform: uppercase; color: #444444; }
+.tp-title { margin: .125rem 0 0; font: 700 1.5rem/1.2 var(--tp-font); color: #111111; }
+.tp-total { display: flex; align-items: center; gap: .5rem; font: 700 .9375rem/1 var(--tp-font); }
+.tp-total__box {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 4.75rem; height: 2.75rem; padding: 0 .5rem;
+  border: 2px solid #111111; font: 700 1.25rem/1 var(--tp-font); white-space: nowrap;
+}
+.tp-total.is-marked .tp-total__box { color: var(--tp-bad); }
+
+.tp-strands { display: flex; flex-wrap: wrap; gap: .375rem 1rem; margin: .75rem 0 0; padding: 0; list-style: none; font-size: .9375rem; color: #444444; }
+.tp-strand { display: flex; align-items: center; gap: .5rem; }
+.tp-strand b { display: inline-flex; align-items: center; justify-content: center; min-width: 1.75rem; padding: 0 .375rem; border: 1.5px solid #111111; border-radius: 999px; font: 700 .8125rem/1.5 var(--tp-font); color: #111111; }
+.tp-instr { margin: .75rem 0 .25rem !important; padding: .625rem .75rem; background: #F4F5F7; border: 1px solid #DADDE2; border-radius: .375rem; font-size: .9375rem; color: #333333; }
+
+/* a question: the number (or the part letter) at the left, the text, the marks at the right */
+.tp-q { padding: 1rem 0 .875rem; border-radius: .25rem; }
+.tp-q + .tp-q { border-top: 1px dashed #C8CCD2; }
+.tp-q.is-missing { animation: tp-flash 1.4s ease-out; }
+@keyframes tp-flash { 0%, 100% { background: transparent; } 25% { background: #FFF3CC; } }
+.tp-row { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 3.5rem; column-gap: .5rem; align-items: start; }
+.tp-row + .tp-row { margin-top: .875rem; }
+.tp-row--part { padding-top: .75rem; border-top: 1px dashed #E1E4E8; }
+.tp-lab { font-weight: 700; }
+.tp-cell { min-width: 0; display: flex; flex-direction: column; gap: .625rem; }
+.tp-ask { font-weight: 400; }
+.tp-name { font-weight: 700; font-size: 1.125rem; }
+.tp-says { padding: .5rem .75rem; border: 1.5px solid #111111; border-radius: .875rem; font-style: italic; }
+.tp-mk { display: flex; flex-direction: column; align-items: flex-end; gap: .125rem; text-align: right; }
+.tp-mk__n { font-weight: 700; }
+/* the label under a question: code and skill · DOK level · TWM (small grey type, lined up with the question text) */
+.tp-tag { margin: .625rem 0 0 2.5rem !important; font-size: .75rem; line-height: 1.4; color: var(--tp-grey); overflow-wrap: anywhere; }
+.tp-tag b { font-weight: 700; color: #3A3F47; letter-spacing: .02em; }
+.tp-tag__dot { color: #6A6F76; }
+.tp-dok, .tp-twm { white-space: nowrap; }
+.tp-end { margin-top: 1.5rem !important; text-align: center; font-weight: 700; color: #444444; }
+
+/* answer boxes on paper: a dotted line; the box being filled is soft blue */
+.tp-lines { display: flex; flex-direction: column; gap: .375rem; }
+.tp-line { line-height: 2.75rem; }
+.tp-sheet .blank {
+  min-width: 6.5rem; height: max(2.75rem, 44px); margin: 0 .25rem; padding: 0 .375rem;
+  border: 0; border-radius: .25rem .25rem 0 0; background: transparent; box-shadow: none; border-bottom: 2px dotted #222222;
+  color: var(--tp-pencil); font: 600 1.25rem/1 var(--font-body); cursor: pointer;
+  /* the writing sits on the dotted line, and the unit after it (°C, eggs) on the same line, as on a printed paper */
+  vertical-align: baseline; align-items: flex-end; padding-bottom: .375rem;
+}
+.tp-sheet .blank::before { content: '\200B'; }      /* an empty box still has a line of text to sit on (its baseline) */
+.tp-sheet .blank--box, .tp-sheet .blank--cbox { min-width: 5rem; border: 2px solid #222222; border-radius: .25rem; }
+/* a mid line with a unit after it (Stop 4: "1 medal = ...... points") stays on one line on a phone */
+.tp-sheet .blank--mid { min-width: 5rem; }
+@media (max-width: 400px) { .tp-sheet .blank--mid { min-width: 3.5rem; } }
+.tp.is-typing .tp-sheet .blank.is-on { background: #EAF2FD; box-shadow: none; border-bottom: 2px solid #2F7FD4; }
+.tp.is-typing .tp-sheet .blank--box.is-on, .tp.is-typing .tp-sheet .blank--cbox.is-on { border-color: #2F7FD4; }
+.tp:not(.is-typing) .tp-sheet .blank.is-on::after { display: none; }
+.tp-sheet .blank.is-good { background: #EAF7F0; box-shadow: none; border-color: var(--tp-good); border-bottom-style: solid; }
+.tp-sheet .blank.is-bad { background: #FDECE9; box-shadow: none; border-color: var(--tp-bad); border-bottom-style: solid; }
+.tp-sheet .blank:focus-visible { outline: 3px solid #2F7FD4; outline-offset: 2px; }
+
+/* tick boxes: one row per option, the box at the right */
+.tp-ticks { display: flex; flex-direction: column; gap: .25rem; }
+.tp-tick {
+  display: grid; grid-template-columns: minmax(0, 1fr) 2.25rem; align-items: center; column-gap: .75rem;
+  width: 100%; min-height: 3rem; margin: 0; padding: .375rem .25rem .375rem .5rem;
+  border: 0; border-radius: .375rem; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.tp-tick:disabled { cursor: default; }
+.tp-tick:focus-visible, .tp-ring:focus-visible { outline: 3px solid #2F7FD4; outline-offset: 2px; }
+.tp-tick__txt { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
+.tp-tick__let { font-weight: 700; }
+.tp-tick__pic { display: block; max-width: 100%; overflow: hidden; }
+.tp-tick__pic .mat { justify-items: start; }
+/* on a phone the words say it and the column is narrow: the blocks show from a tablet up */
+@media (max-width: 599px) { .tp-tick__pic { display: none; } }
+.tp-tick__box { position: relative; justify-self: end; width: 1.875rem; height: 1.875rem; border: 2px solid #111111; background: #FFFFFF; }
+.tp-tick.is-good { background: #EAF7F0; }
+.tp-tick.is-bad { background: #FDECE9; }
+.tp-tick.is-answer .tp-tick__box { border-color: var(--go); border-style: dashed; }
+.tp-tick.is-good .tp-tick__box > .tp-pencil { stroke: var(--go); }
+.tp-tick.is-bad .tp-tick__box > .tp-pencil { stroke: var(--ring-wrong); }
+
+/* circle one word */
+.tp-circle { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.25rem; }
+.tp-ring {
+  position: relative; min-width: 3rem; min-height: 2.75rem; margin: 0; padding: .25rem .875rem;
+  border: 0; background: none; color: #111111; font: 700 1.125rem/1.2 var(--tp-font); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.tp-ring:disabled { cursor: default; }
+.tp-ring.is-good { color: var(--tp-good); }
+.tp-ring.is-bad { color: var(--tp-bad); }
+.tp-ring.is-good > .tp-pencil { stroke: var(--go); }
+.tp-ring.is-bad > .tp-pencil { stroke: var(--ring-wrong); }
+
+/* pencil strokes that draw themselves, and the teacher's pen */
+.tp-pencil { position: absolute; pointer-events: none; overflow: visible; fill: none; stroke: var(--tp-pencil); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.tp-pencil path { stroke-dasharray: 1 1; stroke-dashoffset: 0; animation: tp-draw .38s ease-out both; }
+@keyframes tp-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.tp-pencil--ring { left: -.125rem; top: -.125rem; width: calc(100% + .25rem); height: calc(100% + .25rem); }
+.tp-pencil--tick { left: -.1rem; top: -.55rem; width: 2.2rem; height: 2.2rem; stroke-width: 3; }
+.tp-pencil.is-fix { stroke: var(--tp-good); stroke-dasharray: none; }
+/* rings are closed and drawn solid, at once (Jovan, EOS 1 finishing touches); ticks still draw themselves */
+.tp-pencil--ring path { stroke-dasharray: none; animation: none !important; }
+/* the review: the right answer the child did not choose has a dashed green ring */
+.tp-pencil--answer { stroke: var(--go); }
+.tp-pencil--answer path { stroke-dasharray: .03 .022; animation: none !important; }
+/* the review's sign by what was chosen: a green tick (right) or a red cross (wrong) */
+.tp-sign {
+  position: absolute; top: -.5rem; right: -.625rem; z-index: 2;
+  display: grid; place-items: center; width: 1.375rem; height: 1.375rem; border-radius: 50%;
+  font: 900 .8125rem/1 var(--font-body); color: #FFFFFF; box-shadow: 0 0 0 2px #FFFFFF;
+  animation: rise-in var(--dur-quick) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+}
+.tp-sign--right { background: var(--go); }
+.tp-sign--wrong { background: var(--ring-wrong); }
+.tp-tick__box > .tp-sign { top: 50%; right: calc(100% + .375rem); margin-top: -.6875rem; }
+.tp-mk__got { display: inline-flex; align-items: center; gap: .125rem; font: 700 1rem/1 var(--tp-font); white-space: nowrap; }
+.tp-got--correct { color: var(--tp-good); }
+.tp-got--partial { color: var(--tp-half); }
+.tp-got--wrong { color: var(--tp-bad); }
+.tp-pen { position: relative; display: inline-block; width: 1.75rem; height: 1.75rem; flex: none; }
+.tp-pen svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+.tp-pen--correct svg { stroke: var(--tp-good); }
+.tp-pen--partial svg { stroke: var(--tp-half); }
+.tp-pen--wrong svg { stroke: var(--tp-bad); }
+@media (prefers-reduced-motion: reduce) { .tp-pencil path { animation: none; } .tp-q.is-missing { animation: none; background: #FFF3CC; } }
+
+/* how to do it: under a question that did not get full marks */
+.tp-fix { display: flex; flex-direction: column; gap: .375rem; margin: .75rem 0 0 2.5rem; padding: .625rem .75rem; border-radius: .5rem; background: #F2F6FA; border: 1px solid #D6E0EA; }
+.tp-fix__t { font: 700 .9375rem/1.3 var(--tp-font); color: #10305E; }
+.tp-fix__ans b { color: var(--tp-good); font-size: 1.125rem; }
+.tp-fix__model { font-style: italic; }
+.tp-fix__pic { max-width: 100%; overflow-x: auto; }
+
+/* the number pad under the paper, only while a box is being filled */
+.tp-pad { flex: none; }
+.tp:not(.is-typing) .tp-pad, .tp.is-marked .tp-pad { display: none; }
+
+@media (max-width: 26rem) {
+  .tp-row { grid-template-columns: 1.75rem minmax(0, 1fr) 3rem; column-gap: .375rem; }
+  .tp-tag { margin-left: 2.125rem !important; }
+  .tp-title { font-size: 1.3125rem; }
+  .tp-fix { margin-left: 0; }
+}
+@media (min-width: 40rem) {
+  .tp-sheet { padding: 1.5rem 2.25rem 2.5rem; border-radius: .5rem; }
+  .tp-row { grid-template-columns: 2.5rem minmax(0, 1fr) 4rem; }
+  .tp-tag { margin-left: 3rem !important; }
+}
+
+

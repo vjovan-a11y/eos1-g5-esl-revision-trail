@@ -1,0 +1,57 @@
+/* 80-devkit.css - the component gallery (route 'dev-kit'). For the team only: never linked from the app. */
+
+.devkit {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 2rem;
+  min-height: 0;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.devkit > * { width: 100%; max-width: 72rem; margin-left: auto; margin-right: auto; }
+.devkit__head { display: flex; align-items: center; gap: .875rem; }
+.devkit__head p { color: var(--ink-2); font-size: var(--fs-small); }
+
+.kit-section { display: flex; flex-direction: column; gap: .875rem; }
+.kit-section__title { padding-bottom: .375rem; border-bottom: 2px solid var(--line); font-size: var(--fs-h3); }
+.kit-section__note { max-width: 44rem; color: var(--ink-2); font-size: var(--fs-small); }
+
+.kit-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.25rem 1.5rem; }
+.kit-row--cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); align-items: start; }
+.kit-row--tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); align-items: start; }
+
+.kit-spec { display: flex; flex-direction: column; gap: .375rem; min-width: 0; }
+.kit-spec--wide { flex: 1 1 18rem; }
+.kit-spec__box { min-width: 0; }
+.kit-spec figcaption { color: var(--ink-3); font: 700 var(--fs-small)/1.2 var(--font-body); }
+.kit-row--cards .kit-spec--wide { grid-column: 1 / -1; }
+
+.kit-stack { display: flex; flex-direction: column; align-items: stretch; gap: .375rem; }
+.kit-band { display: flex; align-items: center; gap: .5rem; min-height: var(--topbar-h); padding: 0 .625rem; border-radius: var(--r-md); background: var(--band); color: var(--band-ink); }
+.kit-band .topbar__title { flex: 1 1 auto; }
+.kit-zip { display: block; width: 5rem; }
+.kit-text { max-width: 34rem; font-size: var(--fs-body); line-height: 1.7; }
+
+.kit-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); gap: .75rem .5rem; }
+.kit-icon { display: flex; flex-direction: column; align-items: center; gap: .25rem; color: var(--ink); font: 700 var(--fs-small)/1.1 var(--font-body); text-align: center; }
+.kit-icon .icon { width: 1.75rem; height: 1.75rem; }
+.kit-icon span { color: var(--ink-3); }
+
+/* specimens of things that normally open over the page */
+.kit-spec .dialog { max-width: none; box-shadow: var(--shadow-1); animation: none; }
+.kit-spec .toast { display: inline-block; animation: none; }
+.kit-spec .result { margin-top: 2.5rem; animation: none; }
+.celebrate--inline { position: relative; z-index: 0; border-radius: var(--r-xl); animation: none; }
+.celebrate--inline .celebrate__badge { animation: none; }
+.kit-tile { padding: .5rem 1rem; border-radius: var(--r-pill); font: 600 1.125rem/1.2 var(--font-display); min-height: var(--tap); }
+
+/* the maths demo: one big number with its gold digit */
+.demo-number { margin: auto; font: 600 clamp(3rem, 14vw, 6rem)/1 var(--font-display); color: var(--ink); text-align: center; font-variant-numeric: tabular-nums; }
+
+

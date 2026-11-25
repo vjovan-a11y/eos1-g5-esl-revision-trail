@@ -1,0 +1,532 @@
+/* 46-worlds.css - the worlds of Stops 2 to 9: their tokens and the scene placeholder.
+
+   Each world has its own accent family, taken from the Grade 4 world hues (brief/10-build-plan.md §3),
+   and the same token set as world 1 in 00-tokens.css: --wN-bg … --wN-map-dot. As the theme contract
+   asks, every token is defined on :root (light), again under the guarded dark media query and again
+   under :root[data-theme="dark"]. data-world="N" on #app (the router sets it) swaps them in.
+   --world-N / --world-N-deep (the hue of a stop on the map, the locked hub) are set here too; this
+   file comes after 00-tokens.css, with the same selectors, so it wins.
+   Text on the band and on the accent reads at 4.5:1 or more in both themes. Where white text on a
+   light accent would not (pink, amber, green, teal, lime, slate, magenta), --wN-accent-ink is a deep
+   ink of the same hue. */
+
+:root {
+  --world-5: #E0902F;  --world-5-deep: #AC661A;
+  --world-4: #43A852;  --world-4-deep: #2D7C3A;
+  --world-6: #7C5FD8;  --world-6-deep: #5940A8;
+  --world-2: #17A2B0;  --world-2-deep: #0E7682;
+  --world-3: #2F7FD4;  --world-3-deep: #1F5CA0;
+  --world-7: #8DB32E;  --world-7-deep: #66861A;
+  --world-9: #5B8CA8;  --world-9-deep: #3C6880;
+  --world-8: #C050A8;  --world-8-deep: #92367E;
+
+  /* world 2, Pattern Canyon: pollen amber and warm honey */
+  --w5-bg: #F4EEE7;
+  --w5-bg-deep: #E9DFD3;
+  --w5-surface: #FFFFFF;
+  --w5-surface-2: #F7F3ED;
+  --w5-line: #E2D7CA;
+  --w5-line-strong: #CCBCA8;
+  --w5-bar: #FFFFFF;
+  --w5-ctl: #FFFFFF;
+  --w5-ctl-line: #DCD0C1;
+  --w5-ctl-edge: #CBBCA9;
+  --w5-band: #4A3112;
+  --w5-band-2: #6B4619;
+  --w5-band-ink: #FBF8F4;
+  --w5-band-ink-2: #D9C4AB;
+  --w5-accent: #E0902F;
+  --w5-accent-text: #6D4413;
+  --w5-accent-ink: #231606;
+  --w5-accent-soft: #F2E7D9;
+  --w5-glow: rgba(224, 144, 47, 0.34);
+  --w5-map-dot: rgba(74, 49, 18, 0.1);
+
+  /* world 3, Rounding River: fresh leaf green */
+  --w4-bg: #E9F1EA;
+  --w4-bg-deep: #D7E5D9;
+  --w4-surface: #FFFFFF;
+  --w4-surface-2: #EFF6F0;
+  --w4-line: #CEDED1;
+  --w4-line-strong: #AEC6B2;
+  --w4-bar: #FFFFFF;
+  --w4-ctl: #FFFFFF;
+  --w4-ctl-line: #C6D7C8;
+  --w4-ctl-edge: #AFC5B3;
+  --w4-band: #1B4021;
+  --w4-band-2: #285D30;
+  --w4-band-ink: #F5FAF6;
+  --w4-band-ink-2: #B3D1B7;
+  --w4-accent: #43A852;
+  --w4-accent-text: #235D2B;
+  --w4-accent-ink: #06230A;
+  --w4-accent-soft: #DDEEE0;
+  --w4-glow: rgba(67, 168, 82, 0.34);
+  --w4-map-dot: rgba(27, 64, 33, 0.1);
+
+  /* world 4, Market Square: studio violet */
+  --w6-bg: #EAE7F3;
+  --w6-bg-deep: #D9D4E8;
+  --w6-surface: #FFFFFF;
+  --w6-surface-2: #F0EEF7;
+  --w6-line: #D0CBE1;
+  --w6-line-strong: #B1A9CB;
+  --w6-bar: #FFFFFF;
+  --w6-ctl: #FFFFFF;
+  --w6-ctl-line: #C8C2DB;
+  --w6-ctl-edge: #B2ABC9;
+  --w6-band: #201448;
+  --w6-band-2: #2F1D68;
+  --w6-band-ink: #F6F4FB;
+  --w6-band-ink-2: #B7ADD7;
+  --w6-accent: #7C5FD8;
+  --w6-accent-text: #2A1669;
+  --w6-accent-ink: #FFFFFF;
+  --w6-accent-soft: #DFDAF1;
+  --w6-glow: rgba(124, 95, 216, 0.34);
+  --w6-map-dot: rgba(32, 20, 72, 0.1);
+
+  /* world 5, Times Table Tower: lab teal */
+  --w2-bg: #E7F2F4;
+  --w2-bg-deep: #D3E7E9;
+  --w2-surface: #FFFFFF;
+  --w2-surface-2: #EDF6F7;
+  --w2-line: #CAE0E2;
+  --w2-line-strong: #A8C9CC;
+  --w2-bar: #FFFFFF;
+  --w2-ctl: #FFFFFF;
+  --w2-ctl-line: #C1D9DC;
+  --w2-ctl-edge: #A9C8CB;
+  --w2-band: #12454A;
+  --w2-band-2: #19646B;
+  --w2-band-ink: #F4FAFB;
+  --w2-band-ink-2: #BBDCE1;
+  --w2-accent: #17A2B0;
+  --w2-accent-text: #13646D;
+  --w2-accent-ink: #062023;
+  --w2-accent-soft: #D9F0F2;
+  --w2-glow: rgba(23, 162, 176, 0.34);
+  --w2-map-dot: rgba(18, 69, 74, 0.1);
+
+  /* world 6, Sharing Harbour: clear water blue */
+  --w3-bg: #E7EDF4;
+  --w3-bg-deep: #D3DEE9;
+  --w3-surface: #FFFFFF;
+  --w3-surface-2: #EDF2F7;
+  --w3-line: #CAD6E2;
+  --w3-line-strong: #A8BACC;
+  --w3-bar: #FFFFFF;
+  --w3-ctl: #FFFFFF;
+  --w3-ctl-line: #C1CEDC;
+  --w3-ctl-edge: #AABACB;
+  --w3-band: #122D4A;
+  --w3-band-2: #1A416B;
+  --w3-band-ink: #F4F7FB;
+  --w3-band-ink-2: #ABC1D9;
+  --w3-accent: #2F7FD4;
+  --w3-accent-text: #133E6C;
+  --w3-accent-ink: #040F1B;
+  --w3-accent-soft: #D9E5F2;
+  --w3-glow: rgba(47, 127, 212, 0.34);
+  --w3-map-dot: rgba(18, 45, 74, 0.1);
+
+  /* world 7, Fraction Garden: lime and kitchen green */
+  --w7-bg: #F0F3E7;
+  --w7-bg-deep: #E2E8D4;
+  --w7-surface: #FFFFFF;
+  --w7-surface-2: #F4F7EE;
+  --w7-line: #DBE1CB;
+  --w7-line-strong: #C1CAAA;
+  --w7-bar: #FFFFFF;
+  --w7-ctl: #FFFFFF;
+  --w7-ctl-line: #D4DAC3;
+  --w7-ctl-edge: #C1C9AB;
+  --w7-band: #394715;
+  --w7-band-2: #52671E;
+  --w7-band-ink: #F9FBF4;
+  --w7-band-ink-2: #D7E2BF;
+  --w7-accent: #8DB32E;
+  --w7-accent-text: #516818;
+  --w7-accent-ink: #1B2306;
+  --w7-accent-soft: #EAF1DA;
+  --w7-glow: rgba(141, 179, 46, 0.34);
+  --w7-map-dot: rgba(57, 71, 21, 0.1);
+
+  /* world 8, Clock Station: cloudy sky slate */
+  --w9-bg: #EAEEF0;
+  --w9-bg-deep: #D8DFE3;
+  --w9-surface: #FFFFFF;
+  --w9-surface-2: #F0F3F5;
+  --w9-line: #D0D8DC;
+  --w9-line-strong: #B1BDC3;
+  --w9-bar: #FFFFFF;
+  --w9-ctl: #FFFFFF;
+  --w9-ctl-line: #C8D0D5;
+  --w9-ctl-edge: #B2BCC2;
+  --w9-band: #20323C;
+  --w9-band-2: #2E4857;
+  --w9-band-ink: #F5F8F9;
+  --w9-band-ink-2: #B6C5CD;
+  --w9-accent: #5B8CA8;
+  --w9-accent-text: #294656;
+  --w9-accent-ink: #061823;
+  --w9-accent-soft: #DFE7EC;
+  --w9-glow: rgba(91, 140, 168, 0.34);
+  --w9-map-dot: rgba(32, 50, 60, 0.1);
+
+  /* world 9, Chance Fair: water-cycle magenta */
+  --w8-bg: #F2E9F0;
+  --w8-bg-deep: #E6D6E2;
+  --w8-surface: #FFFFFF;
+  --w8-surface-2: #F6EFF4;
+  --w8-line: #DFCEDB;
+  --w8-line-strong: #C7ADC2;
+  --w8-bar: #FFFFFF;
+  --w8-ctl: #FFFFFF;
+  --w8-ctl-line: #D8C5D4;
+  --w8-ctl-edge: #C6AEC1;
+  --w8-band: #421A39;
+  --w8-band-2: #5F2553;
+  --w8-band-ink: #FAF5F9;
+  --w8-band-ink-2: #D2B1CB;
+  --w8-accent: #C050A8;
+  --w8-accent-text: #602052;
+  --w8-accent-ink: #1B0415;
+  --w8-accent-soft: #EFDCEB;
+  --w8-glow: rgba(192, 80, 168, 0.34);
+  --w8-map-dot: rgba(66, 26, 57, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --world-5: #E3AA64;  --world-5-deep: #67461E;
+    --world-4: #3AD050;  --world-4-deep: #265E2F;
+    --world-6: #A187F2;  --world-6-deep: #322263;
+    --world-2: #2CC8D8;  --world-2-deep: #1E6067;
+    --world-3: #6EADF1;  --world-3-deep: #1F4165;
+    --world-7: #9ECA31;  --world-7-deep: #506223;
+    --world-9: #87BAD8;  --world-9-deep: #264A5E;
+    --world-8: #E785D2;  --world-8-deep: #5E2652;
+    /* Pattern Canyon */
+    --w5-bg: #291B0A;  --w5-bg-deep: #1D1307;  --w5-surface: #3A2812;  --w5-surface-2: #4D3519;
+    --w5-line: #584022;  --w5-line-strong: #7D5D36;  --w5-bar: #33220D;  --w5-ctl: #543B1C;
+    --w5-ctl-line: #735530;  --w5-ctl-edge: #735530;  --w5-band: #191006;  --w5-band-2: #39260E;
+    --w5-band-ink: #FBF8F4;  --w5-band-ink-2: #CBB395;  --w5-accent: #E3AA64;  --w5-accent-text: #F6CB98;
+    --w5-accent-ink: #271907;  --w5-accent-soft: #452E12;  --w5-glow: rgba(227, 170, 100, 0.42);  --w5-map-dot: rgba(227, 170, 100, 0.1);
+    /* Rounding River */
+    --w4-bg: #102313;  --w4-bg-deep: #0B190D;  --w4-surface: #19331D;  --w4-surface-2: #224427;
+    --w4-line: #2C4F31;  --w4-line-strong: #427049;  --w4-bar: #142C17;  --w4-ctl: #264B2B;
+    --w4-ctl-line: #3C6742;  --w4-ctl-edge: #3C6742;  --w4-band: #09160B;  --w4-band-2: #16321A;
+    --w4-band-ink: #F5FAF6;  --w4-band-ink-2: #9EC2A4;  --w4-accent: #3AD050;  --w4-accent-text: #A8E5B1;
+    --w4-accent-ink: #0C2110;  --w4-accent-soft: #1B3C20;  --w4-glow: rgba(58, 208, 80, 0.42);  --w4-map-dot: rgba(58, 208, 80, 0.1);
+    /* Market Square */
+    --w6-bg: #120C27;  --w6-bg-deep: #0C081C;  --w6-surface: #1D1439;  --w6-surface-2: #271B4B;
+    --w6-line: #302456;  --w6-line-strong: #48397A;  --w6-bar: #170E31;  --w6-ctl: #2A1E52;
+    --w6-ctl-line: #423370;  --w6-ctl-edge: #423370;  --w6-band: #0B0618;  --w6-band-2: #1A1037;
+    --w6-band-ink: #F6F4FB;  --w6-band-ink-2: #A397C9;  --w6-accent: #A187F2;  --w6-accent-text: #B09CF2;
+    --w6-accent-ink: #0F0826;  --w6-accent-soft: #1F1443;  --w6-glow: rgba(161, 135, 242, 0.42);  --w6-map-dot: rgba(161, 135, 242, 0.1);
+    /* Times Table Tower */
+    --w2-bg: #0A2629;  --w2-bg-deep: #071B1D;  --w2-surface: #12373A;  --w2-surface-2: #19484D;
+    --w2-line: #225358;  --w2-line-strong: #36767D;  --w2-bar: #0D2F33;  --w2-ctl: #1C4F54;
+    --w2-ctl-line: #306D73;  --w2-ctl-edge: #306D73;  --w2-band: #061719;  --w2-band-2: #0E3539;
+    --w2-band-ink: #F4FAFB;  --w2-band-ink-2: #95C6CB;  --w2-accent: #2CC8D8;  --w2-accent-text: #98EDF6;
+    --w2-accent-ink: #072427;  --w2-accent-soft: #124045;  --w2-glow: rgba(44, 200, 216, 0.42);  --w2-map-dot: rgba(44, 200, 216, 0.1);
+    /* Sharing Harbour */
+    --w3-bg: #0A1929;  --w3-bg-deep: #07121D;  --w3-surface: #12263A;  --w3-surface-2: #19324D;
+    --w3-line: #223C58;  --w3-line-strong: #36587C;  --w3-bar: #0D1F33;  --w3-ctl: #1C3754;
+    --w3-ctl-line: #315173;  --w3-ctl-edge: #315173;  --w3-band: #060F19;  --w3-band-2: #0F2339;
+    --w3-band-ink: #F4F7FB;  --w3-band-ink-2: #95AFCB;  --w3-accent: #6EADF1;  --w3-accent-text: #98C5F6;
+    --w3-accent-ink: #071627;  --w3-accent-soft: #122B45;  --w3-glow: rgba(110, 173, 241, 0.42);  --w3-map-dot: rgba(110, 173, 241, 0.1);
+    /* Fraction Garden */
+    --w7-bg: #1F270C;  --w7-bg-deep: #161C08;  --w7-surface: #2E3814;  --w7-surface-2: #3D4A1C;
+    --w7-line: #485525;  --w7-line-strong: #67793A;  --w7-bar: #27310F;  --w7-ctl: #43521F;
+    --w7-ctl-line: #5E6F34;  --w7-ctl-edge: #5E6F34;  --w7-band: #131807;  --w7-band-2: #2C3711;
+    --w7-band-ink: #F9FBF4;  --w7-band-ink-2: #BAC898;  --w7-accent: #9ECA31;  --w7-accent-text: #D9F19D;
+    --w7-accent-ink: #1D2508;  --w7-accent-soft: #354215;  --w7-glow: rgba(158, 202, 49, 0.42);  --w7-map-dot: rgba(158, 202, 49, 0.1);
+    /* Clock Station */
+    --w9-bg: #111C22;  --w9-bg-deep: #0C1418;  --w9-surface: #1B2931;  --w9-surface-2: #253741;
+    --w9-line: #2F414C;  --w9-line-strong: #465F6D;  --w9-bar: #16232A;  --w9-ctl: #293C48;
+    --w9-ctl-line: #3F5764;  --w9-ctl-edge: #3F5764;  --w9-band: #0A1115;  --w9-band-2: #18272F;
+    --w9-band-ink: #F5F8F9;  --w9-band-ink-2: #A1B4BF;  --w9-accent: #87BAD8;  --w9-accent-text: #ADCEE0;
+    --w9-accent-ink: #0E1920;  --w9-accent-soft: #1E2F39;  --w9-glow: rgba(135, 186, 216, 0.42);  --w9-map-dot: rgba(135, 186, 216, 0.1);
+    /* Chance Fair */
+    --w8-bg: #240F20;  --w8-bg-deep: #1A0A16;  --w8-surface: #35182E;  --w8-surface-2: #45213E;
+    --w8-line: #502A48;  --w8-line-strong: #724068;  --w8-bar: #2D1228;  --w8-ctl: #4C2444;
+    --w8-ctl-line: #693A5F;  --w8-ctl-edge: #693A5F;  --w8-band: #160813;  --w8-band-2: #33152C;
+    --w8-band-ink: #FAF5F9;  --w8-band-ink-2: #C39DBB;  --w8-accent: #E785D2;  --w8-accent-text: #E8A5DA;
+    --w8-accent-ink: #220B1E;  --w8-accent-soft: #3D1936;  --w8-glow: rgba(231, 133, 210, 0.42);  --w8-map-dot: rgba(231, 133, 210, 0.1);
+  }
+}
+
+:root[data-theme="dark"] {
+  --world-5: #E3AA64;  --world-5-deep: #67461E;
+  --world-4: #3AD050;  --world-4-deep: #265E2F;
+  --world-6: #A187F2;  --world-6-deep: #322263;
+  --world-2: #2CC8D8;  --world-2-deep: #1E6067;
+  --world-3: #6EADF1;  --world-3-deep: #1F4165;
+  --world-7: #9ECA31;  --world-7-deep: #506223;
+  --world-9: #87BAD8;  --world-9-deep: #264A5E;
+  --world-8: #E785D2;  --world-8-deep: #5E2652;
+  /* Pattern Canyon */
+  --w5-bg: #291B0A;  --w5-bg-deep: #1D1307;  --w5-surface: #3A2812;  --w5-surface-2: #4D3519;
+  --w5-line: #584022;  --w5-line-strong: #7D5D36;  --w5-bar: #33220D;  --w5-ctl: #543B1C;
+  --w5-ctl-line: #735530;  --w5-ctl-edge: #735530;  --w5-band: #191006;  --w5-band-2: #39260E;
+  --w5-band-ink: #FBF8F4;  --w5-band-ink-2: #CBB395;  --w5-accent: #E3AA64;  --w5-accent-text: #F6CB98;
+  --w5-accent-ink: #271907;  --w5-accent-soft: #452E12;  --w5-glow: rgba(227, 170, 100, 0.42);  --w5-map-dot: rgba(227, 170, 100, 0.1);
+  /* Rounding River */
+  --w4-bg: #102313;  --w4-bg-deep: #0B190D;  --w4-surface: #19331D;  --w4-surface-2: #224427;
+  --w4-line: #2C4F31;  --w4-line-strong: #427049;  --w4-bar: #142C17;  --w4-ctl: #264B2B;
+  --w4-ctl-line: #3C6742;  --w4-ctl-edge: #3C6742;  --w4-band: #09160B;  --w4-band-2: #16321A;
+  --w4-band-ink: #F5FAF6;  --w4-band-ink-2: #9EC2A4;  --w4-accent: #3AD050;  --w4-accent-text: #A8E5B1;
+  --w4-accent-ink: #0C2110;  --w4-accent-soft: #1B3C20;  --w4-glow: rgba(58, 208, 80, 0.42);  --w4-map-dot: rgba(58, 208, 80, 0.1);
+  /* Market Square */
+  --w6-bg: #120C27;  --w6-bg-deep: #0C081C;  --w6-surface: #1D1439;  --w6-surface-2: #271B4B;
+  --w6-line: #302456;  --w6-line-strong: #48397A;  --w6-bar: #170E31;  --w6-ctl: #2A1E52;
+  --w6-ctl-line: #423370;  --w6-ctl-edge: #423370;  --w6-band: #0B0618;  --w6-band-2: #1A1037;
+  --w6-band-ink: #F6F4FB;  --w6-band-ink-2: #A397C9;  --w6-accent: #A187F2;  --w6-accent-text: #B09CF2;
+  --w6-accent-ink: #0F0826;  --w6-accent-soft: #1F1443;  --w6-glow: rgba(161, 135, 242, 0.42);  --w6-map-dot: rgba(161, 135, 242, 0.1);
+  /* Times Table Tower */
+  --w2-bg: #0A2629;  --w2-bg-deep: #071B1D;  --w2-surface: #12373A;  --w2-surface-2: #19484D;
+  --w2-line: #225358;  --w2-line-strong: #36767D;  --w2-bar: #0D2F33;  --w2-ctl: #1C4F54;
+  --w2-ctl-line: #306D73;  --w2-ctl-edge: #306D73;  --w2-band: #061719;  --w2-band-2: #0E3539;
+  --w2-band-ink: #F4FAFB;  --w2-band-ink-2: #95C6CB;  --w2-accent: #2CC8D8;  --w2-accent-text: #98EDF6;
+  --w2-accent-ink: #072427;  --w2-accent-soft: #124045;  --w2-glow: rgba(44, 200, 216, 0.42);  --w2-map-dot: rgba(44, 200, 216, 0.1);
+  /* Sharing Harbour */
+  --w3-bg: #0A1929;  --w3-bg-deep: #07121D;  --w3-surface: #12263A;  --w3-surface-2: #19324D;
+  --w3-line: #223C58;  --w3-line-strong: #36587C;  --w3-bar: #0D1F33;  --w3-ctl: #1C3754;
+  --w3-ctl-line: #315173;  --w3-ctl-edge: #315173;  --w3-band: #060F19;  --w3-band-2: #0F2339;
+  --w3-band-ink: #F4F7FB;  --w3-band-ink-2: #95AFCB;  --w3-accent: #6EADF1;  --w3-accent-text: #98C5F6;
+  --w3-accent-ink: #071627;  --w3-accent-soft: #122B45;  --w3-glow: rgba(110, 173, 241, 0.42);  --w3-map-dot: rgba(110, 173, 241, 0.1);
+  /* Fraction Garden */
+  --w7-bg: #1F270C;  --w7-bg-deep: #161C08;  --w7-surface: #2E3814;  --w7-surface-2: #3D4A1C;
+  --w7-line: #485525;  --w7-line-strong: #67793A;  --w7-bar: #27310F;  --w7-ctl: #43521F;
+  --w7-ctl-line: #5E6F34;  --w7-ctl-edge: #5E6F34;  --w7-band: #131807;  --w7-band-2: #2C3711;
+  --w7-band-ink: #F9FBF4;  --w7-band-ink-2: #BAC898;  --w7-accent: #9ECA31;  --w7-accent-text: #D9F19D;
+  --w7-accent-ink: #1D2508;  --w7-accent-soft: #354215;  --w7-glow: rgba(158, 202, 49, 0.42);  --w7-map-dot: rgba(158, 202, 49, 0.1);
+  /* Clock Station */
+  --w9-bg: #111C22;  --w9-bg-deep: #0C1418;  --w9-surface: #1B2931;  --w9-surface-2: #253741;
+  --w9-line: #2F414C;  --w9-line-strong: #465F6D;  --w9-bar: #16232A;  --w9-ctl: #293C48;
+  --w9-ctl-line: #3F5764;  --w9-ctl-edge: #3F5764;  --w9-band: #0A1115;  --w9-band-2: #18272F;
+  --w9-band-ink: #F5F8F9;  --w9-band-ink-2: #A1B4BF;  --w9-accent: #87BAD8;  --w9-accent-text: #ADCEE0;
+  --w9-accent-ink: #0E1920;  --w9-accent-soft: #1E2F39;  --w9-glow: rgba(135, 186, 216, 0.42);  --w9-map-dot: rgba(135, 186, 216, 0.1);
+  /* Chance Fair */
+  --w8-bg: #240F20;  --w8-bg-deep: #1A0A16;  --w8-surface: #35182E;  --w8-surface-2: #45213E;
+  --w8-line: #502A48;  --w8-line-strong: #724068;  --w8-bar: #2D1228;  --w8-ctl: #4C2444;
+  --w8-ctl-line: #693A5F;  --w8-ctl-edge: #693A5F;  --w8-band: #160813;  --w8-band-2: #33152C;
+  --w8-band-ink: #FAF5F9;  --w8-band-ink-2: #C39DBB;  --w8-accent: #E785D2;  --w8-accent-text: #E8A5DA;
+  --w8-accent-ink: #220B1E;  --w8-accent-soft: #3D1936;  --w8-glow: rgba(231, 133, 210, 0.42);  --w8-map-dot: rgba(231, 133, 210, 0.1);
+}
+
+/* ---- data-world on #app swaps the world's tokens in (no literal colours below this line) ---- */
+#app[data-world="2"] {
+  --bg: var(--w2-bg);
+  --bg-deep: var(--w2-bg-deep);
+  --surface: var(--w2-surface);
+  --surface-2: var(--w2-surface-2);
+  --line: var(--w2-line);
+  --line-strong: var(--w2-line-strong);
+  --bar: var(--w2-bar);
+  --ctl: var(--w2-ctl);
+  --ctl-line: var(--w2-ctl-line);
+  --ctl-edge: var(--w2-ctl-edge);
+  --band: var(--w2-band);
+  --band-2: var(--w2-band-2);
+  --band-ink: var(--w2-band-ink);
+  --band-ink-2: var(--w2-band-ink-2);
+  --accent: var(--w2-accent);
+  --accent-text: var(--w2-accent-text);
+  --accent-ink: var(--w2-accent-ink);
+  --accent-soft: var(--w2-accent-soft);
+  --glow: var(--w2-glow);
+  --map-dot: var(--w2-map-dot);
+}
+#app[data-world="3"] {
+  --bg: var(--w3-bg);
+  --bg-deep: var(--w3-bg-deep);
+  --surface: var(--w3-surface);
+  --surface-2: var(--w3-surface-2);
+  --line: var(--w3-line);
+  --line-strong: var(--w3-line-strong);
+  --bar: var(--w3-bar);
+  --ctl: var(--w3-ctl);
+  --ctl-line: var(--w3-ctl-line);
+  --ctl-edge: var(--w3-ctl-edge);
+  --band: var(--w3-band);
+  --band-2: var(--w3-band-2);
+  --band-ink: var(--w3-band-ink);
+  --band-ink-2: var(--w3-band-ink-2);
+  --accent: var(--w3-accent);
+  --accent-text: var(--w3-accent-text);
+  --accent-ink: var(--w3-accent-ink);
+  --accent-soft: var(--w3-accent-soft);
+  --glow: var(--w3-glow);
+  --map-dot: var(--w3-map-dot);
+}
+#app[data-world="4"] {
+  --bg: var(--w4-bg);
+  --bg-deep: var(--w4-bg-deep);
+  --surface: var(--w4-surface);
+  --surface-2: var(--w4-surface-2);
+  --line: var(--w4-line);
+  --line-strong: var(--w4-line-strong);
+  --bar: var(--w4-bar);
+  --ctl: var(--w4-ctl);
+  --ctl-line: var(--w4-ctl-line);
+  --ctl-edge: var(--w4-ctl-edge);
+  --band: var(--w4-band);
+  --band-2: var(--w4-band-2);
+  --band-ink: var(--w4-band-ink);
+  --band-ink-2: var(--w4-band-ink-2);
+  --accent: var(--w4-accent);
+  --accent-text: var(--w4-accent-text);
+  --accent-ink: var(--w4-accent-ink);
+  --accent-soft: var(--w4-accent-soft);
+  --glow: var(--w4-glow);
+  --map-dot: var(--w4-map-dot);
+}
+#app[data-world="5"] {
+  --bg: var(--w5-bg);
+  --bg-deep: var(--w5-bg-deep);
+  --surface: var(--w5-surface);
+  --surface-2: var(--w5-surface-2);
+  --line: var(--w5-line);
+  --line-strong: var(--w5-line-strong);
+  --bar: var(--w5-bar);
+  --ctl: var(--w5-ctl);
+  --ctl-line: var(--w5-ctl-line);
+  --ctl-edge: var(--w5-ctl-edge);
+  --band: var(--w5-band);
+  --band-2: var(--w5-band-2);
+  --band-ink: var(--w5-band-ink);
+  --band-ink-2: var(--w5-band-ink-2);
+  --accent: var(--w5-accent);
+  --accent-text: var(--w5-accent-text);
+  --accent-ink: var(--w5-accent-ink);
+  --accent-soft: var(--w5-accent-soft);
+  --glow: var(--w5-glow);
+  --map-dot: var(--w5-map-dot);
+}
+#app[data-world="6"] {
+  --bg: var(--w6-bg);
+  --bg-deep: var(--w6-bg-deep);
+  --surface: var(--w6-surface);
+  --surface-2: var(--w6-surface-2);
+  --line: var(--w6-line);
+  --line-strong: var(--w6-line-strong);
+  --bar: var(--w6-bar);
+  --ctl: var(--w6-ctl);
+  --ctl-line: var(--w6-ctl-line);
+  --ctl-edge: var(--w6-ctl-edge);
+  --band: var(--w6-band);
+  --band-2: var(--w6-band-2);
+  --band-ink: var(--w6-band-ink);
+  --band-ink-2: var(--w6-band-ink-2);
+  --accent: var(--w6-accent);
+  --accent-text: var(--w6-accent-text);
+  --accent-ink: var(--w6-accent-ink);
+  --accent-soft: var(--w6-accent-soft);
+  --glow: var(--w6-glow);
+  --map-dot: var(--w6-map-dot);
+}
+#app[data-world="7"] {
+  --bg: var(--w7-bg);
+  --bg-deep: var(--w7-bg-deep);
+  --surface: var(--w7-surface);
+  --surface-2: var(--w7-surface-2);
+  --line: var(--w7-line);
+  --line-strong: var(--w7-line-strong);
+  --bar: var(--w7-bar);
+  --ctl: var(--w7-ctl);
+  --ctl-line: var(--w7-ctl-line);
+  --ctl-edge: var(--w7-ctl-edge);
+  --band: var(--w7-band);
+  --band-2: var(--w7-band-2);
+  --band-ink: var(--w7-band-ink);
+  --band-ink-2: var(--w7-band-ink-2);
+  --accent: var(--w7-accent);
+  --accent-text: var(--w7-accent-text);
+  --accent-ink: var(--w7-accent-ink);
+  --accent-soft: var(--w7-accent-soft);
+  --glow: var(--w7-glow);
+  --map-dot: var(--w7-map-dot);
+}
+#app[data-world="8"] {
+  --bg: var(--w8-bg);
+  --bg-deep: var(--w8-bg-deep);
+  --surface: var(--w8-surface);
+  --surface-2: var(--w8-surface-2);
+  --line: var(--w8-line);
+  --line-strong: var(--w8-line-strong);
+  --bar: var(--w8-bar);
+  --ctl: var(--w8-ctl);
+  --ctl-line: var(--w8-ctl-line);
+  --ctl-edge: var(--w8-ctl-edge);
+  --band: var(--w8-band);
+  --band-2: var(--w8-band-2);
+  --band-ink: var(--w8-band-ink);
+  --band-ink-2: var(--w8-band-ink-2);
+  --accent: var(--w8-accent);
+  --accent-text: var(--w8-accent-text);
+  --accent-ink: var(--w8-accent-ink);
+  --accent-soft: var(--w8-accent-soft);
+  --glow: var(--w8-glow);
+  --map-dot: var(--w8-map-dot);
+}
+#app[data-world="9"] {
+  --bg: var(--w9-bg);
+  --bg-deep: var(--w9-bg-deep);
+  --surface: var(--w9-surface);
+  --surface-2: var(--w9-surface-2);
+  --line: var(--w9-line);
+  --line-strong: var(--w9-line-strong);
+  --bar: var(--w9-bar);
+  --ctl: var(--w9-ctl);
+  --ctl-line: var(--w9-ctl-line);
+  --ctl-edge: var(--w9-ctl-edge);
+  --band: var(--w9-band);
+  --band-2: var(--w9-band-2);
+  --band-ink: var(--w9-band-ink);
+  --band-ink-2: var(--w9-band-ink-2);
+  --accent: var(--w9-accent);
+  --accent-text: var(--w9-accent-text);
+  --accent-ink: var(--w9-accent-ink);
+  --accent-soft: var(--w9-accent-soft);
+  --glow: var(--w9-glow);
+  --map-dot: var(--w9-map-dot);
+}
+
+/* ---- the scene placeholder in the hub header (35-hub.js), until a world's drawing arrives ----
+   Made only of the world's tokens, so it follows the theme by itself: a daylight sky in the light
+   theme, a night sky in the dark one. The motes drift only while the scene is live (is-live is
+   added only when motion is allowed). */
+.world-ph__sky1 { stop-color: var(--accent-soft); }
+.world-ph__sky2 { stop-color: var(--bg); }
+.world-ph__sun { fill: var(--glow); opacity: .7; }
+.world-ph__far { fill: var(--hue); opacity: .26; }
+.world-ph__near { fill: var(--hue-deep); opacity: .34; }
+.world-ph__mote { fill: var(--band-ink); opacity: .55; transform-box: fill-box; transform-origin: center; }
+.world-ph__ring { fill: var(--glow); }
+.world-ph__rim { fill: var(--plate); }
+.world-ph.is-live .world-ph__mote { animation: world-ph-drift 11s ease-in-out infinite alternate; animation-delay: calc(var(--k, 0) * -1.6s); }
+.world-ph.is-live .world-ph__sun { animation: world-ph-breathe 9s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+@keyframes world-ph-drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(14px, -22px); }
+}
+@keyframes world-ph-breathe {
+  from { transform: scale(.96); }
+  to { transform: scale(1.04); }
+}
+
+/* ---- a step whose part is not in the pack yet: it can still be opened, it just looks quieter ---- */
+.step-card.is-building .step-card__icon .art-plate { opacity: .6; }
+.step-card.is-building .step-card__line { color: var(--ink-3); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  .world-ph__mote, .world-ph__sun { animation: none !important; }
+}
+/* a world scene in the hub header lives only on the richer effects tiers: on the lowest tier (a slow device,
+   or reduced motion, 80-polish.js) it stands still, even if the tier drops after the hub opened */
+html[data-fx="1"] .hub__art.is-live * { animation: none !important; }
+
+

@@ -1,0 +1,130 @@
+/* 39-g5-tools-s3.css - Grade 5, Stop 3: the sequence track (s3-track), the position / term table and the rule
+   builder (s3-tbl, s3-rule) and the rule machine (s3-mach). They sit on the light art plate (.wb, 38-tools.css),
+   which is light in both themes, so the colours are written here once. Below zero is cool blue, as on the number
+   line and the thermometer. Tap targets 48 px; text 15 px or more. Motion: transform and opacity only. */
+
+.s3-root { width: 100%; }
+
+/* ---------- the sequence track ---------- */
+.s3-track { display: grid; grid-template-columns: repeat(var(--s3-cols, 6), minmax(0, 1fr)); row-gap: .25rem; justify-content: center; max-width: calc(var(--s3-cols, 6) * 6.5rem); margin: 0 auto; }
+.s3-cell { display: flex; flex-direction: column; align-items: stretch; min-width: 0; }
+.s3-hopbox { position: relative; height: 2.75rem; width: 100%; margin-left: -50%; }
+.s3-cell:first-child .s3-hopbox { visibility: hidden; margin-left: 0; }
+.s3-arc { position: absolute; left: 0; right: 0; bottom: 0; top: 1.125rem; width: 100%; height: calc(100% - 1.125rem); overflow: visible; }
+.s3-arc path { fill: none; stroke: #C76A0E; stroke-width: 2.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.s3-arrow { position: absolute; right: 6%; bottom: 0; width: .5rem; height: .5rem; border-right: 2.5px solid #C76A0E; border-bottom: 2.5px solid #C76A0E; transform: rotate(28deg); }
+.s3-hopbox:empty { visibility: hidden; }
+.s3-lab { position: absolute; left: 0; right: 0; top: 0; text-align: center; font: 700 .9375rem/1 var(--font-display); color: #8A4504; white-space: nowrap; }
+.s3-lab .fr { font-size: .9375rem; margin: 0 .1em; flex-direction: row; }
+.s3-lab .fr > i:first-child { border-bottom: 0; }
+.s3-lab .fr > i { padding: 0; }
+.s3-lab .fr > .frs { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+/* the first term of a second row: the hop comes from the row above, so only its label is shown */
+.s3-cell.is-rowstart .s3-hopbox { margin-left: 0; }
+.s3-cell.is-rowstart .s3-arc, .s3-cell.is-rowstart .s3-arrow { display: none; }
+.s3-bub {
+  display: flex; align-items: center; justify-content: center; min-height: 2.75rem; margin: 0 .125rem; padding: .125rem;
+  border-radius: .875rem; background: #FFFFFF; box-shadow: inset 0 0 0 2px var(--plate-ink); color: var(--plate-ink);
+  font: 600 1.25rem/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.s3-bub .fr { font-size: 1rem; margin: 0 .08em; }
+.s3-bub.is-neg { background: #DCEBFB; box-shadow: inset 0 0 0 2px #1F5CA0; color: #123E73; }
+.s3-bub.is-zero { background: #EEF1F5; }
+.s3-bub.is-made { background: #FFF4DB; box-shadow: inset 0 0 0 2px #B8770E; }
+.s3-bub.is-made.is-neg { background: #DCEBFB; box-shadow: inset 0 0 0 2px #1F5CA0; }
+.s3-bub.is-ask { background: var(--gold-soft); box-shadow: none; border: 2px dashed var(--gold-edge); color: var(--gold-text); }
+.s3-bub.is-mark { box-shadow: inset 0 0 0 3px #F5A623; background: #FFF1CF; color: var(--plate-ink); }
+.s3-bub.is-hit { background: #DFF5E6; box-shadow: inset 0 0 0 3px #1E9E6A; color: #0E5A3B; }
+.s3-bub.is-miss { background: #FDECE9; box-shadow: inset 0 0 0 3px #D9593F; color: #8E2A17; }
+.s3-pos { margin-top: .1875rem; text-align: center; font: 700 .9375rem/1.1 var(--font-body); color: #1F5CA0; }
+.s3-cell.is-new .s3-bub { animation: s3-pop var(--dur-slow) var(--ease-pop, ease-out) both; }
+.s3-cell.is-new .s3-hopbox { animation: s3-fade var(--dur-slow) ease-out both; }
+@keyframes s3-pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+@keyframes s3-fade { from { opacity: 0; } to { opacity: 1; } }
+.s3-track.is-shake { animation: tool-shake .35s ease-in-out; }
+@media (max-width: 479px) {
+  .s3-bub { font-size: 1.0625rem; margin: 0 .0625rem; }
+  .s3-bub .fr { font-size: .9375rem; }
+}
+.wb--mini .s3-hopbox { height: 2.5rem; }
+.wb--mini .s3-bub { min-height: 2.25rem; font-size: 1.0625rem; }
+.wb--mini .s3-bub .fr { font-size: .9375rem; }
+
+.s3-goal { margin: 0 0 .25rem; text-align: center; font: 700 var(--fs-body)/1.25 var(--font-body); color: #1F5CA0; }
+.s3-say { margin: .5rem 0 0; min-height: 1.25rem; text-align: center; font: 700 var(--fs-small)/1.3 var(--font-body); color: var(--plate-ink-2); }
+.s3-say b, .s3-goal b { color: var(--plate-ink); }
+.s3-ctl { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem 1rem; margin-top: .5rem; }
+.s3-stepper, .s3-ctl__hop { display: flex; align-items: center; justify-content: center; gap: .5rem; }
+.s3-rule__row { display: grid; grid-template-columns: 3rem minmax(0, 1fr) 3rem; align-items: center; gap: .5rem; width: min(100%, 22rem); }
+.s3-pm { min-width: 3rem; min-height: 3rem; padding: .5rem; }
+.s3-hop, .s3-undo { min-height: 3rem; }
+.s3-undo { min-width: 3rem; padding: .5rem; }
+.s3-stepv, .s3-rulev { min-width: 7rem; text-align: center; font: 700 var(--fs-body)/1.2 var(--font-body); color: var(--plate-ink); }
+.s3-stepv b, .s3-rulev b { font: 600 1.25rem/1 var(--font-display); color: #1F5CA0; }
+.s3-stepv .fr { font-size: 1rem; }
+
+/* ---------- the position / term table ---------- */
+.s3-tbl { display: grid; gap: .25rem; align-items: stretch; }
+.s3-th {
+  display: flex; align-items: center; padding: .25rem .5rem; border-radius: var(--r-sm);
+  font: 700 .9375rem/1.1 var(--font-body); background: #E7EEF7; color: var(--plate-ink);
+}
+.s3-th--pos { background: #1F5CA0; color: #FFFFFF; }
+.s3-th--try { background: #FFF1CF; color: #7B4E00; }
+.s3-td {
+  position: relative; display: flex; align-items: center; justify-content: center; gap: .125rem; min-height: 2.75rem; min-width: 0; border-radius: var(--r-sm);
+  background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--plate-line); color: var(--plate-ink);
+  font: 600 1.25rem/1 var(--font-display); font-variant-numeric: tabular-nums;
+}
+.s3-td--pos { background: #DCEBFB; box-shadow: inset 0 0 0 1px #9DBFE6; color: #123E73; }
+.s3-td.is-ask { background: var(--gold-soft); box-shadow: none; border: 2px dashed var(--gold-edge); color: var(--gold-text); }
+.s3-td.is-hl { box-shadow: inset 0 0 0 3px #F5A623; background: #FFF1CF; }
+.s3-td.is-far { background: #DFF5E6; box-shadow: inset 0 0 0 3px #1E9E6A; color: #0E5A3B; animation: s3-pop var(--dur-slow) ease-out both; }
+.s3-td--try { font-size: 1.125rem; }
+.s3-td--try.is-ok { background: #DFF5E6; box-shadow: inset 0 0 0 2px #1E9E6A; color: #0E5A3B; }
+.s3-td--try.is-off { background: #FFF8E8; box-shadow: inset 0 0 0 2px #E2B865; color: #7B4E00; }
+.s3-td--try .icon { width: .875rem; height: .875rem; stroke-width: 3.5; flex: none; }
+.s3-td--cell { background: none; box-shadow: none; }
+.s3-td--cell .blank--tcell { width: 100%; min-width: 0; height: 3rem; margin: 0; padding: 0 .125rem; font-size: 1.25rem; }
+.s3-dots { display: flex; align-items: center; justify-content: center; font: 700 1rem/1 var(--font-body); color: var(--plate-ink-2); }
+.wb--mini .s3-td { min-height: 2.25rem; font-size: 1.0625rem; }
+.wb--mini .s3-th { padding: .1875rem .375rem; }
+@media (max-width: 479px) {
+  .s3-th { padding: .25rem .3125rem; }
+  .s3-td { font-size: 1.0625rem; }
+  .s3-td--try { font-size: 1rem; }
+  .s3-td--try .icon { display: none; }
+  .s3-td--cell .blank--tcell { font-size: 1.0625rem; }
+}
+
+/* the rule builder */
+.s3-rule { display: flex; flex-direction: column; align-items: center; gap: .375rem; margin-top: .5rem; }
+.s3-rulev { min-width: 0; }
+.s3-stable--build.is-fit .s3-rulev b { color: #0E5A3B; }
+
+/* ---------- the rule machine (a picture) ---------- */
+.s3-mach {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .375rem; padding: .5rem; border-radius: var(--r-md);
+  background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink); font: 700 var(--fs-small)/1.1 var(--font-body);
+}
+.s3-mach__end { padding: .375rem .5rem; border-radius: var(--r-sm); background: #DCEBFB; color: #123E73; }
+.s3-mach__end--term { background: #FFFFFF; box-shadow: inset 0 0 0 2px var(--plate-ink); color: var(--plate-ink); }
+.s3-mach__op { padding: .375rem .625rem; border-radius: 999px; background: #1F5CA0; color: #FFFFFF; font: 600 1.0625rem/1 var(--font-display); white-space: nowrap; }
+.s3-mach__op.is-ask { background: var(--gold-soft); color: var(--gold-text); box-shadow: inset 0 0 0 2px var(--gold-edge); }
+.s3-mach__ar { font-size: 1.125rem; line-height: 1; color: #C76A0E; }
+
+/* ---------- See it: the tools take the width of the desk, in the middle of the scene's height ---------- */
+.see-hands__desk:has(> .s3-root) { max-width: 40rem; margin-top: auto; margin-bottom: auto; align-self: center; }
+.see-hands__desk > .s3-root { flex: 1 1 auto; }
+
+/* ---------- on the Mini test paper: a printed table ---------- */
+.tp-sheet .s3-root { padding: .375rem 0; background: none; box-shadow: none; color: #111111; max-width: 30rem; }
+.tp-sheet .s3-th, .tp-sheet .s3-th--pos { background: #EDEDED; color: #111111; }
+.tp-sheet .s3-td, .tp-sheet .s3-td--pos { background: #FFFFFF; box-shadow: inset 0 0 0 1px #6A6F76; color: #111111; }
+.tp-sheet .s3-td--cell { box-shadow: inset 0 0 0 1px #6A6F76; background: #FFFFFF; }
+.tp-sheet .s3-td--cell .blank--tcell { width: 100%; min-width: 0; margin: 0; padding: 0 .125rem .25rem; border-bottom: 0; border-radius: .25rem; font-size: 1.125rem; }
+.tp.is-typing .tp-sheet .s3-td--cell .blank--tcell.is-on { border-bottom: 0; box-shadow: inset 0 0 0 2px #2F7FD4; }
+
+@media (prefers-reduced-motion: reduce) { .s3-cell.is-new .s3-bub, .s3-cell.is-new .s3-hopbox, .s3-td.is-far { animation: none; } }
+
+

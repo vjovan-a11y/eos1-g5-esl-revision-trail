@@ -1,0 +1,83 @@
+/* 32-howto.css - the How to use page (32-howto.js): picture cards in a grid, big type on the classroom board. */
+.howto { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; background: var(--bg); }
+.howto__head .brand__name { font-size: 1.25rem; }
+.howto__head .vi-btn { flex: none; }
+.home__help { flex: none; }
+.home__help-text { display: none; }
+@media (min-width: 900px) {
+  .home__help { display: inline-flex; gap: .375rem; width: auto; padding: 0 .875rem 0 .625rem; }
+  .home__help-text { display: inline; font: 700 var(--fs-body)/1 var(--font-body); white-space: nowrap; }
+}
+.howto__scroll {
+  flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 1rem max(16px, env(safe-area-inset-right, 0px)) 1.5rem max(16px, env(safe-area-inset-left, 0px));
+}
+.howto__inner { width: 100%; max-width: 76rem; margin: 0 auto; }
+.howto__inner.rise { animation: rise-in 300ms var(--ease-out) both; }
+.howto__grid { display: grid; grid-template-columns: 1fr; gap: .875rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 600px) { .howto__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .howto__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; } }
+.howto__card { display: flex; flex-direction: column; gap: .375rem; min-width: 0; }
+.howto__pic {
+  display: flex; align-items: center; justify-content: center; min-height: 7.5rem; padding: .75rem;
+  border-radius: var(--r-md); background: var(--surface-2); overflow: hidden;
+}
+.howto__title { margin: .25rem 0 0; font: 600 1.375rem/1.2 var(--font-display); color: var(--ink); }
+.howto__en { margin: 0; font: 700 var(--fs-lead)/1.35 var(--font-body); color: var(--ink); }
+.howto__vi { margin: 0; font: 600 var(--fs-body)/1.4 var(--font-body); color: var(--ink-2); }
+
+/* the pictures */
+.howto__badges { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem .375rem; width: 100%; margin: 0; padding: 0; list-style: none; }
+.howto__badges li { display: flex; flex-direction: column; align-items: center; gap: .125rem; font: 700 .9375rem/1 var(--font-body); color: var(--ink-2); }
+.howto__badge { width: 100%; max-width: 3.5rem; aspect-ratio: 1; }
+.howto__steps { display: flex; flex-direction: column; gap: .375rem; width: 100%; margin: 0; padding: 0; list-style: none; }
+.howto__steps li { display: flex; align-items: center; gap: .625rem; min-width: 0; }
+.howto__steps--two { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; }
+.howto__icon { flex: none; width: 2.5rem; height: 2.5rem; }
+.howto__steps--two .howto__icon { width: 3.5rem; height: 3.5rem; }
+.howto__step { display: flex; flex-direction: column; min-width: 0; font: 600 var(--fs-small)/1.25 var(--font-body); color: var(--ink-2); }
+.howto__step b { font: 800 var(--fs-body)/1.25 var(--font-body); color: var(--ink); }
+.howto__win { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .75rem; }
+.howto__prize { display: inline-flex; width: 3.5rem; height: 3.5rem; }
+.howto__prize svg, .howto__prize .art-plate { width: 100%; height: 100%; }
+.howto__zip { width: 100%; }
+.howto__row { display: flex; flex-wrap: wrap; justify-content: center; gap: .625rem; }
+.howto__fake { pointer-events: none; }
+.howto__paper {
+  display: flex; flex-direction: column; gap: .375rem; width: 100%; max-width: 18rem; padding: .75rem .875rem;
+  border-radius: var(--r-sm); background: #FFFFFF; color: #2A2F3A; box-shadow: var(--shadow-1); font: 600 1rem/1.3 var(--font-body);
+}
+.howto__paper p { margin: 0; }
+.howto__dots { display: flex; align-items: flex-end; gap: .5rem; }
+.howto__dots span { flex: 1 1 auto; height: 1.5rem; border-bottom: .1875rem dotted #5A6070; }
+.howto__dots i { font-style: normal; font-weight: 800; }
+.howto__ticks { display: flex; gap: .5rem; }
+.howto__ticks span { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border: .125rem solid #2A2F3A; border-radius: .25rem; color: #1E6FD9; }
+.howto__paper .howto__fake { align-self: flex-end; min-height: 2.5rem; font-size: 1rem; }
+.howto__handbox { position: relative; padding: .25rem 2.5rem 3rem; }
+.howto__hand { position: absolute; left: 50%; top: 55%; width: 3.25rem; color: var(--accent); filter: drop-shadow(0 .375rem .375rem rgba(0, 0, 0, .25)); }
+.howto__hand svg { display: block; width: 100%; height: auto; }
+.howto__saved { display: flex; align-items: center; gap: 1rem; color: var(--accent-text); }
+.howto__saved > .icon { width: 3.5rem; height: 3.5rem; }
+
+/* the classroom board: everything bigger, so the back of the class can read it */
+@media (min-width: 1600px) and (min-height: 900px) {
+  .howto__inner { max-width: 110rem; }
+  .howto__grid { gap: 1.5rem; }
+  .howto__card { padding: 1.5rem; gap: .625rem; }
+  .howto__pic { min-height: 11rem; }
+  .howto__title { font-size: 2.125rem; }
+  .howto__en { font-size: 1.75rem; }
+  .howto__vi { font-size: 1.375rem; }
+  .howto__head .brand__name { font-size: 1.75rem; }
+  .howto__icon { width: 3.5rem; height: 3.5rem; }
+  .howto__step { font-size: 1.25rem; }
+  .howto__step b { font-size: 1.375rem; }
+  .howto__prize { width: 5rem; height: 5rem; }
+  .howto__badges li { font-size: 1.25rem; }
+  .howto__badge { max-width: 5rem; }
+  .howto__paper { max-width: 24rem; font-size: 1.375rem; }
+  .howto__hand { width: 4.5rem; }
+}
+
+

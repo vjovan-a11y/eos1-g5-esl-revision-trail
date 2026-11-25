@@ -1,0 +1,368 @@
+/* 40-home.css - Home: the trail map.
+
+   Phone: a tall zigzag that scrolls down. Upright tablet: a three by three snake. Wide screens:
+   one long wave across the board. --map-layout tells 30-home.js which of the three is showing,
+   so that it bends the trail the right way. The nodes are placed here; the script draws the
+   trail through them. */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  background: var(--bg);
+}
+
+/* ---------- the compact header ---------- */
+
+.home__head {
+  position: relative;
+  z-index: 3;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: calc(3.75rem + env(safe-area-inset-top, 0px));
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: var(--bg);
+  box-shadow: 0 1px 0 var(--line);
+}
+.brand { display: flex; align-items: center; flex: 1 1 auto; gap: .5625rem; min-width: 0; }
+.brand__name { font: 600 1.0625rem/1.1 var(--font-display); letter-spacing: .01em; color: var(--ink); }
+
+/* ---------- the scrolling middle ---------- */
+
+.home__scroll {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  /* a quiet dotted ground, like a map sheet */
+  background-image: radial-gradient(circle, var(--map-dot) 1.25px, transparent 1.75px);
+  background-size: 1.5rem 1.5rem;
+  background-attachment: local;
+}
+
+/* ---------- the map ---------- */
+
+.map {
+  --map-layout: tall;
+  --node: 5.25rem;              /* a stop that is coming soon */
+  --node-open: 5.75rem;         /* a stop that can be played */
+  --node-now: 6.75rem;          /* the stop where Zip stands */
+  position: relative;
+  flex: none;
+  width: 100%;
+  max-width: 27rem;
+  height: 77.5rem;              /* nine stops and the Summit */
+  margin: 0 auto;
+}
+.map__ground, .map__nodes, .map__trail { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+/* the ground colours and the trail spill over the edges of the map: they must never take a tap */
+.map__ground, .map__trail { overflow: visible; pointer-events: none; }
+
+/* a place on the map: a point; what stands there is centred on it */
+.map-pos { position: absolute; left: 27%; top: calc(7.25rem + var(--i) * 7.25rem); width: 0; height: 0; }
+.map-pos.is-odd { left: 73%; }
+
+/* each world colours the ground around its stop */
+.map__blob::before {
+  content: "";
+  position: absolute;
+  left: -7.5rem;
+  top: -7.5rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background: var(--hue);
+  opacity: var(--hue-tint);
+  -webkit-mask-image: radial-gradient(closest-side, #000 22%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 22%, transparent 100%);
+}
+
+/* the trail: a pale road with footsteps; gold where stars have been won */
+.trail { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.trail--case { stroke: var(--line-strong); stroke-width: 1.875rem; opacity: .5; }
+.trail--road { stroke: var(--surface); stroke-width: 1.5rem; }
+.trail--dash { stroke: var(--line-strong); stroke-width: .1875rem; stroke-dasharray: .0625rem .875rem; }
+.trail--gold { stroke: var(--gold); stroke-width: .75rem; }
+
+/* ---------- a node: the round picture badge of a world ---------- */
+
+.map-node__btn {
+  --d: var(--node);
+  --ring: var(--line-strong);
+  --ring-edge: var(--ctl-edge);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--d);
+  height: var(--d);
+  margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--t-press) ease-out;
+}
+.map-node.is-open .map-node__btn { --d: var(--node-open); --ring: var(--hue); --ring-edge: var(--hue-deep); }
+.map-node.is-current .map-node__btn { --d: var(--node-now); }
+.map-node.is-done .map-node__btn { --ring: var(--gold); --ring-edge: var(--gold-edge); }
+
+/* the disc is an art plate (round, bleed); here it gets its rim, its world ring and its chunky edge */
+.map-node__disc {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 0 .25rem var(--surface), 0 0 0 .4375rem var(--ring), 0 .375rem 0 .4375rem var(--ring-edge);
+  transition: box-shadow var(--t-press) ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .map-node__btn:hover:not(:active) { transform: translateY(-.125rem); }
+}
+.map-node__btn:active { transform: translateY(.3125rem); }
+.map-node__btn:active .map-node__disc { box-shadow: 0 0 0 .25rem var(--surface), 0 0 0 .4375rem var(--ring), 0 .0625rem 0 .4375rem var(--ring-edge); }
+.map-node__btn:focus-visible { outline-offset: .625rem; }   /* the keyboard ring just outside the disc's rim (R3B-04) */
+.map-node.is-soon .map-node__disc > .art { opacity: .78; filter: saturate(.72); }
+/* the steps done: a gold arc over the world's ring (Phase 2) */
+.map-node__prog { position: absolute; left: -.4375rem; top: -.4375rem; width: calc(100% + .875rem); height: calc(100% + .875rem); overflow: visible; pointer-events: none; transform: rotate(-90deg); }
+.map-node__arc { fill: none; stroke: var(--gold); stroke-width: .4375rem; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.map-node.is-done .map-node__arc { stroke: var(--gold-edge); }
+
+/* the stop number, and the lock or the trophy */
+.map-node__num, .map-node__flag {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 .125rem var(--surface);
+}
+.map-node__num { left: -.25rem; top: -.25rem; background: var(--ink); color: var(--bg); font: 600 1rem/1 var(--font-display); }
+.map-node__flag { right: -.25rem; bottom: -.3125rem; background: var(--surface); color: var(--ink-2); font-size: .75rem; }
+.map-node__flag:empty { display: none; }
+.map-node.is-done .map-node__flag { background: var(--gold); color: var(--navy); }
+
+/* name and stars beside the badge (inside the button, so a tap on the name works too) */
+.map-node__label {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 1.125rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .1875rem;
+  width: max-content;
+  max-width: min(11rem, calc(73vw - 2rem - var(--d) / 2));   /* a narrow phone wraps a long name; it never runs off the screen */
+  text-align: left;
+  transform: translateY(-50%);
+}
+.map-node.is-odd .map-node__label { left: auto; right: calc(100% + 1.125rem); align-items: flex-end; text-align: right; }
+.map-node__name { font: 600 1.1875rem/1.15 var(--font-display); color: var(--ink); }
+.map-node__meta { display: inline-flex; align-items: center; gap: .3125rem; color: var(--ink-2); font: 800 var(--fs-small)/1.2 var(--font-body); }
+.map-node__meta .stars { font-size: 1.1875rem; }
+.map-node__count { font: 600 1.0625rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.map-node.is-current .map-node__name { font-size: 1.375rem; }
+
+/* the stop where Zip stands: a slow gold ring, and Zip himself */
+.map-node.is-current .map-node__btn::before {
+  content: "";
+  position: absolute;
+  left: -.875rem; right: -.875rem; top: -.875rem; bottom: -.875rem;
+  border: .25rem solid var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: node-ring 2.8s ease-out infinite;
+}
+.map-node__zip {
+  position: absolute;
+  right: 1.75rem;                 /* on the outer side of the zigzag, clear of the label of the stop before */
+  top: -6.25rem;
+  width: 3.5rem;
+  pointer-events: none;
+  animation: zip-bob 3.4s ease-in-out infinite;
+}
+.map-node.is-odd .map-node__zip { left: 1.75rem; right: auto; }
+.map-node__zip:empty { display: none; }
+@keyframes node-ring { 0% { transform: scale(.9); opacity: .75; } 70%, 100% { transform: scale(1.16); opacity: 0; } }
+@keyframes zip-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.375rem); } }
+
+/* ---------- the quiet note for families and teachers ---------- */
+
+.family { position: relative; z-index: 1; flex: none; width: 100%; max-width: 40rem; margin: 0 auto; padding: .25rem 0 1rem; }
+.family__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  min-height: var(--tap);
+  margin: 0;
+  padding: .5rem .75rem;
+  border: 0;
+  border-radius: var(--r-md);
+  background: none;
+  color: var(--ink-2);
+  font: 800 var(--fs-small)/1.2 var(--font-body);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.family__toggle:active { background: var(--surface-2); }
+.family__toggle .icon { width: 1.25rem; height: 1.25rem; }
+.family__toggle .icon--chevron { transition: transform 200ms var(--ease-out); }
+.family__toggle[aria-expanded="true"] .icon--chevron { transform: rotate(180deg); }
+.family__panel {
+  display: flex;
+  align-items: flex-start;
+  gap: .25rem;
+  margin-top: .25rem;
+  padding: .875rem .5rem .875rem 1rem;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  animation: rise-in 240ms var(--ease-out) both;
+}
+.family__list { display: flex; flex-direction: column; flex: 1 1 auto; gap: .75rem; min-width: 0; }
+.family__list li { display: flex; align-items: flex-start; gap: .625rem; }
+.family__list .icon { margin-top: .0625rem; color: var(--accent-text); }
+.family__en { color: var(--ink); font: 700 var(--fs-body)/1.4 var(--font-body); }
+.family__vi { margin-top: .1875rem; color: var(--ink-2); font: 700 1rem/1.4 var(--font-body); animation: line-slide 240ms var(--ease-out) both; }
+
+/* ---------- upright tablet (and a phone on its side): three by three, no scrolling on a tablet ---------- */
+
+@media (min-width: 600px) {
+  .map {
+    --map-layout: grid;
+    --node: 6.25rem;
+    --node-open: 6.75rem;
+    --node-now: 7.75rem;
+    flex: 1 0 auto;
+    max-width: 54rem;
+    height: auto;
+    min-height: 43rem;
+  }
+  /* a snake four wide: 1 to 4, 8 to 5, then Stop 9 and the Summit */
+  .map-pos, .map-pos.is-odd { left: calc(12.5% + var(--col) * 25%); top: calc(17% + var(--row) * 31% + var(--wob) * 1.75rem); }
+  .map-node__label, .map-node.is-odd .map-node__label {
+    top: calc(100% + .75rem);
+    left: 50%;
+    right: auto;
+    align-items: center;
+    max-width: min(12rem, 23vw);  /* a column is 25% wide: a long name ("Times Table Tower") takes two lines */
+    text-align: center;
+    transform: translateX(-50%);
+  }
+  .map-node__zip, .map-node.is-odd .map-node__zip { left: 2.5rem; right: auto; top: -8.5rem; width: 4.25rem; }
+  .map__blob::before { left: -10rem; top: -10rem; width: 20rem; height: 20rem; }
+  .map-node__name { font-size: 1.3125rem; }
+  .map-node.is-current .map-node__name { font-size: 1.5rem; }
+  .brand__name { font-size: 1.3125rem; }
+  .family { padding-bottom: .5rem; }
+}
+
+/* an upright tablet: the middle stop of the last row stands lowest; a little air keeps its name off the family note */
+@media (min-width: 600px) and (max-aspect-ratio: 5/4) {
+  .family { padding-top: 1.5rem; }
+}
+
+/* ---------- a laptop, or a tablet or phone on its side: two rows, five stops and four ---------- */
+
+@media (min-width: 700px) and (min-aspect-ratio: 5/4) {
+  .map {
+    --map-layout: rows;
+    --node: min(6.5rem, 10.5vw);
+    --node-open: min(7rem, 11.2vw);
+    --node-now: min(8.25rem, 13vw);
+    flex: 1 1 auto;
+    max-width: 80rem;
+    min-height: 28rem;
+  }
+  .map-pos, .map-pos.is-odd { left: calc(10% + var(--col5) * 20%); top: calc(29% + var(--row5) * 42% + var(--wob5) * 1.25rem); }
+  /* two rows are tight on a 768px-high screen: names a size smaller, labels closer to their disc; the four stops of
+     the second row stand further apart (30-home.js --col5), so their names may be wider and keep to one line */
+  .map-node__label, .map-node.is-odd .map-node__label { top: calc(100% + .75rem); max-width: 11rem; }
+  .map-node:nth-child(n+6) .map-node__label { max-width: min(12rem, 19vw); }
+  .map-node__name { font-size: 1.1875rem; }
+  .map-node.is-current .map-node__name { font-size: 1.375rem; }
+  .map-node__zip, .map-node.is-odd .map-node__zip { left: calc(var(--node-now) * .27); top: calc(var(--node-now) * -.5 - 3.5rem); width: 4rem; }
+  .map__blob::before { left: -9rem; top: -9rem; width: 18rem; height: 18rem; }
+}
+
+/* ---------- the board: one long wave across the whole width ---------- */
+
+@media (min-width: 1500px) and (min-aspect-ratio: 5/4) {
+  .map {
+    --map-layout: wave;
+    /* nine stops share the width: a badge is about three quarters of the step between two stops */
+    --node: min(7.25rem, 7.6vw);
+    --node-open: min(7.75rem, 8vw);
+    --node-now: min(9rem, 9.3vw);
+    max-width: none;
+    min-height: 23rem;
+  }
+  .map-pos { left: calc(5% + var(--i) * 10%); top: 36%; }
+  .map-pos.is-odd { left: calc(5% + var(--i) * 10%); top: 64%; }
+  .map-node__zip, .map-node.is-odd .map-node__zip { left: calc(var(--node-now) * .26); top: calc(var(--node-now) * -.5 - 3.6rem); width: 4rem; }
+  .map-node__name, .map-node.is-current .map-node__name { font-size: 1.3125rem; }
+  .map-node__label, .map-node.is-odd .map-node__label, .map-node:nth-child(n+6) .map-node__label { top: calc(100% + 1.125rem); max-width: 9.4vw; }
+}
+
+/* ---------- where Zip stands on a tablet, a laptop and the board (R3B-02; G4: Zip walks on from the quick stops, so he
+   must never stand on another stop's name or stars) ---------- */
+@media (min-width: 600px) {                               /* the snake four wide: beside the badge, away from the map's edge */
+  .map__nodes .map-node .map-node__zip { left: calc(var(--node-now) * .22); right: auto; top: calc(var(--node-now) * -.5 - 3.4rem); width: 3.75rem; }
+}
+@media (min-width: 700px) and (min-aspect-ratio: 5/4) {   /* two rows: above a stop of the first row, left of one of the second */
+  .map__nodes .map-node .map-node__zip,
+  .map__nodes .map-node:nth-child(3) .map-node__zip,
+  .map__nodes .map-node:nth-child(4) .map-node__zip { left: calc(var(--node-now) * .27); top: calc(var(--node-now) * -.5 - 3.5rem); width: 4rem; }
+  .map__nodes .map-node:nth-child(n+6) .map-node__zip { left: calc(var(--node-now) * -.5 - 4.25rem); top: -2rem; }
+}
+@media (min-width: 1500px) and (min-aspect-ratio: 5/4) {  /* the wave: above and right of a high stop, centred over a low one */
+  .map__nodes .map-node .map-node__zip,
+  .map__nodes .map-node:nth-child(n) .map-node__zip { left: calc(var(--node-now) * .26); top: calc(var(--node-now) * -.5 - 3.6rem); width: 4rem; }
+  .map__nodes .map-node.is-odd .map-node__zip { left: -2rem; }
+  .map__nodes .map-node:nth-child(9) .map-node__zip { left: calc(var(--node-now) * -.26 - 4rem); }
+}
+
+/* ---------- the way to the trophy shelf (Phase 6): the total of stars with a trophy, a real button ---------- */
+.home__trophies { min-height: var(--tap); gap: .375rem; padding: 0 .875rem 0 .75rem; border: 0; cursor: pointer; }
+.home__trophies-icon { display: inline-flex; color: var(--gold-text); }
+.home__trophies-icon .icon { width: 1.25rem; height: 1.25rem; }
+.home__trophies-text { display: none; font: 700 var(--fs-body)/1 var(--font-body); white-space: nowrap; }
+@media (min-width: 900px) { .home__trophies-text { display: inline; margin-right: .25rem; } }
+/* small phones: the trophy says where the button goes; the star and the padding give way to the child's name */
+@media (max-width: 419px) {
+  .home__trophies { gap: .25rem; padding: 0 .625rem 0 .5rem; }
+  .home__trophies .stars { display: none; }
+}
+
+/* ---------- the Summit (Session 14): the tenth node, after Stop 9 ---------- */
+.map-node--summit .map-node__btn { --ring: var(--line-strong); }
+.map-node--summit.is-open .map-node__btn { --ring: var(--world-10); --ring-edge: var(--world-10-deep); }
+.map-node--summit.is-done .map-node__btn { --ring: var(--gold); --ring-edge: var(--gold-edge); }
+.map-node--summit.is-soon .map-node__disc { filter: saturate(.55); }
+/* the Summit stands under the middle of the last row on an upright tablet; on a laptop at the start of the second row */
+@media (min-width: 700px) and (min-aspect-ratio: 5/4) {
+  .map__nodes .map-node.map-node--summit .map-node__zip { left: calc(var(--node-now) * .5 + .25rem); top: -2.25rem; }   /* right of it, away from the edge */
+}
+
+

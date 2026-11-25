@@ -1,0 +1,1180 @@
+{
+ "s5-see-1": [
+  [
+   "bm_lewis",
+   "Kai",
+   "Did you join a club this term, Ruby?"
+  ],
+  [
+   "bf_lily",
+   "Ruby",
+   "Yes! I looked at the drama club first, and the art club too."
+  ],
+  [
+   "bm_lewis",
+   "Kai",
+   "So which one did you choose?"
+  ],
+  [
+   "bf_lily",
+   "Ruby",
+   "Well, drama is on Fridays, and I have piano then. And the art club was full. So in the end I joined the chess club."
+  ]
+ ],
+ "s5-see-2": [
+  [
+   "bf_alice",
+   "Freya",
+   "Grandpa, do you like your new tablet?"
+  ],
+  [
+   "bm_daniel",
+   "Grandpa",
+   "I do, actually. Although the screen is small, I can video call your aunt every week. That's the best thing about it."
+  ],
+  [
+   "bf_alice",
+   "Freya",
+   "What about the games on it?"
+  ],
+  [
+   "bm_daniel",
+   "Grandpa",
+   "Oh, I'm not keen on games. They're too fast for me!"
+  ]
+ ],
+ "s5-see-3": [
+  [
+   "bf_lily",
+   "Nadia",
+   "How was the running race on Sunday, Rory?"
+  ],
+  [
+   "bm_fable",
+   "Rory",
+   "Hard! It took me forty minutes, and my legs really hurt at the end."
+  ],
+  [
+   "bf_lily",
+   "Nadia",
+   "Oh no. Are you sorry you did it?"
+  ],
+  [
+   "bm_fable",
+   "Rory",
+   "Not at all. It was worth it. I got a medal, and I'm going to do it again next year."
+  ]
+ ],
+ "s5-ch-1a": [
+  [
+   "bf_emma",
+   "Mum",
+   "Reza, are you taking the bus to the match tomorrow?"
+  ],
+  [
+   "bm_lewis",
+   "Reza",
+   "I was going to, but it leaves really early. My friend's dad is driving, so I'm going by car instead."
+  ],
+  [
+   "bf_emma",
+   "Mum",
+   "Oh good. You can't cycle anyway. Your bike is still broken."
+  ]
+ ],
+ "s5-ch-1b": [
+  [
+   "bm_george",
+   "Dad",
+   "What did you have for lunch at school today, Yuki? Fish?"
+  ],
+  [
+   "bf_alice",
+   "Yuki",
+   "There was fish, but I'm not keen on it. I wanted the chicken curry, but it had all gone. So I had vegetable noodles instead."
+  ],
+  [
+   "bm_george",
+   "Dad",
+   "Very healthy!"
+  ]
+ ],
+ "s5-ch-2a": [
+  [
+   "bf_isabella",
+   "Grandma",
+   "Why do you like your new watch so much, Arjun? Is it the colour?"
+  ],
+  [
+   "bm_fable",
+   "Arjun",
+   "The colour's nice, and it tells the time, of course. But the best thing is that it counts my steps. I try to walk ten thousand steps a day!"
+  ]
+ ],
+ "s5-ch-2b": [
+  [
+   "bm_lewis",
+   "Ben",
+   "Leila, why did you choose a goldfish and not a hamster?"
+  ],
+  [
+   "bf_lily",
+   "Leila",
+   "Well, hamsters are really cute. But they sleep all day and they're awake at night! I wanted a pet I could watch after school. My goldfish is always swimming about."
+  ]
+ ],
+ "s5-ch-3a": [
+  [
+   "bm_fable",
+   "Owen",
+   "Did you enjoy the science museum, Ivy?"
+  ],
+  [
+   "bf_alice",
+   "Ivy",
+   "Mostly, yes. The space room was amazing. The shop was a bit expensive, and the café was so busy that we couldn't sit down. But I'd definitely go again."
+  ]
+ ],
+ "s5-ch-3b": [
+  [
+   "bf_emma",
+   "Aunt Kate",
+   "How was your first judo lesson, Noah?"
+  ],
+  [
+   "bm_lewis",
+   "Noah",
+   "I was nervous at the start, and I fell over a lot, so I wanted to go home! But actually, by the end I loved it. I can't wait for next week."
+  ]
+ ],
+ "s5-ch-4a": [
+  [
+   "bf_lily",
+   "Grace",
+   "Dad, who's taking me to the dentist on Friday? Mum?"
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Mum has a meeting, and Grandma can't drive at the moment. So I'll take you. I'll finish work early."
+  ]
+ ],
+ "s5-ch-4b": [
+  [
+   "bf_alice",
+   "Rosa",
+   "What are you going to do with your birthday money, Arlo?"
+  ],
+  [
+   "bm_fable",
+   "Arlo",
+   "I thought about buying a new video game. Then I looked at a skateboard. But I think I'll save it for a bike. I just need a bit more money."
+  ]
+ ],
+ "s5-r-1a": [
+  [
+   "bf_emma",
+   "Mum",
+   "Mia, who made this lovely cake? Was it your dad?"
+  ],
+  [
+   "bf_lily",
+   "Mia",
+   "No, Dad only bought the eggs. My brother wanted to help, but he had football practice. So my friend Anya and I made it together after school."
+  ],
+  [
+   "bf_emma",
+   "Mum",
+   "Well, it looks delicious!"
+  ]
+ ],
+ "s5-r-1b": [
+  [
+   "bm_lewis",
+   "Duc",
+   "Coach Ellis, who's going to be our new team captain?"
+  ],
+  [
+   "bm_george",
+   "Coach Ellis",
+   "Good question, Duc. Lots of people wanted Sam, and Ella asked to do it too. But Jade has been in the team the longest, so she's going to be captain this season."
+  ],
+  [
+   "bm_lewis",
+   "Duc",
+   "Great choice!"
+  ]
+ ],
+ "s5-r-1c": [
+  [
+   "bm_fable",
+   "Nam",
+   "Kim, when is sports day? Is it this Friday?"
+  ],
+  [
+   "bf_alice",
+   "Kim",
+   "It was going to be on Friday, but the field is too wet. So it's next Wednesday now. And the prize-giving is on Thursday afternoon."
+  ],
+  [
+   "bm_fable",
+   "Nam",
+   "Good. That gives me more time to practise."
+  ]
+ ],
+ "s5-r-1d": [
+  [
+   "bm_lewis",
+   "Adam",
+   "Grandma, when did you get your first mobile phone?"
+  ],
+  [
+   "bf_isabella",
+   "Grandma",
+   "Let me think. Your grandpa got one in 1998, but I didn't want one then. I got mine in 2003, when your mum started university. And I bought my first computer in 2004."
+  ],
+  [
+   "bm_lewis",
+   "Adam",
+   "That's so long ago!"
+  ]
+ ],
+ "s5-r-1e": [
+  [
+   "bm_daniel",
+   "Dad",
+   "How long does it take to walk to the new library, Lucy?"
+  ],
+  [
+   "bf_lily",
+   "Lucy",
+   "The sign says ten minutes, but it took me twenty-five yesterday because I stopped to look in the shops! By bike it's only five minutes."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Maybe you should cycle next time!"
+  ]
+ ],
+ "s5-r-1f": [
+  [
+   "bf_emma",
+   "Ms Grant",
+   "Khoa, how long have you played the violin?"
+  ],
+  [
+   "bm_fable",
+   "Khoa",
+   "For three years now. I started when I was seven. My sister has played for six years, so she's much better than me! I practise for half an hour every day."
+  ],
+  [
+   "bf_emma",
+   "Ms Grant",
+   "Well, you sound very good to me!"
+  ]
+ ],
+ "s5-r-2a": [
+  [
+   "bm_lewis",
+   "Ethan",
+   "What did you think of the film about whales, Nora?"
+  ],
+  [
+   "bf_alice",
+   "Nora",
+   "The pictures of the whales were beautiful. But the film was really long, and actually, I found the end quite boring. I preferred the one about penguins last week."
+  ],
+  [
+   "bm_lewis",
+   "Ethan",
+   "Really? I thought the penguin one was boring!"
+  ]
+ ],
+ "s5-r-2b": [
+  [
+   "bf_isabella",
+   "Mum",
+   "Do you like the new school timetable, Ali?"
+  ],
+  [
+   "bm_fable",
+   "Ali",
+   "Not really. I'm not keen on having maths straight after lunch, because I always feel sleepy. Starting at eight is fine, though, and I love having PE on Mondays."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "Well, maybe have a smaller lunch!"
+  ]
+ ],
+ "s5-r-2c": [
+  [
+   "bm_george",
+   "Grandpa",
+   "Why do you want to learn to swim, Amira? Is it because your friends can?"
+  ],
+  [
+   "bf_lily",
+   "Amira",
+   "Some of my friends can, but that's not the reason. We're going to stay by the sea in the summer, and I want to swim in the waves safely. It's not to get fit, either. I already play basketball."
+  ]
+ ],
+ "s5-r-2d": [
+  [
+   "bf_alice",
+   "Thu",
+   "Luca, why did you give up the guitar? You were really good!"
+  ],
+  [
+   "bm_lewis",
+   "Luca",
+   "Thanks! It wasn't too hard, and my teacher was great. But the lessons were on Saturday mornings, and that's when my football team plays. I'm going to try the piano instead."
+  ]
+ ],
+ "s5-r-2e": [
+  [
+   "bm_daniel",
+   "Uncle Rob",
+   "So, Jack, what was your favourite part of the school camp?"
+  ],
+  [
+   "bm_fable",
+   "Jack",
+   "The campfire was fun, and the night walk was a bit scary. But the best bit was the canoeing. We raced the teachers across the lake, and we won!"
+  ]
+ ],
+ "s5-r-2f": [
+  [
+   "bm_george",
+   "Dad",
+   "Which part of the farm visit did you like best, Hana?"
+  ],
+  [
+   "bf_lily",
+   "Hana",
+   "Feeding the baby goats was sweet, and the tractor ride was OK. But milking the cow was my favourite. It was harder than I expected, but really funny!"
+  ],
+  [
+   "bm_george",
+   "Dad",
+   "Ha! I'd like to see you try that again."
+  ]
+ ],
+ "s5-r-3a": [
+  [
+   "bm_lewis",
+   "Max",
+   "Sofia, how did you find out about the coding club? From the school website?"
+  ],
+  [
+   "bf_alice",
+   "Sofia",
+   "No, I never look at that! There's a poster in the library, but I didn't see it. My cousin told me about it. He goes every Tuesday."
+  ],
+  [
+   "bm_lewis",
+   "Max",
+   "Maybe I'll come too."
+  ]
+ ],
+ "s5-r-3b": [
+  [
+   "bf_emma",
+   "Mum",
+   "Ravi, how did you know about the new skate park? Did Dad tell you?"
+  ],
+  [
+   "bm_fable",
+   "Ravi",
+   "No, Dad doesn't know about it yet! And it wasn't on TV, either. My teacher showed us a photo of it on the class screen. It opened yesterday!"
+  ]
+ ],
+ "s5-r-3c": [
+  [
+   "bf_isabella",
+   "Grandma",
+   "What are you going to do now that you've finished your project, Chloe?"
+  ],
+  [
+   "bf_lily",
+   "Chloe",
+   "Well, I could watch TV, or play in the garden. But first I'm going to help you with dinner. Then maybe the garden later, if it doesn't rain."
+  ]
+ ],
+ "s5-r-3d": [
+  [
+   "bm_daniel",
+   "Mr Fisher",
+   "Long, the bird box you made is great. What are you going to make next?"
+  ],
+  [
+   "bm_lewis",
+   "Long",
+   "Thanks, Mr Fisher! My friend wants me to make a bookshelf, and I'd love to make a boat one day. But next week I'm making a bird feeder to go with the box."
+  ]
+ ],
+ "s5-r-3e": [
+  [
+   "bm_fable",
+   "Dan",
+   "Ngoc, are you happy with your new tablet?"
+  ],
+  [
+   "bf_alice",
+   "Ngoc",
+   "Hmm. The camera is good, I suppose. But the battery runs out really quickly, and it's so slow when I open my apps. Actually, I wish I'd kept my old one."
+  ],
+  [
+   "bm_fable",
+   "Dan",
+   "Oh dear. Can you take it back to the shop?"
+  ]
+ ],
+ "s5-r-3f": [
+  [
+   "bf_emma",
+   "Mum",
+   "How was the charity run, Tom?"
+  ],
+  [
+   "bm_lewis",
+   "Tom",
+   "It rained the whole time, and my shoes got really wet. I came fifteenth, so I wasn't in the top ten. But we raised lots of money for the children's hospital, so I'm really glad I did it."
+  ]
+ ],
+ "s5-a-1a": [
+  [
+   "bf_isabella",
+   "Mum",
+   "Omar, you look happy. Good day at school?"
+  ],
+  [
+   "bm_lewis",
+   "Omar",
+   "Really good! Mum, can I join the new badminton club? It's at the sports centre near the park."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "Badminton? How did you hear about that? Was it on the school website?"
+  ],
+  [
+   "bm_lewis",
+   "Omar",
+   "No. There was a poster on the noticeboard, but I didn't read it. Actually, Mr Okafor told our class about it in PE this morning. He's one of the coaches."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "I see. And when is it? You've got swimming on Tuesdays, remember."
+  ],
+  [
+   "bm_lewis",
+   "Omar",
+   "I know. There's a group on Tuesdays, but there's another one on Thursdays at half past four. I can go to that one. They have a Saturday group too, but that's only for older students."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "Thursday is fine. How much does it cost?"
+  ],
+  [
+   "bm_lewis",
+   "Omar",
+   "The first month is free! After that, it's twelve pounds a month. And you don't have to buy a racket. They lend you one."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "That's good. What about shoes?"
+  ],
+  [
+   "bm_lewis",
+   "Omar",
+   "Mr Okafor said trainers are OK, but they mustn't have black soles, because they leave marks on the floor. My white ones will be fine."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "Then let's try it. Is anyone else from your class going?"
+  ],
+  [
+   "bm_lewis",
+   "Omar",
+   "Bao is going. He's played before, so he can help me."
+  ],
+  [
+   "bf_isabella",
+   "Mum",
+   "Good. I'll write Thursday on the calendar."
+  ]
+ ],
+ "s5-a-1b": [
+  [
+   "bf_alice",
+   "Isla",
+   "Grandma, how are your chickens? Have they laid any eggs yet?"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "They have! Six eggs this week. I've had them for two months now, since the start of September."
+  ],
+  [
+   "bf_alice",
+   "Isla",
+   "Two months already? It feels like you got them last week! Who looks after them when you go away?"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "Well, your grandpa isn't very keen on them, and Mrs Lee next door is too busy. So my friend Peter comes. He kept chickens when he was young, so he knows what to do."
+  ],
+  [
+   "bf_alice",
+   "Isla",
+   "Do they lay an egg every day?"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "Not quite. In winter they lay fewer eggs, because the days are shorter."
+  ],
+  [
+   "bf_alice",
+   "Isla",
+   "What do they eat? Just corn?"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "Corn is only a treat. Most of the time they eat special pellets from the farm shop. They love vegetable peel, too. But never give them chocolate or salty food, because it can make them ill."
+  ],
+  [
+   "bf_alice",
+   "Isla",
+   "Can I feed them when I come at the weekend?"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "Of course. And you can collect the eggs. Then we'll make a cake together."
+  ],
+  [
+   "bf_alice",
+   "Isla",
+   "Yes! Can I give one of them a name?"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "They already have names, I'm afraid. But we're getting two more chicks in the spring. You can choose names for those."
+  ],
+  [
+   "bf_alice",
+   "Isla",
+   "I'm going to start thinking of names now!"
+  ],
+  [
+   "bf_emma",
+   "Grandma",
+   "Good! But remember, a chicken's name should be short and easy to call."
+  ]
+ ],
+ "s5-a-2a": [
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "Kenji, your mum says you've been to the new maker room at the library. What's it like?"
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "It's brilliant! They've got a 3D printer, a sewing machine and lots of tools. I went on Saturday with my friend."
+  ],
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "Did you have to book?"
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "Yes, you book online. There's a helper there called Mr Hall, who shows you what to do."
+  ],
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "So what did you make with the 3D printer?"
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "A small dinosaur for my little brother. I chose it from a website, and the printer made it out of plastic, layer by layer."
+  ],
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "That sounds amazing. Was it quick?"
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "Not at all! It took nearly three hours, and we had to wait the whole time. Actually, that was the boring part. Watching it grow was exciting at the start, though."
+  ],
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "Would you go again?"
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "Definitely. Although the printer is slow, it's free for children, so it's worth it. Next time I want to design my own model instead of choosing one from the website."
+  ],
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "And what about the sewing machine?"
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "I'm not keen on sewing, to be honest. My friend made a bag with it, but she says it was harder than it looked."
+  ],
+  [
+   "bf_isabella",
+   "Aunt Clara",
+   "Well, I'd love to see your dinosaur."
+  ],
+  [
+   "bm_fable",
+   "Kenji",
+   "I'll bring it on Sunday. My brother keeps it next to his bed!"
+  ]
+ ],
+ "s5-a-2b": [
+  [
+   "bm_lewis",
+   "Leo",
+   "Hi Priya! How was your cooking course in the holidays?"
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "Hi Leo! It was great, thanks. It lasted five days, and we cooked something healthy every day."
+  ],
+  [
+   "bm_lewis",
+   "Leo",
+   "Where was it?"
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "At the community centre near my school. There were twelve children, and we worked in pairs."
+  ],
+  [
+   "bm_lewis",
+   "Leo",
+   "What was the best thing you made?"
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "Well, the vegetable soup was the easiest, and the fruit salad looked really pretty. But my favourite was the fish with rice, because I'd never cooked fish before, and it tasted amazing."
+  ],
+  [
+   "bm_lewis",
+   "Leo",
+   "I don't really like fish. Did you have to eat everything?"
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "No, the teacher said we only had to try a little. Actually, she was really kind. She was a chef in a hotel before, so she knew lots of tricks."
+  ],
+  [
+   "bm_lewis",
+   "Leo",
+   "Was anything difficult?"
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "Cutting onions! My eyes cried every time. Although the knives were sharp, nobody cut their fingers. The teacher was very careful."
+  ],
+  [
+   "bm_lewis",
+   "Leo",
+   "Would you recommend it? My mum wants me to do something in the summer."
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "Yes, I'd recommend it. It's a bit expensive, but you take home a recipe book, and you learn things you'll use all your life. My dad's happy too, because now I cook dinner on Sundays!"
+  ],
+  [
+   "bm_lewis",
+   "Leo",
+   "Then I'll tell Mum about it tonight. Can you send me the name of the course?"
+  ],
+  [
+   "bf_lily",
+   "Priya",
+   "Sure, I'll message you later."
+  ]
+ ],
+ "s5-a-3a": [
+  [
+   "bf_alice",
+   "Elena",
+   "Sami, you look tired. Did you go to bed late?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "No, the opposite! I got up at half past five on Sunday. My dad took me bird-watching at the lake in Green Park."
+  ],
+  [
+   "bf_alice",
+   "Elena",
+   "Half past five? Why so early?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "Dad says birds are busiest early in the morning, when they're looking for food. By lunchtime most of them are hiding from the heat."
+  ],
+  [
+   "bf_alice",
+   "Elena",
+   "How did you get into bird-watching? Did you read about it?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "Not really. My dad's done it for years, but he never asked me to come. Then we watched a nature programme on TV about kingfishers, and I asked him if I could go."
+  ],
+  [
+   "bf_alice",
+   "Elena",
+   "So did you see a kingfisher?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "No, sadly. We saw a family of ducks, a heron standing in the water, and a flock of little green birds in the trees. The heron was my favourite. It stood completely still for ten minutes, then it caught a fish really fast!"
+  ],
+  [
+   "bf_alice",
+   "Elena",
+   "How did you see them so well?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "Dad lent me his binoculars. They're heavy, but you can see every feather."
+  ],
+  [
+   "bf_alice",
+   "Elena",
+   "Cool. Are you going back to the lake?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "Not next time. We're going to a forest instead, because Dad wants to look for owls. I'm going to take my own notebook and draw what I see."
+  ],
+  [
+   "bf_alice",
+   "Elena",
+   "Can I see your drawings when you've finished?"
+  ],
+  [
+   "bm_lewis",
+   "Sami",
+   "Of course!"
+  ]
+ ],
+ "s5-a-3b": [
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Hi Mai! I hear you cycled all the way to the river last weekend."
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "Yes! With my cousin Huy and his mum. It was twenty kilometres there and back."
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Twenty? That's a long way for your first big ride. Whose bike did you use?"
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "My own! Mum fixed the brakes the day before, so it was safe."
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Good. And how long did it take you?"
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "We thought it would take two hours, but it took nearly three, because we stopped for a picnic. And Huy wanted to stop every ten minutes!"
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Ha! Was it hard?"
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "The hill near the bridge was really hard. I had to get off and walk. My legs hurt the next day, but it was worth it. The view from the top was beautiful."
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Did you remember to take water? You need lots when you cycle."
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "Yes, two bottles each. And Huy's mum made us wear helmets and bright jackets, so the cars could see us."
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "And food?"
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "Bananas and sandwiches. Huy's mum says bananas give you energy quickly."
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Very sensible. So, what's next?"
+  ],
+  [
+   "bf_lily",
+   "Mai",
+   "I'd like to join a cycling club. There's one at school, but it's only for Grade 6. So instead, I'm going to ride with you on Sundays, if that's OK!"
+  ],
+  [
+   "bm_george",
+   "Uncle Joe",
+   "Of course it is! We can start this Sunday, if it's sunny."
+  ]
+ ],
+ "s5-t-1a": [
+  [
+   "bm_daniel",
+   "Dad",
+   "Minh, what's this about a film club? Your teacher sent me a message."
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "Oh, I wanted to tell you myself! It's a new club where we make short animated films on tablets. Ms Rivers runs it."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Ms Rivers? Isn't she your art teacher?"
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "No, she teaches music. My art teacher is Mr Cole. He's going to help sometimes, though."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "And how did you hear about it? From the teacher's message?"
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "No, my friend Viet told me at lunch on Monday. He's already joined, and he says it's really fun."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "When does it meet?"
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "Every Wednesday after school. It starts at half past three and finishes at five."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Five? I can't collect you until half past five."
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "That's OK. I can wait in the library."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Good idea. And what will your first film be about?"
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "Our first film is about animals made of clay. We're making a longer one about a dragon, but that's after the holiday."
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Do you need to take anything?"
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "Just a USB stick to save our films. The school gives us the tablets and the clay. For ten seconds of film, we need about a hundred and twenty photos!"
+  ],
+  [
+   "bm_daniel",
+   "Dad",
+   "Well, I'd love to watch it when it's finished."
+  ],
+  [
+   "bm_fable",
+   "Minh",
+   "You can! Ms Rivers is going to show all our films to the parents in December."
+  ]
+ ],
+ "s5-t-1b": [
+  [
+   "bm_lewis",
+   "Finn",
+   "Lan, is it true you've got a rabbit now?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Yes! Her name's Cloud, because she's white and fluffy. We've had her since Saturday."
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "Is she friendly?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Very! She was shy on the first day, but now she jumps onto my lap when I sit on the floor."
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "Where did you get her? From a pet shop?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "We looked in the pet shop, and Dad wanted to visit a farm. But in the end, our neighbour's rabbit had babies, so we got Cloud from her."
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "Lucky! How old is she?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Ten weeks. Rabbits can live for eight to twelve years, so I'll have her for a long time!"
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "Who looks after her? You?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Mostly me. My brother cleans her cage on Sundays, and Mum checks her water. But I feed her every morning and evening."
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "What does she eat? Carrots?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Everyone thinks that! Carrots are only a treat, because they have lots of sugar. She mostly eats hay, with some fresh leaves."
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "Does she live inside or in the garden?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Inside, in a big cage in the kitchen. Rabbits need space to run, so she comes out every afternoon."
+  ],
+  [
+   "bm_lewis",
+   "Finn",
+   "Can I come and see her on Saturday?"
+  ],
+  [
+   "bf_lily",
+   "Lan",
+   "Yes, come at eleven. Not earlier, because we're taking her to the vet at nine. We'll be back by half past ten."
+  ]
+ ],
+ "s5-t-2a": [
+  [
+   "bm_george",
+   "Grandpa",
+   "So, Ines, did you enjoy the transport museum today?"
+  ],
+  [
+   "bf_alice",
+   "Ines",
+   "I did, Grandpa! I was tired at the end, but it was really interesting. I didn't think I'd like old trains, but I was wrong."
+  ],
+  [
+   "bm_george",
+   "Grandpa",
+   "What surprised you most?"
+  ],
+  [
+   "bf_alice",
+   "Ines",
+   "The first steam train. It was so small! And the guide said people were scared to travel on it because they thought it was too fast. It only went about twenty kilometres an hour."
+  ],
+  [
+   "bm_george",
+   "Grandpa",
+   "Ha! My bike goes faster than that. And how was the guide?"
+  ],
+  [
+   "bf_alice",
+   "Ines",
+   "She was great. She knew so many stories, and she let me ring the bell on an old train."
+  ],
+  [
+   "bm_george",
+   "Grandpa",
+   "Lovely. So what was your favourite part?"
+  ],
+  [
+   "bf_alice",
+   "Ines",
+   "The old buses were fun, and I liked sitting in the plane. But the best bit was driving the train in the simulator. It felt real, and I didn't crash once!"
+  ],
+  [
+   "bm_george",
+   "Grandpa",
+   "Well done! Was there anything you didn't like?"
+  ],
+  [
+   "bf_alice",
+   "Ines",
+   "The café. The food was cold and it cost a lot. Next time we should bring a picnic instead."
+  ],
+  [
+   "bm_george",
+   "Grandpa",
+   "Good idea. I didn't enjoy my soup much either. Would you go again?"
+  ],
+  [
+   "bf_alice",
+   "Ines",
+   "Yes, definitely. Actually, I want to bring Dad. He's mad about planes, and there's a new room about planes opening in June."
+  ],
+  [
+   "bm_george",
+   "Grandpa",
+   "Then we'll all go together. And we'll bring sandwiches!"
+  ]
+ ],
+ "s5-t-2b": [
+  [
+   "bf_alice",
+   "Amelia",
+   "Tariq, how was the climbing centre? You went for your birthday, didn't you?"
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "Yes, on Saturday. Honestly, I was worried before we went, because I don't like being high up. But it was the best birthday ever."
+  ],
+  [
+   "bf_alice",
+   "Amelia",
+   "Really? Weren't you scared?"
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "At first, yes. But the instructor was great. She checked our ropes every time, and she told us to look at the wall, not at the floor. That really helped."
+  ],
+  [
+   "bf_alice",
+   "Amelia",
+   "How many of you went?"
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "Six. Me, my cousin and four friends from school. Everyone had a different colour rope."
+  ],
+  [
+   "bf_alice",
+   "Amelia",
+   "How high did you climb?"
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "The tall wall is fifteen metres. I only got halfway, but my cousin reached the top. I wasn't disappointed, though. Next time I'll get higher."
+  ],
+  [
+   "bf_alice",
+   "Amelia",
+   "Did you do anything else there?"
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "There's a café and a little shop, but we didn't have time for them. We had pizza at home afterwards instead. That was nice, because Grandma came too."
+  ],
+  [
+   "bf_alice",
+   "Amelia",
+   "I'd love to try it. Is it expensive?"
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "It's not cheap, but one ticket lets you stay all day, so it's worth it. And you don't have to bring anything. They give you special shoes and a helmet."
+  ],
+  [
+   "bf_alice",
+   "Amelia",
+   "Great. Maybe I'll go for my birthday too."
+  ],
+  [
+   "bm_fable",
+   "Tariq",
+   "You should! Ask for the instructor called Becky. She's the best."
+  ]
+ ]
+}

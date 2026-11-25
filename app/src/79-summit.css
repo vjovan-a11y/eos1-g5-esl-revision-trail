@@ -1,0 +1,119 @@
+/* 79-summit.css - the Summit (79-summit.js): its page, the final test's intro and clock, and the certificate with its
+   print look (A4 landscape, nothing but the certificate). Prefix: sm-. The test paper itself is 71-test-paper.css. */
+
+/* ---------- the Summit page (a hub: the scene, the sheet, three cards) ---------- */
+.sm-sheet .hub__title { color: var(--ink); }
+.sm-progress { gap: .375rem .75rem; }
+.sm-dots { display: inline-flex; gap: .25rem; }
+.sm-dot { width: .875rem; height: .875rem; border-radius: 50%; border: 2px solid var(--hue-deep); background: var(--surface); }
+.sm-dot.is-done { background: var(--hue); }
+.sm-locked { display: flex; align-items: center; gap: .5rem; margin: .5rem 0 0; font-weight: 700; }
+.sm-locked .icon { flex: none; width: 1.25rem; height: 1.25rem; }
+.sm-zip { margin: .25rem 0 .5rem; }
+.sm-cards { margin-top: .25rem; }
+.sm-cards .step-card.is-building { opacity: .72; cursor: default; }
+.sm-cards .step-card[disabled] .step-card__line { color: var(--ink-2); }
+
+/* ---------- the final test: the intro, the clock ---------- */
+.sm-intro { display: flex; flex-direction: column; align-items: center; gap: .75rem; max-width: 34rem; width: 100%; }
+.sm-intro__pic .art-plate { display: block; width: 5.5rem; height: 5.5rem; }
+.sm-intro__facts { margin: 0; padding: 0 0 0 1.25rem; font: 600 var(--fs-body)/1.45 var(--font-body); color: var(--ink); }
+.sm-intro__facts li + li { margin-top: .25rem; }
+.sm-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .5rem .75rem; }
+.sm-row .tp-instr { flex: 1 1 18rem; }
+.sm-clock {
+  display: inline-flex; align-items: center; gap: .375rem; flex: none; min-height: 2.75rem; min-width: 2.75rem; margin-top: .75rem;
+  padding: 0 .75rem; border: 1.5px solid #9AA6B4; border-radius: 999px; background: #F4F6F9; color: #10305E;
+  font: 700 .9375rem/1.2 var(--tp-font); cursor: pointer; touch-action: manipulation;
+}
+.sm-clock .icon { width: 1.125rem; height: 1.125rem; }
+.sm-clock.is-up { border-color: #B86E00; color: #7B4E00; background: #FFF1CF; }
+.sm-clock.is-hidden { color: #5F656D; }
+.sm-clock:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.lt-intro__from { margin: .5rem 0 0; font: 700 var(--fs-body)/1.3 var(--font-body); color: var(--ink-2); }
+
+/* ---------- the certificate: paper in both themes, as it prints ---------- */
+.sm-certwrap { display: flex; flex-direction: column; align-items: center; gap: .75rem; width: 100%; max-width: 60rem; margin: 0 auto; padding: .25rem 0 1rem; }
+.sm-cert__field { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; width: 100%; font: 700 var(--fs-body)/1.3 var(--font-body); color: var(--ink); }
+.sm-cert__input {
+  flex: 1 1 12rem; min-height: 3rem; padding: 0 .875rem; border: 2px solid var(--ctl-line); border-radius: .75rem;
+  background: var(--ctl, #FFFFFF); color: var(--ink); font: 700 var(--fs-lead)/1.2 var(--font-body);
+}
+.sm-cert__input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sm-cert {
+  color-scheme: light;
+  width: 100%; aspect-ratio: 297 / 210; container-type: inline-size;
+  background: #FFFDF6; color: #1B2440; border-radius: .5rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 .75rem 2rem -.75rem rgba(16, 48, 94, .35);
+  padding: 1.6%;
+}
+.sm-cert__frame {
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 100%;
+  border: .6cqi solid #3B4FA8; outline: .25cqi solid #F5A623; outline-offset: -1.4cqi; border-radius: .4rem;
+  padding: 2.4cqi 4cqi 1.8cqi; text-align: center; font-family: var(--font-body);
+}
+.sm-cert__frame p { margin: 0; }
+.sm-cert__top { font: 800 1.7cqi/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: #3B4FA8; }
+.sm-cert__head { display: flex; align-items: center; gap: 1.5cqi; }
+.sm-cert__cup .art { width: 7cqi; height: 7cqi; }
+.sm-cert__title { margin: 0; font: 700 5.6cqi/1 var(--font-display); color: #24316E; }
+.sm-cert__to { font: 600 2cqi/1.2 var(--font-body); color: #444C66; }
+.sm-cert__name {
+  min-width: 50%; padding: 0 2cqi .4cqi; border-bottom: .3cqi dotted #3B4FA8;
+  font: 700 4.6cqi/1.15 var(--font-display); color: #111A33; overflow-wrap: anywhere;
+}
+.sm-cert__for { max-width: 80%; font: 600 2cqi/1.35 var(--font-body); color: #2A3150; }
+.sm-cert__badges { display: flex; justify-content: center; gap: 1.1cqi; margin: 0; padding: 0; list-style: none; }
+.sm-cert__badge .art { width: 6.2cqi; height: 6.2cqi; border-radius: 50%; }
+.sm-cert__badge.is-outline .art { opacity: .3; filter: grayscale(1); }
+.sm-cert__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: .5cqi 3cqi; font: 700 1.9cqi/1.3 var(--font-body); color: #24316E; }
+.sm-cert__foot { display: flex; align-items: flex-end; justify-content: space-between; width: 100%; }
+.sm-cert__date { font: 600 1.8cqi/1.2 var(--font-body); color: #444C66; }
+.sm-cert__zip { display: block; width: 7cqi; }
+.sm-cert__zip svg { width: 100%; height: auto; }
+
+/* print: the certificate alone, A4 landscape, colours kept */
+/* a phone: the same certificate, taller, with words big enough to read (it still prints A4 landscape) */
+@media (max-width: 599px) {
+  .sm-cert { aspect-ratio: auto; }
+  .sm-cert__frame { gap: .625rem; padding: 1rem .75rem .75rem; }
+  .sm-cert__top { font-size: .75rem; }
+  .sm-cert__cup .art { width: 2.75rem; height: 2.75rem; }
+  .sm-cert__title { font-size: 2rem; }
+  .sm-cert__to, .sm-cert__for, .sm-cert__date { font-size: .9375rem; }
+  .sm-cert__name { font-size: 1.75rem; }
+  .sm-cert__for { max-width: 100%; }
+  .sm-cert__badges { flex-wrap: wrap; gap: .375rem; }
+  .sm-cert__badge .art { width: 2.25rem; height: 2.25rem; }
+  .sm-cert__facts { font-size: .9375rem; flex-direction: column; }
+  .sm-cert__zip { width: 2.75rem; }
+}
+
+@media print {
+  @page { size: A4 landscape; margin: 8mm; }
+  html, body { background: #FFFFFF !important; }
+  body * { visibility: hidden !important; }
+  .sm-cert, .sm-cert * { visibility: visible !important; }
+  .sm-cert {
+    position: fixed; left: 0; top: 0; width: 281mm; height: 194mm; aspect-ratio: auto; box-shadow: none; border-radius: 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  /* the print size wins over the phone's (cqi of a 281 mm wide certificate) */
+  .sm-cert__frame { gap: 0; padding: 2.4cqi 4cqi 1.8cqi; }
+  .sm-cert__top { font-size: 1.7cqi; } .sm-cert__title { font-size: 5.6cqi; } .sm-cert__name { font-size: 4.6cqi; }
+  .sm-cert__to, .sm-cert__for { font-size: 2cqi; } .sm-cert__date { font-size: 1.8cqi; } .sm-cert__for { max-width: 80%; }
+  .sm-cert__facts { font-size: 1.9cqi; flex-direction: row; } .sm-cert__badges { flex-wrap: nowrap; gap: 1.1cqi; }
+  .sm-cert__cup .art { width: 7cqi; height: 7cqi; } .sm-cert__badge .art { width: 6.2cqi; height: 6.2cqi; } .sm-cert__zip { width: 7cqi; }
+  .sm-cert * { animation: none !important; transition: none !important; }
+}
+
+/* a teacher or TA looking at the Summit before the children's 7 Mini tests: a small quiet chip */
+.sm-teacher {
+  display: inline-flex; align-items: center; gap: .375rem; align-self: flex-start; margin: .25rem 0 0;
+  padding: .25rem .75rem; border-radius: var(--r-pill); background: var(--gold-soft); color: var(--ink);
+  font: 800 .875rem/1.2 var(--font-body);
+}
+.sm-teacher .icon { flex: none; width: 1rem; height: 1rem; color: var(--accent-text); }
+.sm-teacher__vi { font-weight: 700; color: var(--ink-2); }
+
+

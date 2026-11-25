@@ -1,0 +1,5 @@
+# Kokoro voice model files (about 340 MB): download as described in CLAUDE.md
+tts/
+__pycache__/
+*.pyc
+.DS_Store

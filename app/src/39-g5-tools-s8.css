@@ -1,0 +1,142 @@
+/* 39-g5-tools-s8.css - Grade 5, Stop 8 (Circles): the circle pictures, the circle whose parts light up (c8-parts) and
+   the compasses on a centimetre grid (c8-compass). Everything sits on the light art plate (.wb, 38-tools.css), which
+   is light in both themes, so the colours are written here once. One colour per part of a circle, the same in every
+   picture: radius blue, diameter magenta (the world colour), circumference green, the centre a dark dot.
+   Every class starts with c8. Motion: transform and opacity only. */
+
+/* ---------- a picture: one circle, circles in a row, a circle on the grid, the ruler ---------- */
+.c8-fig {
+  margin: 0; display: flex; flex-direction: column; align-items: center; gap: .25rem; padding: .375rem;
+  border-radius: var(--r-md); background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); color: var(--plate-ink);
+}
+.c8-svg, .c8-grid, .c8-ruler { display: block; height: auto; max-width: 100%; overflow: visible; }
+.c8-fig--circle .c8-svg { width: min(100%, 15rem); }
+.c8-fig--big .c8-svg { width: min(100%, 18rem); }
+.c8-fig--grid .c8-grid { width: min(100%, 11rem); }
+.c8-fig--grid.c8-fig--big .c8-grid { width: min(100%, 15rem); }
+.c8-fig--ruler .c8-ruler { width: min(100%, 13rem); }
+/* a picture inside an answer option: under the words, small enough for three options on a phone */
+.mk__opt .c8-fig, .tp-sheet .tp-opt .c8-fig { flex: 0 0 auto; }
+.mk__opt .c8-fig--circle .c8-svg { width: 7.5rem; }
+.mk__opt .c8-fig--grid .c8-grid { width: 7.75rem; }
+
+.c8-disc { fill: #FFFFFF; }
+.c8-ring { fill: none; stroke: #10305E; stroke-width: 2.2; }
+.c8-ring.is-hl { stroke: #1E9E6A; stroke-width: 5.5; }
+.c8-ln { stroke: #10305E; stroke-width: 2.2; stroke-linecap: round; }
+.c8-ln--r { stroke: #1D62AE; }
+.c8-ln--d { stroke: #A8328F; }
+.c8-ln--c, .c8-ln--s { stroke: #5B6B82; }
+.c8-ln.is-hl { stroke-width: 4.6; }
+.c8-ln.is-dim { opacity: .45; }
+.c8-ln.is-dash { stroke-dasharray: 5 4; }
+.c8-end { fill: #5B6B82; }
+.c8-dot { fill: #10305E; }
+.c8-dot.is-hl { fill: #D0338A; }
+.c8-halo { fill: #D0338A; opacity: .25; }
+.c8-lead { stroke: #10305E; stroke-width: 1.2; }
+.c8-sq { fill: #EEF5FC; stroke: #3D5A85; stroke-width: 1.8; }
+.c8-dim { fill: none; stroke: #3D5A85; stroke-width: 1.2; }
+.c8-t { font: 700 11.5px/1 var(--font-body); fill: #10305E; paint-order: stroke; stroke: #FFFFFF; stroke-width: 3.5px; stroke-linejoin: round; }
+.c8-t--sm { font-size: 10.5px; }
+.c8-t--r { fill: #1D62AE; }
+.c8-t--d { fill: #A8328F; }
+.c8-t--ring { fill: #147A51; }
+.c8-t--hl { fill: #B0246E; }
+.c8-t.is-ask { font-size: 15px; fill: #B0246E; }
+.c8-tag circle { fill: #FFFFFF; stroke: #10305E; stroke-width: 1.5; }
+.c8-tag.is-on circle { fill: #FFD9F1; stroke: #A8328F; stroke-width: 2.5; }
+.c8-tag__t { font: 800 11.5px/1 var(--font-body); fill: #10305E; }
+
+/* the centimetre grid */
+.c8-grid__bg { fill: #FFFFFF; }
+.c8-grid__ln { fill: none; stroke: #B8C8DB; stroke-width: .5; }
+.c8-grid__frame { fill: none; stroke: #10305E; stroke-width: 1.2; }
+.c8-grid__lab { font: 700 7px/1 var(--font-body); fill: #A8328F; paint-order: stroke; stroke: #FFFFFF; stroke-width: 2.4px; stroke-linejoin: round; }
+.c8-grid .c8-ln { stroke-width: 1.4; }
+.c8-arc { fill: none; stroke: #10305E; stroke-width: 1.7; stroke-linecap: round; }
+.c8-arc.is-new { animation: c8-ink 80ms linear both; }
+@keyframes c8-ink { from { opacity: 0; } to { opacity: 1; } }
+.c8-pt__dot { fill: #10305E; }
+.c8-pt__t { font: 800 7.5px/1 var(--font-body); fill: #10305E; paint-order: stroke; stroke: #FFFFFF; stroke-width: 2.4px; stroke-linejoin: round; }
+.c8-arm__bar { stroke: #A8328F; stroke-width: 1.3; stroke-dasharray: 2.2 1.8; }
+.c8-arm__bar.is-off { opacity: 0; }
+.c8-arm__pen { fill: #A8328F; stroke: #FFFFFF; stroke-width: .7; }
+.c8-arm__pin { fill: none; stroke: #A8328F; stroke-width: 1.1; }
+.c8-arm.is-turn { animation: c8-turn 1010ms linear both; }
+@keyframes c8-turn { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* the compasses on the ruler */
+.c8-ruler__body { fill: #FFE9A8; stroke: #B8770E; stroke-width: .7; }
+.c8-ruler__tick { fill: none; stroke: #7B4E00; stroke-width: .6; }
+.c8-ruler__n { font: 700 6px/1 var(--font-body); fill: #5A3A00; }
+.c8-ruler__span { fill: #A8328F; }
+.c8-leg { fill: none; stroke: #5B6B82; stroke-width: 2.2; stroke-linecap: round; }
+.c8-leg--pen { stroke: #3D5A85; }
+.c8-hinge { fill: #10305E; }
+.c8-pin { fill: #10305E; }
+.c8-pen { fill: #A8328F; }
+
+/* ---------- the tools ---------- */
+.c8 .c8-say { margin: 0; text-align: center; font: 700 var(--fs-small)/1.3 var(--font-body); color: var(--plate-ink-2); }
+.c8.is-locked .c8-say { display: none; }
+.c8 .is-shake { animation: tool-shake .35s ease-in-out; }
+
+/* the compasses, in the order of the work: the ruler with − and +, the grid, then Draw. On a wide screen the grid
+   is on the left and the controls are on the right. */
+.c8-compass { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; align-items: center; gap: .5rem; }
+.c8-board { position: relative; width: min(100%, 17.5rem, 46vh); line-height: 0; }
+.c8-board .c8-grid { width: 100%; }
+.c8-setbox, .c8-gobox { display: flex; flex-direction: column; align-items: center; gap: .375rem; width: 100%; min-width: 0; }
+@media (min-width: 1200px) {
+  .c8-compass { grid-template-columns: auto minmax(0, 19rem); grid-template-areas: "board set" "board go"; justify-content: center; gap: .75rem 1.25rem; }
+  .c8-board { grid-area: board; width: min(17.5rem, 46vh); }
+  .c8-setbox { grid-area: set; align-self: end; }
+  .c8-gobox { grid-area: go; align-self: start; }
+}
+.c8-pt {
+  position: absolute; width: 2.75rem; height: 2.75rem; margin: -1.375rem 0 0 -1.375rem; padding: 0; border-radius: 50%;
+  border: 0; background: transparent; box-shadow: none; appearance: none; -webkit-appearance: none;
+}
+.c8-pt:not(:disabled)::after {
+  content: ''; position: absolute; inset: .5rem; border-radius: 50%; border: 2px dashed #A8328F; opacity: .9;
+}
+.c8-pt.is-on::after { display: none; }
+.c8-pt:focus-visible { outline: 3px solid #2F7FD4; outline-offset: -4px; }
+.c8-set { display: flex; align-items: center; justify-content: center; gap: .375rem; width: 100%; }
+.c8-rulerbox { flex: 0 1 10.5rem; min-width: 0; }
+.c8-rulerbox .c8-ruler { width: 100%; }
+.c8-b { min-height: 3rem; }
+.c8-b--sq { flex: none; width: 3rem; min-width: 3rem; padding: 0; justify-content: center; }
+.c8-b--draw { min-width: 7rem; justify-content: center; }
+.c8-now { margin: 0; font: 600 1.125rem/1.2 var(--font-display); color: var(--plate-ink); font-variant-numeric: tabular-nums; }
+.c8-now b { color: #A8328F; }
+.c8-go { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+
+/* the circle whose parts light up */
+.c8-parts { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+.c8-fig--tool { padding: 0; background: none; box-shadow: none; width: 100%; }
+.c8-fig--tool .c8-svg { width: min(100%, 17rem, 40vh); }
+.c8-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .375rem; width: 100%; max-width: 24rem; }
+.c8-parts--pick .c8-chips { grid-template-columns: repeat(auto-fit, minmax(4.75rem, 1fr)); }
+.c8-chip {
+  min-height: 3rem; padding: .25rem .5rem; border-radius: var(--r-md); background: #FFFFFF; color: var(--plate-ink);
+  box-shadow: inset 0 0 0 2px #B8C8DB; font: 700 1rem/1.2 var(--font-body);
+}
+.c8-chip.is-seen { background: #EEF5FC; }
+.c8-chip.is-on { background: #FFD9F1; box-shadow: inset 0 0 0 3px #A8328F; }
+.c8-chip:disabled { opacity: .6; }
+.c8-chip.is-on:disabled { opacity: 1; }
+.c8-parts .c8-say { min-height: 2.6em; }
+
+/* See it: the tool sits in the middle of the scene's height */
+.see-hands__desk:has(> .c8) { margin-top: auto; margin-bottom: auto; align-self: center; }
+.see-hands__desk > .c8 { flex: 1 1 auto; max-width: 42rem; }
+
+@media (prefers-reduced-motion: reduce) { .c8-arc.is-new, .c8-arm.is-turn { animation: none; } }
+
+/* the tool's own buttons are white keys on the plate (the quiet button has no edge there) */
+.c8 .c8-b { background: #FFFFFF; color: var(--plate-ink); box-shadow: inset 0 0 0 2px #B8C8DB; border-radius: var(--r-md); font-weight: 700; }
+.c8 .c8-b:disabled { opacity: .5; }
+
+

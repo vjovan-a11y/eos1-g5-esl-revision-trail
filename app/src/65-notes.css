@@ -1,0 +1,105 @@
+/* 65-notes.css - the Notes step (60-notes.js). Prefix: nt-. Tokens only, no literal colours.
+   Copied from the Grade 4 trail; added: the worked example (nt-ex) and a picture from the maths tools (nt-pic--tool). */
+
+.nt-card { display: flex; flex-direction: column; gap: .5rem; padding: .875rem 1rem 1rem; }
+.nt-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-height: 2.25rem; }
+.nt-num {
+  font: 600 var(--fs-small)/1.2 var(--font-display); letter-spacing: .04em; text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+/* the note itself: large, calm, easy to read */
+.nt-text { margin: 0; font: 600 var(--fs-h3)/1.45 var(--font-body); color: var(--ink); }
+.nt-vi {
+  margin: 0; padding-top: .5rem; border-top: 1px solid var(--line);
+  font: 600 var(--fs-body)/1.45 var(--font-body); color: var(--ink-2);
+  animation: nt-in .24s var(--ease-out) both;
+}
+.nt-vi[hidden] { display: none; }
+
+/* the worked example under the note */
+.nt-ex { display: flex; flex-direction: column; gap: .25rem; padding: .625rem .875rem; border-radius: var(--r-md); background: var(--surface-2); border: 1px solid var(--line); }
+.nt-ex__label { margin: 0; font: 800 var(--fs-small)/1.2 var(--font-display); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.nt-ex__line { margin: 0; font: 700 var(--fs-lead)/1.45 var(--font-body); color: var(--ink); }
+
+/* a picture from the maths tools (place value chart, slider, blocks): centred on its plate */
+.nt-pic--tool { display: flex; align-items: center; justify-content: center; padding: .75rem; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); min-width: 0; overflow: hidden; }
+.nt-pic--tool > * { zoom: 1.35; }
+@media (min-width: 700px) { .nt-pic--tool > * { zoom: 1.8; } }
+@media (min-width: 1200px) and (min-height: 760px) { .nt-pic--tool > * { zoom: 2.4; } }
+/* the drawn blocks (.bpic) size themselves from their width (container units): give them the width, no zoom */
+.nt-pic--tool > .bpic { zoom: 1; width: 100%; align-self: stretch; }
+/* the Stop 2 pictures (39-tools-lines.css) scale with the width themselves: a number line, jumps, a thermometer */
+.nt-pic--tool > .nl, .nt-pic--tool > .hops { zoom: 1; width: 100%; max-width: 40rem; }
+.nt-pic--tool > .th { zoom: 1; }
+.nt-pic--tool > .th .th__svg { height: min(20rem, 46vh); }
+@media (min-width: 1000px) { .nt-pic--tool > .nl, .nt-pic--tool > .hops { zoom: 1.35; max-width: 31rem; } }
+@media (min-width: 1200px) and (min-height: 760px) { .nt-pic--tool > .dotseq { zoom: 1.8; } }
+
+/* the quiet line for teachers under the last note */
+.nt-los { margin: 0; padding: 0 .25rem; font: 600 var(--fs-small)/1.4 var(--font-body); color: var(--ink-2); }
+.nt-los__label { font-weight: 800; }
+
+/* the check: a gap sentence and three big word buttons */
+.nt-sentence { margin: 0; font: 600 var(--fs-h3)/1.6 var(--font-body); color: var(--ink); }
+.nt-gap {
+  display: inline-block; min-width: 5.5em; height: 1.35em; margin: 0 .15em; vertical-align: -.3em;
+  border-bottom: .1875rem dashed var(--line-strong);
+}
+.nt-gap.is-filled {
+  min-width: 0; height: auto; padding: 0 .35em; vertical-align: baseline;
+  border-radius: var(--r-sm); border-bottom: .1875rem solid var(--go);
+  background: var(--go-soft); color: var(--go-text); font-weight: 800;
+  animation: nt-pop .32s var(--ease-pop) both;
+}
+.nt-choices .choice { min-height: 3.5rem; }
+.nt-choices.is-locked .choice:not(.is-right):not(.is-wrong) { pointer-events: none; }
+
+/* no picture yet: the card sits in the middle */
+.nt-stack--noart { justify-content: center; }
+.nt-stack--noart > .stage-do { width: 100%; max-width: 36rem; margin: 0 auto; }
+
+@keyframes nt-in { from { opacity: 0; transform: translateY(-.25rem); } to { opacity: 1; transform: none; } }
+@keyframes nt-pop { 0% { transform: scale(.8); opacity: 0; } 70% { transform: scale(1.06); opacity: 1; } 100% { transform: none; } }
+
+/* short screens (a small phone): a little smaller, so the note still fits beside its picture */
+@media (max-height: 700px) {
+  .nt-text, .nt-sentence { font-size: var(--fs-lead); }
+  .nt-card { gap: .375rem; padding: .625rem .875rem .75rem; }
+}
+
+/* the board and big laptops: the note is read from across the room */
+@media (min-width: 1200px) and (min-height: 760px) {
+  .nt-text, .nt-sentence { font-size: var(--fs-h2); }
+}
+
+/* Stop 4: the written sum on squared paper and the counters in pairs are tall: a smaller zoom keeps them whole */
+.nt-pic--tool > .cspic, .nt-pic--tool > .prpic { zoom: .75; margin: 0; }
+@media (max-width: 699px) and (max-height: 760px) { .nt-pic--tool > .cspic { zoom: .58; } }
+@media (min-width: 700px) { .nt-pic--tool > .cspic, .nt-pic--tool > .prpic { zoom: 1.25; } }
+@media (min-width: 1200px) and (min-height: 760px) { .nt-pic--tool > .cspic, .nt-pic--tool > .prpic { zoom: 1.5; } }
+
+/* Stop 5: the multiplication square fills the plate's height (no zoom); two arrays side by side (any order); the factor
+   pairs and the three numbers scale with the width (.hops, above) */
+/* the plate (flex 1 1 0: its size comes from the page, not from the picture) is a size container: the square fits it both
+   ways, its numbers grow with it */
+.nt-pic--tool:has(> .msq) { container-type: size; }
+.nt-pic--tool > .msq { zoom: 1; width: 100%; }
+.nt-pic--tool .msq--mini .msq__g { width: min(100cqw, 100cqh, 24rem); padding: .1875rem; }
+.nt-pic--tool .msq--mini .msq__c, .nt-pic--tool .msq--mini .msq__h, .nt-pic--tool .msq--mini .msq__x { font-size: clamp(.5rem, 3.4cqmin, 1.0625rem); }
+/* the arrays of dots (one, or two side by side) take the plate's height, so they are whole on a small phone too */
+.nt-pic--tool:has(> .dpic), .nt-pic--tool:has(> .pics) { container-type: size; }
+.nt-pic--tool > .dpic, .nt-pic--tool > .pics { zoom: 1; }
+.nt-pic--tool > .dpic .dpic__svg { width: auto !important; height: min(calc(100cqh - .5rem), 15rem); max-width: 100cqw; }
+.nt-pic--tool > .pics { flex-wrap: nowrap; justify-content: center; align-items: flex-end; max-width: 100%; }
+.nt-pic--tool > .pics > * { flex: 0 1 auto; min-width: 0; }
+.nt-pic--tool > .pics .dpic__svg { width: auto !important; height: min(calc(100cqh - 3.5rem), 13rem); max-width: 100%; }
+.nt-pic--tool > .pics figcaption { font-size: clamp(.875rem, 6cqh, 1.25rem); }
+/* a very short plate (a small phone): the square is too small for 100 numbers; it shows the way along row 7 and down
+   column 8, with only the two row and column numbers and the product */
+@container (max-height: 11rem) {
+  .msq--mini .msq__c:not(.is-on), .msq--mini .msq__h:not(.is-on), .msq--mini .msq__x { color: transparent; }
+  .msq--mini .msq__c.is-on, .msq--mini .msq__h.is-on { font-size: .5625rem; letter-spacing: -.04em; }
+}
+
+

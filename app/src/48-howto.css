@@ -1,0 +1,169 @@
+/* 48-howto.css - the written "How to use" card and sheet (27-howto.js), the progress code dialogs (26-progress-code.js),
+   the Student / Teacher / Visitor tabs and the "How to use" button on the start screen (25-players.js).
+   Ported from the Grade 5 Science trail; every class is howto* here, so nothing meets the pointing hand
+   (17-guide.css). Tokens only. */
+
+/* ---------- the card on the start screen ---------- */
+
+.howto-card {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: .875rem;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  color: var(--ink);
+}
+.howto-card__head { display: flex; align-items: center; gap: .75rem; }
+.howto-card__icon {
+  display: grid; place-items: center; flex: none;
+  width: 2.5rem; height: 2.5rem; border-radius: var(--r-sm);
+  background: var(--gold-soft); color: var(--accent-text); font-size: 1rem;
+}
+.howto-card__title { font: 600 1.1875rem/1.25 var(--font-display); color: var(--ink); }
+.howto-card__vi { font: 700 1rem/1.35 var(--font-body); color: var(--ink-2); }
+.howto-card__btns { display: flex; flex-wrap: wrap; gap: .5rem; }
+.howto-card__btns .btn { flex: 1 1 12rem; justify-content: center; }
+
+/* ---------- the written guide (a sheet) ---------- */
+
+.howto-sheet { max-width: 44rem; }
+.howto-sheet__sub { margin: -.25rem 0 .75rem; font: 700 1rem/1.3 var(--font-body); color: var(--ink-2); }
+.howto__tabs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .375rem;
+  padding: .3125rem; margin-bottom: .875rem;
+  border-radius: var(--r-pill); background: var(--line);
+}
+.howto__tab {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .0625rem;
+  min-height: var(--tap); padding: .375rem .75rem;
+  border: 0; border-radius: var(--r-pill); background: transparent; color: var(--ink-2);
+  font: inherit; cursor: pointer; text-align: center;
+}
+.howto__tab-en { font: 800 1rem/1.2 var(--font-body); }
+.howto__tab-vi { font: 700 .8125rem/1.2 var(--font-body); opacity: .85; }
+.howto__tab.is-on { background: var(--surface); color: var(--ink); box-shadow: 0 2px 6px rgba(16, 48, 94, .12); }
+.howto__tab:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.howto-g__list { display: flex; flex-direction: column; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.howto-g__item { display: flex; align-items: flex-start; gap: .75rem; }
+.howto-g__icon {
+  display: grid; place-items: center; flex: none;
+  width: 2.25rem; height: 2.25rem; border-radius: var(--r-sm);
+  background: var(--gold-soft); color: var(--accent-text); font-size: .9375rem;
+}
+.howto-g__text { display: flex; flex-direction: column; gap: .1875rem; min-width: 0; }
+.howto-g__en { font: 700 var(--fs-body)/1.4 var(--font-body); color: var(--ink); }
+.howto-g__vi { font: 600 1rem/1.4 var(--font-body); color: var(--ink-2); }
+
+/* ---------- the name menu: progress code buttons ---------- */
+
+.who-menu__code {
+  display: flex; flex-direction: column; gap: .5rem;
+  margin-top: .75rem; padding-top: .75rem; border-top: 2px dashed var(--line);
+}
+.who-menu__code-title { font: 800 1rem/1.3 var(--font-body); color: var(--ink); }
+.who-menu__code-title span { font-weight: 700; color: var(--ink-2); }
+.who-menu__code-btns { display: flex; flex-wrap: wrap; gap: .5rem; }
+.who-menu__code-btns .btn { flex: 1 1 13rem; justify-content: center; }
+
+/* ---------- the progress code dialogs ---------- */
+
+.pc-dialog { max-width: 36rem; }
+.pc-dialog .dialog__body { display: flex; flex-direction: column; gap: .75rem; }
+.pc-line { display: flex; flex-direction: column; gap: .125rem; }
+.pc-line__en { font: 700 var(--fs-body)/1.4 var(--font-body); color: var(--ink); }
+.pc-line__vi { font: 600 1rem/1.4 var(--font-body); color: var(--ink-2); }
+.pc-code {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .375rem .625rem;
+  padding: .875rem .75rem; border-radius: var(--r-lg);
+  background: var(--gold-soft); border: 2px dashed var(--accent);
+  user-select: all; -webkit-user-select: all;
+}
+.pc-code__group {
+  font: 800 clamp(1.25rem, 5.2vw, 1.75rem)/1.2 ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  letter-spacing: .08em; color: var(--ink);
+}
+.pc-copyrow { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.pc-copied { font: 700 1rem/1.3 var(--font-body); color: var(--go-text); }
+.pc-steps { display: flex; flex-direction: column; gap: .5rem; margin: 0; padding-left: 1.5rem; }
+.pc-steps li::marker { font-weight: 900; color: var(--accent-text); }
+.pc-input {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* ---------- Student / Teacher / Visitor tabs on the start screen ---------- */
+
+.role-tabs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .375rem;
+  padding: .3125rem; border-radius: var(--r-lg); background: var(--line);
+}
+.role-tab {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 3.5rem; padding: .375rem .5rem;
+  border: 0; border-radius: calc(var(--r-lg) - .25rem); background: transparent; color: var(--ink-2);
+  font: inherit; cursor: pointer; text-align: left;
+}
+.role-tab > .icon, .role-tab > svg { flex: none; font-size: 1.125rem; }
+.role-tab__text { display: flex; flex-direction: column; min-width: 0; }
+.role-tab__en { font: 800 1.0625rem/1.15 var(--font-body); }
+.role-tab__vi { font: 700 .8125rem/1.2 var(--font-body); opacity: .85; }
+.role-tab.is-on { background: var(--surface); color: var(--ink); box-shadow: 0 2px 6px rgba(16, 48, 94, .14); }
+.role-tab.is-on > .icon, .role-tab.is-on > svg { color: var(--accent-text); }
+.role-tab:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 520px) {
+  .role-tab { flex-direction: column; text-align: center; gap: .25rem; min-height: 4.25rem; }
+  .role-tab__text { align-items: center; }
+  .role-tab__en { font-size: .9375rem; }
+  .role-tab__vi { font-size: .75rem; }
+}
+.visitor-note {
+  display: flex; flex-direction: column; gap: .25rem;
+  padding: 1rem; border-radius: var(--r-lg); background: var(--gold-soft); color: var(--ink);
+}
+.visitor-note__en { font: 800 var(--fs-body)/1.4 var(--font-body); }
+.visitor-note__vi { font: 700 1rem/1.4 var(--font-body); color: var(--ink-2); }
+.visitor-note__small { font-size: .9375rem; font-weight: 600; margin-top: .375rem; }
+.visitor-note__small + .visitor-note__small { margin-top: 0; }
+
+/* ---------- the teacher's code check ---------- */
+
+.pc-dialog--wide { max-width: 46rem; }
+.pcx { display: flex; flex-direction: column; gap: .625rem; }
+.pcx-total { font: 700 1.0625rem/1.35 var(--font-body); color: var(--ink); }
+.pcx-total span { color: var(--ink-2); font-weight: 600; }
+.pcx-wrap { overflow-x: auto; border: 2px solid var(--line); border-radius: var(--r-lg); }
+.pcx-table { width: 100%; border-collapse: collapse; font: 700 .9375rem/1.25 var(--font-body); color: var(--ink); }
+.pcx-table th, .pcx-table td { padding: .4375rem .5rem; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+.pcx-table thead th { font-size: .8125rem; color: var(--ink-2); background: var(--line); }
+.pcx-table tbody tr:last-child th, .pcx-table tbody tr:last-child td { border-bottom: 0; }
+.pcx-stop { text-align: left !important; }
+.pcx-stop__in { display: flex; align-items: center; gap: .5rem; }
+.pcx-n { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--ink); color: var(--surface); font-size: .75rem; }
+.pcx-cell .stars, .pcx-cell [class*="pips"] { font-size: .8125rem; }
+.pcx-none { color: var(--ink-2); opacity: .7; }
+.pcx-sum { font-weight: 900; }
+.pcx-table tr.is-badge { background: var(--gold-soft); }
+@media (max-width: 520px) {
+  .pcx-stop__in > span:not(.pcx-n) { display: none; }
+  .pcx-table th, .pcx-table td { padding: .375rem .25rem; }
+  .pcx-table thead th { font-size: .6875rem; white-space: normal; }
+  .pcx-test b { display: block; font-size: .8125rem; }
+}
+
+/* ---------- the "How to use · Hướng dẫn" button in the start screen's top bar ---------- */
+
+.players__head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.howto-open { flex: none; min-height: 2.75rem; padding-top: .25rem; padding-bottom: .25rem; }
+.howto-open .btn__sub { font-size: .8125rem; }
+.players__head .brand { min-width: 0; flex: 1 1 auto; }
+@media (max-width: 420px) {
+  .howto-open { padding-left: .625rem; padding-right: .625rem; gap: .375rem; }
+  .howto-open .btn__label { font-size: .9375rem; }
+}
+
+/* the card at the end of the picture page "How to use" (32-howto.js) */
+.howto__more { width: 100%; max-width: 44rem; margin: 1.25rem auto 0; }
+
+

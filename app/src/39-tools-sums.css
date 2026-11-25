@@ -1,0 +1,124 @@
+/* 39-tools-sums.css - the Stop 4 tools (39-tools-sums.js): take away with blocks, the balance scale, counters in pairs,
+   and the pictures: a written sum on squared paper, a bar model, pictures with + and =. Flat on the light art plate (light
+   in both themes, ink --plate-ink), tap targets 48 px. Motion: transform and opacity only; still = at once (00-tokens.css). */
+
+/* ---------- take away with blocks ---------- */
+.tk { display: grid; gap: .5rem; width: 100%; min-width: 0; }
+.tk__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; }
+.tk__info { flex: 1 1 14rem; margin: 0; font: 700 var(--fs-small)/1.35 var(--font-body); color: var(--ink); text-align: center; }
+.tk__take[hidden] { display: none; }
+
+/* ---------- the balance scale ---------- */
+.bal { display: grid; justify-items: center; gap: .375rem; width: 100%; --tilt: 0deg; }
+.bal__plate { width: min(100%, 24rem); padding: .375rem .5rem .25rem; border-radius: var(--r-lg); background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); }
+.bal__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bal__base { fill: #8A6CE0; stroke: #3F2A86; stroke-width: 2.5; }
+.bal__post { fill: #B9A6EE; stroke: #3F2A86; stroke-width: 2.5; }
+.bal__pin { fill: var(--gold); stroke: var(--gold-edge); stroke-width: 2.5; }
+.bal__arm { fill: #6E52C8; stroke: #3F2A86; stroke-width: 2.5; }
+.bal__str { fill: none; stroke: #5C6472; stroke-width: 2; }
+.bal__pan { fill: #DCD2F7; stroke: #3F2A86; stroke-width: 2.5; }
+.bal__w rect { fill: #FFFFFF; stroke: var(--plate-ink); stroke-width: 2.5; }
+.bal__w text { fill: var(--plate-ink); font: 700 22px/1 var(--font-display); text-anchor: middle; }
+.bal__w.is-ask rect { fill: var(--gold-soft); stroke: var(--gold-edge); stroke-dasharray: 6 4; }
+.bal__w.is-ask text { fill: var(--gold-text); }
+.bal[data-st="level"] .bal__pan { fill: #CFEBD9; stroke: #1E7A4C; }
+/* the beam turns around its pin (the group's origin), each pan turns back so it hangs straight down */
+.bal__beam, .bal__keep { transform-origin: 0 0; transition: transform var(--dur-max) var(--ease-snap); }
+.bal__beam { transform: rotate(var(--tilt)); }
+.bal__keep { transform: rotate(calc(var(--tilt) * -1)); }
+.bal__say { min-height: 1.5rem; margin: 0; text-align: center; font: 700 var(--fs-small)/1.35 var(--font-body); color: var(--ink); }
+.bal[data-st="level"] .bal__say { color: var(--go-text, #146B43); }
+.bal--mini .bal__plate { width: min(100%, 15rem); padding: .25rem; }
+
+/* ---------- counters in pairs ---------- */
+.pr { display: grid; justify-items: center; gap: .75rem; width: 100%; }
+.pr__row, .prpic { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .625rem; }
+.pr__row { width: 100%; padding: .625rem .5rem; border-radius: var(--r-lg); background: var(--plate); box-shadow: inset 0 0 0 2px var(--plate-line); }
+.prpic { margin: .25rem 0; padding: .5rem; border-radius: var(--r-md); background: var(--plate); }
+.pr__g { display: grid; justify-items: center; gap: .25rem; margin: 0; max-width: 12.5rem; }
+.pr__n { font: 700 1.5rem/1 var(--font-display); color: var(--plate-ink); }
+.pr__tray { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem; max-width: 11rem; padding: .375rem; border-radius: var(--r-md); background: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--plate-line); }
+/* in pairs: two rows, one pair per column; the one left over sits alone at the end, with a gold dashed ring */
+.pr__tray.is-paired { display: grid; grid-auto-flow: column; grid-template-rows: repeat(2, auto); grid-template-columns: repeat(var(--c), auto); column-gap: .375rem; row-gap: .125rem; }
+.pr__c { display: block; width: 1.375rem; height: 1.375rem; border-radius: 50%; }
+.pr__c.is-red { background: #E5404A; box-shadow: inset 0 -2px 0 #A31A22; }
+.pr__c.is-blue { background: #2F7FD4; box-shadow: inset 0 -2px 0 #1D62AE; }
+.pr__c.is-lone { outline: 2.5px dashed var(--gold-edge); outline-offset: 2px; }
+.pr__c.is-new { animation: tl-pop var(--dur-base) var(--ease-pop) both; }
+.prpic .pr__c { width: 1rem; height: 1rem; }
+.pr__cap { max-width: 12rem; text-align: center; font: 700 .875rem/1.25 var(--font-body); color: var(--plate-ink); }
+.pr__cap-l { display: block; }
+.pr__cap-l--k { font-size: 1rem; }
+.pr__op { font: 700 1.5rem/1 var(--font-display); color: var(--plate-ink); }
+.pr__ctl { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+
+/* ---------- a written sum on squared paper ---------- */
+.cspic { display: flex; justify-content: center; margin: .375rem 0; }
+.cs {
+  display: inline-grid; padding: .375rem .75rem .5rem .25rem; border-radius: var(--r-md); color: var(--plate-ink);
+  background-color: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--plate-line);
+  background-image: linear-gradient(#E3EBF6 1px, transparent 1px), linear-gradient(90deg, #E3EBF6 1px, transparent 1px); background-size: 1.125rem 1.125rem;
+}
+.cs__r { display: grid; grid-template-columns: 1.5rem repeat(var(--n), 2.125rem); align-items: center; justify-items: center; height: 2.375rem; }
+.cs__r i, .cs__r b { font: 600 1.75rem/1 var(--font-display); font-style: normal; font-variant-numeric: tabular-nums; }
+.cs__r--ans { height: 2.75rem; border-top: 3px solid var(--plate-ink); }
+.cs__r--mk { height: 1.25rem; }
+.cs__r--mk b { font-size: 1rem; color: var(--gold-text); }
+
+/* the column method with answer boxes (the models col and digitpuzzle: <span class="colsum">, one box per digit) */
+.colw { display: flex; justify-content: center; flex: 1 1 100%; margin: .375rem 0; line-height: 1; }
+.colsum {
+  display: inline-grid; padding: .5rem 1rem .625rem .375rem; border-radius: var(--r-md); color: var(--plate-ink);
+  background-color: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--plate-line);
+  background-image: linear-gradient(#E3EBF6 1px, transparent 1px), linear-gradient(90deg, #E3EBF6 1px, transparent 1px); background-size: 1.5rem 1.5rem;
+}
+.colsum .cr { display: grid; grid-template-columns: 2rem repeat(var(--n), 3rem); align-items: center; justify-items: center; height: 3.25rem; }
+.colsum .cr i, .colsum .cr b { font: 600 2.125rem/1 var(--font-display); font-style: normal; font-variant-numeric: tabular-nums; color: var(--plate-ink); }
+.colsum .cr.ans { height: 3.75rem; margin-top: .25rem; padding-top: .25rem; border-top: 3px solid var(--plate-ink); }
+.colsum .blank--cell { width: 2.75rem; height: 3rem; margin: 0; padding: 0; font-size: 1.75rem; }
+.tp-sheet .colsum .blank--cell { min-width: 0; width: 2.75rem; border: 2px solid #222222; border-radius: .25rem; padding: 0; align-items: center; justify-content: center; }
+@media (max-width: 400px) {
+  .colsum .cr { grid-template-columns: 1.5rem repeat(var(--n), 2.75rem); }
+  .colsum .blank--cell, .tp-sheet .colsum .blank--cell { width: 2.75rem; }   /* tap targets stay 44 px (Session 10) */
+}
+
+/* ---------- a bar model ---------- */
+.barm { display: grid; gap: .25rem; width: 100%; max-width: 24rem; margin: .375rem auto; }
+.barm__whole, .barm__p {
+  display: grid; place-items: center; min-height: 2.75rem; min-width: 0; padding: 0 .25rem; border-radius: var(--r-sm);
+  box-shadow: inset 0 0 0 2.5px var(--plate-ink); color: var(--plate-ink); font: 700 1.375rem/1 var(--font-display); font-variant-numeric: tabular-nums;
+}
+.barm__whole { background: #E8E1FB; }
+.barm__parts { display: flex; gap: .25rem; }
+.barm__p.c0 { background: #FFE9B8; } .barm__p.c1 { background: #D8F0DD; } .barm__p.c2 { background: #F9DCE0; }
+.barm__whole.is-ask, .barm__p.is-ask { background: var(--gold-soft); box-shadow: inset 0 0 0 2.5px var(--gold-edge); color: var(--gold-text); outline: 2px dashed var(--gold-edge); outline-offset: -6px; }
+
+/* ---------- pictures with + and = ---------- */
+.peq { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .25rem .375rem; margin: .5rem 0; padding: .5rem; border-radius: var(--r-md); background: var(--plate); }
+.peq__i { display: block; width: 3rem; height: 3rem; }
+.peq__i svg { display: block; width: 100%; height: 100%; }
+.peq__i .icon { color: var(--gold-edge); fill: var(--gold); }
+.peq__op { font: 700 1.5rem/1 var(--font-display); color: var(--plate-ink); }
+.peq__eq { display: inline-flex; align-items: center; gap: .375rem; white-space: nowrap; }
+.peq__t { font: 700 1.75rem/1 var(--font-display); color: var(--plate-ink); white-space: nowrap; }
+.peq__t small { font: 700 1rem/1 var(--font-body); color: var(--plate-ink-2); }
+@media (max-width: 420px) { .peq__i { width: 2.375rem; height: 2.375rem; } }
+
+/* ---------- rows of odd and even (the parityrow model's options) ---------- */
+.prow { display: inline-flex; flex-wrap: wrap; gap: .3125rem; }
+.prow i { min-width: 3rem; padding: .4375rem .25rem; border-radius: var(--r-sm); text-align: center; font: 700 .875rem/1 var(--font-body); font-style: normal; }
+.prow .pc-odd { background: #FFE3C2; color: #7A3E00; }
+.prow .pc-even { background: #D9E8FF; color: #123D7A; }
+
+/* the classroom board and big laptops: the counters and the scale grow with the screen */
+@media (min-width: 1200px) and (min-height: 860px) {
+  .pr__c { width: 1.875rem; height: 1.875rem; }
+  .pr__tray { max-width: 15rem; }
+  .pr__g { max-width: 16rem; }
+  .pr__n { font-size: 2rem; }
+  .pr__cap { max-width: 16rem; font-size: 1rem; }
+  .bal__plate { width: min(100%, 30rem); }
+}
+
+

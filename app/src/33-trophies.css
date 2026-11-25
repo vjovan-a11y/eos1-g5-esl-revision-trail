@@ -1,0 +1,131 @@
+/* 33-trophies.css - "My trophies" (33-trophies.js): tiles, then drawn wooden shelves in the G4 flat style. Big type on
+   the classroom board. Won trophies are bright; the others are quiet outlines (never greyed into a "failure"). */
+:root { --wood: #D9A066; --wood-edge: #A8693A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --wood: #8E6238; --wood-edge: #5E3E22; } }
+:root[data-theme="dark"] { --wood: #8E6238; --wood-edge: #5E3E22; }
+
+.trophies { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; background: var(--bg); }
+.trophies__head .brand__name { font-size: 1.25rem; }
+.trophies__cup { display: inline-flex; color: var(--gold-text); }
+.trophies__cup .icon { width: 1.75rem; height: 1.75rem; }
+.trophies__scroll {
+  flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 1rem max(16px, env(safe-area-inset-right, 0px)) 1.5rem max(16px, env(safe-area-inset-left, 0px));
+}
+.trophies__inner { display: flex; flex-direction: column; gap: 1.25rem; width: 100%; max-width: 64rem; margin: 0 auto; }
+.trophies__inner.rise { animation: rise-in 300ms var(--ease-out) both; }
+
+/* the four tiles */
+.trophies__tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .625rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 700px) { .trophies__tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.trophies__tile {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; align-items: center; column-gap: .625rem;
+  padding: .625rem .875rem; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1);
+}
+.trophies__tile-pic { grid-row: 1 / 3; display: inline-flex; width: 2.75rem; height: 2.75rem; align-items: center; justify-content: center; }
+.trophies__tile-pic > svg, .trophies__tile-pic .art { width: 100%; height: 100%; }
+.trophies__tile-pic .stars { font-size: 2.25rem; }
+.trophies__tile-n { font: 600 1.625rem/1.05 var(--font-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.trophies__tile-t { font: 700 var(--fs-small)/1.2 var(--font-body); color: var(--ink-2); }
+
+/* a shelf: a heading, one line of how to win, the things on wooden planks */
+.shelf { display: flex; flex-direction: column; gap: .375rem; }
+.shelf__title { margin: 0; font: 600 1.5rem/1.2 var(--font-display); color: var(--ink); }
+.shelf__how { margin: 0 0 .375rem; font: 700 var(--fs-body)/1.35 var(--font-body); color: var(--ink-2); }
+
+/* the badges: three on a plank on a phone, five on a tablet, all nine on the board; the planks of a row join */
+.shelf__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; row-gap: 1rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 600px) { .shelf__row { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 1500px) { .shelf__row--badges { grid-template-columns: repeat(9, minmax(0, 1fr)); } }
+.shelf__item, .shelf__slot {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: .25rem; min-width: 0;
+  padding: .25rem .375rem 1.375rem; text-align: center;
+  animation: rise-in var(--dur-base) var(--ease-out) both; animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+.shelf__item::after, .shelf__slots::after {
+  content: ""; position: absolute; left: -1px; right: -1px; bottom: 0; height: .875rem;   /* 1 px over: no seam when scaled */
+  background: var(--wood); box-shadow: inset 0 -.3125rem 0 var(--wood-edge);   /* no outer shadow: the planks of a row join without a seam */
+}
+.shelf__pic { width: 4.5rem; height: 4.5rem; flex: none; }
+.shelf__name { font: 800 var(--fs-small)/1.2 var(--font-body); color: var(--ink); overflow-wrap: anywhere; }
+.shelf__status { font: 700 .875rem/1.2 var(--font-body); color: var(--ink-2); }
+.shelf__item.is-won .shelf__status, .shelf__slot.is-won .shelf__status { color: var(--gold-text); }
+.shelf__item.is-won .shelf__pic { box-shadow: 0 0 0 .1875rem var(--gold); border-radius: 50%; }
+/* not won yet: a quiet outline of the trophy, so the child sees what there is to win */
+.is-outline .shelf__pic { border-radius: 50%; box-shadow: 0 0 0 .125rem var(--line-strong); opacity: .6; }
+.is-outline .shelf__pic svg { opacity: .4; filter: grayscale(1); }
+.is-outline .shelf__name { color: var(--ink-2); }
+.shelf__new {
+  position: absolute; top: 0; right: 12%; z-index: 1;
+  padding: .125rem .5rem; border-radius: var(--r-pill); background: var(--go); color: var(--go-ink);
+  font: 800 .8125rem/1.3 var(--font-body);
+  animation: rw-best-in var(--dur-slow) var(--ease-pop) 400ms both;
+}
+
+/* the medals and bolts: one cubby per stop that has them */
+.shelf__cubbies { display: grid; grid-template-columns: minmax(0, 1fr); gap: .875rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 700px) { .shelf__cubbies { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.shelf__cubby { display: flex; flex-direction: column; gap: .5rem; padding: .75rem .75rem 0; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1); overflow: hidden; }
+.shelf__cubby-title { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: 0; font: 600 1.125rem/1.2 var(--font-display); color: var(--ink); }
+.shelf__cubby-stars { display: inline-flex; align-items: center; gap: .25rem; flex: none; color: var(--gold-text); font: 700 var(--fs-body)/1 var(--font-body); }
+.shelf__slots { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0 -.75rem; padding: 0 .75rem; }
+.shelf__slot { padding-bottom: 1.375rem; }
+.shelf__pic--prize { width: 4rem; height: 4rem; }
+.shelf__soon { margin: .5rem 0 0; font: 700 var(--fs-body)/1.35 var(--font-body); color: var(--ink-2); }
+
+/* my best runs: the streak badge of the moments (18-rewards.css) */
+.shelf__runs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .625rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 700px) { .shelf__runs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.shelf__run { display: flex; align-items: center; gap: .625rem; padding: .625rem .75rem; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1); min-width: 0; }
+.shelf__run-n {
+  display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 .1875rem 0 var(--gold-edge); color: #3A2600; font: 700 1.375rem/1 var(--font-display);
+}
+.shelf__run.is-outline .shelf__run-n { background: transparent; box-shadow: inset 0 0 0 .125rem var(--line-strong); color: var(--ink-2); }
+.shelf__run-t { display: flex; flex-direction: column; min-width: 0; font: 700 var(--fs-small)/1.25 var(--font-body); color: var(--ink-2); }
+.shelf__run-t b { font: 800 var(--fs-body)/1.25 var(--font-body); color: var(--ink); }
+
+/* the classroom board: everything bigger, so the back of the class can read it */
+@media (min-width: 1600px) and (min-height: 900px) {
+  .trophies__inner { max-width: 110rem; gap: 1.75rem; }
+  .trophies__head .brand__name { font-size: 1.75rem; }
+  .trophies__tile-pic { width: 4rem; height: 4rem; }
+  .trophies__tile-n { font-size: 2.5rem; }
+  .trophies__tile-t { font-size: 1.25rem; }
+  .shelf__title { font-size: 2.25rem; }
+  .shelf__how { font-size: 1.375rem; }
+  .shelf__pic { width: 7rem; height: 7rem; }
+  .shelf__pic--prize { width: 6rem; height: 6rem; }
+  .shelf__name { font-size: 1.25rem; }
+  .shelf__status { font-size: 1.125rem; }
+  .shelf__cubby-title { font-size: 1.625rem; }
+  .shelf__run-n { width: 4rem; height: 4rem; font-size: 2rem; }
+  .shelf__run-t { font-size: 1.125rem; }
+  .shelf__run-t b { font-size: 1.375rem; }
+  .shelf__soon { font-size: 1.375rem; }
+}
+
+/* phones: the map's header hides the app's name to make room for the child's name; this page has no name chip */
+@media (max-width: 599px) {
+  .trophies__head .brand { flex: 1 1 auto; }
+  .trophies__head .brand__name { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+}
+
+/* one plank per row of badges, drawn by the first badge of the row (no seams at any zoom; a short last row still
+   stands on a whole shelf) */
+.shelf__row .shelf__item::after { content: none; }
+.shelf__row .shelf__item:nth-child(3n+1)::after { content: ""; left: 0; right: -200%; }
+@media (min-width: 600px) {
+  .shelf__row .shelf__item:nth-child(3n+1)::after { content: none; }
+  .shelf__row .shelf__item:nth-child(5n+1)::after { content: ""; left: 0; right: -400%; }
+}
+@media (min-width: 1500px) {
+  .shelf__row--badges .shelf__item:nth-child(5n+1)::after { content: none; }
+  .shelf__row--badges .shelf__item:nth-child(9n+1)::after { content: ""; left: 0; right: -800%; }
+}
+
+/* the Summit (Session 14): the trophy, the final test and the big Lightning round on one plank */
+.shelf__slots--summit { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: .75rem .75rem 0; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1); overflow: hidden; }
+.shelf__slots--summit .shelf__slot.is-won .shelf__pic { box-shadow: 0 0 0 .1875rem var(--gold); border-radius: 50%; }
+
+

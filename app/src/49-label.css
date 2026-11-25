@@ -1,0 +1,74 @@
+/* 49-label.css - the title and the school line (Jovan, EOS 1 finishing touches; from the Grade 5 Science trail's
+   calm layer, sections 5, 11 and 12 only, on the Maths tokens). Plain text, no logo.
+   1. The start screen and the map: the title (h1.brand__name) and the school line (p.brand__school) beside the mark.
+   2. Phones (599 px and less): the header keeps the mark; a quiet strip under it carries the two lines.
+   3. Every screen: a thin label at the very bottom, under the action bar (90-boot.js: footer.app-label in #app).
+      Laptop: the title · the school line; phone: the school line only. It takes the bottom safe area instead of the
+      action bar, never covers anything (it is in the flow, not over it) and is hidden when printing. */
+
+/* ---------- 1. the brand: title and the school line ---------- */
+.brand__text { display: flex; flex-direction: column; gap: .125rem; min-width: 0; }
+.brand__text .brand__name { font: 600 1.125rem/1.15 var(--font-display); color: var(--ink); }
+.brand__school { margin: 0; font: 700 .8125rem/1.25 var(--font-body); color: var(--ink-2); letter-spacing: .01em; }
+.players__head .brand__name { white-space: normal; overflow: visible; }
+.home__head .brand__text { flex: 1 1 auto; }
+@media (min-width: 600px) {
+  .home__head .brand__text .brand__name { white-space: nowrap; }
+  .home__head .who { max-width: 12rem; }              /* the title and the school line need the room more than a long name */
+}
+@media (min-width: 1100px) and (max-width: 1439px) { .home__head .brand__school { font-size: .75rem; letter-spacing: 0; } .home__head .who { max-width: 10.5rem; } }
+@media (min-width: 600px) and (max-width: 1099px) {
+  .home__head .brand__text .brand__name { font-size: 1rem; }
+  .home__head .brand__school { font-size: .75rem; }
+  .home__head .who { max-width: 10.5rem; }
+}
+
+/* ---------- 2. phones: the title and the school line move into a quiet strip under the header ---------- */
+.school-strip { display: none; }
+@media (max-width: 599px) {
+  .home__head .brand__text, .players__head .brand__text { display: none; }
+  .school-strip {
+    display: flex; flex-direction: column; align-items: center; gap: .0625rem; flex: none;
+    padding: .375rem 16px .4375rem; text-align: center;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+  }
+  .school-strip__title { margin: 0; font: 600 1rem/1.2 var(--font-display); color: var(--ink); }
+  .school-strip__school { margin: 0; font: 700 .75rem/1.3 var(--font-body); color: var(--ink-2); }
+  @media (max-width: 420px) { .school-strip__school { font-size: .6875rem; letter-spacing: 0; } }
+  .players__head .howto-open { margin-left: auto; }
+}
+
+/* ---------- 3. the school label at the bottom of every screen ---------- */
+.app-label {
+  position: relative; z-index: 5;
+  flex: none; display: flex; align-items: center; justify-content: center; gap: .375rem;
+  min-height: 1.5rem;
+  margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+  padding: .1875rem max(16px, env(safe-area-inset-right, 0px)) calc(.25rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--bar); border-top: 1px solid var(--line);
+  font: 700 .75rem/1.2 var(--font-body); color: var(--ink-3); text-align: center;
+  white-space: nowrap; overflow: hidden;
+}
+.app-label > span { overflow: hidden; text-overflow: ellipsis; }
+.app-label__title { flex: none; color: var(--ink-2); }
+@media (max-width: 599px) {
+  .app-label__title, .app-label__dot { display: none; }
+  .app-label { font-size: .6875rem; min-height: 1.375rem; }
+}
+/* the label takes the bottom safe area, so the action bar above it does not */
+#app.has-label .actionbar { margin-bottom: 0; padding-bottom: .625rem; }
+@media (max-height: 700px) { #app.has-label .actionbar { padding-bottom: .375rem; } }
+/* a message stays above the action bar, which is a label's height higher now */
+#app.has-label .toasts { bottom: calc(8rem + env(safe-area-inset-bottom, 0px)); }
+@media print { .app-label { display: none !important; } }
+
+/* the map's header keeps the look it had under the old school band (80-polish.css): see-through, over the map's sky */
+.home > .home__head { background: transparent; }
+/* phones: the label takes a little of the height the hub's scene had; the scene keeps the room its heart needs
+   (the sheet under it scrolls a little sooner), and the action bar gives back a little of its bottom padding */
+@media (max-width: 599px) {
+  #app.has-label .hub__scene { min-height: calc(7.25rem + env(safe-area-inset-top, 0px)); }
+  #app.has-label .actionbar { padding-bottom: .375rem; }
+}
+
+
