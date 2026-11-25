@@ -55,7 +55,8 @@ The app is a claude.ai artifact (multi-file: `index.html` + `audio/*.mp3`), publ
 3. **No em dashes** in any text Jovan will read or send.
 4. Vietnamese (`vi`) is only for instructions, titles and word meanings, never for the English being tested.
 5. Mini tests: exactly 10 items, 5 at DOK 1 then 5 at DOK 2. Three options per multiple-choice question, one right answer, `opts[0]` is the right one and `at` says where it is shown.
-6. Keep the family look and behaviour of the EOS1 trails: Student / Teacher / Visitor sign-in, progress codes, How to use guide, Zip the robot, the VI button, stars and badges, the school label line.
+6. Keep the behaviour of the EOS1 trails: Student / Teacher / Visitor sign-in, progress codes, How to use guide, Zip the robot, the VI button, stars and badges, the school label line. The LOOK is this trail's own (Jovan, 25 November 2026): the paper look with ink cartoon animation (`99-paper.css`, `99-cartoon.css`), black line-drawing pictures, Map and Stops buttons.
+7. Browser tests for every feature are in `scripts/tests/` (see its README). The plan for building the Grade 3 and Grade 4 trails from this one is `playbook/PLAYBOOK-G3-G4.md`.
 
 ## Where to start
 
