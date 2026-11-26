@@ -46,7 +46,8 @@ _css_pre.css
 80-polish.css
 81-g5-polish.css
 99-paper.css
-99-cartoon.css
+99-fonts.css
+99-colour.css
 _mid.html
 _js_pre.js
 00-core.js
@@ -153,4 +154,5 @@ _js_pre.js
 85-devkit.js
 90-boot.js
 99-paper.js
+99-colour.js
 _tail.html

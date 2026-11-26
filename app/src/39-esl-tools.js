@@ -34,7 +34,7 @@
     const btn = el('button', { type: 'button', class: 'au__btn pressable' }, T.ui.icon('play'), label);
     const bar = el('span', { class: 'au__bar' }, el('span', { class: 'au__fill' }));
     const dots = el('span', { class: 'au__dots', 'aria-hidden': 'true' }, el('i'), el('i'));
-    const eq = el('span', { class: 'au__eq', 'aria-hidden': 'true' }, el('i'), el('i'), el('i'), el('i'));      // ink sound bars (99-cartoon.css)
+    const eq = el('span', { class: 'au__eq', 'aria-hidden': 'true' }, el('i'), el('i'), el('i'), el('i'));      // sound bars (99-colour.css)
     const tick = el('span', { class: 'au__clock', 'aria-hidden': 'true' });
     const count = el('span', { class: 'au__count' });
     const words = el('button', { type: 'button', class: 'au__words', hidden: true }, 'Show the words');

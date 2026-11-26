@@ -1,7 +1,8 @@
 """emoji_build.py - swap the system emoji for one illustrated picture set (Microsoft Fluent Emoji, MIT licence).
 
 Run from the folder root:  python3 scripts/emoji_build.py <fluentui-emoji>/icons/high-contrast <emojibase-data>/en/data.json
-(since 25 November 2026 the high-contrast style: black line drawings like exam pictures; icons/modern is the colour style)
+(since 25 November 2026 the high-contrast style: black line drawings like exam pictures, for the Mini tests and the Summit;
+ since 26 November 2026 also icons/flat into dist/img/emoji-c with EMOJI_OUT=dist/img/emoji-c EMOJI_NOJS=1: the colour set)
 
 1. finds every emoji used in content/*.json and app/src/* (not the generated packs)
 2. matches each one to a Fluent Emoji SVG by its CLDR name (people and hands: the "-default" yellow version)
@@ -11,7 +12,7 @@ Emoji with no match keep the device's own emoji. """
 import json, os, re, shutil, subprocess, sys, glob
 
 MODERN, EMOJIBASE = sys.argv[1], sys.argv[2]
-OUT_DIR = 'dist/img/emoji'
+OUT_DIR = os.environ.get('EMOJI_OUT', 'dist/img/emoji')     # dist/img/emoji-c: the flat colour set
 PAT = re.compile(r'(?:[\U0001F1E6-\U0001F1FF]{2})|(?:[#*0-9]️?⃣)|(?:[☀-➿⬀-⯿⌀-⏿\U0001F000-\U0001FAFF]'
                  r'(?:️|[\U0001F3FB-\U0001F3FF])?(?:‍[☀-➿⬀-⯿⌀-⏿\U0001F000-\U0001FAFF](?:️)?)*)')
 SKIP = {'✓', '✗', '★'}     # tick, cross and star marks are text, not pictures
@@ -53,6 +54,8 @@ except Exception as ex:   # svgo is only a size saving
     print('svgo skipped:', ex)
 after = sum(os.path.getsize(f) for f in glob.glob(OUT_DIR + '/*.svg'))
 
+if os.environ.get('EMOJI_NOJS'):
+    print('pictures', len(set(mp.values())), 'missing', missing); sys.exit(0)
 js = open('scripts/emoji_runtime.js', encoding='utf8').read().replace('__MAP__', json.dumps(mp, ensure_ascii=False, sort_keys=True))
 open('app/src/04-emoji.js', 'w', encoding='utf8').write(js)
 print('emoji used', len(used), 'pictures', len(set(mp.values())), 'kept as device emoji', missing)

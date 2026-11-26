@@ -1,0 +1,180 @@
+/* 99-colour.css - the COLOUR-CODED look of the Grade 3, 4 and 5 trails (Jovan, 26 November 2026).
+   White pages, one calm colour per exam skill, flat colour pictures, a flat colour Zip, the Andika reading font,
+   calm and quick movement. Loaded after 99-paper.css. Everything here applies only while children learn:
+   in the Mini tests and the Summit, <html data-paper="exam"> (99-colour.js) and the paper look of 99-paper.css
+   stays exactly as it is (Arial, black on white, line drawings).
+
+   Skill colours (text on them reads at 5:1 or more):
+     Vocabulary and grammar, Stops 1, 2, 3, 7  orange  #B45309
+     Listening, Stops 4, 5                    blue    #1D4ED8
+     Reading, Stops 6, 8                      teal    #0F766E
+     Writing, Stop 9                          purple  #6D28D9
+     The Summit and the home screen           navy    #1F3A5F
+   Right is always green with a tick, wrong always red with a cross. */
+
+/* the Andika font itself: 99-fonts.css (made by scripts/fonts_build.py) */
+
+/* ---- the tokens: these selectors are stronger than 99-paper.css, and stop at data-paper="exam" ---- */
+html:root:not([data-paper="exam"]),
+html:not([data-paper="exam"]) #app,
+html:not([data-paper="exam"]) #app[data-world] {
+  --skill: #1F3A5F !important; --skill-deep: #172C49 !important; --skill-soft: #E8EDF4 !important; --skill-mid: #9DB0CB !important;
+  --bg: #F4F6F9 !important;
+  --bg-deep: #E9EDF2 !important;
+  --surface: #FFFFFF !important;
+  --surface-2: #F8FAFC !important;
+  --line: #E2E8F0 !important;
+  --line-strong: #94A3B8 !important;
+  --ink: #1E293B !important;
+  --ink-2: #334155 !important;
+  --ink-3: #64748B !important;
+  --map-dot: rgba(30, 41, 59, .06) !important;
+  --gold: #F5B301 !important;
+  --gold-edge: #C98F00 !important;
+  --gold-soft: #FFF6D6 !important;
+  --gold-text: #8A5A00 !important;
+  --star-off: #E5E7EB !important;
+  --star-off-line: #A3AEBD !important;
+  --go: #15803D !important;
+  --go-edge: #0F5F2D !important;
+  --go-ink: #FFFFFF !important;
+  --go-soft: #E7F6EC !important;
+  --go-line: #22A04B !important;
+  --go-text: #166534 !important;
+  --accent: var(--skill) !important;
+  --accent-text: var(--skill-deep) !important;
+  --accent-soft: var(--skill-soft) !important;
+  --accent-ink: #FFFFFF !important;
+  --pick: var(--skill) !important;
+  --pick-soft: var(--skill-soft) !important;
+  --focus: var(--skill) !important;
+  --ctl-line: #CBD5E1 !important;
+  --ctl-edge: #CBD5E1 !important;
+  --plate-line: #E2E8F0 !important;
+  --plate-ink: #1E293B !important;
+  --shadow-1: 0 1px 2px rgba(15, 23, 42, .06), 0 1px 3px rgba(15, 23, 42, .08) !important;
+  --shadow-2: 0 8px 28px rgba(15, 23, 42, .16) !important;
+  --shadow-bar: 0 -1px 0 #E2E8F0 !important;
+  --world-1: #F59E0B !important; --world-1-deep: #B45309 !important;
+  --world-2: #F59E0B !important; --world-2-deep: #B45309 !important;
+  --world-3: #F59E0B !important; --world-3-deep: #B45309 !important;
+  --world-7: #F59E0B !important; --world-7-deep: #B45309 !important;
+  --world-4: #3B82F6 !important; --world-4-deep: #1D4ED8 !important;
+  --world-5: #3B82F6 !important; --world-5-deep: #1D4ED8 !important;
+  --world-6: #14B8A6 !important; --world-6-deep: #0F766E !important;
+  --world-8: #14B8A6 !important; --world-8-deep: #0F766E !important;
+  --world-9: #8B5CF6 !important; --world-9-deep: #6D28D9 !important;
+  --world-10: #3B5B8C !important; --world-10-deep: #1F3A5F !important;
+  --hue-tint: .16 !important;
+  /* Zip in flat colour: soft blue, white face, coral cheeks */
+  --zip-head: #8CC0F2 !important;
+  --zip-line: #1E3A5F !important;
+  --zip-face: #FFFFFF !important;
+  --zip-body: #B5D7F8 !important;
+  --zip-body-line: #1E3A5F !important;
+  --zip-glow: #FFCB45 !important;
+  --zip-glow-line: #B7791F !important;
+  --zip-cheek: #FF9480 !important;
+  --r-sm: .5rem !important;
+  --r-md: .75rem !important;
+  --r-lg: 1rem !important;
+  --r-xl: 1.25rem !important;
+  --font-display: 'Andika', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+  --font-body: 'Andika', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+}
+/* the skill colour of the stop being shown (the router puts the stop number on #app) */
+html:not([data-paper="exam"]) #app:is([data-world="1"], [data-world="2"], [data-world="3"], [data-world="7"]) {
+  --skill: #B45309 !important; --skill-deep: #92400E !important; --skill-soft: #FFF4E5 !important; --skill-mid: #F6C177 !important; }
+html:not([data-paper="exam"]) #app:is([data-world="4"], [data-world="5"]) {
+  --skill: #1D4ED8 !important; --skill-deep: #1E3A8A !important; --skill-soft: #EAF1FE !important; --skill-mid: #9CBDF7 !important; }
+html:not([data-paper="exam"]) #app:is([data-world="6"], [data-world="8"]) {
+  --skill: #0F766E !important; --skill-deep: #115E59 !important; --skill-soft: #E3F6F3 !important; --skill-mid: #8AD6CC !important; }
+html:not([data-paper="exam"]) #app[data-world="9"] {
+  --skill: #6D28D9 !important; --skill-deep: #4C1D95 !important; --skill-soft: #F2ECFE !important; --skill-mid: #C4A8F5 !important; }
+
+/* ---- type: Andika, a little more air between lines ---- */
+html:not([data-paper="exam"]) body { background: var(--bg) !important; color: var(--ink) !important; line-height: 1.55 !important; }
+html:not([data-paper="exam"]) h1, html:not([data-paper="exam"]) h2, html:not([data-paper="exam"]) h3 { color: var(--ink); }
+html:not([data-paper="exam"]) .hl { color: var(--skill-deep); }
+
+/* ---- surfaces: white cards with a soft shadow on a light grey page ---- */
+html:not([data-paper="exam"]) .topbar { background: #FFFFFF !important; border-bottom: 0 !important; box-shadow: 0 1px 0 var(--line), 0 3px 0 var(--skill) !important; }
+html:not([data-paper="exam"]) .home__head { background: #FFFFFF !important; box-shadow: 0 1px 0 var(--line) !important; }
+html:not([data-paper="exam"]) .actionbar, html:not([data-paper="exam"]) .bar { background: #FFFFFF !important; box-shadow: 0 -1px 0 var(--line) !important; }
+html:not([data-paper="exam"]) :is(.panel, .card, .instruct, .wd-row, .wd-mean, .dialog, .nav-row, .hub__step, .au) {
+  border: 1px solid var(--line) !important; box-shadow: var(--shadow-1) !important; }
+html:not([data-paper="exam"]) .instruct { background: var(--skill-soft) !important; border-color: transparent !important; box-shadow: none !important; }
+html:not([data-paper="exam"]) .instruct--plain, html:not([data-paper="exam"]) .hub__intro .instruct, html:not([data-paper="exam"]) .hub__blurb {
+  border: 0 !important; background: none !important; }
+
+/* buttons: the main button in the colour of the stop; answers keep a clear outline */
+html:not([data-paper="exam"]) .btn--primary { --btn-face: var(--skill) !important; --btn-edge: var(--skill-deep) !important; --btn-ink: #FFFFFF !important; border-radius: 999px !important; }
+html:not([data-paper="exam"]) .btn--primary:disabled { --btn-face: #E5E7EB !important; --btn-ink: #8A94A6 !important; }
+html:not([data-paper="exam"]) .choice { box-shadow: inset 0 0 0 2px #CBD5E1, var(--shadow-1) !important; border-radius: var(--r-md) !important; }
+html:not([data-paper="exam"]) .choice.is-picked, html:not([data-paper="exam"]) .choice[aria-pressed="true"] { box-shadow: inset 0 0 0 3px var(--skill) !important; background: var(--skill-soft) !important; }
+html:not([data-paper="exam"]) .choice.is-right { box-shadow: inset 0 0 0 3px var(--go-line) !important; background: var(--go-soft) !important; }
+html:not([data-paper="exam"]) .choice.is-wrong { box-shadow: inset 0 0 0 3px var(--no) !important; background: var(--no-soft) !important; }
+html:not([data-paper="exam"]) .au__btn { background: var(--skill) !important; color: #FFFFFF !important; border-radius: 999px !important; }
+html:not([data-paper="exam"]) .au__fill { background: var(--skill) !important; }
+html:not([data-paper="exam"]) .vi-btn__pill { color: var(--skill-deep) !important; }
+
+/* ---- pictures: flat colour, no grey filter ---- */
+html:not([data-paper="exam"]) :is(svg.art, .art, .stage-pic svg, .plate svg, .hub__scene, .map-node__disc, .rw-fly, .trophy, .badge,
+  .sm-cert__badges, img.emo, image.emo-svg, .pico__clock, .result__art, .map, .map-wrap svg, .guide-hand) { filter: none !important; }
+html:not([data-paper="exam"]) .hub__scene { background: var(--skill-soft) !important; border: 0 !important; border-radius: var(--r-xl) !important; }
+html:not([data-paper="exam"]) .hub__scene > .art { filter: none !important; }
+
+/* ---- the trail map: white circles with a ring in the skill colour; gold when the stop is done ---- */
+html:not([data-paper="exam"]) .home__scroll { background-color: var(--bg); }
+html:not([data-paper="exam"]) .map-node__disc { box-shadow: 0 0 0 .25rem #FFFFFF, 0 0 0 .5rem var(--ring), 0 .25rem .875rem .5rem rgba(15, 23, 42, .10) !important; }
+html:not([data-paper="exam"]) .map-node.is-open .map-node__btn { --ring: var(--hue); }
+html:not([data-paper="exam"]) .map-node__num { background: var(--hue-deep, #1E293B) !important; color: #FFFFFF !important; }
+html:not([data-paper="exam"]) .map-node__name { color: var(--ink); }
+html:not([data-paper="exam"]) .trail--road { stroke: #FFFFFF; }
+html:not([data-paper="exam"]) .trail--case { stroke: #CBD5E1; opacity: 1; }
+html:not([data-paper="exam"]) .trail--dash { stroke: #94A3B8; }
+
+/* ---- calm and quick movement: no wobble; a page slides in once, nothing moves while children read ---- */
+@keyframes cc-in { from { opacity: 0; transform: translateY(.375rem); } to { opacity: 1; transform: none; } }
+html:not([data-paper="exam"]) .screen > * { animation: cc-in 220ms ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-paper="exam"]) .screen > * { animation: none !important; }
+}
+
+/* ---- the stop badges (map circles, stop pages, trophies): the outer disc in the colour of the skill ---- */
+html:not([data-paper="exam"]) svg[data-art^="badge-"] > circle:first-child { fill: var(--badge, #3B5B8C); }
+html:not([data-paper="exam"]) :is(svg[data-art="badge-1"], svg[data-art="badge-2"], svg[data-art="badge-3"], svg[data-art="badge-7"]) { --badge: #F59E0B; }
+html:not([data-paper="exam"]) :is(svg[data-art="badge-4"], svg[data-art="badge-5"]) { --badge: #3B82F6; }
+html:not([data-paper="exam"]) :is(svg[data-art="badge-6"], svg[data-art="badge-8"]) { --badge: #14B8A6; }
+html:not([data-paper="exam"]) svg[data-art="badge-9"] { --badge: #8B5CF6; }
+
+/* the next step on a stop page: the colour of the stop (green means right or done) */
+html:not([data-paper="exam"]) .step-card.is-next { --btn-face: var(--skill-soft) !important; --btn-line: var(--skill) !important; --btn-edge: var(--skill-deep) !important; }
+
+/* the colour key under the trail map */
+.skill-key { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem .75rem; margin: 3.25rem auto 1rem; padding: 0 .5rem; max-width: 46rem; position: relative; z-index: 2; list-style: none; }
+.skill-key li { display: inline-flex; align-items: center; gap: .4375rem; padding: .3125rem .75rem; border-radius: 999px; background: #FFFFFF;
+  box-shadow: inset 0 0 0 1px var(--line); font: 700 .9375rem/1.2 var(--font-body); color: var(--ink-2); }
+.skill-key i { width: .875rem; height: .875rem; border-radius: 50%; background: var(--c); }
+html[data-paper="exam"] .skill-key { display: none; }
+
+/* ---- the listening player: sound bars while the recording plays, a small ticking clock during reading time
+   (kept from the old 99-cartoon.css; black in the Mini tests and the Summit, the stop colour elsewhere) ---- */
+.au__eq { display: inline-flex; align-items: flex-end; gap: 3px; height: 1.4rem; width: 1.9rem; flex: none; }
+.au__eq i { display: block; width: 4px; height: 25%; background: #111; border-radius: 2px; }
+html:not([data-paper="exam"]) .au__eq i { background: var(--skill); }
+.au.is-playing .au__eq i { animation: cc-eq 900ms ease-in-out infinite; }
+.au.is-playing .au__eq i:nth-child(2) { animation-delay: -.3s; }
+.au.is-playing .au__eq i:nth-child(3) { animation-delay: -.6s; }
+.au.is-playing .au__eq i:nth-child(4) { animation-delay: -.15s; }
+@keyframes cc-eq { 0%, 100% { height: 25%; } 50% { height: 100%; } }
+.au__clock { display: none; width: 1.6rem; height: 1.6rem; border: 2.5px solid #111; border-radius: 50%; position: relative; flex: none; }
+.au__clock::after { content: ""; position: absolute; left: 50%; top: 50%; width: 2.5px; height: 44%; background: #111; transform-origin: 50% 0;
+  transform: rotate(180deg); animation: cc-tick 4s steps(4) infinite; margin-left: -1.25px; border-radius: 2px; }
+@keyframes cc-tick { to { transform: rotate(540deg); } }
+.au.is-reading .au__clock { display: inline-block; }
+.au.is-reading .au__eq { display: none; }
+.au.is-reading .au__count { font-weight: 700; }
+@media (prefers-reduced-motion: reduce) {
+  .au.is-playing .au__eq i, .au__clock::after { animation: none !important; }
+}

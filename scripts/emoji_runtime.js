@@ -8,7 +8,10 @@
 (function (T) {
   'use strict';
   const MAP = __MAP__;
-  const DIR = 'img/emoji/';
+  // two picture sets (Jovan, 26 November 2026): flat colour pictures while children learn (img/emoji-c/), and the
+  // black line drawings of the exam paper in the Mini tests and the Summit (img/emoji/). T.isExam() says which.
+  T.isExam = function () { const h = String(location.hash || '').replace(/^#/, ''); return /^summit/.test(h) || /-test$/.test(h); };
+  function dir() { return T.isExam() ? 'img/emoji/' : 'img/emoji-c/'; }
   const SVGNS = 'http://www.w3.org/2000/svg';
   const keys = Object.keys(MAP).sort(function (a, b) { return b.length - a.length; });
   if (!keys.length) return;
@@ -18,7 +21,7 @@
   function img(e) {
     const i = document.createElement('img');
     i.className = 'emo';
-    i.src = DIR + MAP[e] + '.svg';
+    i.src = dir() + MAP[e] + '.svg';
     i.alt = e;
     i.draggable = false;
     i.decoding = 'async';
@@ -36,7 +39,7 @@
     const x = parseFloat(t.getAttribute('x')) || 48, y = parseFloat(t.getAttribute('y')) || 52;
     const im = document.createElementNS(SVGNS, 'image');
     const w = size * 1.05;
-    im.setAttribute('href', DIR + MAP[s] + '.svg');
+    im.setAttribute('href', dir() + MAP[s] + '.svg');
     im.setAttribute('x', String(x - w / 2));
     im.setAttribute('y', String(y - w / 2 - size * 0.04));
     im.setAttribute('width', String(w));

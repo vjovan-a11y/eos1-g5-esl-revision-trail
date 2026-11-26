@@ -8,7 +8,7 @@ Owner: Jovan Tacatani, Vice Principal (Cambridge Advanced Programme). He is not 
 
 | Path | What it is |
 | --- | --- |
-| `dist/index.html` + `dist/audio/*.mp3` + `dist/img/emoji/*.svg` | The finished app (one HTML page + 103 recordings + the picture set). This is what gets published. |
+| `dist/index.html` + `dist/audio/*.mp3` + `dist/img/emoji/*.svg` + `dist/img/emoji-c/*.svg` | The finished app (one HTML page with the Andika font inside + 103 recordings + two picture sets: black line drawings for the tests, flat colour for the rest). This is what gets published. |
 | `app/src/` | The app source: 150 parts (CSS and JS) joined in the order of `app/src/_order.txt`. |
 | `app/audio/` | One manifest per stop of every recording (who says what), plus `cache.json` (which recordings are up to date). |
 | `content/stop1.json` to `stop9.json`, `content/summit.json` | ALL the questions, texts, listening scripts, writing tasks and model answers. The source of truth for content. |
@@ -25,7 +25,7 @@ python3 scripts/convert_summit.py       # writes app/src/22-summit-esl.js and ap
 python3 scripts/validate.py content/stop{1,2,3,4,5,6,7,8,9}.json      # must end with NO PROBLEMS
 # 3. recordings: only new or changed scripts are made (see "Audio" below)
 python3 scripts/tts_build.py            # or: python3 scripts/tts_build.py 4 5 summit
-# 4. join the parts into the page
+# 4. join the parts into the page (after changing app/fonts/: python3 scripts/fonts_build.py)
 python3 scripts/build.py app/src dist/index.html
 # 5. open it in a headless browser and look for errors (needs playwright + Chrome)
 python3 scripts/walk.py "home,stop-1,stop-4-test,summit" 1280 900    # prints "no errors"; screenshots in /tmp/w*.png
@@ -45,7 +45,7 @@ Never edit `app/src/22-pack-stop*.js` or `22-summit-esl.js` by hand: they are ge
 ## Publishing
 
 The app is a claude.ai artifact (multi-file: `index.html` + `audio/*.mp3`), published with the claude-artifacts `publish_files` tool.
-- Live artifact (since 25 November 2026): https://claude.ai/artifact/LoQE6GoHcH9gbz6QAerMXe (publish `index.html` with `files` for `audio/*.mp3` and `img/emoji/*.svg`; more than 255 files go up over two publishes to the same URL).
+- Live artifact (since 25 November 2026): https://claude.ai/artifact/LoQE6GoHcH9gbz6QAerMXe (publish `index.html` with `files` for `audio/*.mp3`, `img/emoji/*.svg` and `img/emoji-c/*.svg`; more than 255 files go up over two publishes to the same URL).
 - The first version (before the 25 November review) is at https://claude.ai/artifact/Kxdsd2ShBmx83GV8byznSk.
 - To republish: `get_artifact` for the live version, then `publish_files` with `slug`, `base_version`, mode `replace`, and every file (`index.html` and every `audio/*.mp3`).
 
@@ -56,7 +56,7 @@ The app is a claude.ai artifact (multi-file: `index.html` + `audio/*.mp3`), publ
 3. **No em dashes** in any text Jovan will read or send.
 4. Vietnamese (`vi`) is only for instructions, titles and word meanings, never for the English being tested.
 5. Mini tests: exactly 10 items, 5 at DOK 1 then 5 at DOK 2. Three options per multiple-choice question, one right answer, `opts[0]` is the right one and `at` says where it is shown.
-6. Keep the behaviour of the EOS1 trails: Student / Teacher / Visitor sign-in, progress codes, How to use guide, Zip the robot, the VI button, stars and badges, the school label line. The LOOK is this trail's own (Jovan, 25 November 2026): the paper look with ink cartoon animation (`99-paper.css`, `99-cartoon.css`), black line-drawing pictures, Map and Stops buttons.
+6. Keep the behaviour of the EOS1 trails: Student / Teacher / Visitor sign-in, progress codes, How to use guide, Zip the robot, the VI button, stars and badges, the school label line. The LOOK (Jovan, 26 November 2026, the same as the Grade 3 and Grade 4 ESL trails): COLOUR-CODED skills on the learning screens (`99-colour.css`, `99-colour.js`, `99-fonts.css`): white pages, one colour per exam skill (Stops 1, 2, 3 and 7 orange; 4 and 5 blue; 6 and 8 teal; 9 purple; the Summit navy), flat colour pictures (`img/emoji-c/`), a flat colour Zip, the Andika reading font, calm and quick movement. The Mini tests and the Summit keep the exam-paper look (`99-paper.css`: Arial, black on white, line drawings from `img/emoji/`). Right is always green with a tick, wrong always red. Map and Stops buttons.
 7. Browser tests for every feature are in `scripts/tests/` (see its README). The plan for building the Grade 3 and Grade 4 trails from this one is `playbook/PLAYBOOK-G3-G4.md`.
 
 ## Where to start

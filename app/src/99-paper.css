@@ -147,7 +147,7 @@ img.emo, image.emo-svg, .pico__clock, .result__art, .map, .map-wrap svg {
 img.emo, image.emo-svg, .pico__e img.emo, .wd-row__pic img.emo { filter: grayscale(1) !important; }   /* no drop shadows */
 .pico__clock circle:first-child { stroke: #111 !important; fill: #FFFFFF !important; }
 
-/* motion: see 99-cartoon.css (ink cartoon animation) */
+/* colour, font and movement on the learning screens: 99-colour.css (the Mini tests and the Summit keep this paper look) */
 .guide-hand { filter: grayscale(1); }
 
 /* ---- second pass after the preview ---- */
