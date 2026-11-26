@@ -35,7 +35,8 @@ Never edit `app/src/22-pack-stop*.js` or `22-summit-esl.js` by hand: they are ge
 
 ## Audio
 
-- Engine: Kokoro TTS (`pip install kokoro-onnx soundfile`), model files from the kokoro-onnx GitHub release `model-files-v1.0` (`kokoro-v1.0.onnx`, `voices-v1.0.bin`) saved in `./tts/`. Needs `ffmpeg`. Build v2 (see the header of `scripts/tts_build.py`): exact letter sounds for spelled names, equal loudness, -16 LUFS, 64 kbps.
+- Since 26 November 2026 the recordings are made with **ElevenLabs** (`scripts/el_build.py`: British voices, eleven_multilingual_v2, speed 0.9, spelled names as "W. A. L. L. I. S.", the same levelling as below). It needs the ElevenLabs key as a network secret for api.elevenlabs.io (header xi-api-key) on the cloud environment "EOS1 ESL trails". Clarity check: 98.6% heard on average, every spelled name exact. Kokoro (below) is the free fallback.
+- Engine (fallback): Kokoro TTS (`pip install kokoro-onnx soundfile`), model files from the kokoro-onnx GitHub release `model-files-v1.0` (`kokoro-v1.0.onnx`, `voices-v1.0.bin`) saved in `./tts/`. Needs `ffmpeg`. Build v2 (see the header of `scripts/tts_build.py`): exact letter sounds for spelled names, equal loudness, -16 LUFS, 64 kbps.
 - Clarity check: `python3 scripts/audio_clarity.py <sherpa-onnx whisper model dir>` (`pip install sherpa-onnx`; models from the k2-fsa/sherpa-onnx GitHub release `asr-models`).
 - British voices only: girls/women `bf_emma`, `bf_isabella`, `bf_alice`, `bf_lily`; boys/men `bm_george`, `bm_lewis`, `bm_daniel`, `bm_fable`. Each speaker keeps one voice.
 - A spelled name in a script (`W-A-L-L-I-S`) is read letter by letter. Output: mono MP3, 64 kbps, `dist/audio/<stim id>.mp3`.
