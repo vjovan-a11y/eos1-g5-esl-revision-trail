@@ -3,3 +3,5 @@ tts/
 __pycache__/
 *.pyc
 .DS_Store
+el-cache/
+preview-paper-look/
